@@ -1,0 +1,27 @@
+# Swift Package Manager / Swift build folders
+.build/
+.swiftpm/
+Packages/
+
+# Xcode build artifacts
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xccheckout
+
+# User-specific Xcode settings
+*.xcuserdatad/
+xcuserdata/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Generated transaction CSVs
+
+# Virtual environment
+codex-wheel-build/
+venv/
+
+# Python bytecode
+**/__pycache__/
