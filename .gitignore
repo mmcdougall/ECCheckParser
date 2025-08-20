@@ -18,6 +18,7 @@ xcuserdata/
 Thumbs.db
 
 # Generated transaction CSVs
+*.csv
 
 # Virtual environment
 codex-wheel-build/
