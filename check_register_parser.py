@@ -102,10 +102,19 @@ class CheckRegisterParser:
 
     @staticmethod
     def _split_payee_desc_block(block: str) -> Tuple[str, str]:
-        """Split a block containing payee and description into components."""
+        """Split a block containing payee and description using weighted votes.
+
+        Each heuristic returns a token boundary index and is assigned a weight.
+        Boundaries accumulate votes and the highest scoring split wins.  Some
+        heuristics may abstain by returning ``None``.
+        """
         block = block.replace("\r", " ").replace("\n", " ").strip()
         if not block:
             return "", ""
+
+        tokens = block.split()
+        if len(tokens) == 1:
+            return tokens[0], ""
 
         STOPWORDS = {
             "MERCHANT", "OFFICE", "MEDICAL", "LEGAL", "SUPPLIES", "SERVICE",
@@ -118,61 +127,77 @@ class CheckRegisterParser:
             "CITY OF OAKLEY",
             "DIEGO TRUCK REPAIR",
             "L.N. CURTIS & SONS",
+            "J & O'S COMMERCIAL TIRE CENTER",
         ]
 
-        def h_known_prefix(text: str):
+        SUFFIXES = {"LLP", "LLC", "INC", "CORP", "CO", "COMPANY", "LTD"}
+
+        # Helper to accumulate weighted votes for boundaries between tokens.
+        scores = [0] * (len(tokens))  # index == boundary after tokens[i-1]
+
+        def vote(idx: int, weight: int) -> None:
+            if 1 <= idx < len(tokens):
+                scores[idx] += weight
+
+        # ----- heuristics (left-to-right unless noted) -----
+        def h_known_prefix(toks: List[str], text: str) -> Optional[int]:
+            """Known multi-word vendors (LTR)."""
             upper = text.upper()
             for prefix in KNOWN_PREFIXES:
                 if upper.startswith(prefix):
-                    return prefix, text[len(prefix):].strip(), 100
+                    return len(prefix.split())
+            return None
 
-        def h_fd_number(text: str):
-            m = re.search(r"\bFD\s+\d+\b", text)
+        def h_fd_number(toks: List[str], text: str) -> Optional[int]:
+            """Split before tokens like 'FD 32' (LTR)."""
+            for i in range(len(toks) - 1):
+                if toks[i].upper() == "FD" and toks[i + 1].isdigit():
+                    return i
+            return None
+
+        def h_stopword(toks: List[str], text: str) -> Optional[int]:
+            """First stopword marks description start (LTR)."""
+            for i in range(1, len(toks)):
+                if toks[i].strip(",").upper() in STOPWORDS:
+                    return i
+            return None
+
+        def h_double_space(toks: List[str], text: str) -> Optional[int]:
+            """Detect large gaps that visually separate columns (LTR)."""
+            m = re.search(r"\s{2,}", text)
             if m:
-                return text[:m.start()].rstrip(), text[m.start():].lstrip(), 90
+                return len(text[: m.start()].split())
+            return None
 
-        def h_stopword(text: str):
-            tokens = text.split()
-            for i in range(1, len(tokens)):
-                if tokens[i].strip(",").upper() in STOPWORDS:
-                    return " ".join(tokens[:i]), " ".join(tokens[i:]), 80
+        def h_suffix(toks: List[str], text: str) -> Optional[int]:
+            """Company suffix from the right (RTL)."""
+            for i in range(len(toks) - 1, -1, -1):
+                if toks[i].rstrip(".,").upper() in SUFFIXES:
+                    return i + 1
+            return None
 
-        def h_double_space(text: str):
-            parts = re.split(r"\s{2,}", text, maxsplit=1)
-            if len(parts) == 2:
-                return parts[0], parts[1], 60
-
-        def h_suffix(text: str):
-            suffix_match = None
-            for m in re.finditer(r"\b(?:LLP|LLC|INC|CORP|CO|COMPANY|LTD)(?:[.,])?(?=\s|$)", text):
-                suffix_match = m
-            if suffix_match:
-                return text[:suffix_match.end()], text[suffix_match.end():], 40
-
-        def h_default(text: str):
-            parts = text.split(" ", 1)
-            if len(parts) == 2:
-                return parts[0], parts[1], 10
-            return text, "", 0
+        def h_default(toks: List[str], text: str) -> Optional[int]:
+            """Fallback: split after first token."""
+            return 1
 
         heuristics = [
-            ("known_prefix", h_known_prefix),
-            ("fd_number", h_fd_number),
-            ("stopword", h_stopword),
-            ("double_space", h_double_space),
-            ("suffix", h_suffix),
-            ("default", h_default),
+            ("known_prefix", 5, h_known_prefix),
+            ("fd_number", 4, h_fd_number),
+            ("stopword", 3, h_stopword),
+            ("double_space", 2, h_double_space),
+            ("suffix", 2, h_suffix),
+            ("default", 1, h_default),
         ]
 
-        best_payee, best_desc, best_score = block, "", -1
-        for _name, func in heuristics:
-            res = func(block)
-            if res:
-                payee, desc, score = res
-                if score > best_score:
-                    best_payee, best_desc, best_score = payee, desc, score
+        for _name, weight, func in heuristics:
+            idx = func(tokens, block)
+            if idx is not None:
+                vote(idx, weight)
 
-        payee, desc = best_payee, best_desc
+        best_idx = max(range(1, len(tokens)), key=lambda i: (scores[i], -i))
+        payee = " ".join(tokens[:best_idx])
+        desc = " ".join(tokens[best_idx:])
+
         while payee.endswith(",") and desc:
             first, *rest = desc.split(" ")
             payee = f"{payee} {first}".rstrip()
