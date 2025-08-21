@@ -107,7 +107,11 @@ class CheckRegisterParser:
         if not block:
             return "", ""
 
-        # Known multi-word payees where the description immediately follows
+        STOPWORDS = {
+            "MERCHANT", "OFFICE", "MEDICAL", "LEGAL", "SUPPLIES", "SERVICE",
+            "SERVICES", "EXPENSE", "FEE", "PAYMENT", "RE", "RE:", "TOTAL",
+        }
+
         KNOWN_PREFIXES = [
             "ALAMEDA COUNTY FIRE DEPARTMENT",
             "BAY AREA NEWS GROUP",
@@ -115,32 +119,60 @@ class CheckRegisterParser:
             "DIEGO TRUCK REPAIR",
             "L.N. CURTIS & SONS",
         ]
-        for prefix in KNOWN_PREFIXES:
-            if block.upper().startswith(prefix):
-                return prefix, block[len(prefix) :].strip()
 
-        fd_match = re.search(r"\bFD\s+\d+\b", block)
-        if fd_match:
-            idx = fd_match.start()
-            return block[:idx].rstrip(), block[idx:].lstrip()
+        def h_known_prefix(text: str):
+            upper = text.upper()
+            for prefix in KNOWN_PREFIXES:
+                if upper.startswith(prefix):
+                    return prefix, text[len(prefix):].strip(), 100
 
-        parts = re.split(r"\s{2,}", block, maxsplit=1)
-        if len(parts) == 2:
-            payee, desc = parts
-        else:
+        def h_fd_number(text: str):
+            m = re.search(r"\bFD\s+\d+\b", text)
+            if m:
+                return text[:m.start()].rstrip(), text[m.start():].lstrip(), 90
+
+        def h_stopword(text: str):
+            tokens = text.split()
+            for i in range(1, len(tokens)):
+                if tokens[i].strip(",").upper() in STOPWORDS:
+                    return " ".join(tokens[:i]), " ".join(tokens[i:]), 80
+
+        def h_double_space(text: str):
+            parts = re.split(r"\s{2,}", text, maxsplit=1)
+            if len(parts) == 2:
+                return parts[0], parts[1], 60
+
+        def h_suffix(text: str):
             suffix_match = None
-            for m in re.finditer(r"\b(?:LLP|LLC|INC|CORP|CO|COMPANY|LTD)(?:[.,])?(?=\s|$)", block):
+            for m in re.finditer(r"\b(?:LLP|LLC|INC|CORP|CO|COMPANY|LTD)(?:[.,])?(?=\s|$)", text):
                 suffix_match = m
             if suffix_match:
-                payee = block[: suffix_match.end()]
-                desc = block[suffix_match.end() :]
-            else:
-                parts = block.split(" ", 1)
-                if len(parts) == 2:
-                    payee, desc = parts
-                else:
-                    payee, desc = block, ""
+                return text[:suffix_match.end()], text[suffix_match.end():], 40
 
+        def h_default(text: str):
+            parts = text.split(" ", 1)
+            if len(parts) == 2:
+                return parts[0], parts[1], 10
+            return text, "", 0
+
+        heuristics = [
+            ("known_prefix", h_known_prefix),
+            ("fd_number", h_fd_number),
+            ("stopword", h_stopword),
+            ("double_space", h_double_space),
+            ("suffix", h_suffix),
+            ("default", h_default),
+        ]
+
+        best_payee, best_desc, best_score = block, "", -1
+        for _name, func in heuristics:
+            res = func(block)
+            if res:
+                payee, desc, score = res
+                if score > best_score:
+                    best_payee, best_desc, best_score = payee, desc, score
+
+        payee, desc = best_payee, best_desc
         while payee.endswith(",") and desc:
             first, *rest = desc.split(" ")
             payee = f"{payee} {first}".rstrip()
