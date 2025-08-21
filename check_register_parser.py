@@ -142,6 +142,27 @@ class CheckRegisterParser:
             payee = f"{payee} {first}".rstrip()
             desc = " ".join(rest)
 
+        # If payee is only a single word, some vendors like "PITNEY BOWES" or
+        # "MECHANICS BANK" can lose trailing tokens.  Pull leading ALLCAPS
+        # words from the description back into the payee until we hit a likely
+        # descriptor (e.g. MERCHANT, OFFICE) or we've moved a few tokens.
+        if len(payee.split()) == 1 and desc:
+            tokens = desc.split()
+            moved = []
+            stopwords = {
+                "MERCHANT", "OFFICE", "MEDICAL", "LEGAL", "SUPPLIES", "SERVICE",
+                "SERVICES", "EXPENSE", "FEE", "PAYMENT", "RE", "RE:", "TOTAL",
+            }
+            while tokens and len(moved) < 3:
+                t = tokens[0]
+                if t.isalpha() and t.isupper() and t not in stopwords:
+                    moved.append(tokens.pop(0))
+                else:
+                    break
+            if moved:
+                payee = f"{payee} {' '.join(moved)}".strip()
+                desc = " ".join(tokens)
+
         return payee.strip(), desc.strip(), amt
 
     # ---------- main extraction ----------
