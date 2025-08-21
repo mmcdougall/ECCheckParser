@@ -115,16 +115,32 @@ class CheckRegisterParser:
         else:
             body = rest
 
-        # Prefer splitting on two+ spaces; fallback to first single space.
+        # Prefer splitting on two+ spaces between payee and description.
         parts = re.split(r"\s{2,}", body, maxsplit=1)
         if len(parts) == 2:
             payee, desc = parts
         else:
-            parts = body.split(" ", 1)
-            if len(parts) == 2:
-                payee, desc = parts
+            # Heuristic: many vendors end with a corporate suffix like LLC or LLP.
+            # If we find such a suffix, keep everything through the suffix as the payee.
+            suffix_match = None
+            for m in re.finditer(r"\b(?:LLP|LLC|INC|CORP|CO|COMPANY|LTD)(?:[.,])?(?=\s|$)", body):
+                suffix_match = m
+            if suffix_match:
+                payee = body[: suffix_match.end()]
+                desc = body[suffix_match.end() :]
             else:
-                payee, desc = body, ""
+                parts = body.split(" ", 1)
+                if len(parts) == 2:
+                    payee, desc = parts
+                else:
+                    payee, desc = body, ""
+
+        # If payee ends with a comma, likely "Last, First" pattern. Pull first word of
+        # description into payee to reconstruct the full name.
+        while payee.endswith(",") and desc:
+            first, *rest = desc.split(" ")
+            payee = f"{payee} {first}".rstrip()
+            desc = " ".join(rest)
 
         return payee.strip(), desc.strip(), amt
 
