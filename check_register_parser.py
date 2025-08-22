@@ -110,28 +110,72 @@ class CheckRegisterParser:
         heuristics may abstain by returning ``None``.
         """
         block = block.replace("\r", " ").replace("\n", " ").strip()
+        block = re.sub(r",(?=[A-Za-z])", ", ", block)
         if not block:
             return "", ""
 
-        tokens = block.split()
-        if len(tokens) == 1:
-            return tokens[0], ""
-
         STOPWORDS = {
-            "MERCHANT", "OFFICE", "MEDICAL", "LEGAL", "SUPPLIES", "SERVICE",
-            "SERVICES", "EXPENSE", "FEE", "PAYMENT", "RE", "RE:", "TOTAL",
+            "MERCHANT", "OFFICE", "SUPPLIES", "SERVICE", "EXPENSE",
+            "FEE", "FEES", "PAYMENT", "RE", "RE:", "TOTAL",
+            "REIMBURSEMENT", "PERFORMANCE", "CONTRACT", "RENTAL",
+            "PROGRAM", "TRAINING", "PER", "DIEM", "INVOICE", "PROFESSIONAL",
         }
 
         KNOWN_PREFIXES = [
             "ALAMEDA COUNTY FIRE DEPARTMENT",
             "BAY AREA NEWS GROUP",
-            "CITY OF OAKLEY",
             "DIEGO TRUCK REPAIR",
             "L.N. CURTIS & SONS",
             "J & O'S COMMERCIAL TIRE CENTER",
+            "MUNICIPAL POOLING AUTHORITY",
+            "KAISER FOUNDATION HEALTH PLAN",
+            "EAST BAY REGIONAL COMMUNICATIONS SYSTEM",
+            "CONTRA COSTA HEALTH SERVICES",
+            "GHIRARDELLI ASSOCIATES",
+            "FLOCK SAFETY",
+            "PERS",
         ]
 
-        SUFFIXES = {"LLP", "LLC", "INC", "CORP", "CO", "COMPANY", "LTD"}
+        SUFFIXES = {
+            "LLP",
+            "LLC",
+            "INC",
+            "CORP",
+            "CORPORATION",
+            "CO",
+            "COMPANY",
+            "LTD",
+            "ASSOCIATES",
+        }
+        MONTHS = {
+            "JAN", "JANUARY", "FEB", "FEBRUARY", "MAR", "MARCH", "APR",
+            "APRIL", "MAY", "JUN", "JUNE", "JUL", "JULY", "AUG",
+            "AUGUST", "SEP", "SEPT", "SEPTEMBER", "OCT", "OCTOBER",
+            "NOV", "NOVEMBER", "DEC", "DECEMBER",
+        }
+        PREFIX_SET = {p.upper() for p in KNOWN_PREFIXES}
+
+        tokens = block.split()
+        if not tokens:
+            return "", ""
+
+        i = 0
+        letters: List[str] = []
+        while i < len(tokens):
+            tok = tokens[i]
+            stripped = tok.rstrip(".,")
+            if len(stripped) == 1 and stripped.isalpha():
+                letters.append(stripped.upper())
+                i += 1
+            else:
+                break
+        if len(letters) > 1:
+            joined = "".join(letters)
+            if joined in PREFIX_SET:
+                tokens = [joined] + tokens[i:]
+
+        if len(tokens) == 1:
+            return tokens[0], ""
 
         # Helper to accumulate weighted votes for boundaries between tokens.
         scores = [0] * (len(tokens))  # index == boundary after tokens[i-1]
@@ -143,10 +187,11 @@ class CheckRegisterParser:
         # ----- heuristics (left-to-right unless noted) -----
         def h_known_prefix(toks: List[str], text: str) -> Optional[int]:
             """Known multi-word vendors (LTR)."""
-            upper = text.upper()
+            upper_toks = [t.upper().rstrip(".,") for t in toks]
             for prefix in KNOWN_PREFIXES:
-                if upper.startswith(prefix):
-                    return len(prefix.split())
+                parts = prefix.split()
+                if upper_toks[:len(parts)] == parts:
+                    return len(parts)
             return None
 
         def h_fd_number(toks: List[str], text: str) -> Optional[int]:
@@ -156,11 +201,87 @@ class CheckRegisterParser:
                     return i
             return None
 
+        def h_middle_initial(toks: List[str], text: str) -> Optional[int]:
+            """Handle person names with an optional middle initial (LTR)."""
+            if len(toks) >= 3:
+                first, middle, last = toks[0], toks[1], toks[2]
+                if (
+                    re.fullmatch(r"[A-Za-z]+", first.rstrip(".,"))
+                    and re.fullmatch(r"[A-Za-z]\.?", middle.rstrip(","))
+                    and re.fullmatch(r"[A-Za-z]+", last.rstrip(".,"))
+                ):
+                    return 3
+            return None
+
+        def h_year(toks: List[str], text: str) -> Optional[int]:
+            """Split before a 4-digit year (LTR)."""
+            for i in range(1, len(toks)):
+                if re.fullmatch(r"\d{4}", toks[i]):
+                    if any(
+                        t.rstrip(".,").upper() in SUFFIXES for t in toks[:i]
+                    ):
+                        continue
+                    if i == len(toks) - 1:
+                        continue
+                    return i
+            return None
+
         def h_stopword(toks: List[str], text: str) -> Optional[int]:
             """First stopword marks description start (LTR)."""
             for i in range(1, len(toks)):
-                if toks[i].strip(",").upper() in STOPWORDS:
+                tok = toks[i]
+                if tok.strip(",").upper() in STOPWORDS:
+                    if tok.endswith(","):
+                        continue
+                    if i + 1 < len(toks) and toks[i + 1].rstrip(".,").upper() in SUFFIXES:
+                        continue
                     return i
+            return None
+
+        def h_date_or_month(toks: List[str], text: str) -> Optional[int]:
+            """Dates or month names anchor the description (LTR)."""
+            for i in range(1, len(toks)):
+                tok = toks[i].rstrip(",.")
+                if re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", tok):
+                    return i
+                up = tok.upper()
+                if up in MONTHS:
+                    return i
+            return None
+
+        def h_alphanum(toks: List[str], text: str) -> Optional[int]:
+            """Token containing both letters and digits marks description (LTR)."""
+            for i in range(1, len(toks)):
+                tok = toks[i].rstrip(",.")
+                if tok.startswith("#"):
+                    continue
+                if re.search(r"[A-Za-z]", tok) and re.search(r"\d", tok):
+                    return i
+            return None
+
+        def h_column_alignment(toks: List[str], text: str) -> Optional[int]:
+            """Approximate fixed column break around 45 chars (LTR)."""
+            pos = 0
+            for i, tok in enumerate(toks):
+                pos += len(tok) + 1
+                if pos >= 45:
+                    return i + 1
+            return None
+
+        def h_last_comma(toks: List[str], text: str) -> Optional[int]:
+            """Bias toward splitting after the last comma (LTR)."""
+            last = None
+            for i, tok in enumerate(toks):
+                if tok.endswith(','):
+                    last = i + 1
+            return last
+
+        def h_city_of(toks: List[str], text: str) -> Optional[int]:
+            """Handle 'City of ...' payees (LTR)."""
+            if len(toks) >= 3 and toks[0].upper() == "CITY" and toks[1].upper() == "OF":
+                if len(toks) >= 4 and toks[2].upper() == "SAN":
+                    return 4
+                return 3
             return None
 
         def h_double_space(toks: List[str], text: str) -> Optional[int]:
@@ -184,9 +305,16 @@ class CheckRegisterParser:
         heuristics = [
             ("known_prefix", 5, h_known_prefix),
             ("fd_number", 4, h_fd_number),
-            ("stopword", 3, h_stopword),
-            ("double_space", 2, h_double_space),
-            ("suffix", 2, h_suffix),
+            ("middle_initial", 4, h_middle_initial),
+            ("year", 4, h_year),
+            ("date_or_month", 5, h_date_or_month),
+            ("alphanum", 5, h_alphanum),
+            ("stopword", 4, h_stopword),
+            ("column_alignment", 4, h_column_alignment),
+            ("last_comma", 2, h_last_comma),
+            ("city_of", 3, h_city_of),
+            ("double_space", 1, h_double_space),
+            ("suffix", 5, h_suffix),
             ("default", 1, h_default),
         ]
 
@@ -196,6 +324,13 @@ class CheckRegisterParser:
                 vote(idx, weight)
 
         best_idx = max(range(1, len(tokens)), key=lambda i: (scores[i], -i))
+        suffix_pos = next(
+            (i for i, tok in enumerate(tokens) if tok.rstrip(".,").upper() in SUFFIXES),
+            None,
+        )
+        if suffix_pos is not None and best_idx > suffix_pos + 1:
+            best_idx = suffix_pos + 1
+
         payee = " ".join(tokens[:best_idx])
         desc = " ".join(tokens[best_idx:])
 
@@ -203,8 +338,60 @@ class CheckRegisterParser:
             first, *rest = desc.split(" ")
             payee = f"{payee} {first}".rstrip()
             desc = " ".join(rest)
+        payee = payee.strip()
+        desc = desc.strip()
+        if not desc and len(tokens) > 3:
+            payee = " ".join(tokens[:3]).strip()
+            desc = " ".join(tokens[3:]).strip()
+        if re.fullmatch(r"\d{4}", desc):
+            payee = f"{payee} {desc}".strip()
+            desc = ""
 
-        return payee.strip(), desc.strip()
+        # Repair: if the payee captured obvious description tokens or no
+        # description was found, split before the first keyword/date/month.
+        payee_tokens = tokens[:best_idx]
+        desc_tokens = tokens[best_idx:]
+        repair_needed = not desc_tokens
+        for i in range(1, len(payee_tokens)):
+            tok = payee_tokens[i]
+            stripped = tok.rstrip(",.")
+            if stripped.upper() in STOPWORDS:
+                if tok.endswith(','):
+                    continue
+                if i + 1 < len(payee_tokens) and payee_tokens[i + 1].rstrip(".,").upper() in SUFFIXES:
+                    continue
+                repair_needed = True
+                break
+            if (
+                stripped.upper() in MONTHS
+                or re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", stripped)
+                or (re.search(r"\d", stripped) and not stripped.startswith("#"))
+            ):
+                repair_needed = True
+                break
+
+        if repair_needed:
+            for i in range(1, len(tokens)):
+                tok = tokens[i]
+                stripped = tok.rstrip(",.")
+                if stripped.upper() in STOPWORDS:
+                    if tok.endswith(','):
+                        continue
+                    if i + 1 < len(tokens) and tokens[i + 1].rstrip(".,").upper() in SUFFIXES:
+                        continue
+                    payee = " ".join(tokens[:i]).strip()
+                    desc = " ".join(tokens[i:]).strip()
+                    break
+                if (
+                    stripped.upper() in MONTHS
+                    or re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", stripped)
+                    or (re.search(r"\d", stripped) and not stripped.startswith("#"))
+                ):
+                    payee = " ".join(tokens[:i]).strip()
+                    desc = " ".join(tokens[i:]).strip()
+                    break
+
+        return payee, desc
 
     # ---------- main extraction ----------
     def extract(self) -> List[CheckEntry]:
