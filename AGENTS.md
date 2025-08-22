@@ -28,6 +28,17 @@ To generate a CSV from the 2023 statements run:
 
 Each PDF should log `✔ reconciled`.  The resulting CSV confirms the parser still works.
 
+## Running tests
+
+Unit tests live under the `tests/` directory.  Run them with:
+
+```bash
+python -m unittest discover -s tests
+```
+
+Always execute the test suite before committing changes to ensure payee splitting
+and other behavior remain stable.
+
 ## Streamlining Codex work
 
 Always set up the `codex-wheel-build` environment and run the parser command when modifying code so you can verify parsing succeeds without network access.

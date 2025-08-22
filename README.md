@@ -15,3 +15,13 @@ python check_register_parser.py path/to/Agenda\ Packet.pdf --csv output.csv --ht
 The parser requires `pdfplumber` for table extraction.  After running, the script
 prints the number of checks parsed and the total disbursed amount as a basic
 sanity check.
+
+## Tests
+
+Regression and unit tests reside in the `tests/` directory.  Run them with:
+
+```bash
+python -m unittest discover -s tests
+```
+
+The test suite verifies payee/description splitting and other parsing behavior.
