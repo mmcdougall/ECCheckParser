@@ -101,69 +101,109 @@ class CheckRegisterParser:
         return Decimal(s)
 
     @staticmethod
-    def _split_payee_desc(rest: str) -> Tuple[str, str, Optional[Decimal]]:
-        """
-        Given the tail part of a line after '... Accounts Payable ', split into (payee, description, amount).
-        Amount is expected to be the last token if present.
-        """
-        rest = rest.strip()
-        m_amt = CheckRegisterParser._amount_tail.search(rest)
-        amt = None
-        if m_amt:
-            amt = CheckRegisterParser._money_to_decimal(m_amt.group())
-            body = rest[: m_amt.start()].rstrip()
-        else:
-            body = rest
+    def _split_payee_desc_block(block: str) -> Tuple[str, str]:
+        """Split a block containing payee and description using weighted votes.
 
-        # Prefer splitting on two+ spaces between payee and description.
-        parts = re.split(r"\s{2,}", body, maxsplit=1)
-        if len(parts) == 2:
-            payee, desc = parts
-        else:
-            # Heuristic: many vendors end with a corporate suffix like LLC or LLP.
-            # If we find such a suffix, keep everything through the suffix as the payee.
-            suffix_match = None
-            for m in re.finditer(r"\b(?:LLP|LLC|INC|CORP|CO|COMPANY|LTD)(?:[.,])?(?=\s|$)", body):
-                suffix_match = m
-            if suffix_match:
-                payee = body[: suffix_match.end()]
-                desc = body[suffix_match.end() :]
-            else:
-                parts = body.split(" ", 1)
-                if len(parts) == 2:
-                    payee, desc = parts
-                else:
-                    payee, desc = body, ""
+        Each heuristic returns a token boundary index and is assigned a weight.
+        Boundaries accumulate votes and the highest scoring split wins.  Some
+        heuristics may abstain by returning ``None``.
+        """
+        block = block.replace("\r", " ").replace("\n", " ").strip()
+        if not block:
+            return "", ""
 
-        # If payee ends with a comma, likely "Last, First" pattern. Pull first word of
-        # description into payee to reconstruct the full name.
+        tokens = block.split()
+        if len(tokens) == 1:
+            return tokens[0], ""
+
+        STOPWORDS = {
+            "MERCHANT", "OFFICE", "MEDICAL", "LEGAL", "SUPPLIES", "SERVICE",
+            "SERVICES", "EXPENSE", "FEE", "PAYMENT", "RE", "RE:", "TOTAL",
+        }
+
+        KNOWN_PREFIXES = [
+            "ALAMEDA COUNTY FIRE DEPARTMENT",
+            "BAY AREA NEWS GROUP",
+            "CITY OF OAKLEY",
+            "DIEGO TRUCK REPAIR",
+            "L.N. CURTIS & SONS",
+            "J & O'S COMMERCIAL TIRE CENTER",
+        ]
+
+        SUFFIXES = {"LLP", "LLC", "INC", "CORP", "CO", "COMPANY", "LTD"}
+
+        # Helper to accumulate weighted votes for boundaries between tokens.
+        scores = [0] * (len(tokens))  # index == boundary after tokens[i-1]
+
+        def vote(idx: int, weight: int) -> None:
+            if 1 <= idx < len(tokens):
+                scores[idx] += weight
+
+        # ----- heuristics (left-to-right unless noted) -----
+        def h_known_prefix(toks: List[str], text: str) -> Optional[int]:
+            """Known multi-word vendors (LTR)."""
+            upper = text.upper()
+            for prefix in KNOWN_PREFIXES:
+                if upper.startswith(prefix):
+                    return len(prefix.split())
+            return None
+
+        def h_fd_number(toks: List[str], text: str) -> Optional[int]:
+            """Split before tokens like 'FD 32' (LTR)."""
+            for i in range(len(toks) - 1):
+                if toks[i].upper() == "FD" and toks[i + 1].isdigit():
+                    return i
+            return None
+
+        def h_stopword(toks: List[str], text: str) -> Optional[int]:
+            """First stopword marks description start (LTR)."""
+            for i in range(1, len(toks)):
+                if toks[i].strip(",").upper() in STOPWORDS:
+                    return i
+            return None
+
+        def h_double_space(toks: List[str], text: str) -> Optional[int]:
+            """Detect large gaps that visually separate columns (LTR)."""
+            m = re.search(r"\s{2,}", text)
+            if m:
+                return len(text[: m.start()].split())
+            return None
+
+        def h_suffix(toks: List[str], text: str) -> Optional[int]:
+            """Company suffix from the right (RTL)."""
+            for i in range(len(toks) - 1, -1, -1):
+                if toks[i].rstrip(".,").upper() in SUFFIXES:
+                    return i + 1
+            return None
+
+        def h_default(toks: List[str], text: str) -> Optional[int]:
+            """Fallback: split after first token."""
+            return 1
+
+        heuristics = [
+            ("known_prefix", 5, h_known_prefix),
+            ("fd_number", 4, h_fd_number),
+            ("stopword", 3, h_stopword),
+            ("double_space", 2, h_double_space),
+            ("suffix", 2, h_suffix),
+            ("default", 1, h_default),
+        ]
+
+        for _name, weight, func in heuristics:
+            idx = func(tokens, block)
+            if idx is not None:
+                vote(idx, weight)
+
+        best_idx = max(range(1, len(tokens)), key=lambda i: (scores[i], -i))
+        payee = " ".join(tokens[:best_idx])
+        desc = " ".join(tokens[best_idx:])
+
         while payee.endswith(",") and desc:
             first, *rest = desc.split(" ")
             payee = f"{payee} {first}".rstrip()
             desc = " ".join(rest)
 
-        # If payee is only a single word, some vendors like "PITNEY BOWES" or
-        # "MECHANICS BANK" can lose trailing tokens.  Pull leading ALLCAPS
-        # words from the description back into the payee until we hit a likely
-        # descriptor (e.g. MERCHANT, OFFICE) or we've moved a few tokens.
-        if len(payee.split()) == 1 and desc:
-            tokens = desc.split()
-            moved = []
-            stopwords = {
-                "MERCHANT", "OFFICE", "MEDICAL", "LEGAL", "SUPPLIES", "SERVICE",
-                "SERVICES", "EXPENSE", "FEE", "PAYMENT", "RE", "RE:", "TOTAL",
-            }
-            while tokens and len(moved) < 3:
-                t = tokens[0]
-                if t.isalpha() and t.isupper() and t not in stopwords:
-                    moved.append(tokens.pop(0))
-                else:
-                    break
-            if moved:
-                payee = f"{payee} {' '.join(moved)}".strip()
-                desc = " ".join(tokens)
-
-        return payee.strip(), desc.strip(), amt
+        return payee.strip(), desc.strip()
 
     # ---------- main extraction ----------
     def extract(self) -> List[CheckEntry]:
@@ -173,6 +213,7 @@ class CheckRegisterParser:
         current_year: Optional[int] = None
         mode: Optional[str] = None  # "check" or "eft"
         current_row: Optional[CheckEntry] = None
+        current_block: str = ""
 
         with pdfplumber.open(self.pdf_path) as pdf:
             for page in pdf.pages:
@@ -211,17 +252,26 @@ class CheckRegisterParser:
                     # New data row?
                     m = self._row_start.match(line)
                     if m:
-                        # finalize any pending row (only if it has an amount)
                         if current_row and current_row.amount is not None:
                             entries.append(current_row)
                             current_row = None
 
+        
                         number, date, status, source, rest = m.groups()
                         voided = bool(self._void_marker.search(line)) or "VOID" in status.upper() or "VOIDED" in status.upper()
-                        payee, desc, amt = self._split_payee_desc(rest)
 
-                        # Safety net: if mode hasn't been set (we missed header), assume checks
+                        m_amt = self._amount_tail.search(rest)
+                        amt = None
+                        block = rest.strip()
+                        if m_amt:
+                            amt = self._money_to_decimal(m_amt.group())
+                            block = rest[: m_amt.start()].rstrip()
+
                         this_mode = mode or "check"
+
+                        payee = desc = ""
+                        if amt is not None:
+                            payee, desc = self._split_payee_desc_block(block)
 
                         current_row = CheckEntry(
                             section_month=current_month,
@@ -238,24 +288,28 @@ class CheckRegisterParser:
                         )
 
                         if amt is not None:
-                            # Row complete on one line
                             entries.append(current_row)
                             current_row = None
+                        else:
+                            current_block = block
                         continue
 
-                    # Continuation line for description (and possibly amount at the end)
                     if current_row is not None:
                         m_amt = self._amount_tail.search(line)
                         if m_amt:
                             lead = line[: m_amt.start()].strip()
                             if lead:
-                                current_row.description = (current_row.description + " " + lead).strip()
+                                current_block = (current_block + " " + lead).strip()
                             current_row.amount = self._money_to_decimal(m_amt.group())
+                            payee, desc = self._split_payee_desc_block(current_block)
+                            current_row.payee = payee
+                            current_row.description = desc
                             entries.append(current_row)
                             current_row = None
+                            current_block = ""
                         else:
                             if line and not self._row_start.match(line):
-                                current_row.description = (current_row.description + " " + line.strip()).strip()
+                                current_block = (current_block + " " + line.strip()).strip()
 
             # Flush dangling row if it somehow has an amount already
             if current_row and current_row.amount is not None:
@@ -273,7 +327,7 @@ class CheckRegisterParser:
         out_path = Path(out_path)
         out_path.parent.mkdir(parents=True, exist_ok=True)
         with out_path.open("w", newline="", encoding="utf-8") as f:
-            w = csv.writer(f)
+            w = csv.writer(f, lineterminator="\n")
             w.writerow([
                 "section_month", "section_year", "ap_type", "number", "date",
                 "status", "source", "payee", "description", "amount", "voided"
