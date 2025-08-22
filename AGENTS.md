@@ -4,10 +4,10 @@ This repo contains an offline parser for El Cerrito agenda packets. To work with
 
 ## Python environment
 
-Use the provided `codex_setup.sh` script to create a Python 3.11 virtual environment and install wheels without network access:
+Use the provided `codex_setup.sh` script to create a Python 3.11 virtual environment and install wheels without network access. When multiple Python versions are installed, prefer the `python3.11` interpreter explicitly:
 
 ```bash
-./codex_setup.sh
+./codex_setup.sh  # uses python3.11 internally
 ```
 
 The script creates a `codex-wheel-build` environment and installs from `vendor/wheels-linux` (or `vendor/wheels-mac` on macOS).  If you wish to do it manually:
