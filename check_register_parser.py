@@ -6,7 +6,14 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from check_register import CheckRegisterParser
+from check_register import (
+    CheckRegisterParser,
+    month_rollups,
+    sanity,
+    write_csv,
+    write_json,
+    write_payee_quadtree_html,
+)
 from check_register.page_extractor import extract_check_register_pdf
 
 
@@ -32,13 +39,13 @@ def main() -> None:
         entries = parser.extract()
 
         if args.csv:
-            CheckRegisterParser.write_csv(entries, args.csv)
+            write_csv(entries, args.csv)
         if args.json:
-            CheckRegisterParser.write_json(entries, args.json)
+            write_json(entries, args.json)
         if args.html:
-            CheckRegisterParser.write_payee_quadtree_html(entries, args.html)
+            write_payee_quadtree_html(entries, args.html)
 
-        stats = CheckRegisterParser.sanity(entries)
+        stats = sanity(entries)
         print(
             f"Rows: {stats['count']}  (checks={stats['by_type'].get('check', 0)}, "
             f"efts={stats['by_type'].get('eft', 0)})"
@@ -51,7 +58,7 @@ def main() -> None:
         if args.html:
             print(f"HTML: {args.html}")
         if args.print_rollups:
-            roll = CheckRegisterParser.month_rollups(entries)
+            roll = month_rollups(entries)
             if not roll:
                 print("No month rollups to display.")
             else:
