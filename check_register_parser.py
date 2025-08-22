@@ -357,6 +357,50 @@ class CheckRegisterParser:
             )
 
     @staticmethod
+    def write_payee_treemap_html(entries: List[CheckEntry], out_path: Path) -> None:
+        """Write an HTML treemap of payees sized by total dollar amount."""
+
+        totals: Dict[str, Decimal] = {}
+        for e in entries:
+            if e.voided:
+                continue
+            totals[e.payee] = totals.get(e.payee, Decimal("0.00")) + e.amount
+
+        data = {
+            "name": "Payees",
+            "children": [
+                {"name": name, "value": float(amount)}
+                for name, amount in sorted(totals.items(), key=lambda kv: kv[1], reverse=True)
+            ],
+        }
+
+        out_path = Path(out_path)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        with out_path.open("w", encoding="utf-8") as f:
+            f.write(
+                "<!DOCTYPE html>\n<html><head><meta charset='utf-8'>"
+                "<title>Payees by Dollar Amount</title>"
+                "<style>body{font-family:sans-serif}</style>"
+                "</head><body><div id='chart'></div>"
+                "<script src='https://d3js.org/d3.v7.min.js'></script><script>"
+                "const data = "
+            )
+            json.dump(data, f)
+            f.write(
+                ";\nconst width=960,height=600;\n"
+                "const root=d3.treemap().size([width,height]).padding(1)"
+                "(d3.hierarchy(data).sum(d=>d.value));\n"
+                "const svg=d3.select('#chart').append('svg').attr('width',width).attr('height',height);\n"
+                "const g=svg.selectAll('g').data(root.leaves()).enter().append('g')"
+                ".attr('transform',d=>`translate(${d.x0},${d.y0})`);\n"
+                "g.append('rect').attr('width',d=>d.x1-d.x0).attr('height',d=>d.y1-d.y0)"
+                ".attr('fill','#1f77b4');\n"
+                "g.append('title').text(d=>`${d.data.name}: $${d.data.value.toLocaleString()}`);\n"
+                "g.append('text').attr('x',4).attr('y',14).text(d=>d.data.name);\n"
+                "</script></body></html>"
+            )
+
+    @staticmethod
     def sanity(entries: List[CheckEntry]) -> Dict[str, object]:
         """
         Basic stats by type, and total excluding voided rows.
@@ -398,6 +442,7 @@ def main() -> None:
     ap.add_argument("pdf", type=Path, help="Agenda Packet PDF path")
     ap.add_argument("--csv", type=Path, default=Path("checks.csv"), help="Output CSV path")
     ap.add_argument("--json", type=Path, default=None, help="Optional JSON output path")
+    ap.add_argument("--html", type=Path, default=None, help="Optional payee treemap HTML path")
     ap.add_argument("--drop-voided", action="store_true", help="Exclude voided/voided-reissued rows from output")
     ap.add_argument("--print-rollups", action="store_true", help="Print per-month rollups after parsing")
     args = ap.parse_args()
@@ -409,6 +454,8 @@ def main() -> None:
     CheckRegisterParser.write_csv(entries, args.csv)
     if args.json:
         CheckRegisterParser.write_json(entries, args.json)
+    if args.html:
+        CheckRegisterParser.write_payee_treemap_html(entries, args.html)
 
     # Stats
     stats = CheckRegisterParser.sanity(entries)
@@ -417,6 +464,8 @@ def main() -> None:
     print(f"CSV: {args.csv}")
     if args.json:
         print(f"JSON: {args.json}")
+    if args.html:
+        print(f"HTML: {args.html}")
 
     if args.print_rollups:
         roll = CheckRegisterParser.month_rollups(entries)
