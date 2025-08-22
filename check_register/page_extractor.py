@@ -18,26 +18,33 @@ def find_check_register_page_range(pdf_path: Path) -> Tuple[int | None, int | No
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages, start=1):
             lines = (page.extract_text() or "").splitlines()
+            has_block = False
             page_has_data = False
+            has_section_hdr = False
             for line in lines:
                 line = line.strip()
                 if not line:
                     continue
                 if CheckRegisterParser._block_hdr.match(line):
-                    if start_page is None:
-                        start_page = i
-                    in_section = True
+                    has_block = True
+                if (
+                    CheckRegisterParser._checks_hdr.match(line)
+                    or CheckRegisterParser._efts_hdr.match(line)
+                    or "CHECK REGISTER" in line.upper()
+                ):
+                    has_section_hdr = True
                     page_has_data = True
-                elif in_section:
-                    if (
-                        CheckRegisterParser._row_start.match(line)
-                        or CheckRegisterParser._checks_hdr.match(line)
-                        or CheckRegisterParser._efts_hdr.match(line)
-                        or CheckRegisterParser._skip_line.match(line)
-                        or "CHECK REGISTER" in line.upper()
-                    ):
-                        page_has_data = True
-            if in_section:
+                elif in_section and (
+                    CheckRegisterParser._row_start.match(line)
+                    or CheckRegisterParser._skip_line.match(line)
+                ):
+                    page_has_data = True
+            if start_page is None:
+                if has_block and has_section_hdr:
+                    start_page = i
+                    end_page = i
+                    in_section = True
+            elif in_section:
                 if page_has_data:
                     end_page = i
                 else:
