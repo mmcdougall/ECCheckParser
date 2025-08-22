@@ -115,10 +115,10 @@ class CheckRegisterParser:
             return "", ""
 
         STOPWORDS = {
-            "MERCHANT", "OFFICE", "MEDICAL", "LEGAL", "SUPPLIES", "SERVICE",
-            "SERVICES", "EXPENSE", "FEE", "FEES", "PAYMENT", "RE",
-            "RE:", "TOTAL", "REIMBURSEMENT", "PERFORMANCE", "CONTRACT",
-            "RENTAL", "PROGRAM", "TRAINING", "PER", "DIEM",
+            "MERCHANT", "OFFICE", "SUPPLIES", "SERVICE", "EXPENSE",
+            "FEE", "FEES", "PAYMENT", "RE", "RE:", "TOTAL",
+            "REIMBURSEMENT", "PERFORMANCE", "CONTRACT", "RENTAL",
+            "PROGRAM", "TRAINING", "PER", "DIEM", "INVOICE", "PROFESSIONAL",
         }
 
         KNOWN_PREFIXES = [
@@ -318,18 +318,41 @@ class CheckRegisterParser:
 
         # Repair: if the payee captured obvious description tokens or no
         # description was found, split before the first keyword/date/month.
-        if not desc or any(
-            t.rstrip(".,").upper() in STOPWORDS
-            or re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", t.rstrip(",."))
-            or t.rstrip(".,").upper() in MONTHS
-            for t in payee.split()[1:]
-        ):
+        payee_tokens = tokens[:best_idx]
+        desc_tokens = tokens[best_idx:]
+        repair_needed = not desc_tokens
+        for i in range(1, len(payee_tokens)):
+            tok = payee_tokens[i]
+            stripped = tok.rstrip(",.")
+            if stripped.upper() in STOPWORDS:
+                if tok.endswith(','):
+                    continue
+                if i + 1 < len(payee_tokens) and payee_tokens[i + 1].rstrip(".,").upper() in SUFFIXES:
+                    continue
+                repair_needed = True
+                break
+            if (
+                stripped.upper() in MONTHS
+                or re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", stripped)
+            ):
+                repair_needed = True
+                break
+
+        if repair_needed:
             for i in range(1, len(tokens)):
-                tok = tokens[i].rstrip(",.")
+                tok = tokens[i]
+                stripped = tok.rstrip(",.")
+                if stripped.upper() in STOPWORDS:
+                    if tok.endswith(','):
+                        continue
+                    if i + 1 < len(tokens) and tokens[i + 1].rstrip(".,").upper() in SUFFIXES:
+                        continue
+                    payee = " ".join(tokens[:i]).strip()
+                    desc = " ".join(tokens[i:]).strip()
+                    break
                 if (
-                    tok.upper() in STOPWORDS
-                    or tok.upper() in MONTHS
-                    or re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", tok)
+                    stripped.upper() in MONTHS
+                    or re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", stripped)
                 ):
                     payee = " ".join(tokens[:i]).strip()
                     desc = " ".join(tokens[i:]).strip()
