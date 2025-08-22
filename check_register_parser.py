@@ -362,9 +362,8 @@ class CheckRegisterParser:
     def write_payee_quadtree_html(entries: List[CheckEntry], out_path: Path) -> None:
         """Write an HTML quadtree of payees sized by total dollar amount.
 
-        Requires the optional :mod:`bokeh` package; an ``ImportError`` will
-        be raised if it is not installed. Rectangles are colored using a
-        linear ramp so larger dollar amounts stand out.
+        Rectangles are colored using a linear ramp so larger dollar amounts
+        stand out.
         """
 
         from bokeh.plotting import figure, output_file, save
@@ -512,7 +511,7 @@ def main() -> None:
     ap.add_argument("--json", type=Path, default=None, help="Optional JSON output path")
     ap.add_argument(
         "--html", type=Path, default=None,
-        help="Optional payee quadtree HTML path (requires bokeh)"
+        help="Optional payee quadtree HTML path"
     )
     ap.add_argument("--drop-voided", action="store_true", help="Exclude voided/voided-reissued rows from output")
     ap.add_argument("--print-rollups", action="store_true", help="Print per-month rollups after parsing")

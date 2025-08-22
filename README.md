@@ -4,9 +4,7 @@ Utility for extracting the "Monthly Disbursement and Check Register Report"
 from El Camino Healthcare District agenda packet PDFs.  The script
 `check_register_parser.py` reads a packet PDF and emits a CSV file containing
 one row per check along with a couple of simple aggregates.  It can also
-produce an HTML quadtree showing payees sized by total dollar amount.  The
-visualization requires the `bokeh` package; invoking `--html` without Bokeh
-installed will raise an `ImportError`.
+produce an HTML quadtree showing payees sized by total dollar amount.
 
 ## Usage
 
