@@ -110,10 +110,23 @@ class CheckRegisterParser:
         heuristics may abstain by returning ``None``.
         """
         block = block.replace("\r", " ").replace("\n", " ").strip()
+        block = re.sub(r",(?=[A-Za-z])", ", ", block)
         if not block:
             return "", ""
 
         tokens = block.split()
+        i = 0
+        letters: List[str] = []
+        while i < len(tokens):
+            tok = tokens[i]
+            stripped = tok.rstrip(".,")
+            if len(stripped) == 1 and stripped.isalpha():
+                letters.append(stripped)
+                i += 1
+            else:
+                break
+        if len(letters) > 1:
+            tokens = ["".join(letters)] + tokens[i:]
         if len(tokens) == 1:
             return tokens[0], ""
 
@@ -125,13 +138,19 @@ class CheckRegisterParser:
         KNOWN_PREFIXES = [
             "ALAMEDA COUNTY FIRE DEPARTMENT",
             "BAY AREA NEWS GROUP",
-            "CITY OF OAKLEY",
             "DIEGO TRUCK REPAIR",
             "L.N. CURTIS & SONS",
             "J & O'S COMMERCIAL TIRE CENTER",
+            "MUNICIPAL POOLING AUTHORITY",
+            "KAISER FOUNDATION HEALTH PLAN",
+            "EAST BAY REGIONAL COMMUNICATIONS SYSTEM",
+            "CONTRA COSTA HEALTH SERVICES",
+            "GHIRARDELLI ASSOCIATES",
+            "FLOCK SAFETY",
+            "PERS",
         ]
 
-        SUFFIXES = {"LLP", "LLC", "INC", "CORP", "CO", "COMPANY", "LTD"}
+        SUFFIXES = {"LLP", "LLC", "INC", "CORP", "CO", "COMPANY", "LTD", "ASSOCIATES"}
 
         # Helper to accumulate weighted votes for boundaries between tokens.
         scores = [0] * (len(tokens))  # index == boundary after tokens[i-1]
@@ -143,10 +162,11 @@ class CheckRegisterParser:
         # ----- heuristics (left-to-right unless noted) -----
         def h_known_prefix(toks: List[str], text: str) -> Optional[int]:
             """Known multi-word vendors (LTR)."""
-            upper = text.upper()
+            upper_toks = [t.upper().rstrip(".,") for t in toks]
             for prefix in KNOWN_PREFIXES:
-                if upper.startswith(prefix):
-                    return len(prefix.split())
+                parts = prefix.split()
+                if upper_toks[:len(parts)] == parts:
+                    return len(parts)
             return None
 
         def h_fd_number(toks: List[str], text: str) -> Optional[int]:
@@ -156,11 +176,31 @@ class CheckRegisterParser:
                     return i
             return None
 
+        def h_year(toks: List[str], text: str) -> Optional[int]:
+            """Split before a 4-digit year (LTR)."""
+            for i in range(1, len(toks)):
+                if re.fullmatch(r"\d{4}", toks[i]):
+                    return i
+            return None
+
         def h_stopword(toks: List[str], text: str) -> Optional[int]:
             """First stopword marks description start (LTR)."""
             for i in range(1, len(toks)):
-                if toks[i].strip(",").upper() in STOPWORDS:
+                tok = toks[i]
+                if tok.strip(",").upper() in STOPWORDS:
+                    if tok.endswith(","):
+                        continue
+                    if i + 1 < len(toks) and toks[i + 1].rstrip(".,").upper() in SUFFIXES:
+                        continue
                     return i
+            return None
+
+        def h_city_of(toks: List[str], text: str) -> Optional[int]:
+            """Handle 'City of ...' payees (LTR)."""
+            if len(toks) >= 3 and toks[0].upper() == "CITY" and toks[1].upper() == "OF":
+                if len(toks) >= 4 and toks[2].upper() == "SAN":
+                    return 4
+                return 3
             return None
 
         def h_double_space(toks: List[str], text: str) -> Optional[int]:
@@ -184,7 +224,9 @@ class CheckRegisterParser:
         heuristics = [
             ("known_prefix", 5, h_known_prefix),
             ("fd_number", 4, h_fd_number),
+            ("year", 4, h_year),
             ("stopword", 3, h_stopword),
+            ("city_of", 3, h_city_of),
             ("double_space", 2, h_double_space),
             ("suffix", 2, h_suffix),
             ("default", 1, h_default),
