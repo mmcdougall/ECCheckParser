@@ -136,7 +136,17 @@ class CheckRegisterParser:
             "PERS",
         ]
 
-        SUFFIXES = {"LLP", "LLC", "INC", "CORP", "CO", "COMPANY", "LTD", "ASSOCIATES"}
+        SUFFIXES = {
+            "LLP",
+            "LLC",
+            "INC",
+            "CORP",
+            "CORPORATION",
+            "CO",
+            "COMPANY",
+            "LTD",
+            "ASSOCIATES",
+        }
         MONTHS = {
             "JAN", "JANUARY", "FEB", "FEBRUARY", "MAR", "MARCH", "APR",
             "APRIL", "MAY", "JUN", "JUNE", "JUL", "JULY", "AUG",
@@ -239,6 +249,16 @@ class CheckRegisterParser:
                     return i
             return None
 
+        def h_alphanum(toks: List[str], text: str) -> Optional[int]:
+            """Token containing both letters and digits marks description (LTR)."""
+            for i in range(1, len(toks)):
+                tok = toks[i].rstrip(",.")
+                if tok.startswith("#"):
+                    continue
+                if re.search(r"[A-Za-z]", tok) and re.search(r"\d", tok):
+                    return i
+            return None
+
         def h_column_alignment(toks: List[str], text: str) -> Optional[int]:
             """Approximate fixed column break around 45 chars (LTR)."""
             pos = 0
@@ -288,6 +308,7 @@ class CheckRegisterParser:
             ("middle_initial", 4, h_middle_initial),
             ("year", 4, h_year),
             ("date_or_month", 5, h_date_or_month),
+            ("alphanum", 5, h_alphanum),
             ("stopword", 4, h_stopword),
             ("column_alignment", 4, h_column_alignment),
             ("last_comma", 2, h_last_comma),
@@ -303,6 +324,13 @@ class CheckRegisterParser:
                 vote(idx, weight)
 
         best_idx = max(range(1, len(tokens)), key=lambda i: (scores[i], -i))
+        suffix_pos = next(
+            (i for i, tok in enumerate(tokens) if tok.rstrip(".,").upper() in SUFFIXES),
+            None,
+        )
+        if suffix_pos is not None and best_idx > suffix_pos + 1:
+            best_idx = suffix_pos + 1
+
         payee = " ".join(tokens[:best_idx])
         desc = " ".join(tokens[best_idx:])
 
@@ -312,6 +340,9 @@ class CheckRegisterParser:
             desc = " ".join(rest)
         payee = payee.strip()
         desc = desc.strip()
+        if not desc and len(tokens) > 3:
+            payee = " ".join(tokens[:3]).strip()
+            desc = " ".join(tokens[3:]).strip()
         if re.fullmatch(r"\d{4}", desc):
             payee = f"{payee} {desc}".strip()
             desc = ""
@@ -334,6 +365,7 @@ class CheckRegisterParser:
             if (
                 stripped.upper() in MONTHS
                 or re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", stripped)
+                or (re.search(r"\d", stripped) and not stripped.startswith("#"))
             ):
                 repair_needed = True
                 break
@@ -353,6 +385,7 @@ class CheckRegisterParser:
                 if (
                     stripped.upper() in MONTHS
                     or re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", stripped)
+                    or (re.search(r"\d", stripped) and not stripped.startswith("#"))
                 ):
                     payee = " ".join(tokens[:i]).strip()
                     desc = " ".join(tokens[i:]).strip()
