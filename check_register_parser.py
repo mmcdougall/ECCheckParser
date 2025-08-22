@@ -26,6 +26,7 @@ import argparse
 import csv
 import json
 import re
+import logging
 from dataclasses import dataclass, asdict
 from decimal import Decimal
 from pathlib import Path
@@ -215,6 +216,7 @@ class CheckRegisterParser:
         current_row: Optional[CheckEntry] = None
         current_block: str = ""
 
+        logging.getLogger("pdfminer").setLevel(logging.ERROR)
         with pdfplumber.open(self.pdf_path) as pdf:
             for page in pdf.pages:
                 lines = (page.extract_text() or "").splitlines()
