@@ -14,9 +14,15 @@ case "$(uname -s)" in
 esac
 
 # --- Robust guard: require CPython 3.11.x ---
-python3 - <<'PY'
+PYTHON_BIN="${PYTHON_BIN:-python3.11}"
+if ! command -v "$PYTHON_BIN" >/dev/null 2>&1; then
+  echo "ERROR: python3.11 not found in PATH. Install Python 3.11 and rerun."
+  exit 1
+fi
+
+"$PYTHON_BIN" - <<'PY'
 import sys, platform
-if sys.version_info.major != 3 or sys.version_info.minor != 11:
+if sys.version_info[:2] != (3, 11):
     raise SystemExit(
         f"ERROR: Expected Python 3.11.x, found {sys.version.split()[0]}"
     )
@@ -25,7 +31,7 @@ PY
 
 # --- Fresh venv ---
 rm -rf "$VENV_DIR"
-python3.11 -m venv "$VENV_DIR"
+"$PYTHON_BIN" -m venv "$VENV_DIR"
 # shellcheck disable=SC1091
 source "$VENV_DIR/bin/activate"
 

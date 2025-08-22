@@ -16,6 +16,21 @@ The parser requires `pdfplumber` for table extraction.  After running, the scrip
 prints the number of checks parsed and the total disbursed amount as a basic
 sanity check.
 
+## Setup
+
+This project targets CPython **3.11**. If your system provides multiple Python
+versions, invoke the `python3.11` interpreter explicitly. The included
+`codex_setup.sh` script creates an offline virtual environment using that
+interpreter:
+
+```bash
+./codex_setup.sh
+source codex-wheel-build/bin/activate
+```
+
+The virtual environment installs dependencies from the `vendor/` wheelhouse
+without requiring network access.
+
 ## Tests
 
 Regression and unit tests reside in the `tests/` directory.  Run them with:
