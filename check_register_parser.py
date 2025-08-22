@@ -176,10 +176,28 @@ class CheckRegisterParser:
                     return i
             return None
 
+        def h_middle_initial(toks: List[str], text: str) -> Optional[int]:
+            """Handle person names with an optional middle initial (LTR)."""
+            if len(toks) >= 3:
+                first, middle, last = toks[0], toks[1], toks[2]
+                if (
+                    re.fullmatch(r"[A-Za-z]+", first.rstrip(".,"))
+                    and re.fullmatch(r"[A-Za-z]\.?", middle.rstrip(","))
+                    and re.fullmatch(r"[A-Za-z]+", last.rstrip(".,"))
+                ):
+                    return 3
+            return None
+
         def h_year(toks: List[str], text: str) -> Optional[int]:
             """Split before a 4-digit year (LTR)."""
             for i in range(1, len(toks)):
                 if re.fullmatch(r"\d{4}", toks[i]):
+                    if any(
+                        t.rstrip(".,").upper() in SUFFIXES for t in toks[:i]
+                    ):
+                        continue
+                    if i == len(toks) - 1:
+                        continue
                     return i
             return None
 
@@ -224,6 +242,7 @@ class CheckRegisterParser:
         heuristics = [
             ("known_prefix", 5, h_known_prefix),
             ("fd_number", 4, h_fd_number),
+            ("middle_initial", 4, h_middle_initial),
             ("year", 4, h_year),
             ("stopword", 3, h_stopword),
             ("city_of", 3, h_city_of),
@@ -245,8 +264,13 @@ class CheckRegisterParser:
             first, *rest = desc.split(" ")
             payee = f"{payee} {first}".rstrip()
             desc = " ".join(rest)
+        payee = payee.strip()
+        desc = desc.strip()
+        if re.fullmatch(r"\d{4}", desc):
+            payee = f"{payee} {desc}".strip()
+            desc = ""
 
-        return payee.strip(), desc.strip()
+        return payee, desc
 
     # ---------- main extraction ----------
     def extract(self) -> List[CheckEntry]:
