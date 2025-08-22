@@ -362,10 +362,9 @@ class CheckRegisterParser:
     def write_payee_quadtree_html(entries: List[CheckEntry], out_path: Path) -> None:
         """Write an HTML quadtree of payees sized by total dollar amount.
 
-        The output uses :mod:`bokeh` for visualization.  If the optional
-        dependency is missing a short message is printed and no file is
-        produced.  Rectangles are colored using a linear ramp so larger
-        dollar amounts stand out.
+        The output uses :mod:`bokeh` for visualization. If the optional
+        dependency is missing no file is produced. Rectangles are colored
+        using a linear ramp so larger dollar amounts stand out.
         """
 
         try:
@@ -373,8 +372,7 @@ class CheckRegisterParser:
             from bokeh.models import ColumnDataSource, HoverTool
             from bokeh.transform import linear_cmap
             from bokeh.palettes import Viridis256
-        except Exception as exc:  # pragma: no cover - optional dependency
-            print(f"Skipping HTML output (bokeh not installed): {exc}")
+        except Exception:  # pragma: no cover - optional dependency
             return
 
         totals: Dict[str, Decimal] = {}
@@ -540,11 +538,8 @@ def main() -> None:
     print(f"CSV: {args.csv}")
     if args.json:
         print(f"JSON: {args.json}")
-    if args.html:
-        if Path(args.html).exists():
-            print(f"HTML: {args.html}")
-        else:
-            print("HTML generation skipped (missing bokeh)")
+    if args.html and Path(args.html).exists():
+        print(f"HTML: {args.html}")
 
     if args.print_rollups:
         roll = CheckRegisterParser.month_rollups(entries)
