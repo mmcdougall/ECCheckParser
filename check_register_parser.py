@@ -25,7 +25,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import hashlib
 import re
 from dataclasses import dataclass, asdict
 from decimal import Decimal
@@ -358,85 +357,48 @@ class CheckRegisterParser:
             )
 
     @staticmethod
-    def write_payee_quadtree_html(entries: List[CheckEntry], out_path: Path) -> None:
-        """Write a basic quadtree visualization of payees as an HTML file."""
+    def write_payee_treemap_html(entries: List[CheckEntry], out_path: Path) -> None:
+        """Write an HTML treemap of payees sized by total dollar amount."""
 
-        class _QTNode:
-            def __init__(self, x0: float, y0: float, x1: float, y1: float, depth: int = 0):
-                self.x0, self.y0, self.x1, self.y1 = x0, y0, x1, y1
-                self.depth = depth
-                self.points: List[Tuple[float, float, str]] = []
-                self.children: Optional[List["_QTNode"]] = None
+        totals: Dict[str, Decimal] = {}
+        for e in entries:
+            if e.voided:
+                continue
+            totals[e.payee] = totals.get(e.payee, Decimal("0.00")) + e.amount
 
-            def insert(self, pt: Tuple[float, float, str]) -> None:
-                if self.children is not None:
-                    self._insert_child(pt)
-                    return
-                self.points.append(pt)
-                if len(self.points) > 4 and self.depth < 8:
-                    self._subdivide()
-                    for p in self.points:
-                        self._insert_child(p)
-                    self.points = []
-
-            def _subdivide(self) -> None:
-                mx = (self.x0 + self.x1) / 2
-                my = (self.y0 + self.y1) / 2
-                self.children = [
-                    _QTNode(self.x0, self.y0, mx, my, self.depth + 1),
-                    _QTNode(mx, self.y0, self.x1, my, self.depth + 1),
-                    _QTNode(self.x0, my, mx, self.y1, self.depth + 1),
-                    _QTNode(mx, my, self.x1, self.y1, self.depth + 1),
-                ]
-
-            def _insert_child(self, pt: Tuple[float, float, str]) -> None:
-                x, y, _ = pt
-                for child in self.children or []:
-                    if child.x0 <= x < child.x1 and child.y0 <= y < child.y1:
-                        child.insert(pt)
-                        return
-
-        def _coord(name: str) -> Tuple[float, float]:
-            h = hashlib.sha1(name.encode("utf-8")).digest()
-            x = int.from_bytes(h[:8], "big") / 2 ** 64
-            y = int.from_bytes(h[8:16], "big") / 2 ** 64
-            return x, y
-
-        def _to_dict(node: _QTNode) -> Dict[str, object]:
-            out: Dict[str, object] = {
-                "x0": node.x0,
-                "y0": node.y0,
-                "x1": node.x1,
-                "y1": node.y1,
-            }
-            if node.points:
-                out["points"] = [{"x": x, "y": y, "payee": name} for x, y, name in node.points]
-            if node.children:
-                out["children"] = [_to_dict(c) for c in node.children]
-            return out
-
-        payees = sorted({e.payee for e in entries if e.payee})
-        root = _QTNode(0.0, 0.0, 1.0, 1.0)
-        for name in payees:
-            root.insert((*_coord(name), name))
+        data = {
+            "name": "Payees",
+            "children": [
+                {"name": name, "value": float(amount)}
+                for name, amount in sorted(totals.items(), key=lambda kv: kv[1], reverse=True)
+            ],
+        }
 
         out_path = Path(out_path)
         out_path.parent.mkdir(parents=True, exist_ok=True)
         with out_path.open("w", encoding="utf-8") as f:
-            data = _to_dict(root)
-            f.write("<!DOCTYPE html><html><head><meta charset='utf-8'>\n")
-            f.write("<title>Payee QuadTree</title>\n<style>canvas{border:1px solid #000}</style></head><body>\n")
-            f.write("<canvas id='ct' width='800' height='800'></canvas>\n<script>\n")
-            f.write("const data = ")
-            json.dump(data, f)
-            f.write(";\n")
             f.write(
-                "const ctx=document.getElementById('ct').getContext('2d');\n"
-                "function draw(n){ctx.strokeRect(n.x0*800,n.y0*800,(n.x1-n.x0)*800,(n.y1-n.y0)*800);"
-                "if(n.points){n.points.forEach(p=>ctx.fillRect(p.x*800-2,p.y*800-2,4,4));}" \
-                "if(n.children){n.children.forEach(draw);}}\n" "draw(data);"
+                "<!DOCTYPE html>\n<html><head><meta charset='utf-8'>"
+                "<title>Payees by Dollar Amount</title>"
+                "<style>body{font-family:sans-serif}</style>"
+                "</head><body><div id='chart'></div>"
+                "<script src='https://d3js.org/d3.v7.min.js'></script><script>"
+                "const data = "
             )
-            f.write("\n</script></body></html>")
+            json.dump(data, f)
+            f.write(
+                ";\nconst width=960,height=600;\n"
+                "const root=d3.treemap().size([width,height]).padding(1)"
+                "(d3.hierarchy(data).sum(d=>d.value));\n"
+                "const svg=d3.select('#chart').append('svg').attr('width',width).attr('height',height);\n"
+                "const g=svg.selectAll('g').data(root.leaves()).enter().append('g')"
+                ".attr('transform',d=>`translate(${d.x0},${d.y0})`);\n"
+                "g.append('rect').attr('width',d=>d.x1-d.x0).attr('height',d=>d.y1-d.y0)"
+                ".attr('fill','#1f77b4');\n"
+                "g.append('title').text(d=>`${d.data.name}: $${d.data.value.toLocaleString()}`);\n"
+                "g.append('text').attr('x',4).attr('y',14).text(d=>d.data.name);\n"
+                "</script></body></html>"
+            )
 
     @staticmethod
     def sanity(entries: List[CheckEntry]) -> Dict[str, object]:
@@ -480,7 +442,7 @@ def main() -> None:
     ap.add_argument("pdf", type=Path, help="Agenda Packet PDF path")
     ap.add_argument("--csv", type=Path, default=Path("checks.csv"), help="Output CSV path")
     ap.add_argument("--json", type=Path, default=None, help="Optional JSON output path")
-    ap.add_argument("--html", type=Path, default=None, help="Optional payee quadtree HTML path")
+    ap.add_argument("--html", type=Path, default=None, help="Optional payee treemap HTML path")
     ap.add_argument("--drop-voided", action="store_true", help="Exclude voided/voided-reissued rows from output")
     ap.add_argument("--print-rollups", action="store_true", help="Print per-month rollups after parsing")
     args = ap.parse_args()
@@ -493,7 +455,7 @@ def main() -> None:
     if args.json:
         CheckRegisterParser.write_json(entries, args.json)
     if args.html:
-        CheckRegisterParser.write_payee_quadtree_html(entries, args.html)
+        CheckRegisterParser.write_payee_treemap_html(entries, args.html)
 
     # Stats
     stats = CheckRegisterParser.sanity(entries)
