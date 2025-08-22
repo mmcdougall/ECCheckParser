@@ -114,22 +114,6 @@ class CheckRegisterParser:
         if not block:
             return "", ""
 
-        tokens = block.split()
-        i = 0
-        letters: List[str] = []
-        while i < len(tokens):
-            tok = tokens[i]
-            stripped = tok.rstrip(".,")
-            if len(stripped) == 1 and stripped.isalpha():
-                letters.append(stripped)
-                i += 1
-            else:
-                break
-        if len(letters) > 1:
-            tokens = ["".join(letters)] + tokens[i:]
-        if len(tokens) == 1:
-            return tokens[0], ""
-
         STOPWORDS = {
             "MERCHANT", "OFFICE", "MEDICAL", "LEGAL", "SUPPLIES", "SERVICE",
             "SERVICES", "EXPENSE", "FEE", "PAYMENT", "RE", "RE:", "TOTAL",
@@ -151,6 +135,29 @@ class CheckRegisterParser:
         ]
 
         SUFFIXES = {"LLP", "LLC", "INC", "CORP", "CO", "COMPANY", "LTD", "ASSOCIATES"}
+        PREFIX_SET = {p.upper() for p in KNOWN_PREFIXES}
+
+        tokens = block.split()
+        if not tokens:
+            return "", ""
+
+        i = 0
+        letters: List[str] = []
+        while i < len(tokens):
+            tok = tokens[i]
+            stripped = tok.rstrip(".,")
+            if len(stripped) == 1 and stripped.isalpha():
+                letters.append(stripped.upper())
+                i += 1
+            else:
+                break
+        if len(letters) > 1:
+            joined = "".join(letters)
+            if joined in PREFIX_SET:
+                tokens = [joined] + tokens[i:]
+
+        if len(tokens) == 1:
+            return tokens[0], ""
 
         # Helper to accumulate weighted votes for boundaries between tokens.
         scores = [0] * (len(tokens))  # index == boundary after tokens[i-1]
