@@ -116,7 +116,9 @@ class CheckRegisterParser:
 
         STOPWORDS = {
             "MERCHANT", "OFFICE", "MEDICAL", "LEGAL", "SUPPLIES", "SERVICE",
-            "SERVICES", "EXPENSE", "FEE", "PAYMENT", "RE", "RE:", "TOTAL",
+            "SERVICES", "EXPENSE", "FEE", "FEES", "PAYMENT", "RE",
+            "RE:", "TOTAL", "REIMBURSEMENT", "PERFORMANCE", "CONTRACT",
+            "RENTAL", "PROGRAM", "TRAINING", "PER", "DIEM",
         }
 
         KNOWN_PREFIXES = [
@@ -135,6 +137,12 @@ class CheckRegisterParser:
         ]
 
         SUFFIXES = {"LLP", "LLC", "INC", "CORP", "CO", "COMPANY", "LTD", "ASSOCIATES"}
+        MONTHS = {
+            "JAN", "JANUARY", "FEB", "FEBRUARY", "MAR", "MARCH", "APR",
+            "APRIL", "MAY", "JUN", "JUNE", "JUL", "JULY", "AUG",
+            "AUGUST", "SEP", "SEPT", "SEPTEMBER", "OCT", "OCTOBER",
+            "NOV", "NOVEMBER", "DEC", "DECEMBER",
+        }
         PREFIX_SET = {p.upper() for p in KNOWN_PREFIXES}
 
         tokens = block.split()
@@ -220,6 +228,34 @@ class CheckRegisterParser:
                     return i
             return None
 
+        def h_date_or_month(toks: List[str], text: str) -> Optional[int]:
+            """Dates or month names anchor the description (LTR)."""
+            for i in range(1, len(toks)):
+                tok = toks[i].rstrip(",.")
+                if re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", tok):
+                    return i
+                up = tok.upper()
+                if up in MONTHS:
+                    return i
+            return None
+
+        def h_column_alignment(toks: List[str], text: str) -> Optional[int]:
+            """Approximate fixed column break around 45 chars (LTR)."""
+            pos = 0
+            for i, tok in enumerate(toks):
+                pos += len(tok) + 1
+                if pos >= 45:
+                    return i + 1
+            return None
+
+        def h_last_comma(toks: List[str], text: str) -> Optional[int]:
+            """Bias toward splitting after the last comma (LTR)."""
+            last = None
+            for i, tok in enumerate(toks):
+                if tok.endswith(','):
+                    last = i + 1
+            return last
+
         def h_city_of(toks: List[str], text: str) -> Optional[int]:
             """Handle 'City of ...' payees (LTR)."""
             if len(toks) >= 3 and toks[0].upper() == "CITY" and toks[1].upper() == "OF":
@@ -251,10 +287,13 @@ class CheckRegisterParser:
             ("fd_number", 4, h_fd_number),
             ("middle_initial", 4, h_middle_initial),
             ("year", 4, h_year),
-            ("stopword", 3, h_stopword),
+            ("date_or_month", 5, h_date_or_month),
+            ("stopword", 4, h_stopword),
+            ("column_alignment", 4, h_column_alignment),
+            ("last_comma", 2, h_last_comma),
             ("city_of", 3, h_city_of),
-            ("double_space", 2, h_double_space),
-            ("suffix", 2, h_suffix),
+            ("double_space", 1, h_double_space),
+            ("suffix", 5, h_suffix),
             ("default", 1, h_default),
         ]
 
@@ -276,6 +315,25 @@ class CheckRegisterParser:
         if re.fullmatch(r"\d{4}", desc):
             payee = f"{payee} {desc}".strip()
             desc = ""
+
+        # Repair: if the payee captured obvious description tokens or no
+        # description was found, split before the first keyword/date/month.
+        if not desc or any(
+            t.rstrip(".,").upper() in STOPWORDS
+            or re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", t.rstrip(",."))
+            or t.rstrip(".,").upper() in MONTHS
+            for t in payee.split()[1:]
+        ):
+            for i in range(1, len(tokens)):
+                tok = tokens[i].rstrip(",.")
+                if (
+                    tok.upper() in STOPWORDS
+                    or tok.upper() in MONTHS
+                    or re.fullmatch(r"\d{1,2}/\d{1,2}/\d{2,4}", tok)
+                ):
+                    payee = " ".join(tokens[:i]).strip()
+                    desc = " ".join(tokens[i:]).strip()
+                    break
 
         return payee, desc
 
