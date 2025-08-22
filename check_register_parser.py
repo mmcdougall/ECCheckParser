@@ -362,18 +362,15 @@ class CheckRegisterParser:
     def write_payee_quadtree_html(entries: List[CheckEntry], out_path: Path) -> None:
         """Write an HTML quadtree of payees sized by total dollar amount.
 
-        The output uses :mod:`bokeh` for visualization. If the optional
-        dependency is missing no file is produced. Rectangles are colored
-        using a linear ramp so larger dollar amounts stand out.
+        Requires the optional :mod:`bokeh` package; an ``ImportError`` will
+        be raised if it is not installed. Rectangles are colored using a
+        linear ramp so larger dollar amounts stand out.
         """
 
-        try:
-            from bokeh.plotting import figure, output_file, save
-            from bokeh.models import ColumnDataSource, HoverTool
-            from bokeh.transform import linear_cmap
-            from bokeh.palettes import Viridis256
-        except Exception:  # pragma: no cover - optional dependency
-            return
+        from bokeh.plotting import figure, output_file, save
+        from bokeh.models import ColumnDataSource, HoverTool
+        from bokeh.transform import linear_cmap
+        from bokeh.palettes import Viridis256
 
         totals: Dict[str, Decimal] = {}
         for e in entries:
@@ -538,7 +535,7 @@ def main() -> None:
     print(f"CSV: {args.csv}")
     if args.json:
         print(f"JSON: {args.json}")
-    if args.html and Path(args.html).exists():
+    if args.html:
         print(f"HTML: {args.html}")
 
     if args.print_rollups:
