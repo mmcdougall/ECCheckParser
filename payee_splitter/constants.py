@@ -51,6 +51,7 @@ SUFFIXES = {
     "SUPPLY",
     "SERVICE",
     "SERVICES",
+    "SYS",
     "MANAGEMENT",
     "ELECTRIC",
 }
