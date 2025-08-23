@@ -10,8 +10,14 @@ from .parser import CheckRegisterParser
 from .models import CheckEntry
 
 
-def find_check_register_page_range(pdf_path: Path) -> Tuple[int | None, int | None]:
-    """Locate the start and end pages of the check register within a packet."""
+def find_check_register_page_range(pdf_path: Path) -> Tuple[int, int]:
+    """Locate the start and end pages of the check register within a packet.
+
+    Raises
+    ------
+    ValueError
+        If no check register page range can be determined.
+    """
     start_page = None
     end_page = None
     in_section = False
@@ -50,6 +56,8 @@ def find_check_register_page_range(pdf_path: Path) -> Tuple[int | None, int | No
                     end_page = i
                 else:
                     break
+    if start_page is None or end_page is None:
+        raise ValueError("Check register pages not found")
     return start_page, end_page
 
 
@@ -59,8 +67,6 @@ def extract_check_register_pdf(pdf_path: Path, out_path: Path) -> Tuple[int, int
     Returns the 1-indexed (start_page, end_page) tuple.
     """
     start, end = find_check_register_page_range(pdf_path)
-    if start is None or end is None:
-        raise ValueError("Check register pages not found")
 
     src = pdfium.PdfDocument(str(pdf_path))
     out_pdf = pdfium.PdfDocument.new()
@@ -69,32 +75,27 @@ def extract_check_register_pdf(pdf_path: Path, out_path: Path) -> Tuple[int, int
     return start, end
 
 
-def default_pdf_name(entries: List[CheckEntry], archive_root: Path = Path("CheckRegisterArchive")) -> Path:
-    """Generate a default archive path for an extracted register PDF.
+def default_pdf_name(entries: List[CheckEntry]) -> Path | None:
+    """Generate a default filename for an extracted register PDF.
 
     The file name begins with ``YYYY-MM``.  For registers spanning multiple
     months within the same year the ending month is appended with a dash
     (e.g. ``2025-06-07`` for a June/July register).  Registers spanning
     different years receive a ``YYYY-MM-YYYY-MM`` prefix.  A neutral
-    ``-register.pdf`` suffix keeps filenames consistent, and files are grouped
-    into ``archive_root/<year>/`` directories similar to the Agenda Packets
-    tree.
+    ``-register.pdf`` suffix keeps filenames consistent.
     """
 
     months = sorted({(e.section_year, e.section_month) for e in entries})
-    if months:
-        start_y, start_m = months[0]
-        end_y, end_m = months[-1]
-        if start_y == end_y and start_m == end_m:
-            prefix = f"{start_y:04d}-{start_m:02d}"
-        elif start_y == end_y:
-            prefix = f"{start_y:04d}-{start_m:02d}-{end_m:02d}"
-        else:
-            prefix = f"{start_y:04d}-{start_m:02d}-{end_y:04d}-{end_m:02d}"
-        year_dir = archive_root / f"{start_y:04d}"
-    else:
-        prefix = "unknown"
-        year_dir = archive_root / "unknown"
+    if not months:
+        return None
 
-    year_dir.mkdir(parents=True, exist_ok=True)
-    return year_dir / f"{prefix}-register.pdf"
+    start_y, start_m = months[0]
+    end_y, end_m = months[-1]
+    if start_y == end_y and start_m == end_m:
+        prefix = f"{start_y:04d}-{start_m:02d}"
+    elif start_y == end_y:
+        prefix = f"{start_y:04d}-{start_m:02d}-{end_m:02d}"
+    else:
+        prefix = f"{start_y:04d}-{start_m:02d}-{end_y:04d}-{end_m:02d}"
+
+    return Path(f"{prefix}-register.pdf")

@@ -3,6 +3,7 @@ import unittest
 from pathlib import Path
 
 import pdfplumber
+import pypdfium2 as pdfium
 
 from check_register.page_extractor import extract_check_register_pdf
 from check_register.parser import CheckRegisterParser
@@ -25,9 +26,13 @@ class TestPageExtractor(unittest.TestCase):
                 )
 
     def test_no_check_register(self):
-        src = Path('ECPackets/2025/Agenda Packet (rev. 4.2.2025).pdf')
         with tempfile.TemporaryDirectory() as tmpdir:
-            out = Path(tmpdir) / 'register.pdf'
+            tmp = Path(tmpdir)
+            src = tmp / 'empty.pdf'
+            doc = pdfium.PdfDocument.new()
+            doc.new_page(1, 1)
+            doc.save(str(src))
+            out = tmp / 'register.pdf'
             with self.assertRaises(ValueError):
                 extract_check_register_pdf(src, out)
 
