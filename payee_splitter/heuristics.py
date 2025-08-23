@@ -55,8 +55,12 @@ def h_stopword(toks: List[str], text: str) -> Optional[int]:
         if tok.strip(',').upper() in STOPWORDS:
             if tok.endswith(','):
                 continue
-            if i + 1 < len(toks) and toks[i + 1].rstrip('.,').upper() in SUFFIXES:
-                continue
+            if i + 1 < len(toks):
+                next_tok = toks[i + 1].rstrip('.,')
+                if next_tok.upper() in SUFFIXES:
+                    continue
+                if next_tok.isupper() and len(next_tok) <= 4:
+                    continue
             return i
     return None
 
@@ -105,10 +109,28 @@ def h_last_comma(toks: List[str], text: str) -> Optional[int]:
     return last
 
 def h_city_of(toks: List[str], text: str) -> Optional[int]:
-    if len(toks) >= 3 and toks[0].upper() == 'CITY' and (toks[1].upper() == 'OF'):
+    if len(toks) >= 3 and toks[0].upper() == 'CITY' and toks[1].upper() == 'OF':
+        idx = 3
         if len(toks) >= 4 and toks[2].upper() == 'SAN':
-            return 4
-        return 3
+            idx = 4
+        while idx < len(toks):
+            tok = toks[idx].rstrip('.,')
+            if tok.upper() in SUFFIXES:
+                idx += 1
+                continue
+            if tok.upper() in STOPWORDS and idx + 1 < len(toks) and toks[idx + 1].rstrip('.,').upper() in SUFFIXES:
+                idx += 2
+                continue
+            break
+        return idx
+    return None
+
+def h_close_paren(toks: List[str], text: str) -> Optional[int]:
+    for i in range(len(toks) - 1):
+        if toks[i].endswith(')'):
+            next_tok = toks[i + 1].rstrip('.,')
+            if next_tok.upper() not in SUFFIXES:
+                return i + 1
     return None
 
 def h_double_space(toks: List[str], text: str) -> Optional[int]:
@@ -126,4 +148,23 @@ def h_suffix(toks: List[str], text: str) -> Optional[int]:
 def h_default(toks: List[str], text: str) -> Optional[int]:
     return 1
 
-HEURISTICS = [('known_prefix', 5, h_known_prefix), ('fd_number', 4, h_fd_number), ('middle_initial', 4, h_middle_initial), ('comma_pair', 4, h_comma_pair), ('last_first', 6, h_last_first), ('year', 4, h_year), ('date_or_month', 4, h_date_or_month), ('alphanum', 5, h_alphanum), ('hash_follow', 6, h_hash_follow), ('two_title', 3, h_two_title), ('stopword', 4, h_stopword), ('column_alignment', 2, h_column_alignment), ('last_comma', 2, h_last_comma), ('city_of', 5, h_city_of), ('double_space', 1, h_double_space), ('suffix', 5, h_suffix), ('default', 1, h_default)]
+HEURISTICS = [
+    ('known_prefix', 8, h_known_prefix),
+    ('fd_number', 4, h_fd_number),
+    ('middle_initial', 4, h_middle_initial),
+    ('comma_pair', 4, h_comma_pair),
+    ('last_first', 6, h_last_first),
+    ('year', 6, h_year),
+    ('date_or_month', 4, h_date_or_month),
+    ('alphanum', 5, h_alphanum),
+    ('hash_follow', 6, h_hash_follow),
+    ('two_title', 3, h_two_title),
+    ('close_paren', 7, h_close_paren),
+    ('stopword', 6, h_stopword),
+    ('column_alignment', 0, h_column_alignment),
+    ('last_comma', 2, h_last_comma),
+    ('city_of', 5, h_city_of),
+    ('double_space', 1, h_double_space),
+    ('suffix', 5, h_suffix),
+    ('default', 1, h_default),
+]
