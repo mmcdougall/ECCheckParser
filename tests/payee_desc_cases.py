@@ -59,4 +59,14 @@ CASES = [
         "Cogent Investigations",
         "BACKGROUND",
     ),
+    (
+        "NATIONAL BANK (USA) LOAN INTEREST",
+        "NATIONAL BANK (USA)",
+        "LOAN INTEREST",
+    ),
+    (
+        "CITY OF SAN JOSE PAYMENT SYS 284939 DATA PROCESSING",
+        "CITY OF SAN JOSE PAYMENT SYS",
+        "284939 DATA PROCESSING",
+    ),
 ]
