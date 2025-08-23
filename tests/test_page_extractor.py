@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pdfplumber
 
-from check_register.page_extractor import extract_check_register_pdf
+from check_register.page_extractor import extract_check_register_pdf, default_pdf_name
 from check_register.parser import CheckRegisterParser
 
 
@@ -39,4 +39,10 @@ class TestPageExtractor(unittest.TestCase):
             self.assertEqual((start, end), (9, 15))
             with pdfplumber.open(out) as pdf:
                 self.assertEqual(len(pdf.pages), 7)
+
+    def test_default_pdf_name_current_dir(self):
+        parser = CheckRegisterParser(Path('ECPackets/2025/Agenda Packet (8.19.2025).pdf'))
+        entries = parser.extract()
+        name = default_pdf_name(entries, None)
+        self.assertEqual(name, Path('2025-06-07-register.pdf'))
 

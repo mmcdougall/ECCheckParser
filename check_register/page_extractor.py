@@ -69,16 +69,19 @@ def extract_check_register_pdf(pdf_path: Path, out_path: Path) -> Tuple[int, int
     return start, end
 
 
-def default_pdf_name(entries: List[CheckEntry], archive_root: Path = Path("CheckRegisterArchive")) -> Path:
-    """Generate a default archive path for an extracted register PDF.
+def default_pdf_name(
+    entries: List[CheckEntry], archive_root: Path | None = Path("CheckRegisterArchive")
+) -> Path:
+    """Generate a default path for an extracted register PDF.
 
-    The file name begins with ``YYYY-MM``.  For registers spanning multiple
+    The file name begins with ``YYYY-MM``. For registers spanning multiple
     months within the same year the ending month is appended with a dash
-    (e.g. ``2025-06-07`` for a June/July register).  Registers spanning
-    different years receive a ``YYYY-MM-YYYY-MM`` prefix.  A neutral
-    ``-register.pdf`` suffix keeps filenames consistent, and files are grouped
-    into ``archive_root/<year>/`` directories similar to the Agenda Packets
-    tree.
+    (e.g. ``2025-06-07`` for a June/July register). Registers spanning
+    different years receive a ``YYYY-MM-YYYY-MM`` prefix. A neutral
+    ``-register.pdf`` suffix keeps filenames consistent. When ``archive_root``
+    is provided the file is written under ``archive_root/<year>/`` similar to
+    the Agenda Packet hierarchy; otherwise the file is placed in the current
+    directory without creating subdirectories.
     """
 
     months = sorted({(e.section_year, e.section_month) for e in entries})
@@ -91,10 +94,18 @@ def default_pdf_name(entries: List[CheckEntry], archive_root: Path = Path("Check
             prefix = f"{start_y:04d}-{start_m:02d}-{end_m:02d}"
         else:
             prefix = f"{start_y:04d}-{start_m:02d}-{end_y:04d}-{end_m:02d}"
-        year_dir = archive_root / f"{start_y:04d}"
     else:
         prefix = "unknown"
+
+    filename = Path(f"{prefix}-register.pdf")
+
+    if archive_root is None:
+        return filename
+
+    if months:
+        year_dir = archive_root / f"{start_y:04d}"
+    else:
         year_dir = archive_root / "unknown"
 
     year_dir.mkdir(parents=True, exist_ok=True)
-    return year_dir / f"{prefix}-register.pdf"
+    return year_dir / filename

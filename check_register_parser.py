@@ -31,7 +31,7 @@ def main() -> None:
         "--pdf", nargs="?", type=Path, const=True, dest="pdf_out", default=None,
         help=(
             "Write check register pages to a PDF; if no filename is given, "
-            "a default archive name is used"
+            "a date-based name is written to the current directory"
         ),
     )
     args = ap.parse_args()
@@ -78,7 +78,9 @@ def main() -> None:
                         )
 
     if args.pdf_out:
-        out_path = default_pdf_name(entries) if args.pdf_out is True else args.pdf_out
+        out_path = (
+            default_pdf_name(entries, None) if args.pdf_out is True else args.pdf_out
+        )
         start, end = extract_check_register_pdf(args.pdf, out_path)
         print(f"PDF: {out_path} (pages {start}-{end})")
 
