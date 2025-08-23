@@ -7,7 +7,7 @@ from decimal import Decimal
 from pathlib import Path
 from typing import Dict, List
 
-from .models import CheckEntry
+from .models import CheckEntry, RowChunk
 
 
 def write_csv(entries: List[CheckEntry], out_path: Path) -> None:
@@ -40,6 +40,13 @@ def write_json(entries: List[CheckEntry], out_path: Path) -> None:
             ensure_ascii=False,
             indent=2,
         )
+
+
+def write_chunks(chunks: List[RowChunk], out_path: Path) -> None:
+    out_path = Path(out_path)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with out_path.open("w", encoding="utf-8") as f:
+        json.dump([asdict(c) for c in chunks], f, ensure_ascii=False, indent=2)
 
 
 def write_payee_quadtree_html(entries: List[CheckEntry], out_path: Path) -> None:

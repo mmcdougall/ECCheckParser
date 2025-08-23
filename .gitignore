@@ -17,12 +17,14 @@ xcuserdata/
 .DS_Store
 Thumbs.db
 
-# Generated transaction CSVs
+# Generated transaction CSVs (allow committed archive CSVs)
 *.csv
+!CheckRegisterArchive/**/*.csv
 
 # Virtual environment
 codex-wheel-build/
 venv/
+.venv/
 
 # Python bytecode
 **/__pycache__/
