@@ -16,6 +16,12 @@ esac
 # --- Robust guard: require CPython 3.11.x ---
 PYTHON_BIN="${PYTHON_BIN:-python3.11}"
 if ! command -v "$PYTHON_BIN" >/dev/null 2>&1; then
+  if command -v pyenv >/dev/null 2>&1; then
+    pyenv install -s 3.11 >/dev/null 2>&1 || true
+    pyenv local 3.11 >/dev/null 2>&1 || true
+  fi
+fi
+if ! command -v "$PYTHON_BIN" >/dev/null 2>&1; then
   echo "ERROR: python3.11 not found in PATH. Install Python 3.11 and rerun."
   exit 1
 fi

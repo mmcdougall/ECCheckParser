@@ -4,6 +4,8 @@ This repo contains an offline parser for El Cerrito agenda packets. To work with
 
 ## Python environment
 
+This repository includes a `.python-version` file that pins Python `3.11` via `pyenv`. If that version is missing, run `pyenv install -s 3.11` before continuing.
+
 Use the provided `codex_setup.sh` script to create a Python 3.11 virtual environment and install wheels without network access. When multiple Python versions are installed, prefer the `python3.11` interpreter explicitly:
 
 ```bash
