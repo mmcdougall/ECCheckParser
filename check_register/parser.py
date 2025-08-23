@@ -14,7 +14,7 @@ from typing import List, Optional, Tuple
 import pdfplumber
 
 from payee_splitter import split_payee_desc_block
-from .models import CheckEntry
+from .models import CheckEntry, RowChunk
 
 
 # ------------------------------
@@ -69,122 +69,135 @@ class CheckRegisterParser:
     def _split_payee_desc_block(block: str) -> Tuple[str, str]:
         return split_payee_desc_block(block)
 
-    # ---------- main extraction ----------
-    def extract(self) -> List[CheckEntry]:
-        entries: List[CheckEntry] = []
+    # ---------- raw extraction ----------
+    def extract_raw_chunks(self) -> List[RowChunk]:
+        chunks: List[RowChunk] = []
 
         current_month: Optional[int] = None
         current_year: Optional[int] = None
         mode: Optional[str] = None  # "check" or "eft"
-        current_row: Optional[CheckEntry] = None
-        current_block: str = ""
+        current_lines: List[str] = []
 
         logging.getLogger("pdfminer").setLevel(logging.ERROR)
         with pdfplumber.open(self.pdf_path) as pdf:
             for page in pdf.pages:
                 lines = (page.extract_text() or "").splitlines()
-                for line in lines:
-                    line = line.rstrip()
+                for raw in lines:
+                    line = raw.rstrip()
 
                     if not line or self._skip_line.match(line):
                         continue
 
-                    # Section boundary with explicit dates
                     b = self._block_hdr.match(line)
                     if b:
-                        # Use the "To Payment Date" month/year as section label
+                        if current_lines:
+                            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                            current_lines = []
                         current_month = int(b.group(4))
                         current_year = int(b.group(6))
-                        mode = "check"  # checks typically listed first; will switch when EFT header appears
-                        current_row = None
+                        mode = "check"
                         continue
 
-                    # Subsection switches
                     if self._checks_hdr.match(line):
+                        if current_lines:
+                            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                            current_lines = []
                         mode = "check"
-                        current_row = None
                         continue
 
                     if self._efts_hdr.match(line):
+                        if current_lines:
+                            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                            current_lines = []
                         mode = "eft"
-                        current_row = None
                         continue
 
-                    # If we're not inside a recognized section, ignore lines
                     if current_month is None or current_year is None:
                         continue
 
-                    # New data row?
-                    m = self._row_start.match(line)
-                    if m:
-                        if current_row and current_row.amount is not None:
-                            entries.append(current_row)
-                            current_row = None
+                    if self._row_start.match(line):
+                        if current_lines:
+                            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                        current_lines = [line]
+                        if self._amount_tail.search(line):
+                            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                            current_lines = []
+                    else:
+                        if current_lines:
+                            current_lines.append(line)
+                            if self._amount_tail.search(line):
+                                chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                                current_lines = []
 
-        
-                        number, date, status, source, rest = m.groups()
-                        voided = bool(self._void_marker.search(line)) or "VOID" in status.upper() or "VOIDED" in status.upper()
+        if current_lines:
+            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
 
-                        m_amt = self._amount_tail.search(rest)
-                        amt = None
-                        block = rest.strip()
-                        if m_amt:
-                            amt = self._money_to_decimal(m_amt.group())
-                            block = rest[: m_amt.start()].rstrip()
+        return chunks
 
-                        this_mode = mode or "check"
+    # ---------- chunk parsing ----------
+    def _parse_chunk(self, chunk: RowChunk) -> CheckEntry:
+        first = chunk.lines[0]
+        m = self._row_start.match(first)
+        if not m:
+            raise ValueError(f"Chunk does not start with row pattern: {first}")
 
-                        payee = desc = ""
-                        if amt is not None:
-                            payee, desc = self._split_payee_desc_block(block)
+        number, date, status, source, rest = m.groups()
 
-                        current_row = CheckEntry(
-                            section_month=current_month,
-                            section_year=current_year,
-                            ap_type=this_mode,
-                            number=number.strip(),
-                            date=date.strip(),
-                            status=status.strip(),
-                            source=source.strip(),
-                            payee=payee,
-                            description=desc,
-                            amount=amt if amt is not None else Decimal("0.00"),
-                            voided=voided,
-                        )
+        voided = (
+            bool(self._void_marker.search(first))
+            or "VOID" in status.upper()
+            or "VOIDED" in status.upper()
+        )
 
-                        if amt is not None:
-                            entries.append(current_row)
-                            current_row = None
-                        else:
-                            current_block = block
-                        continue
+        block_parts: List[str] = []
+        m_amt = self._amount_tail.search(rest)
+        amount: Optional[Decimal] = None
+        if m_amt:
+            amount = self._money_to_decimal(m_amt.group())
+            block_parts.append(rest[: m_amt.start()].strip())
+        else:
+            block_parts.append(rest.strip())
 
-                    if current_row is not None:
-                        m_amt = self._amount_tail.search(line)
-                        if m_amt:
-                            lead = line[: m_amt.start()].strip()
-                            if lead:
-                                current_block = (current_block + " " + lead).strip()
-                            current_row.amount = self._money_to_decimal(m_amt.group())
-                            payee, desc = self._split_payee_desc_block(current_block)
-                            current_row.payee = payee
-                            current_row.description = desc
-                            entries.append(current_row)
-                            current_row = None
-                            current_block = ""
-                        else:
-                            if line and not self._row_start.match(line):
-                                current_block = (current_block + " " + line.strip()).strip()
+        for line in chunk.lines[1:]:
+            m_amt = self._amount_tail.search(line)
+            if m_amt:
+                lead = line[: m_amt.start()].strip()
+                if lead:
+                    block_parts.append(lead)
+                amount = self._money_to_decimal(m_amt.group())
+            else:
+                block_parts.append(line.strip())
 
-            # Flush dangling row if it somehow has an amount already
-            if current_row and current_row.amount is not None:
-                entries.append(current_row)
+        block = " ".join(part for part in block_parts if part).strip()
 
-        # Optionally drop voided entries from the dataset (but keep them by default)
+        payee = desc = ""
+        if amount is not None:
+            payee, desc = self._split_payee_desc_block(block)
+
+        return CheckEntry(
+            section_month=chunk.section_month,
+            section_year=chunk.section_year,
+            ap_type=chunk.ap_type,
+            number=number.strip(),
+            date=date.strip(),
+            status=status.strip(),
+            source=source.strip(),
+            payee=payee,
+            description=desc,
+            amount=amount if amount is not None else Decimal("0.00"),
+            voided=voided,
+        )
+
+    def parse_chunks(self, chunks: List[RowChunk]) -> List[CheckEntry]:
+        entries = [self._parse_chunk(c) for c in chunks]
         if not self.keep_voided:
             entries = [e for e in entries if not e.voided]
-
         return entries
+
+    # ---------- main extraction ----------
+    def extract(self) -> List[CheckEntry]:
+        chunks = self.extract_raw_chunks()
+        return self.parse_chunks(chunks)
 
 
 
