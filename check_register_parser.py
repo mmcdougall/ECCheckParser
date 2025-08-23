@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import sys
 
 from check_register import (
     CheckRegisterParser,
@@ -29,10 +30,7 @@ def main() -> None:
     ap.add_argument("--print-rollups", action="store_true", help="Print per-month rollups after parsing")
     ap.add_argument(
         "--pdf", nargs="?", type=Path, const=True, dest="pdf_out", default=None,
-        help=(
-            "Write check register pages to a PDF; if no filename is given, "
-            "a default archive name is used"
-        ),
+        help="Extract check register pages to a PDF",
     )
     args = ap.parse_args()
 
@@ -78,8 +76,18 @@ def main() -> None:
                         )
 
     if args.pdf_out:
-        out_path = default_pdf_name(entries) if args.pdf_out is True else args.pdf_out
-        start, end = extract_check_register_pdf(args.pdf, out_path)
+        if args.pdf_out is True:
+            out_path = default_pdf_name(entries)
+            if out_path is None:
+                print("No check register entries found; PDF not created")
+                sys.exit(1)
+        else:
+            out_path = args.pdf_out
+        try:
+            start, end = extract_check_register_pdf(args.pdf, out_path)
+        except ValueError as exc:
+            print(f"PDF extraction failed: {exc}")
+            sys.exit(1)
         print(f"PDF: {out_path} (pages {start}-{end})")
 
 

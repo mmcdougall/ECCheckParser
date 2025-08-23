@@ -14,7 +14,7 @@ python check_register_parser.py path/to/Agenda\ Packet.pdf --csv output.csv --ht
 ```
 
 If ``--pdf`` is provided without a filename the register pages are written to
-``CheckRegisterArchive/<year>/`` using names like ``YYYY-MM-register.pdf`` or
+the current working directory using names like ``YYYY-MM-register.pdf`` or
 ``YYYY-MM-MM-register.pdf`` for multi-month registers.
 
 The parser requires `pdfplumber` for table extraction.  After running, the script
