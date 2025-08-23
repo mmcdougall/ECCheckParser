@@ -13,7 +13,7 @@ class TestJulAug2025TopPayees(unittest.TestCase):
     """Ensure parser extracts a reasonable number of top payees by amount."""
 
     def test_minimum_matches(self):
-        parser = CheckRegisterParser(Path('ECPackets/2025/Agenda Packet (8.19.2025).pdf'))
+        parser = CheckRegisterParser(Path('CheckRegisterArchive/2025/2025-06-07-register.pdf'))
         entries = parser.extract()
         entries_sorted = sorted(entries, key=lambda e: e.amount, reverse=True)
         payees = [e.payee for e in entries_sorted[: len(PAYEES_JUL_AUG_2025_TOP)]]

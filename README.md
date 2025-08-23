@@ -4,13 +4,18 @@ Utility for extracting the "Monthly Disbursement and Check Register Report"
 from El Camino Healthcare District agenda packet PDFs.  The script
 `check_register_parser.py` reads a packet PDF and emits a CSV file containing
 one row per check along with a couple of simple aggregates.  It can also
-produce an HTML quadtree showing payees sized by total dollar amount.
+produce an HTML quadtree showing payees sized by total dollar amount and
+optionally extracts the check register pages into a standalone PDF.
 
 ## Usage
 
 ```bash
-python check_register_parser.py path/to/Agenda\ Packet.pdf --csv output.csv --html payees.html
+python check_register_parser.py path/to/Agenda\ Packet.pdf --csv output.csv --html payees.html --pdf
 ```
+
+If ``--pdf`` is provided without a filename the register pages are written to
+``CheckRegisterArchive/<year>/`` using names like ``YYYY-MM-register.pdf`` or
+``YYYY-MM-MM-register.pdf`` for multi-month registers.
 
 The parser requires `pdfplumber` for table extraction.  After running, the script
 prints the number of checks parsed and the total disbursed amount as a basic
