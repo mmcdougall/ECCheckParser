@@ -1,7 +1,7 @@
 # ECCheckParser
 
 Utility for extracting the "Monthly Disbursement and Check Register Report"
-from City of El Cerrito council agenda packet PDFs. The project targets fully
+from City of El Cerrito city council agenda packet PDFs. The project targets
 offline parsing: source PDFs from [www.elcerrito.gov](https://www.elcerrito.gov)
 reside under `data/originals/`, and parser artifacts used in tests live under
 `data/artifacts/`. Unit tests enforce payee and description extraction fidelity.

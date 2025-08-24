@@ -41,7 +41,7 @@ for pdf in data/originals/2025/*.pdf; do
 done
 ```
 
-Commit regenerated artifacts in separate commits or pull requests from the code changes that triggered them.
+ALWAYS regenerate artifacts in separate pull request from the code changes that triggered them. Never mix code code changes and data artifacts in a pull request.
 
 ## Data: originals and artifacts
 
