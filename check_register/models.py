@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import List
 
@@ -28,3 +28,16 @@ class RowChunk:
     section_year: int
     ap_type: str                 # "check" or "eft"
     lines: List[str]             # original PDF text lines belonging to the row
+
+    # TODO: Explore migrating away from line-based parsing. These positioned
+    # words capture x-coordinates for each token so that future column
+    # detection can rely on geometry rather than normalized spaces.
+    line_words: List[List["PositionedWord"]] = field(default_factory=list)
+
+
+@dataclass
+class PositionedWord:
+    """A single word extracted from the PDF with its starting x position."""
+
+    text: str
+    x0: float

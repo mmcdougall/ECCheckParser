@@ -14,7 +14,7 @@ from typing import List, Optional, Tuple
 import pdfplumber
 
 from payee_splitter import split_payee_desc_block
-from .models import CheckEntry, RowChunk
+from .models import CheckEntry, RowChunk, PositionedWord
 
 
 # ------------------------------
@@ -77,13 +77,37 @@ class CheckRegisterParser:
         current_year: Optional[int] = None
         mode: Optional[str] = None  # "check" or "eft"
         current_lines: List[str] = []
+        current_words: List[List[PositionedWord]] = []
+
+        def words_by_line(page) -> List[List[PositionedWord]]:
+            """Group pdfplumber words into lines preserving x positions."""
+            words = page.extract_words()
+            words.sort(key=lambda w: w["top"])  # top-to-bottom
+            lines: List[List[PositionedWord]] = []
+            current: List[dict] = []
+            current_top: Optional[float] = None
+            for w in words:
+                top = w["top"]
+                if current_top is None or abs(top - current_top) < 3:  # y tolerance
+                    current.append(w)
+                    if current_top is None:
+                        current_top = top
+                else:
+                    lines.append([PositionedWord(text=pw["text"], x0=pw["x0"]) for pw in sorted(current, key=lambda x: x["x0"])])
+                    current = [w]
+                    current_top = top
+            if current:
+                lines.append([PositionedWord(text=pw["text"], x0=pw["x0"]) for pw in sorted(current, key=lambda x: x["x0"])])
+            return lines
 
         logging.getLogger("pdfminer").setLevel(logging.ERROR)
         with pdfplumber.open(self.pdf_path) as pdf:
             for page in pdf.pages:
                 lines = (page.extract_text() or "").splitlines()
-                for raw in lines:
+                word_lines = words_by_line(page)
+                for idx, raw in enumerate(lines):
                     line = raw.rstrip()
+                    wl = word_lines[idx] if idx < len(word_lines) else []
 
                     if not line or self._skip_line.match(line):
                         continue
@@ -91,8 +115,11 @@ class CheckRegisterParser:
                     b = self._block_hdr.match(line)
                     if b:
                         if current_lines:
-                            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                            chunks.append(
+                                RowChunk(current_month, current_year, mode or "check", current_lines, current_words)
+                            )
                             current_lines = []
+                            current_words = []
                         current_month = int(b.group(4))
                         current_year = int(b.group(6))
                         mode = "check"
@@ -100,15 +127,21 @@ class CheckRegisterParser:
 
                     if self._checks_hdr.match(line):
                         if current_lines:
-                            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                            chunks.append(
+                                RowChunk(current_month, current_year, mode or "check", current_lines, current_words)
+                            )
                             current_lines = []
+                            current_words = []
                         mode = "check"
                         continue
 
                     if self._efts_hdr.match(line):
                         if current_lines:
-                            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                            chunks.append(
+                                RowChunk(current_month, current_year, mode or "check", current_lines, current_words)
+                            )
                             current_lines = []
+                            current_words = []
                         mode = "eft"
                         continue
 
@@ -117,20 +150,30 @@ class CheckRegisterParser:
 
                     if self._row_start.match(line):
                         if current_lines:
-                            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                            chunks.append(
+                                RowChunk(current_month, current_year, mode or "check", current_lines, current_words)
+                            )
                         current_lines = [line]
+                        current_words = [wl]
                         if self._amount_tail.search(line):
-                            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                            chunks.append(
+                                RowChunk(current_month, current_year, mode or "check", current_lines, current_words)
+                            )
                             current_lines = []
+                            current_words = []
                     else:
                         if current_lines:
                             current_lines.append(line)
+                            current_words.append(wl)
                             if self._amount_tail.search(line):
-                                chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+                                chunks.append(
+                                    RowChunk(current_month, current_year, mode or "check", current_lines, current_words)
+                                )
                                 current_lines = []
+                                current_words = []
 
         if current_lines:
-            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines))
+            chunks.append(RowChunk(current_month, current_year, mode or "check", current_lines, current_words))
 
         return chunks
 
