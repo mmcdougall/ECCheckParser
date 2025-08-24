@@ -14,6 +14,7 @@ from check_register import (
     write_csv,
     write_json,
     write_payee_quadtree_html,
+    write_chunks,
 )
 from check_register.page_extractor import extract_check_register_pdf, default_pdf_name
 
@@ -28,19 +29,24 @@ def main() -> None:
     ap.add_argument("--html", type=Path, default=None, help="Optional payee quadtree HTML path")
     ap.add_argument("--drop-voided", action="store_true", help="Exclude voided/voided-reissued rows from output")
     ap.add_argument("--print-rollups", action="store_true", help="Print per-month rollups after parsing")
+    ap.add_argument("--chunks-json", type=Path, default=None, help="Output raw row chunks JSON for tests")
     ap.add_argument(
         "--pdf", nargs="?", type=Path, const=True, dest="pdf_out", default=None,
         help="Extract check register pages to a PDF",
     )
     args = ap.parse_args()
 
+    chunks = None
     entries = None
+    need_chunks = bool(args.chunks_json)
     need_entries = (
         args.csv or args.json or args.html or args.print_rollups or args.pdf_out is True
     )
-    if need_entries:
+    if need_entries or need_chunks:
         parser = CheckRegisterParser(args.pdf, keep_voided=not args.drop_voided)
-        entries = parser.extract()
+        chunks = parser.extract_raw_chunks()
+        if need_entries:
+            entries = parser.parse_chunks(chunks)
 
     if entries is not None:
         if args.csv:
@@ -74,6 +80,9 @@ def main() -> None:
                             f"  {m:02d}/{y}: checks=${sums['checks']:.2f}  "
                             f"efts=${sums['efts']:.2f}  grand=${sums['grand']:.2f}"
                         )
+
+    if need_chunks and chunks is not None:
+        write_chunks(chunks, args.chunks_json)
 
     if args.pdf_out:
         if args.pdf_out is True:
