@@ -7,6 +7,9 @@ one row per check along with a couple of simple aggregates.  It can also
 produce an HTML quadtree showing payees sized by total dollar amount and
 optionally extracts the check register pages into a standalone PDF.
 
+Sample agenda packets live under ``data/originals/YYYY/`` with derived
+artifacts (CSV, chunk JSON and register PDFs) in ``data/artifacts/``.
+
 ## Usage
 
 ```bash
@@ -25,11 +28,11 @@ sanity check.
 
 This project targets CPython **3.11**. If your system provides multiple Python
 versions, invoke the `python3.11` interpreter explicitly. The included
-`codex_setup.sh` script creates an offline virtual environment using that
+`scripts/codex_setup.sh` script creates an offline virtual environment using that
 interpreter:
 
 ```bash
-./codex_setup.sh
+./scripts/codex_setup.sh
 source codex-wheel-build/bin/activate
 ```
 
