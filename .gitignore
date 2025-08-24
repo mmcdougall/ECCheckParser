@@ -19,7 +19,7 @@ Thumbs.db
 
 # Generated transaction CSVs (keep archived outputs)
 *.csv
-!CheckRegisterArchive/**/*.csv
+!data/artifacts/**/*.csv
 
 # Virtual environment
 codex-wheel-build/

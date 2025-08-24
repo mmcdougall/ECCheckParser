@@ -4,6 +4,8 @@ import sys
 import unittest
 from pathlib import Path
 
+from project_paths import ARTIFACT_CHUNKS_DIR
+
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from check_register.parser import CheckRegisterParser
@@ -15,7 +17,7 @@ class TestJune2025Payees(unittest.TestCase):
     """Ensure parser extracts a reasonable number of known June 2025 payees."""
 
     def test_minimum_matches(self):
-        chunk_path = Path('CheckRegisterArchive/2025/chunks/2025-06-07.json')
+        chunk_path = ARTIFACT_CHUNKS_DIR / '2025-06-07.json'
         with chunk_path.open() as f:
             chunks = [RowChunk(**c) for c in json.load(f)]
         parser = CheckRegisterParser(chunk_path)

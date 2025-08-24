@@ -4,11 +4,11 @@
 Given an agenda packet PDF containing a "Monthly Disbursement and Check
 Register" section, this script extracts the register pages, parses them,
 and writes the resulting register PDF, raw row chunks JSON, and CSV entries
-under ``CheckRegisterArchive``.
+under ``data/artifacts``.
 
 Example
 -------
-    python scripts/build_register_archive.py ECPackets/2025/"Agenda Packet (8.19.2025).pdf"
+    python scripts/build_register_archive.py data/originals/2025/"Agenda Packet (8.19.2025).pdf"
 """
 from __future__ import annotations
 
@@ -20,15 +20,20 @@ import sys
 
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
+from project_paths import ARTIFACTS_DIR
 from check_register import CheckRegisterParser, write_csv, write_chunks
 from check_register.page_extractor import extract_check_register_pdf, default_pdf_name
 
 
-def build_archive(packet_pdf: Path, archive_dir: Path = Path("CheckRegisterArchive")) -> Path:
+def build_archive(packet_pdf: Path, archive_dir: Path = ARTIFACTS_DIR) -> Path:
     packet_pdf = Path(packet_pdf)
     archive_dir = Path(archive_dir)
 
-    archive_dir.mkdir(parents=True, exist_ok=True)
+    pdf_dir = archive_dir / "pdfs"
+    csv_dir = archive_dir / "csv"
+    chunk_dir = archive_dir / "chunks"
+    for d in (pdf_dir, csv_dir, chunk_dir):
+        d.mkdir(parents=True, exist_ok=True)
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp_pdf = Path(tmpdir) / "register.pdf"
@@ -41,15 +46,13 @@ def build_archive(packet_pdf: Path, archive_dir: Path = Path("CheckRegisterArchi
         name = default_pdf_name(entries)
         if name is None:
             raise RuntimeError("Could not determine default register PDF name")
-        year_dir = archive_dir / str(entries[0].section_year)
-        year_dir.mkdir(parents=True, exist_ok=True)
 
-        pdf_out = year_dir / name
+        pdf_out = pdf_dir / name
         tmp_pdf.replace(pdf_out)
 
         prefix = name.stem.replace("-register", "")
-        chunk_out = year_dir / "chunks" / f"{prefix}.json"
-        csv_out = year_dir / "csv" / f"{prefix}.csv"
+        chunk_out = chunk_dir / f"{prefix}.json"
+        csv_out = csv_dir / f"{prefix}.csv"
         write_chunks(chunks, chunk_out)
         write_csv(entries, csv_out)
 
@@ -59,7 +62,7 @@ def build_archive(packet_pdf: Path, archive_dir: Path = Path("CheckRegisterArchi
 def main() -> None:
     ap = argparse.ArgumentParser(description="Archive check register artifacts from an agenda packet PDF")
     ap.add_argument("pdf", type=Path, help="Agenda packet PDF path")
-    ap.add_argument("--archive-dir", type=Path, default=Path("CheckRegisterArchive"), help="Archive output directory")
+    ap.add_argument("--archive-dir", type=Path, default=ARTIFACTS_DIR, help="Archive output directory")
     args = ap.parse_args()
 
     pdf_out = build_archive(args.pdf, args.archive_dir)
