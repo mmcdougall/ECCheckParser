@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from decimal import Decimal
+from typing import List
 
 
 @dataclass
@@ -17,3 +18,13 @@ class CheckEntry:
     description: str
     amount: Decimal
     voided: bool                 # True if VOID/Voided appears
+
+
+@dataclass
+class RowChunk:
+    """Raw lines for a single check/EFT entry prior to full parsing."""
+
+    section_month: int
+    section_year: int
+    ap_type: str                 # "check" or "eft"
+    lines: List[str]             # original PDF text lines belonging to the row

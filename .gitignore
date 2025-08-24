@@ -17,8 +17,9 @@ xcuserdata/
 .DS_Store
 Thumbs.db
 
-# Generated transaction CSVs
+# Generated transaction CSVs (keep archived outputs)
 *.csv
+!CheckRegisterArchive/**/*.csv
 
 # Virtual environment
 codex-wheel-build/
