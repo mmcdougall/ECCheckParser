@@ -215,7 +215,24 @@ class CheckRegisterParser:
 
         payee = desc = ""
         if amount is not None:
-            payee, desc = self._split_payee_desc_block(block)
+            result = None
+            if chunk.line_words:
+                try:
+                    from payee_splitter.cluster import split_payee_desc_by_x
+                    from .models import PositionedWord
+
+                    line_words = chunk.line_words
+                    if line_words and isinstance(line_words[0][0], dict):
+                        line_words = [
+                            [PositionedWord(**w) for w in lw] for lw in line_words
+                        ]
+                    result = split_payee_desc_by_x(line_words)
+                except Exception:
+                    result = None
+            if result:
+                payee, desc = result
+            else:
+                payee, desc = self._split_payee_desc_block(block)
 
         return CheckEntry(
             section_month=chunk.section_month,

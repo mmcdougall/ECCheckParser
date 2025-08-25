@@ -25,8 +25,8 @@ class TestJulAug2025TopPayees(unittest.TestCase):
         entries_sorted = sorted(entries, key=lambda e: e.amount, reverse=True)
         payees = [e.payee for e in entries_sorted[: len(PAYEES_JUL_AUG_2025_TOP)]]
         matches = sum(1 for a, b in zip(PAYEES_JUL_AUG_2025_TOP, payees) if a == b)
-        # Baseline as of this commit: 27 matches. Update as heuristics improve.
-        self.assertGreaterEqual(matches, 27,
+        # Baseline as of this commit: 30 matches. Update as heuristics improve.
+        self.assertGreaterEqual(matches, 30,
                                 f"Only {matches} of {len(PAYEES_JUL_AUG_2025_TOP)} payees matched")
 
 
