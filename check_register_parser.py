@@ -16,7 +16,11 @@ from check_register import (
     write_payee_quadtree_html,
     write_chunks,
 )
-from check_register.page_extractor import extract_check_register_pdf, default_pdf_name
+from check_register.page_extractor import (
+    extract_check_register_pdf,
+    default_pdf_name,
+    register_name_prefix,
+)
 
 
 def main() -> None:
@@ -24,12 +28,15 @@ def main() -> None:
         description="Parse El Cerrito Agenda Packet check/EFT registers into CSV/JSON or extract pages to PDF."
     )
     ap.add_argument("pdf", type=Path, help="Agenda Packet PDF path")
-    ap.add_argument("--csv", type=Path, default=None, help="Output CSV path")
-    ap.add_argument("--json", type=Path, default=None, help="Optional JSON output path")
-    ap.add_argument("--html", type=Path, default=None, help="Optional payee quadtree HTML path")
+    ap.add_argument("--csv", nargs="?", type=Path, const=True, default=None, help="Output CSV path")
+    ap.add_argument("--json", nargs="?", type=Path, const=True, default=None, help="Optional JSON output path")
+    ap.add_argument("--html", nargs="?", type=Path, const=True, default=None, help="Optional payee quadtree HTML path")
     ap.add_argument("--drop-voided", action="store_true", help="Exclude voided/voided-reissued rows from output")
     ap.add_argument("--print-rollups", action="store_true", help="Print per-month rollups after parsing")
-    ap.add_argument("--chunks-json", type=Path, default=None, help="Output raw row chunks JSON for tests")
+    ap.add_argument(
+        "--chunks-json", nargs="?", type=Path, const=True, default=None,
+        help="Output raw row chunks JSON for tests",
+    )
     ap.add_argument(
         "--pdf", nargs="?", type=Path, const=True, dest="pdf_out", default=None,
         help="Extract check register pages to a PDF",
@@ -40,7 +47,12 @@ def main() -> None:
     entries = None
     need_chunks = bool(args.chunks_json)
     need_entries = (
-        args.csv or args.json or args.html or args.print_rollups or args.pdf_out is True
+        args.csv is not None
+        or args.json is not None
+        or args.html is not None
+        or args.print_rollups
+        or args.pdf_out is True
+        or args.chunks_json is True
     )
     if need_entries or need_chunks:
         parser = CheckRegisterParser(args.pdf, keep_voided=not args.drop_voided)
@@ -49,6 +61,28 @@ def main() -> None:
             entries = parser.parse_chunks(chunks)
 
     if entries is not None:
+        prefix = register_name_prefix(entries)
+        if args.csv is True:
+            if prefix is None:
+                print("No check register entries found; CSV not created")
+                sys.exit(1)
+            args.csv = Path(f"{prefix}.csv")
+        if args.json is True:
+            if prefix is None:
+                print("No check register entries found; JSON not created")
+                sys.exit(1)
+            args.json = Path(f"{prefix}.json")
+        if args.html is True:
+            if prefix is None:
+                print("No check register entries found; HTML not created")
+                sys.exit(1)
+            args.html = Path(f"{prefix}-payees.html")
+        if args.chunks_json is True:
+            if prefix is None:
+                print("No check register entries found; chunks JSON not created")
+                sys.exit(1)
+            args.chunks_json = Path(f"{prefix}-chunks.json")
+
         if args.csv:
             write_csv(entries, args.csv)
         if args.json:
@@ -82,6 +116,12 @@ def main() -> None:
                         )
 
     if need_chunks and chunks is not None:
+        if args.chunks_json is True:
+            prefix = register_name_prefix(entries or [])
+            if prefix is None:
+                print("No check register entries found; chunks JSON not created")
+                sys.exit(1)
+            args.chunks_json = Path(f"{prefix}-chunks.json")
         write_chunks(chunks, args.chunks_json)
 
     if args.pdf_out:

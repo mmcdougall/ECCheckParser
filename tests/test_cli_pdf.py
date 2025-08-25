@@ -9,7 +9,7 @@ from unittest.mock import patch
 import pypdfium2 as pdfium
 
 from check_register.models import CheckEntry
-from check_register.page_extractor import default_pdf_name
+from check_register.page_extractor import default_pdf_name, register_name_prefix
 from check_register_parser import main
 
 
@@ -26,6 +26,13 @@ class TestCliPdf(unittest.TestCase):
         ]
         out = default_pdf_name(entries)
         self.assertEqual(out, Path("2025-06-07-register.pdf"))
+
+    def test_register_name_prefix(self):
+        entries = [
+            CheckEntry(12, 2024, "check", "", "", "", "", "", "", Decimal("0"), False),
+            CheckEntry(1, 2025, "check", "", "", "", "", "", "", Decimal("0"), False),
+        ]
+        self.assertEqual(register_name_prefix(entries), "2024-12-2025-01")
 
     def test_default_pdf_name_single_month(self):
         entries = [
