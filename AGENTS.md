@@ -21,6 +21,11 @@ pip install --no-index --find-links vendor/wheels-linux -r requirements.txt
 
 - Keep the working tree clean (`git status --short`) and make small, focused commits.
 
+## Code style
+
+- Favor small, readable functions (roughly 20–40 lines) with descriptive names.
+- Split complex logic into helpers rather than relying on heavy comments.
+
 ## Tests
 
 Contributions must preserve or improve payee and description extraction accuracy. Run the unit tests:
