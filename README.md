@@ -19,9 +19,12 @@ artifacts (CSV, chunk JSON and register PDFs) in ``data/artifacts/``.
 python check_register_parser.py path/to/Agenda\ Packet.pdf --csv output.csv --html payees.html --pdf
 ```
 
-If ``--pdf`` is provided without a filename the register pages are written to
-the current working directory using names like ``YYYY-MM-register.pdf`` or
-``YYYY-MM-MM-register.pdf`` for multi-month registers.
+If ``--csv``, ``--json``, ``--html``, or ``--chunks-json`` are given without a
+filename, the parser writes output using a ``YYYY-MM`` style prefix so files
+sort chronologically. For example ``2025-06.csv`` or
+``2025-06-payees.html``. The ``--pdf`` option behaves similarly, emitting
+names like ``YYYY-MM-register.pdf`` or ``YYYY-MM-MM-register.pdf`` for
+multi-month registers.
 
 The parser requires `pdfplumber` for table extraction.  After running, the script
 prints the number of checks parsed and the total disbursed amount as a basic

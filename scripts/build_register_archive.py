@@ -22,7 +22,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 
 from project_paths import ARTIFACTS_DIR
 from check_register import CheckRegisterParser, write_csv, write_chunks
-from check_register.page_extractor import extract_check_register_pdf, default_pdf_name
+from check_register.page_extractor import extract_check_register_pdf, register_name_prefix
 
 
 def build_archive(packet_pdf: Path, archive_dir: Path = ARTIFACTS_DIR) -> Path:
@@ -43,14 +43,13 @@ def build_archive(packet_pdf: Path, archive_dir: Path = ARTIFACTS_DIR) -> Path:
         chunks = parser.extract_raw_chunks()
         entries = parser.parse_chunks(chunks)
 
-        name = default_pdf_name(entries)
-        if name is None:
-            raise RuntimeError("Could not determine default register PDF name")
+        prefix = register_name_prefix(entries)
+        if prefix is None:
+            raise RuntimeError("Could not determine default register name prefix")
 
-        pdf_out = pdf_dir / name
+        pdf_out = pdf_dir / f"{prefix}-register.pdf"
         tmp_pdf.replace(pdf_out)
 
-        prefix = name.stem.replace("-register", "")
         chunk_out = chunk_dir / f"{prefix}.json"
         csv_out = csv_dir / f"{prefix}.csv"
         write_chunks(chunks, chunk_out)
