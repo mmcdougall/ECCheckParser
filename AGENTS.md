@@ -21,6 +21,11 @@ pip install --no-index --find-links vendor/wheels-linux -r requirements.txt
 
 - Keep the working tree clean (`git status --short`) and make small, focused commits.
 
+## Pull requests
+
+- Pull requests are squashed on merge.
+- End your PR summaries with a suggested one-line commit message for the squash merge.
+
 ## Code style
 
 - Favor small, readable functions (roughly 20–40 lines) with descriptive names.
