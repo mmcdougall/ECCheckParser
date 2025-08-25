@@ -75,14 +75,13 @@ def extract_check_register_pdf(pdf_path: Path, out_path: Path) -> Tuple[int, int
     return start, end
 
 
-def default_pdf_name(entries: List[CheckEntry]) -> Path | None:
-    """Generate a default filename for an extracted register PDF.
+def register_name_prefix(entries: List[CheckEntry]) -> str | None:
+    """Return a sortable ``YYYY-MM`` style prefix for output filenames.
 
-    The file name begins with ``YYYY-MM``.  For registers spanning multiple
-    months within the same year the ending month is appended with a dash
-    (e.g. ``2025-06-07`` for a June/July register).  Registers spanning
-    different years receive a ``YYYY-MM-YYYY-MM`` prefix.  A neutral
-    ``-register.pdf`` suffix keeps filenames consistent.
+    Prefixes start with the year and month so an alphanumeric directory
+    listing orders files chronologically, which is often desirable.
+    Multi-month or multi-year spans append additional ``-MM`` or
+    ``-YYYY-MM`` segments.
     """
 
     months = sorted({(e.section_year, e.section_month) for e in entries})
@@ -92,10 +91,14 @@ def default_pdf_name(entries: List[CheckEntry]) -> Path | None:
     start_y, start_m = months[0]
     end_y, end_m = months[-1]
     if start_y == end_y and start_m == end_m:
-        prefix = f"{start_y:04d}-{start_m:02d}"
-    elif start_y == end_y:
-        prefix = f"{start_y:04d}-{start_m:02d}-{end_m:02d}"
-    else:
-        prefix = f"{start_y:04d}-{start_m:02d}-{end_y:04d}-{end_m:02d}"
+        return f"{start_y:04d}-{start_m:02d}"
+    if start_y == end_y:
+        return f"{start_y:04d}-{start_m:02d}-{end_m:02d}"
+    return f"{start_y:04d}-{start_m:02d}-{end_y:04d}-{end_m:02d}"
 
-    return Path(f"{prefix}-register.pdf")
+
+def default_pdf_name(entries: List[CheckEntry]) -> Path | None:
+    """Generate a default filename for an extracted register PDF."""
+
+    prefix = register_name_prefix(entries)
+    return None if prefix is None else Path(f"{prefix}-register.pdf")
