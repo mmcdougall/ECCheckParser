@@ -28,6 +28,16 @@ class TestPayeeQuadtreeData(unittest.TestCase):
         data = build_payee_quadtree_data(entries)
         self.assertEqual(data["label"][0], "Alpha Co")
 
+    def test_drop_top_payees(self):
+        entries = [
+            CheckEntry(6, 2025, "check", "1", "06/01/2025", "Open", "Accounts Payable", "CalPERS", "a", Decimal("100.00"), False),
+            CheckEntry(6, 2025, "check", "2", "06/02/2025", "Open", "Accounts Payable", "Alpha", "b", Decimal("60.00"), False),
+            CheckEntry(6, 2025, "check", "3", "06/03/2025", "Open", "Accounts Payable", "Beta", "c", Decimal("50.00"), False),
+        ]
+        data = build_payee_quadtree_data(entries, drop=1)
+        self.assertNotIn("CalPERS", data["payee"])
+        self.assertCountEqual(sorted(data["payee"]), ["Alpha", "Beta"])
+
 
 if __name__ == "__main__":
     unittest.main()

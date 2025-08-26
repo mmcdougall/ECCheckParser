@@ -151,11 +151,22 @@ def assemble_quadtree_data(rects: List[Dict[str, float]], payees: Dict[str, List
     return data
 
 
-def build_payee_quadtree_data(entries: List[CheckEntry]) -> Dict[str, List]:
-    """Return ColumnDataSource-friendly data for the payee quadtree."""
+def build_payee_quadtree_data(entries: List[CheckEntry], drop: int = 0) -> Dict[str, List]:
+    """Return ColumnDataSource-friendly data for the payee quadtree.
+
+    Args:
+        entries: Parsed check register entries.
+        drop: Number of highest-dollar payees to exclude from the tree.
+    """
 
     payees = group_payees(entries)
     items = payee_totals(payees)
+    if drop > 0:
+        items.sort(key=lambda t: t[1], reverse=True)
+        removed = {label for label, _ in items[:drop]}
+        items = items[drop:]
+        for r in removed:
+            payees.pop(r, None)
     rects = layout_rectangles(items)
     return assemble_quadtree_data(rects, payees)
 
@@ -223,11 +234,17 @@ def _add_hover(p):
     p.add_tools(hover)
 
 
-def write_payee_quadtree_html(entries: List[CheckEntry], out_path: Path) -> None:
-    """Write an HTML quadtree of payees sized by total dollar amount."""
+def write_payee_quadtree_html(entries: List[CheckEntry], out_path: Path, drop: int = 0) -> None:
+    """Write an HTML quadtree of payees sized by total dollar amount.
+
+    Args:
+        entries: Parsed check register entries.
+        out_path: Destination HTML path.
+        drop: Number of highest-dollar payees to exclude.
+    """
     from bokeh.plotting import output_file, save
 
-    data = build_payee_quadtree_data(entries)
+    data = build_payee_quadtree_data(entries, drop=drop)
     plot = make_quadtree_figure(data)
     output_file(out_path, title="Payees by Dollar Amount")
     save(plot)
