@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import csv
 import json
+from calendar import month_name
 from dataclasses import asdict
+from decimal import Decimal
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -171,7 +173,33 @@ def build_payee_quadtree_data(entries: List[CheckEntry], drop: int = 0) -> Dict[
     return assemble_quadtree_data(rects, payees)
 
 
-def make_quadtree_figure(data: Dict[str, List]):
+def build_payee_quadtree_title(entries: List[CheckEntry], data: Dict[str, List], drop: int = 0) -> str:
+    months = sorted({(e.section_year, e.section_month) for e in entries})
+    if months:
+        sy, sm = months[0]
+        ey, em = months[-1]
+        start = f"{month_name[sm]} {sy}"
+        if (sy, sm) == (ey, em):
+            period = start
+        elif sy == ey:
+            period = f"{month_name[sm]}–{month_name[em]} {sy}"
+        else:
+            period = f"{start}–{month_name[em]} {ey}"
+    else:
+        period = "Unknown period"
+    grand_total = sum((e.amount for e in entries if not e.voided), Decimal("0.00"))
+    shown_payees = set(data["payee"])
+    shown_total = sum(
+        (e.amount for e in entries if not e.voided and e.payee in shown_payees),
+        Decimal("0.00"),
+    )
+    title = f"{period} Checks/EFT Report: ${grand_total:,.2f}"
+    if drop > 0:
+        title += f" (${shown_total:,.2f} shown, top {drop} payees excluded)"
+    return title
+
+
+def make_quadtree_figure(data: Dict[str, List], title: str | None = None):
     from bokeh.models import ColumnDataSource
     from bokeh.palettes import Viridis256
     from bokeh.transform import linear_cmap
@@ -180,10 +208,10 @@ def make_quadtree_figure(data: Dict[str, List]):
     low = min(data["amount"]) if data["amount"] else 0
     high = max(data["amount"]) if data["amount"] else 1
     color_map = linear_cmap("amount", Viridis256, low, high)
-    return _build_quadtree_plot(source, color_map)
+    return _build_quadtree_plot(source, color_map, title)
 
 
-def _build_quadtree_plot(source, color_map):
+def _build_quadtree_plot(source, color_map, title: str | None = None):
     from bokeh.plotting import figure
 
     p = figure(
@@ -194,7 +222,7 @@ def _build_quadtree_plot(source, color_map):
         toolbar_location="above",
         tools="pan,wheel_zoom,reset,save",
         outline_line_color=None,
-        title=None,
+        title=title,
     )
     _add_rectangles(p, source, color_map)
     _add_labels(p, source)
@@ -245,6 +273,7 @@ def write_payee_quadtree_html(entries: List[CheckEntry], out_path: Path, drop: i
     from bokeh.plotting import output_file, save
 
     data = build_payee_quadtree_data(entries, drop=drop)
-    plot = make_quadtree_figure(data)
-    output_file(out_path, title="Payees by Dollar Amount")
+    title = build_payee_quadtree_title(entries, data, drop=drop)
+    plot = make_quadtree_figure(data, title=title)
+    output_file(out_path, title=title)
     save(plot)
