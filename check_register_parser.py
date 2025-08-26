@@ -31,6 +31,7 @@ def main() -> None:
     ap.add_argument("--csv", nargs="?", type=Path, const=True, default=None, help="Output CSV path")
     ap.add_argument("--json", nargs="?", type=Path, const=True, default=None, help="Optional JSON output path")
     ap.add_argument("--html", nargs="?", type=Path, const=True, default=None, help="Optional payee quadtree HTML path")
+    ap.add_argument("--drop", type=int, default=0, help="Drop the N largest payees from the quadtree")
     ap.add_argument("--drop-voided", action="store_true", help="Exclude voided/voided-reissued rows from output")
     ap.add_argument("--print-rollups", action="store_true", help="Print per-month rollups after parsing")
     ap.add_argument(
@@ -88,7 +89,7 @@ def main() -> None:
         if args.json:
             write_json(entries, args.json)
         if args.html:
-            write_payee_quadtree_html(entries, args.html)
+            write_payee_quadtree_html(entries, args.html, drop=args.drop)
 
         if args.csv or args.json or args.html or args.print_rollups:
             stats = sanity(entries)
