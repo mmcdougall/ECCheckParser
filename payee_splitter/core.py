@@ -12,13 +12,8 @@ from .constants import PREFIX_SET
 from .heuristics import HEURISTICS
 
 
-def split_payee_desc_block(block: str) -> Tuple[str, str]:
-    """Split a block containing payee and description using weighted votes.
-
-    The input ``block`` is tokenised and each heuristic votes on where the
-    payee/description boundary should fall.  The boundary with the highest
-    total weight wins.  ``heuristics.py`` contains the individual voting rules.
-    """
+def _normalize_block(block: str) -> Tuple[str, List[str]]:
+    """Return a normalised block along with whitespace-split tokens."""
 
     block = (
         block.replace("\r", " ")
@@ -27,14 +22,13 @@ def split_payee_desc_block(block: str) -> Tuple[str, str]:
         .strip()
     )
     block = re.sub(",(?=[A-Za-z])", ", ", block)
-    if not block:
-        return ("", "")
-
     tokens = block.split()
-    if not tokens:
-        return ("", "")
+    return block, tokens
 
-    # Merge single-letter prefixes such as ``A B C`` -> ``ABC`` when recognised.
+
+def _merge_letter_prefixes(tokens: List[str]) -> List[str]:
+    """Merge recognised single-letter prefixes such as ``A B C`` -> ``ABC``."""
+
     i = 0
     letters: List[str] = []
     while i < len(tokens):
@@ -49,9 +43,11 @@ def split_payee_desc_block(block: str) -> Tuple[str, str]:
         joined = "".join(letters)
         if joined in PREFIX_SET:
             tokens = [joined] + tokens[i:]
+    return tokens
 
-    if len(tokens) == 1:
-        return (tokens[0], "")
+
+def _apply_heuristics(tokens: List[str], block: str) -> int:
+    """Return the payee/description boundary index based on heuristic votes."""
 
     scores = [0] * len(tokens)
 
@@ -64,7 +60,21 @@ def split_payee_desc_block(block: str) -> Tuple[str, str]:
         if idx is not None:
             vote(idx, weight)
 
-    best_idx = max(range(1, len(tokens)), key=lambda i: (scores[i], -i))
+    return max(range(1, len(tokens)), key=lambda i: (scores[i], -i))
+
+
+def split_payee_desc_block(block: str) -> Tuple[str, str]:
+    """Split a block containing payee and description using weighted votes."""
+
+    block, tokens = _normalize_block(block)
+    if not tokens:
+        return ("", "")
+
+    tokens = _merge_letter_prefixes(tokens)
+    if len(tokens) == 1:
+        return (tokens[0], "")
+
+    best_idx = _apply_heuristics(tokens, block)
 
     payee = " ".join(tokens[:best_idx]).rstrip(",").strip()
     desc = " ".join(tokens[best_idx:]).strip()
