@@ -133,7 +133,7 @@ def assemble_quadtree_data(rects: List[Dict[str, float]], payees: Dict[str, List
         info = payees[payee]
         descs = sorted({e.description for e in info if e.description})
         nums = [(e.number, e.amount) for e in info]
-        checks = ", ".join(f"{n}: ${a:.2f}" for n, a in nums) if len({n for n, _ in nums}) > 1 else ""
+        checks = ", ".join(f"{n}: ${a:,.2f}" for n, a in nums)
         w, h = r["w"], r["h"]
         data["cx"].append(r["x"] + w / 2)
         data["cy"].append(r["y"] + h / 2)
