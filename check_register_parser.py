@@ -10,6 +10,7 @@ import sys
 from check_register import (
     CheckRegisterParser,
     month_rollups,
+    month_totals,
     sanity,
     write_csv,
     write_json,
@@ -34,6 +35,7 @@ def main() -> None:
     ap.add_argument("--drop", type=int, default=0, help="Drop the N largest payees from the quadtree")
     ap.add_argument("--drop-voided", action="store_true", help="Exclude voided/voided-reissued rows from output")
     ap.add_argument("--print-rollups", action="store_true", help="Print per-month rollups after parsing")
+    ap.add_argument("--totals", action="store_true", help="Print total spent per month")
     ap.add_argument(
         "--chunks-json", nargs="?", type=Path, const=True, default=None,
         help="Output raw row chunks JSON for tests",
@@ -52,6 +54,7 @@ def main() -> None:
         or args.json is not None
         or args.html is not None
         or args.print_rollups
+        or args.totals
         or args.pdf_out is True
         or args.chunks_json is True
     )
@@ -91,7 +94,7 @@ def main() -> None:
         if args.html:
             write_payee_quadtree_html(entries, args.html, drop=args.drop)
 
-        if args.csv or args.json or args.html or args.print_rollups:
+        if args.csv or args.json or args.html or args.print_rollups or args.totals:
             stats = sanity(entries)
             print(
                 f"Rows: {stats['count']}  (checks={stats['by_type'].get('check', 0)}, "
@@ -115,6 +118,14 @@ def main() -> None:
                             f"  {m:02d}/{y}: checks=${sums['checks']:.2f}  "
                             f"efts=${sums['efts']:.2f}  grand=${sums['grand']:.2f}"
                         )
+            if args.totals:
+                totals = month_totals(entries)
+                if not totals:
+                    print("No month totals to display.")
+                else:
+                    print("\nPer-month totals (non-void, deduped):")
+                    for (m, y), total in sorted(totals.items(), key=lambda kv: (kv[0][1], kv[0][0])):
+                        print(f"  {m:02d}/{y}: ${total:.2f}")
 
     if need_chunks and chunks is not None:
         if args.chunks_json is True:

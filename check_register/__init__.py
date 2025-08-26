@@ -6,4 +6,4 @@ from .outputs import (
     write_payee_quadtree_html,
     write_chunks,
 )
-from .stats import sanity, month_rollups
+from .stats import sanity, month_rollups, month_totals

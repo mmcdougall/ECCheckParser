@@ -1,7 +1,7 @@
 import unittest
 from decimal import Decimal
 
-from check_register import CheckEntry, month_rollups, sanity
+from check_register import CheckEntry, month_rollups, month_totals, sanity
 
 
 class TestRegisterStats(unittest.TestCase):
@@ -26,3 +26,16 @@ class TestRegisterStats(unittest.TestCase):
         self.assertEqual(roll[(6, 2025)]["efts"], Decimal("200.00"))
         self.assertEqual(roll[(6, 2025)]["grand"], Decimal("300.00"))
         self.assertEqual(roll[(7, 2025)]["grand"], Decimal("0.00"))
+
+    def test_month_totals_dedup(self):
+        dup_entries = [
+            CheckEntry(6, 2025, "check", "1", "06/01/2025", "Open", "Accounts Payable", "A", "", Decimal("100.00"), False),
+            CheckEntry(6, 2025, "check", "1", "06/01/2025", "Open", "Accounts Payable", "A", "", Decimal("100.00"), False),
+            CheckEntry(7, 2025, "eft", "2", "07/02/2025", "Open", "Accounts Payable", "B", "", Decimal("50.00"), False),
+            CheckEntry(7, 2025, "eft", "2", "07/02/2025", "Open", "Accounts Payable", "B", "", Decimal("50.00"), False),
+            CheckEntry(7, 2025, "check", "3", "07/03/2025", "Open", "Accounts Payable", "C", "", Decimal("75.00"), False),
+            CheckEntry(7, 2025, "check", "3", "07/03/2025", "Open", "Accounts Payable", "C", "", Decimal("75.00"), True),
+        ]
+        totals = month_totals(dup_entries)
+        self.assertEqual(totals[(6, 2025)], Decimal("100.00"))
+        self.assertEqual(totals[(7, 2025)], Decimal("125.00"))
