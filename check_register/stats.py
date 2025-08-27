@@ -12,10 +12,12 @@ def sanity(entries: List[CheckEntry]) -> Dict[str, object]:
     cnt = len(entries)
     by_type = {"check": 0, "eft": 0}
     total = Decimal("0.00")
+    seen_numbers: Set[str] = set()
     for e in entries:
         by_type[e.ap_type] = by_type.get(e.ap_type, 0) + 1
-        if not e.voided:
+        if not e.voided and e.number not in seen_numbers:
             total += e.amount
+            seen_numbers.add(e.number)
     return {"count": cnt, "by_type": by_type, "total_nonvoid": total}
 
 
@@ -37,7 +39,7 @@ def month_rollups(entries: List[CheckEntry]) -> Dict[Tuple[int, int], Dict[str, 
 
 
 def month_totals(entries: List[CheckEntry]) -> Dict[Tuple[int, int], Decimal]:
-    """Return non-void monthly totals, deduplicating overlapping registers.
+    """Return non-void monthly totals, deduplicating overlapping registers by check number.
 
     Totals are grouped by the check's own date rather than the PDF section
     headers.  This prevents double counting when a check appears in multiple
@@ -45,14 +47,11 @@ def month_totals(entries: List[CheckEntry]) -> Dict[Tuple[int, int], Decimal]:
     """
 
     out: Dict[Tuple[int, int], Decimal] = {}
-    seen: Set[Tuple[str, str, str, Decimal]] = set()
+    seen_numbers: Set[str] = set()
     for e in entries:
-        if e.voided:
+        if e.voided or e.number in seen_numbers:
             continue
-        key = (e.ap_type, e.number, e.date, e.amount)
-        if key in seen:
-            continue
-        seen.add(key)
+        seen_numbers.add(e.number)
         dt = datetime.strptime(e.date, "%m/%d/%Y")
         month_key = (dt.month, dt.year)
         out[month_key] = out.get(month_key, Decimal("0.00")) + e.amount
