@@ -62,6 +62,18 @@ class TestPayeeQuadtreeData(unittest.TestCase):
         title = build_payee_quadtree_title(entries, data)
         self.assertEqual(title, "June–July 2025 Checks/EFT Report: $125.00")
 
+    def test_dedup_duplicate_checks(self):
+        """Ensure duplicate check numbers across months count once."""
+        entries = [
+            CheckEntry(6, 2025, "check", "1", "06/15/2025", "Open", "Accounts Payable", "Alpha", "a", Decimal("100.00"), False),
+            # Duplicate of the same check in a later register
+            CheckEntry(7, 2025, "check", "1", "06/15/2025", "Open", "Accounts Payable", "Alpha", "a", Decimal("100.00"), False),
+        ]
+        data = build_payee_quadtree_data(entries)
+        self.assertEqual(data["amount"][0], 100.0)
+        title = build_payee_quadtree_title(entries, data)
+        self.assertEqual(title, "June 2025 Checks/EFT Report: $100.00")
+
 
 if __name__ == "__main__":
     unittest.main()
