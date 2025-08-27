@@ -30,6 +30,7 @@ pip install --no-index --find-links vendor/wheels-linux -r requirements.txt
 
 - Favor small, readable functions (roughly 20–40 lines) with descriptive names.
 - Split complex logic into helpers rather than relying on heavy comments.
+- Comments should describe current behavior and avoid referencing past implementations.
 
 ## Tests
 
@@ -47,7 +48,7 @@ If parser changes might affect output, regenerate sample artifacts:
 
 ```bash
 for pdf in data/originals/2025/*.pdf; do
-  python scripts/build_register_archive.py "$pdf"
+  ./scripts/build_register_archive.sh "$pdf"
 done
 ```
 
