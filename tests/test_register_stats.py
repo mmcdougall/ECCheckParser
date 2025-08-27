@@ -18,6 +18,15 @@ class TestRegisterStats(unittest.TestCase):
         self.assertEqual(stats["by_type"], {"check": 2, "eft": 1})
         self.assertEqual(stats["total_nonvoid"], Decimal("300.00"))
 
+
+    def test_sanity_dedup_by_number(self):
+        entries = [
+            CheckEntry(6, 2025, "check", "1", "06/01/2025", "Open", "Accounts Payable", "A", "", Decimal("100.00"), False),
+            CheckEntry(7, 2025, "check", "1", "07/01/2025", "Open", "Accounts Payable", "A", "", Decimal("100.00"), False),
+        ]
+        stats = sanity(entries)
+        self.assertEqual(stats["total_nonvoid"], Decimal("100.00"))
+
     def test_month_rollups(self):
         roll = month_rollups(self.entries)
         self.assertIn((6, 2025), roll)
