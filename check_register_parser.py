@@ -14,9 +14,9 @@ from check_register import (
     sanity,
     write_csv,
     write_json,
-    write_payee_quadtree_html,
     write_chunks,
 )
+from check_register.quadtree import write_payee_quadtree_html
 from check_register.page_extractor import (
     extract_check_register_pdf,
     default_pdf_name,
