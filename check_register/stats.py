@@ -8,14 +8,25 @@ from .models import CheckEntry
 
 
 def sanity(entries: List[CheckEntry]) -> Dict[str, object]:
-    """Basic stats by type, and total excluding voided rows."""
+    """Basic stats by type, and total excluding voided rows.
+
+    The non-void total deduplicates by check number to avoid double
+    counting across overlapping registers.
+    """
+
     cnt = len(entries)
     by_type = {"check": 0, "eft": 0}
     total = Decimal("0.00")
+    seen: Set[Tuple[str, str]] = set()
     for e in entries:
         by_type[e.ap_type] = by_type.get(e.ap_type, 0) + 1
-        if not e.voided:
-            total += e.amount
+        if e.voided:
+            continue
+        key = (e.ap_type, e.number)
+        if key in seen:
+            continue
+        seen.add(key)
+        total += e.amount
     return {"count": cnt, "by_type": by_type, "total_nonvoid": total}
 
 
@@ -37,19 +48,19 @@ def month_rollups(entries: List[CheckEntry]) -> Dict[Tuple[int, int], Dict[str, 
 
 
 def month_totals(entries: List[CheckEntry]) -> Dict[Tuple[int, int], Decimal]:
-    """Return non-void monthly totals, deduplicating overlapping registers.
+    """Return non-void monthly totals, deduplicating by check number.
 
     Totals are grouped by the check's own date rather than the PDF section
-    headers.  This prevents double counting when a check appears in multiple
+    headers. This prevents double counting when a check appears in multiple
     overlapping registers.
     """
 
     out: Dict[Tuple[int, int], Decimal] = {}
-    seen: Set[Tuple[str, str, str, Decimal]] = set()
+    seen: Set[Tuple[str, str]] = set()
     for e in entries:
         if e.voided:
             continue
-        key = (e.ap_type, e.number, e.date, e.amount)
+        key = (e.ap_type, e.number)
         if key in seen:
             continue
         seen.add(key)

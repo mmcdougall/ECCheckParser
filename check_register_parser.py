@@ -100,7 +100,7 @@ def main() -> None:
                 f"Rows: {stats['count']}  (checks={stats['by_type'].get('check', 0)}, "
                 f"efts={stats['by_type'].get('eft', 0)})"
             )
-            print(f"Total (non-void): ${stats['total_nonvoid']:.2f}")
+            print(f"Total (non-void): ${stats['total_nonvoid']:,.2f}")
             if args.csv:
                 print(f"CSV: {args.csv}")
             if args.json:
@@ -115,8 +115,8 @@ def main() -> None:
                     print("\nPer-month rollups (non-void totals):")
                     for (m, y), sums in sorted(roll.items(), key=lambda kv: (kv[0][1], kv[0][0])):
                         print(
-                            f"  {m:02d}/{y}: checks=${sums['checks']:.2f}  "
-                            f"efts=${sums['efts']:.2f}  grand=${sums['grand']:.2f}"
+                            f"  {m:02d}/{y}: checks=${sums['checks']:,.2f}  "
+                            f"efts=${sums['efts']:,.2f}  grand=${sums['grand']:,.2f}"
                         )
             if args.totals:
                 totals = month_totals(entries)
@@ -125,7 +125,7 @@ def main() -> None:
                 else:
                     print("\nPer-month totals (non-void, deduped):")
                     for (m, y), total in sorted(totals.items(), key=lambda kv: (kv[0][1], kv[0][0])):
-                        print(f"  {m:02d}/{y}: ${total:.2f}")
+                        print(f"  {m:02d}/{y}: ${total:,.2f}")
 
     if need_chunks and chunks is not None:
         if args.chunks_json is True:
