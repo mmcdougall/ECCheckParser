@@ -30,7 +30,11 @@ pip install --no-index --find-links vendor/wheels-linux -r requirements.txt
 
 - Favor small, readable functions (roughly 20–40 lines) with descriptive names.
 - Split complex logic into helpers rather than relying on heavy comments.
-- Comments should describe current behavior and avoid referencing past implementations.
+
+## Comment style
+
+- Describe current behavior in the present tense; avoid references to past implementations.
+- Use `TODO` comments to flag future work or cleanup in large blocks. Keep them concise (≤50 characters) and, when possible, outline scope or challenges (e.g., "large effort", "minor cleanup") so they serve as useful prompts. Reference issue numbers when possible.
 
 ## Tests
 
