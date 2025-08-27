@@ -2,22 +2,31 @@ from __future__ import annotations
 
 from decimal import Decimal
 from datetime import datetime
-from typing import Dict, List, Set, Tuple
+from typing import Dict, Iterable, List, Set, Tuple
 
 from .models import CheckEntry
+
+
+def dedupe_by_number(entries: Iterable[CheckEntry]) -> List[CheckEntry]:
+    """Return the first entry for each unique check number."""
+    seen: Set[str] = set()
+    out: List[CheckEntry] = []
+    for e in entries:
+        if e.number in seen:
+            continue
+        seen.add(e.number)
+        out.append(e)
+    return out
 
 
 def sanity(entries: List[CheckEntry]) -> Dict[str, object]:
     """Basic stats by type, and total excluding voided rows."""
     cnt = len(entries)
     by_type = {"check": 0, "eft": 0}
-    total = Decimal("0.00")
-    seen_numbers: Set[str] = set()
     for e in entries:
         by_type[e.ap_type] = by_type.get(e.ap_type, 0) + 1
-        if not e.voided and e.number not in seen_numbers:
-            total += e.amount
-            seen_numbers.add(e.number)
+    nonvoid = [e for e in entries if not e.voided]
+    total = sum(e.amount for e in dedupe_by_number(nonvoid))
     return {"count": cnt, "by_type": by_type, "total_nonvoid": total}
 
 
@@ -47,11 +56,8 @@ def month_totals(entries: List[CheckEntry]) -> Dict[Tuple[int, int], Decimal]:
     """
 
     out: Dict[Tuple[int, int], Decimal] = {}
-    seen_numbers: Set[str] = set()
-    for e in entries:
-        if e.voided or e.number in seen_numbers:
-            continue
-        seen_numbers.add(e.number)
+    nonvoid = [e for e in entries if not e.voided]
+    for e in dedupe_by_number(nonvoid):
         dt = datetime.strptime(e.date, "%m/%d/%Y")
         month_key = (dt.month, dt.year)
         out[month_key] = out.get(month_key, Decimal("0.00")) + e.amount
