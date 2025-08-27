@@ -47,9 +47,7 @@ Accuracy tests such as `tests/test_june_2025_payees.py`, `tests/test_jul_aug_202
 If parser changes might affect output, regenerate sample artifacts:
 
 ```bash
-for pdf in data/originals/2025/*.pdf; do
-  ./scripts/build_register_archive.sh "$pdf"
-done
+./scripts/build_register_archive.sh
 ```
 
 ALWAYS regenerate artifacts in separate pull request from the code changes that triggered them. Never mix code code changes and data artifacts in a pull request.

@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Generate register artifacts for a single agenda packet PDF using the
-# check_register_parser CLI. Artifacts are stored under data/artifacts by
-# default.
+# Generate register artifacts for all agenda packet PDFs under the originals
+# directory using the check_register_parser CLI. Artifacts are stored under
+# data/artifacts by default.
 
-if [[ $# -lt 1 ]]; then
-  echo "Usage: $0 <agenda-packet.pdf> [archive-dir]" >&2
+if [[ $# -gt 2 ]]; then
+  echo "Usage: $0 [originals-dir] [archive-dir]" >&2
   exit 1
 fi
 
-packet_pdf="$1"
-archive_dir="${2:-$(dirname "$0")/../data/artifacts}"
-
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
+originals_dir="${1:-$repo_root/data/originals}"
+archive_dir="${2:-$repo_root/data/artifacts}"
 parser="$repo_root/check_register_parser.py"
 
 pdf_dir="$archive_dir/pdfs"
@@ -21,19 +20,21 @@ csv_dir="$archive_dir/csv"
 chunk_dir="$archive_dir/chunks"
 mkdir -p "$pdf_dir" "$csv_dir" "$chunk_dir"
 
-tmpdir=$(mktemp -d)
-trap 'rm -rf "$tmpdir"' EXIT
+find "$originals_dir" -type f -name '*.pdf' -print0 | sort -z | \
+  while IFS= read -r -d '' packet_pdf; do
+    tmpdir=$(mktemp -d)
+    (
+      cd "$tmpdir"
+      "$parser" "$packet_pdf" --pdf --csv --chunks-json
+    )
 
-(
-  cd "$tmpdir"
-  "$parser" "$packet_pdf" --pdf --csv --chunks-json
-)
+    prefix=$(cd "$tmpdir" && ls *.csv)
+    prefix="${prefix%.csv}"
 
-prefix=$(cd "$tmpdir" && ls *.csv)
-prefix="${prefix%.csv}"
+    mv "$tmpdir/${prefix}-register.pdf" "$pdf_dir/"
+    mv "$tmpdir/${prefix}.csv" "$csv_dir/"
+    mv "$tmpdir/${prefix}-chunks.json" "$chunk_dir/"
+    rm -rf "$tmpdir"
 
-mv "$tmpdir/${prefix}-register.pdf" "$pdf_dir/"
-mv "$tmpdir/${prefix}.csv" "$csv_dir/"
-mv "$tmpdir/${prefix}-chunks.json" "$chunk_dir/"
-
-echo "Archive updated: $pdf_dir/${prefix}-register.pdf"
+    echo "Archive updated: $pdf_dir/${prefix}-register.pdf"
+  done
