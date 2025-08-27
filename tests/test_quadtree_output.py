@@ -2,7 +2,7 @@ import unittest
 from decimal import Decimal
 
 from check_register.models import CheckEntry
-from check_register.outputs import build_payee_quadtree_data, build_payee_quadtree_title
+from check_register.quadtree import build_payee_quadtree_data, build_payee_quadtree_title
 
 
 class TestPayeeQuadtreeData(unittest.TestCase):
