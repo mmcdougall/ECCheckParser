@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 from .models import CheckEntry, RowChunk
+from .stats import dedupe_by_number
 
 
 def write_csv(entries: List[CheckEntry], out_path: Path) -> None:
@@ -53,8 +54,6 @@ def write_chunks(chunks: List[RowChunk], out_path: Path) -> None:
 def group_payees(entries: List[CheckEntry]) -> Dict[str, List[CheckEntry]]:
     payees: Dict[str, List[CheckEntry]] = {}
     for e in entries:
-        if e.voided:
-            continue
         payees.setdefault(e.payee, []).append(e)
     return payees
 
@@ -161,6 +160,9 @@ def build_payee_quadtree_data(entries: List[CheckEntry], drop: int = 0) -> Dict[
         drop: Number of highest-dollar payees to exclude from the tree.
     """
 
+    # Drop voided rows and deduplicate by check number so repeated checks
+    # from overlapping registers don't inflate totals.
+    entries = dedupe_by_number([e for e in entries if not e.voided])
     payees = group_payees(entries)
     items = payee_totals(payees)
     if drop > 0:
@@ -174,6 +176,8 @@ def build_payee_quadtree_data(entries: List[CheckEntry], drop: int = 0) -> Dict[
 
 
 def build_payee_quadtree_title(entries: List[CheckEntry], data: Dict[str, List], drop: int = 0) -> str:
+    # Use deduplicated non-void entries to determine period and totals.
+    entries = dedupe_by_number([e for e in entries if not e.voided])
     months = sorted({(e.section_year, e.section_month) for e in entries})
     if months:
         sy, sm = months[0]
@@ -187,12 +191,9 @@ def build_payee_quadtree_title(entries: List[CheckEntry], data: Dict[str, List],
             period = f"{start}–{month_name[em]} {ey}"
     else:
         period = "Unknown period"
-    grand_total = sum((e.amount for e in entries if not e.voided), Decimal("0.00"))
+    grand_total = sum((e.amount for e in entries), Decimal("0.00"))
     shown_payees = set(data["payee"])
-    shown_total = sum(
-        (e.amount for e in entries if not e.voided and e.payee in shown_payees),
-        Decimal("0.00"),
-    )
+    shown_total = sum((e.amount for e in entries if e.payee in shown_payees), Decimal("0.00"))
     title = f"{period} Checks/EFT Report: ${grand_total:,.2f}"
     if drop > 0:
         title += f" (${shown_total:,.2f} shown, top {drop} payees excluded)"
