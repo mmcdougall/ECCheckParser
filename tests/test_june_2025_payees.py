@@ -17,7 +17,7 @@ class TestJune2025Payees(unittest.TestCase):
     """Ensure parser extracts a reasonable number of known June 2025 payees."""
 
     def test_minimum_matches(self):
-        chunk_path = ARTIFACT_CHUNKS_DIR / '2025-06-07.json'
+        chunk_path = ARTIFACT_CHUNKS_DIR / '2025-06-07-chunks.json'
         with chunk_path.open() as f:
             chunks = [RowChunk(**c) for c in json.load(f)]
         parser = CheckRegisterParser(chunk_path)

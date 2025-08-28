@@ -24,6 +24,7 @@ mkdir -p "$pdf_dir" "$csv_dir" "$chunk_dir" "$html_dir"
 
 find "$originals_dir" -type f -name '*.pdf' -print0 | sort -z | \
   while IFS= read -r -d '' packet_pdf; do
+    packet_pdf="$(cd "$(dirname "$packet_pdf")" && pwd)/$(basename "$packet_pdf")"
     tmpdir=$(mktemp -d)
     (
       cd "$tmpdir"
