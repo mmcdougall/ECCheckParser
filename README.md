@@ -14,6 +14,21 @@ optionally extracts the check register pages into a standalone PDF.
 Sample agenda packets live under ``data/originals/YYYY/`` with derived
 artifacts (CSV, chunk JSON, payee HTML and register PDFs) in ``data/artifacts/``.
 
+## Installation
+
+This project targets CPython **3.11**. If your system provides multiple Python
+versions, invoke the `python3.11` interpreter explicitly. The included
+`scripts/codex_setup.sh` script creates an offline virtual environment using that
+interpreter:
+
+```bash
+./scripts/codex_setup.sh
+source codex-wheel-build/bin/activate
+```
+
+The virtual environment installs dependencies from the `vendor/` wheelhouse
+without requiring network access.
+
 ## Usage
 
 ```bash
@@ -30,21 +45,6 @@ multi-month registers.
 The parser requires `pdfplumber` for table extraction.  After running, the script
 prints the number of checks parsed and the total disbursed amount as a basic
 sanity check.
-
-## Setup
-
-This project targets CPython **3.11**. If your system provides multiple Python
-versions, invoke the `python3.11` interpreter explicitly. The included
-`scripts/codex_setup.sh` script creates an offline virtual environment using that
-interpreter:
-
-```bash
-./scripts/codex_setup.sh
-source codex-wheel-build/bin/activate
-```
-
-The virtual environment installs dependencies from the `vendor/` wheelhouse
-without requiring network access.
 
 ## Tests
 
