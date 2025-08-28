@@ -12,7 +12,7 @@ from check_register.stats import month_totals
 
 class TestMonthTotalsJune2025(unittest.TestCase):
     def test_month_totals_dedup(self):
-        chunk_path = ARTIFACT_CHUNKS_DIR / "2025-06-07.json"
+        chunk_path = ARTIFACT_CHUNKS_DIR / "2025-06-07-chunks.json"
         with chunk_path.open() as f:
             chunks = [RowChunk(**c) for c in json.load(f)]
         parser = CheckRegisterParser(chunk_path)

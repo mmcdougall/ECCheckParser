@@ -45,7 +45,7 @@ class TestParseChunksBasic(unittest.TestCase):
     def test_letter_run_squeezed(self):
         parser = CheckRegisterParser(Path('dummy'))
         # ``x0`` positions approximate values from
-        # ``data/artifacts/chunks/2025-06-07.json`` entry
+        # ``data/artifacts/chunks/2025-06-07-chunks.json`` entry
         # "3306 06/13/2025 Open Accounts Payable P E R S PE1% - PERS SEIU*".
         # The payee letters are extracted individually and should be merged
         # into "PERS" before splitting the description column.
