@@ -52,7 +52,7 @@ python -m unittest discover -s tests
 ```
 
 Accuracy tests such as `tests/test_june_2025_payees.py`, `tests/test_jul_aug_2025_top_payees.py`, and `tests/test_payee_splitter.py` enforce these thresholds.
-Do not commit code that lowers these thresholds with an explanation (for example that the prior unit test was incorrect in some way)
+Do not lower these thresholds without clear justification (e.g., correcting an incorrect prior unit test).
 
 ## Testing and artifacts
 
