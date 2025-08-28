@@ -70,9 +70,10 @@ process_packet() {
 
 main() {
   prepare_dirs
-  shopt -s nullglob globstar
-  local packets=("$originals_dir"/**/*.pdf)
-  shopt -u globstar
+  local packets=()
+  while IFS= read -r -d '' packet; do
+    packets+=("$packet")
+  done < <(find "$originals_dir" -name '*.pdf' -print0)
   local total=${#packets[@]}
   local overall_start=$(date +%s)
 
