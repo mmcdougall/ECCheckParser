@@ -2,17 +2,17 @@
 
 Utility for extracting the "Monthly Disbursement and Check Register Report"
 from City of El Cerrito city council agenda packet PDFs. The project targets
-offline parsing: source PDFs from [www.elcerrito.gov](https://www.elcerrito.gov)
-reside under `data/originals/`, and parser artifacts (CSV, chunk JSON, payee
-HTML, and register PDFs) used in tests live under `data/artifacts/`. Unit tests
-enforce payee and description extraction fidelity.
+offline parsing and unit tests enforce payee and description extraction fidelity.
+
+## Data layout
+
+- `data/originals/`: source PDFs from [www.elcerrito.gov](https://www.elcerrito.gov)
+- `data/artifacts/`: derived CSV, chunk JSON, payee HTML, and register PDFs
+
 The script `check_register_parser.py` reads a packet PDF and emits a CSV file
 containing one row per check along with a couple of simple aggregates. It can
 also produce an HTML quadtree showing payees sized by total dollar amount and
 optionally extracts the check register pages into a standalone PDF.
-
-Sample agenda packets live under ``data/originals/YYYY/`` with derived
-artifacts (CSV, chunk JSON, payee HTML and register PDFs) in ``data/artifacts/``.
 
 ## Usage
 
