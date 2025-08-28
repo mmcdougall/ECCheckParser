@@ -30,11 +30,18 @@ pip install --no-index --find-links vendor/wheels-linux -r requirements.txt
 
 - Favor small, readable functions (roughly 20–40 lines) with descriptive names.
 - Split complex logic into helpers rather than relying on heavy comments.
+- When adding code, mimic the style, spacing, separations, line-feeds and line layouts of the surrounding code
+- When adding code, mimic the major coding idioms (looping structures, )
 
 ## Comment style
 
 - Describe current behavior in the present tense; avoid references to past implementations.
-- Use `TODO` comments to flag future work or cleanup in large blocks. Keep them concise (≤50 characters) and, when possible, outline scope or challenges (e.g., "large effort", "minor cleanup") so they serve as useful prompts. Reference issue numbers when possible.
+
+## `TODO` comments
+
+- Flag future work or cleanup. Keep them concise (ideally ≤50 characters) 
+- When possible outline scope or challenges (e.g., "large effort", "minor cleanup"). 
+
 
 ## Tests
 
@@ -45,6 +52,7 @@ python -m unittest discover -s tests
 ```
 
 Accuracy tests such as `tests/test_june_2025_payees.py`, `tests/test_jul_aug_2025_top_payees.py`, and `tests/test_payee_splitter.py` enforce these thresholds.
+Do not commit code that lowers these thresholds with an explanation (for example that the prior unit test was incorrect in some way)
 
 ## Testing and artifacts
 
@@ -53,6 +61,9 @@ If parser changes might affect output, regenerate sample artifacts:
 ```bash
 ./scripts/build_register_archive.sh
 ```
+
+When tests most naturally use "heavy" artifacts or originals, consider adding a "TODO" around reducing the time required to run the new test
+Test with the smallest artifact possible (or use mocks). 
 
 ALWAYS regenerate artifacts in separate pull request from the code changes that triggered them. Never mix code code changes and data artifacts in a pull request.
 
