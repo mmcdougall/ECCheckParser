@@ -11,8 +11,8 @@ containing one row per check along with a couple of simple aggregates. It can
 also produce an HTML quadtree showing payees sized by total dollar amount and
 optionally extracts the check register pages into a standalone PDF.
 
-Sample agenda packets live under ``data/originals/YYYY/`` with derived
-artifacts (CSV, chunk JSON, payee HTML and register PDFs) in ``data/artifacts/``.
+Sample agenda packets live under `data/originals/YYYY/` with derived
+artifacts (CSV, chunk JSON, payee HTML and register PDFs) in `data/artifacts/`.
 
 ## Usage
 
@@ -20,12 +20,14 @@ artifacts (CSV, chunk JSON, payee HTML and register PDFs) in ``data/artifacts/``
 python check_register_parser.py path/to/Agenda\ Packet.pdf --csv output.csv --html payees.html --pdf
 ```
 
-If ``--csv``, ``--json``, ``--html``, or ``--chunks-json`` are given without a
-filename, the parser writes output using a ``YYYY-MM`` style prefix so files
-sort chronologically. For example ``2025-06.csv`` or
-``2025-06-payees.html``. The ``--pdf`` option behaves similarly, emitting
-names like ``YYYY-MM-register.pdf`` or ``YYYY-MM-MM-register.pdf`` for
-multi-month registers.
+If output flags are supplied without filenames, the parser uses a `YYYY-MM`
+prefix so files sort chronologically:
+
+- `--csv`: `YYYY-MM.csv`
+- `--json`: `YYYY-MM.json`
+- `--html`: `YYYY-MM-payees.html`
+- `--chunks-json`: `YYYY-MM-chunks.json`
+- `--pdf`: `YYYY-MM-register.pdf` (multi-month registers emit `YYYY-MM-MM-register.pdf`)
 
 The parser requires `pdfplumber` for table extraction.  After running, the script
 prints the number of checks parsed and the total disbursed amount as a basic
