@@ -65,7 +65,7 @@ If parser changes might affect output, regenerate sample artifacts:
 When tests most naturally use "heavy" artifacts or originals, consider adding a "TODO" around reducing the time required to run the new test
 Test with the smallest artifact possible (or use mocks). 
 
-ALWAYS regenerate artifacts in separate pull request from the code changes that triggered them. Never mix code code changes and data artifacts in a pull request.
+Regenerate artifacts in a separate pull request from the code changes; never combine code changes and data artifacts in the same PR.
 
 ## Data: originals and artifacts
 
