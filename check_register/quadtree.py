@@ -7,6 +7,7 @@ from typing import Dict, List, Tuple
 
 from .models import CheckEntry
 from .stats import dedupe_by_number
+from .payee_shortener import shorten_payee
 
 
 def group_payees(entries: List[CheckEntry]) -> Dict[str, List[CheckEntry]]:
@@ -94,6 +95,7 @@ def assemble_quadtree_data(rects: List[Dict[str, float]], payees: Dict[str, List
         nums = [(e.number, e.amount) for e in info]
         checks = ", ".join(f"{n}: ${a:,.2f}" for n, a in nums)
         w, h = r["w"], r["h"]
+        short = shorten_payee(payee)
         data["cx"].append(r["x"] + w / 2)
         data["cy"].append(r["y"] + h / 2)
         data["w"].append(w)
@@ -102,9 +104,9 @@ def assemble_quadtree_data(rects: List[Dict[str, float]], payees: Dict[str, List
         data["amount"].append(r["value"])
         data["description"].append("; ".join(descs))
         data["checks"].append(checks)
-        fits_w = w * 960 >= len(payee) * 7
+        fits_w = w * 960 >= len(short) * 7
         fits_h = h * 600 >= 14
-        data["label"].append(payee if (fits_w and fits_h) else "")
+        data["label"].append(short if (fits_w and fits_h) else "")
     total = sum(data["amount"])
     data["percent"] = [v / total * 100 if total else 0 for v in data["amount"]]
     return data
