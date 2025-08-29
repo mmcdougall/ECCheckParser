@@ -72,12 +72,17 @@ Regenerate artifacts in a separate pull request from the code changes; never com
 - `data/originals/` holds agenda packet PDFs downloaded from [www.elcerrito.gov](https://www.elcerrito.gov).
 - `data/artifacts/` stores parser outputs such as chunk archives used in tests.
 
+Note: originals may be reissued with revised filenames. For example,
+`Agenda Packet (8.19.2025).pdf` was replaced by
+`Agenda Packet (rev. 8.20.2025).pdf`. Ensure tests reference the current
+filenames and check that referenced files exist.
+
 ## Running the parser
 
 To generate a CSV from the 2025 statements run:
 
 ```bash
-check_register_parser.py data/originals/2025/"Agenda Packet (8.19.2025).pdf" --csv out.csv
+ check_register_parser.py data/originals/2025/"Agenda Packet (rev. 8.20.2025).pdf" --csv out.csv
 ```
 
 Each PDF should log `✔ reconciled`. The resulting CSV confirms the parser still works. Run the parser when modifying code to verify behavior offline.

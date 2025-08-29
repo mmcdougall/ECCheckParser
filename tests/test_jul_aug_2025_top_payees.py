@@ -18,6 +18,7 @@ class TestJulAug2025TopPayees(unittest.TestCase):
 
     def test_minimum_matches(self):
         chunk_path = ARTIFACT_CHUNKS_DIR / '2025-06-07-chunks.json'
+        self.assertTrue(chunk_path.exists(), f"Missing chunk file: {chunk_path}")
         with chunk_path.open() as f:
             chunks = [RowChunk(**c) for c in json.load(f)]
         parser = CheckRegisterParser(chunk_path)
