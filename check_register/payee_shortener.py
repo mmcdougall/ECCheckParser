@@ -1,4 +1,6 @@
 import re
+from statistics import mean, median
+from typing import Dict, Iterable
 
 SUFFIXES_TO_DROP = [
     ", INC",
@@ -58,3 +60,20 @@ def shorten_payee(name: str) -> str:
     out = re.sub(r"\s+", " ", out)
     out = re.sub(r"[.,;:-]+$", "", out)
     return out.strip()
+
+
+def name_length_stats(payees: Iterable[str]) -> Dict[str, float]:
+    """Return mean/median lengths and over_30 count for shortened names."""
+    lengths = []
+    over_30 = 0
+    for name in payees:
+        short = shorten_payee(name)
+        lengths.append(len(short))
+        if len(name) > 30 and len(short) > 30:
+            over_30 += 1
+    if lengths:
+        avg = mean(lengths)
+        med = median(lengths)
+    else:
+        avg = med = 0.0
+    return {"mean": avg, "median": med, "over_30": over_30}
