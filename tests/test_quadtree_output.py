@@ -28,6 +28,27 @@ class TestPayeeQuadtreeData(unittest.TestCase):
         data = build_payee_quadtree_data(entries)
         self.assertEqual(data["label"][0], "Alpha Co")
 
+    def test_shortened_label_preserves_original_payee(self):
+        entries = [
+            CheckEntry(
+                6,
+                2025,
+                "check",
+                "1",
+                "06/01/2025",
+                "Open",
+                "Accounts Payable",
+                "Acme Engineering Services, LLC",
+                "desc",
+                Decimal("100.00"),
+                False,
+            )
+        ]
+        data = build_payee_quadtree_data(entries)
+        idx = data["payee"].index("Acme Engineering Services, LLC")
+        self.assertEqual(data["label"][idx], "Acme ENG SVCS")
+        self.assertEqual(data["payee"][idx], "Acme Engineering Services, LLC")
+
     def test_drop_top_payees(self):
         entries = [
             CheckEntry(6, 2025, "check", "1", "06/01/2025", "Open", "Accounts Payable", "CalPERS", "a", Decimal("100.00"), False),
