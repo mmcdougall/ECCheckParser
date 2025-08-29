@@ -36,6 +36,8 @@ pip install --no-index --find-links vendor/wheels-linux -r requirements.txt
 ## Comment style
 
 - Describe current behavior in the present tense; avoid references to past implementations.
+- Do not restate repository policies or coding practices in code comments.
+- Avoid comments that simply repeat prompts or code review feedback.
 
 ## `TODO` comments
 
@@ -71,6 +73,8 @@ Regenerate artifacts in a separate pull request from the code changes; never com
 
 - `data/originals/` holds agenda packet PDFs downloaded from [www.elcerrito.gov](https://www.elcerrito.gov).
 - `data/artifacts/` stores parser outputs such as chunk archives used in tests.
+- The number of data artifacts grows as new agenda packets are added; tests should
+  reference specific files instead of iterating the entire directory.
 
 Note: originals may be reissued with revised filenames. For example,
 `Agenda Packet (8.19.2025).pdf` was replaced by
