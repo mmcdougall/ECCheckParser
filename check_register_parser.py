@@ -125,6 +125,10 @@ def print_stats(entries: list, paths: OutputPaths, *, rollups: bool, totals: boo
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
 
+    if not args.pdf.is_file():
+        print(f"Input PDF not found: {args.pdf}")
+        sys.exit(1)
+
     need_chunks = bool(args.chunks_json)
     need_entries = (
         args.csv is not None
@@ -139,7 +143,11 @@ def main(argv: list[str] | None = None) -> None:
     chunks = entries = None
     if need_entries or need_chunks:
         parser = CheckRegisterParser(args.pdf, keep_voided=not args.drop_voided)
-        chunks = parser.extract_raw_chunks()
+        try:
+            chunks = parser.extract_raw_chunks()
+        except FileNotFoundError as exc:
+            print(exc)
+            sys.exit(1)
         if need_entries:
             entries = parser.parse_chunks(chunks)
 
