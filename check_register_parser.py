@@ -23,7 +23,7 @@ from check_register.page_extractor import (
     default_pdf_name,
     register_name_prefix,
 )
-from check_register.payees import payee_summary
+from check_register.payees import update_payees, payee_summary
 
 
 @dataclass
@@ -155,7 +155,8 @@ def main(argv: list[str] | None = None) -> None:
         if paths.csv or paths.json or paths.html or args.print_rollups or args.totals:
             print_stats(entries, paths, rollups=args.print_rollups, totals=args.totals)
     if paths.payees_txt and entries is not None:
-        lines = payee_summary(entries, paths.payees_txt, default=args.payees is True)
+        info = update_payees(entries, paths.payees_txt)
+        lines = payee_summary(entries, paths.payees_txt, info, default=args.payees is True)
         for line in lines:
             print(line)
 

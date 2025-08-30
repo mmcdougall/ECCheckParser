@@ -8,7 +8,7 @@ from .models import CheckEntry
 from .stats import payee_totals, sanity
 
 
-def update_payees(entries: List[CheckEntry], path: Path, threshold: int = 10) -> Dict[str, object]:
+def update_payees(entries: List[CheckEntry], path: Path) -> Dict[str, object]:
     """Merge payees from entries with an existing list and write the result."""
     existing: Set[str] = set()
     if path.exists():
@@ -23,38 +23,36 @@ def update_payees(entries: List[CheckEntry], path: Path, threshold: int = 10) ->
     path.write_text("\n".join(merged) + ("\n" if merged else ""), encoding="utf-8")
 
     new_all = sorted(current - existing)
-    listed = new_all if len(new_all) < threshold else []
-    totals = payee_totals(entries)
-    new_amounts: Dict[str, Decimal] = {p: totals[p] for p in listed}
     return {
         "total_payees": len(merged),
-        "new_payee_count": len(new_all),
-        "new_payees": listed,
-        "new_payee_amounts": new_amounts,
+        "new_payees": new_all,
     }
 
 
 def payee_summary(
-    entries: List[CheckEntry], path: Path, *, default: bool, threshold: int = 10
+    entries: List[CheckEntry],
+    path: Path,
+    info: Dict[str, object],
+    *,
+    default: bool,
+    threshold: int = 10,
 ) -> List[str]:
-    """Update payee file and return summary lines."""
-    info = update_payees(entries, path, threshold)
+    """Return summary lines for a payee update."""
     if default:
         return [f"Payees: {info['total_payees']} (written to {path})"]
 
-    lines: List[str] = []
-    cnt = info["new_payee_count"]
+    cnt = len(info["new_payees"])
     if cnt == 0:
-        lines.append(f"No new payees (total {info['total_payees']})")
-        return lines
+        return [f"No new payees (total {info['total_payees']})"]
 
-    lines.append(
+    lines = [
         f"Added {cnt} new payees to {path} (total {info['total_payees']})"
-    )
-    if info["new_payees"]:
+    ]
+    if cnt < threshold:
+        totals = payee_totals(entries)
         total_nonvoid = sanity(entries)["total_nonvoid"]
         for payee in info["new_payees"]:
-            amt = info["new_payee_amounts"][payee]
+            amt = totals.get(payee, Decimal("0"))
             pct = (amt / total_nonvoid * 100) if total_nonvoid else 0
             lines.append(f"  {payee} ({pct:.2f}%)")
     return lines

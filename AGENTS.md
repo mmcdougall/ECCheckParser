@@ -32,6 +32,7 @@ pip install --no-index --find-links vendor/wheels-linux -r requirements.txt
 - Split complex logic into helpers rather than relying on heavy comments.
 - When adding code, mimic the style, spacing, separations, line-feeds and line layouts of the surrounding code
 - Match existing looping patterns (for-loops, comprehensions) and other common idioms.
+- Keep side effects local: helpers should either mutate state or format output, but not both.
 
 ## Comment style
 
