@@ -23,6 +23,7 @@ from check_register.page_extractor import (
     default_pdf_name,
     register_name_prefix,
 )
+from check_register.payees import update_payees, payee_summary
 
 
 @dataclass
@@ -32,6 +33,7 @@ class OutputPaths:
     html: Path | None = None
     chunks_json: Path | None = None
     pdf: Path | None = None
+    payees_txt: Path | None = None
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -52,6 +54,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     ap.add_argument(
         "--pdf", nargs="?", type=Path, const=True, dest="pdf_out", default=None, help="Extract check register pages to a PDF",
     )
+    ap.add_argument("--payees", nargs="?", type=Path, const=True, default=None, help="Write/update payee list (optionally to PATH)")
     return ap.parse_args(argv)
 
 
@@ -71,12 +74,13 @@ def derive_output_paths(args: argparse.Namespace, entries: list) -> OutputPaths:
     html = resolve(args.html, "-payees.html", "HTML")
     chunks_json = resolve(args.chunks_json, "-chunks.json", "chunks JSON")
     pdf = args.pdf_out
+    payees_txt = resolve(args.payees, "-payees.txt", "payees list")
     if pdf is True:
         pdf = default_pdf_name(entries)
         if pdf is None:
             print("No check register entries found; PDF not created")
             raise SystemExit(1)
-    return OutputPaths(csv, json, html, chunks_json, pdf)
+    return OutputPaths(csv, json, html, chunks_json, pdf, payees_txt)
 
 
 def write_outputs(entries: list, paths: OutputPaths, drop: int) -> None:
@@ -134,6 +138,7 @@ def main(argv: list[str] | None = None) -> None:
         or args.totals
         or args.pdf_out is not None
         or need_chunks
+        or args.payees is not None
     )
 
     chunks = entries = None
@@ -149,6 +154,11 @@ def main(argv: list[str] | None = None) -> None:
         write_outputs(entries, paths, args.drop)
         if paths.csv or paths.json or paths.html or args.print_rollups or args.totals:
             print_stats(entries, paths, rollups=args.print_rollups, totals=args.totals)
+    if paths.payees_txt and entries is not None:
+        info = update_payees(entries, paths.payees_txt)
+        lines = payee_summary(entries, paths.payees_txt, info, default=args.payees is True)
+        for line in lines:
+            print(line)
 
     if need_chunks and chunks is not None and paths.chunks_json:
         write_chunks(chunks, paths.chunks_json)

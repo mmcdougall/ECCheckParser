@@ -62,3 +62,11 @@ def month_totals(entries: List[CheckEntry]) -> Dict[Tuple[int, int], Decimal]:
         month_key = (dt.month, dt.year)
         out[month_key] = out.get(month_key, Decimal("0.00")) + e.amount
     return out
+
+def payee_totals(entries: List[CheckEntry]) -> Dict[str, Decimal]:
+    """Return summed amounts per payee, skipping voided rows."""
+    out: Dict[str, Decimal] = {}
+    nonvoid = [e for e in entries if not e.voided]
+    for e in dedupe_by_number(nonvoid):
+        out[e.payee] = out.get(e.payee, Decimal("0.00")) + e.amount
+    return out
