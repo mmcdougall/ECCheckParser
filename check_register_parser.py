@@ -23,7 +23,7 @@ from check_register.page_extractor import (
     default_pdf_name,
     register_name_prefix,
 )
-from check_register.payees import update_payees
+from check_register.payees import payee_summary
 
 
 @dataclass
@@ -54,14 +54,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     ap.add_argument(
         "--pdf", nargs="?", type=Path, const=True, dest="pdf_out", default=None, help="Extract check register pages to a PDF",
     )
-    ap.add_argument(
-        "--payees",
-        nargs="?",
-        type=Path,
-        const=True,
-        default=None,
-        help="Write/update payee list (optionally to PATH)",
-    )
+    ap.add_argument("--payees", nargs="?", type=Path, const=True, default=None, help="Write/update payee list (optionally to PATH)")
     return ap.parse_args(argv)
 
 
@@ -161,28 +154,10 @@ def main(argv: list[str] | None = None) -> None:
         write_outputs(entries, paths, args.drop)
         if paths.csv or paths.json or paths.html or args.print_rollups or args.totals:
             print_stats(entries, paths, rollups=args.print_rollups, totals=args.totals)
-        if paths.payees_txt:
-            info = update_payees(entries, paths.payees_txt)
-            if args.payees is True:
-                print(f"Payees: {info['total_payees']} (written to {paths.payees_txt})")
-            else:
-                cnt = info["new_payee_count"]
-                if cnt == 0:
-                    print(f"No new payees (total {info['total_payees']})")
-                else:
-                    print(
-                        f"Added {cnt} new payees to {paths.payees_txt} "
-                        f"(total {info['total_payees']})"
-                    )
-                    if info["new_payees"]:
-                        total_nonvoid = sanity(entries)["total_nonvoid"]
-                        for payee in info["new_payees"]:
-                            pct = (
-                                info["new_payee_amounts"][payee] / total_nonvoid * 100
-                                if total_nonvoid
-                                else 0
-                            )
-                            print(f"  {payee} ({pct:.2f}%)")
+    if paths.payees_txt and entries is not None:
+        lines = payee_summary(entries, paths.payees_txt, default=args.payees is True)
+        for line in lines:
+            print(line)
 
     if need_chunks and chunks is not None and paths.chunks_json:
         write_chunks(chunks, paths.chunks_json)

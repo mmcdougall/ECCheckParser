@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Dict, List, Set
 
 from .models import CheckEntry
-from .stats import payee_totals
+from .stats import payee_totals, sanity
 
 
 def update_payees(entries: List[CheckEntry], path: Path, threshold: int = 10) -> Dict[str, object]:
@@ -32,3 +32,29 @@ def update_payees(entries: List[CheckEntry], path: Path, threshold: int = 10) ->
         "new_payees": listed,
         "new_payee_amounts": new_amounts,
     }
+
+
+def payee_summary(
+    entries: List[CheckEntry], path: Path, *, default: bool, threshold: int = 10
+) -> List[str]:
+    """Update payee file and return summary lines."""
+    info = update_payees(entries, path, threshold)
+    if default:
+        return [f"Payees: {info['total_payees']} (written to {path})"]
+
+    lines: List[str] = []
+    cnt = info["new_payee_count"]
+    if cnt == 0:
+        lines.append(f"No new payees (total {info['total_payees']})")
+        return lines
+
+    lines.append(
+        f"Added {cnt} new payees to {path} (total {info['total_payees']})"
+    )
+    if info["new_payees"]:
+        total_nonvoid = sanity(entries)["total_nonvoid"]
+        for payee in info["new_payees"]:
+            amt = info["new_payee_amounts"][payee]
+            pct = (amt / total_nonvoid * 100) if total_nonvoid else 0
+            lines.append(f"  {payee} ({pct:.2f}%)")
+    return lines
