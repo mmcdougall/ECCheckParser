@@ -183,6 +183,8 @@ class CheckRegisterParser:
     def extract_raw_chunks(self) -> List[RowChunk]:
         chunks: List[RowChunk] = []
         state = _ExtractState()
+        if not self.pdf_path.is_file():
+            raise FileNotFoundError(f"PDF not found: {self.pdf_path}")
 
         logging.getLogger("pdfminer").setLevel(logging.ERROR)
         with pdfplumber.open(self.pdf_path) as pdf:
