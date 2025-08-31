@@ -129,10 +129,6 @@ def print_stats(entries: list, paths: OutputPaths, *, rollups: bool, totals: boo
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
 
-    if not args.pdf.is_file():
-        print(f"Input PDF not found: {args.pdf}")
-        sys.exit(1)
-
     need_chunks = bool(args.chunks_json)
     need_entries = (
         args.csv is not None
@@ -174,7 +170,7 @@ def main(argv: list[str] | None = None) -> None:
     if paths.pdf:
         try:
             start, end = extract_check_register_pdf(args.pdf, paths.pdf)
-        except ValueError as exc:
+        except (ValueError, FileNotFoundError) as exc:
             print(f"PDF extraction failed: {exc}")
             sys.exit(1)
         print(f"PDF: {paths.pdf} (pages {start}-{end})")
