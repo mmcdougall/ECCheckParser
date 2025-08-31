@@ -11,6 +11,7 @@ from .payee_shortener import shorten_payee
 
 
 def group_payees(entries: List[CheckEntry]) -> Dict[str, List[CheckEntry]]:
+    """Group entries by payee name."""
     payees: Dict[str, List[CheckEntry]] = {}
     for e in entries:
         payees.setdefault(e.payee, []).append(e)
@@ -18,6 +19,7 @@ def group_payees(entries: List[CheckEntry]) -> Dict[str, List[CheckEntry]]:
 
 
 def payee_totals(payees: Dict[str, List[CheckEntry]]) -> List[Tuple[str, float]]:
+    """Return (payee, total) pairs for payees with positive totals."""
     items: List[Tuple[str, float]] = []
     for name, es in payees.items():
         total = float(sum(e.amount for e in es))
@@ -27,6 +29,7 @@ def payee_totals(payees: Dict[str, List[CheckEntry]]) -> List[Tuple[str, float]]
 
 
 def greedy_split_two(items: List[Tuple[str, float]]):
+    """Split weighted items into two balanced groups."""
     left, right, sum_left, sum_right = [], [], 0.0, 0.0
     for label, weight in sorted(items, key=lambda t: t[1], reverse=True):
         if sum_left <= sum_right:
@@ -39,6 +42,7 @@ def greedy_split_two(items: List[Tuple[str, float]]):
 
 
 def greedy_split_four(items: List[Tuple[str, float]]):
+    """Divide weighted items into four greedy quadrants."""
     left_items, right_items, sum_left, sum_right = greedy_split_two(items)
     tl, bl, sum_tl, sum_bl = greedy_split_two(left_items) if left_items else ([], [], 0, 0)
     tr, br, sum_tr, sum_br = greedy_split_two(right_items) if right_items else ([], [], 0, 0)
@@ -54,6 +58,7 @@ def layout_rectangles(
     height: float = 1.0,
     rects: List[Dict[str, float]] | None = None,
 ) -> List[Dict[str, float]]:
+    """Lay out weighted items as rectangles within a box."""
     if rects is None:
         rects = []
     total = sum(value for _, value in items)
@@ -87,6 +92,7 @@ def layout_rectangles(
 
 
 def assemble_quadtree_data(rects: List[Dict[str, float]], payees: Dict[str, List[CheckEntry]]):
+    """Convert rectangles and payees into quadtree data columns."""
     data = {"cx": [], "cy": [], "w": [], "h": [], "payee": [], "amount": [], "description": [], "checks": [], "label": []}
     for r in rects:
         payee = r["label"]
@@ -136,6 +142,7 @@ def build_payee_quadtree_data(entries: List[CheckEntry], drop: int = 0) -> Dict[
 
 
 def build_payee_quadtree_title(entries: List[CheckEntry], data: Dict[str, List], drop: int = 0) -> str:
+    """Return title summarizing period and totals for a quadtree."""
     # Use deduplicated non-void entries to determine period and totals.
     entries = dedupe_by_number([e for e in entries if not e.voided])
     months = sorted({(e.section_year, e.section_month) for e in entries})
@@ -161,6 +168,7 @@ def build_payee_quadtree_title(entries: List[CheckEntry], data: Dict[str, List],
 
 
 def make_quadtree_figure(data: Dict[str, List], title: str | None = None):
+    """Create a Bokeh figure for the payee quadtree."""
     from bokeh.models import ColumnDataSource
     from bokeh.palettes import Viridis256
     from bokeh.transform import linear_cmap
@@ -173,6 +181,7 @@ def make_quadtree_figure(data: Dict[str, List], title: str | None = None):
 
 
 def _build_quadtree_plot(source, color_map, title: str | None = None):
+    """Build a configured Bokeh plot for the quadtree."""
     from bokeh.plotting import figure
 
     p = figure(
@@ -194,6 +203,7 @@ def _build_quadtree_plot(source, color_map, title: str | None = None):
 
 
 def _add_rectangles(p, source, color_map):
+    """Add colored rectangles to the plot."""
     p.rect(
         x="cx", y="cy", width="w", height="h", source=source,
         line_color="white", line_width=1, fill_color=color_map, fill_alpha=0.9,
@@ -201,6 +211,7 @@ def _add_rectangles(p, source, color_map):
 
 
 def _add_labels(p, source):
+    """Add payee labels to rectangle centers."""
     p.text(
         x="cx", y="cy", text="label", source=source,
         text_align="center", text_baseline="middle",
@@ -209,6 +220,7 @@ def _add_labels(p, source):
 
 
 def _add_hover(p):
+    """Attach a hover tool showing payee details."""
     from bokeh.models import HoverTool
 
     hover = HoverTool(
