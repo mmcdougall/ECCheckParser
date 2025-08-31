@@ -2,14 +2,16 @@ from __future__ import annotations
 
 from decimal import Decimal
 from pathlib import Path
-from typing import Dict, List, Set
+from typing import Dict, List, Set, Tuple
 
 from .models import CheckEntry
 from .stats import payee_totals, sanity
 
 
-def update_payees(entries: List[CheckEntry], path: Path) -> Dict[str, object]:
-    """Merge payees from entries with an existing list and write the result."""
+def merge_payees(
+    entries: List[CheckEntry], path: Path
+) -> Tuple[List[str], Dict[str, object]]:
+    """Return merged payee list and summary info."""
     existing: Set[str] = set()
     if path.exists():
         existing = {
@@ -19,14 +21,20 @@ def update_payees(entries: List[CheckEntry], path: Path) -> Dict[str, object]:
         }
     current = {e.payee for e in entries}
     merged = sorted(existing | current)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("\n".join(merged) + ("\n" if merged else ""), encoding="utf-8")
-
     new_all = sorted(current - existing)
-    return {
+    info = {
         "total_payees": len(merged),
         "new_payees": new_all,
     }
+    return merged, info
+
+
+def write_payees(payees: List[str], path: Path) -> None:
+    """Write payees to path."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        "\n".join(payees) + ("\n" if payees else ""), encoding="utf-8"
+    )
 
 
 def payee_summary(
