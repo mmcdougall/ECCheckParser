@@ -53,6 +53,79 @@ def _squeeze_letters(tokens: List[PositionedWord]) -> List[PositionedWord]:
     return squeezed
 
 
+def _collect_tokens_after_payable(
+    line_words: List[List[PositionedWord]],
+) -> Optional[List[PositionedWord]]:
+    """Gather tokens starting after the ``PAYABLE`` marker.
+
+    The first line holds check metadata followed by the literal marker
+    ``PAYABLE``.  Tokens to its right belong to the payee and description
+    columns.  All subsequent lines are part of the entry and are appended as
+    is.  Returns ``None`` when the marker is absent or no tokens follow it.
+    """
+
+    if not line_words:
+        return None
+
+    tokens: List[PositionedWord] = []
+    found = False
+    for w in line_words[0]:
+        if not found:
+            if w.text.upper() == "PAYABLE":
+                found = True
+            continue
+        tokens.append(w)
+
+    if not found:
+        return None
+
+    for lw in line_words[1:]:
+        tokens.extend(lw)
+
+    return tokens or None
+
+
+def _drop_trailing_amount(tokens: List[PositionedWord]) -> List[PositionedWord]:
+    """Remove a trailing amount token, if present.
+
+    Amounts follow the description and use a wide preceding gap that could be
+    mistaken for the column split.  Trimming that token ensures threshold
+    detection only sees payee and description words.
+    """
+
+    if tokens and _AMOUNT_RE.fullmatch(tokens[-1].text):
+        tokens = tokens[:-1]
+    return tokens
+
+
+def _determine_column_threshold(tokens: List[PositionedWord]) -> Optional[float]:
+    """Find the x boundary separating payee and description tokens.
+
+    The algorithm enumerates all potential splits, computing the sum of squared
+    distances to each side's mean x position.  The split with the minimal cost
+    acts as a 1D k-means clustering and yields the threshold.  ``None`` is
+    returned when the search lacks enough distinct positions.
+    """
+
+    xs = sorted(t.x0 for t in tokens)
+    if len(xs) < 2:
+        return None
+
+    best_cost = float("inf")
+    best_thresh: Optional[float] = None
+    for i in range(1, len(xs)):
+        left = xs[:i]
+        right = xs[i:]
+        mean_l = sum(left) / len(left)
+        mean_r = sum(right) / len(right)
+        cost = sum((x - mean_l) ** 2 for x in left) + sum((x - mean_r) ** 2 for x in right)
+        if cost < best_cost:
+            best_cost = cost
+            best_thresh = (xs[i - 1] + xs[i]) / 2.0
+
+    return best_thresh
+
+
 def split_payee_desc_by_x(line_words: List[List[PositionedWord]]) -> Optional[Tuple[str, str]]:
     """Split payee/description using x-coordinate clustering.
 
@@ -73,63 +146,19 @@ def split_payee_desc_by_x(line_words: List[List[PositionedWord]]) -> Optional[Tu
     expected pattern.
     """
 
-    if not line_words:
-        return None
-
-    # Skip tokens until we encounter the ``Payable`` marker on the first line,
-    # since everything before it is check metadata (number, date, status, etc.).
-    tokens: List[PositionedWord] = []
-    found_payable = False
-    first_line = line_words[0]
-    for w in first_line:
-        if not found_payable:
-            if w.text.upper() == 'PAYABLE':
-                found_payable = True
-            continue
-        tokens.append(w)
-
-    if not found_payable:
-        return None
-
-    # Include all subsequent lines as they belong to payee/description/amount.
-    for lw in line_words[1:]:
-        tokens.extend(lw)
-
+    tokens = _collect_tokens_after_payable(line_words)
     if not tokens:
         return None
 
-    # Drop trailing amount token to avoid picking the wide gap before it.
-    if _AMOUNT_RE.fullmatch(tokens[-1].text):
-        tokens = tokens[:-1]
+    tokens = _drop_trailing_amount(tokens)
     if not tokens:
         return None
 
-    # Merge any single-letter runs to avoid artificial gaps (e.g. ``P E R S``).
     tokens = _squeeze_letters(tokens)
 
-    # Determine the column boundary by finding the split that minimises the
-    # within-cluster variance of x positions.  This 1D k-means approach is
-    # robust against uneven gaps and does not assume a particular number of
-    # unique x values.
-    xs = sorted(t.x0 for t in tokens)
-    if len(xs) < 2:
+    threshold = _determine_column_threshold(tokens)
+    if threshold is None:
         return None
-
-    best_cost = float("inf")
-    best_thresh = None
-    for i in range(1, len(xs)):
-        left = xs[:i]
-        right = xs[i:]
-        mean_l = sum(left) / len(left)
-        mean_r = sum(right) / len(right)
-        cost = sum((x - mean_l) ** 2 for x in left) + sum((x - mean_r) ** 2 for x in right)
-        if cost < best_cost:
-            best_cost = cost
-            best_thresh = (xs[i - 1] + xs[i]) / 2.0
-
-    if best_thresh is None:
-        return None
-    threshold = best_thresh
 
     payee_tokens = [t.text for t in tokens if t.x0 <= threshold]
     desc_tokens = [t.text for t in tokens if t.x0 > threshold]
