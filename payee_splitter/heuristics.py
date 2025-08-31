@@ -4,6 +4,7 @@ from typing import List, Optional
 from .constants import KNOWN_PREFIXES, SUFFIXES, STOPWORDS, MONTHS
 
 def h_known_prefix(toks: List[str], text: str) -> Optional[int]:
+    """Split after matching known payee prefix."""
     upper_toks = [t.upper().rstrip('.,') for t in toks]
     for prefix in KNOWN_PREFIXES:
         parts = prefix.split()
@@ -12,12 +13,14 @@ def h_known_prefix(toks: List[str], text: str) -> Optional[int]:
     return None
 
 def h_fd_number(toks: List[str], text: str) -> Optional[int]:
+    """Break before FD number sequence."""
     for i in range(len(toks) - 1):
         if toks[i].upper() == 'FD' and toks[i + 1].isdigit():
             return i
     return None
 
 def h_middle_initial(toks: List[str], text: str) -> Optional[int]:
+    """Split three-token names with middle initial."""
     if len(toks) >= 3:
         first, middle, last = (toks[0], toks[1], toks[2])
         if re.fullmatch('[A-Za-z]+', first.rstrip('.,')) and re.fullmatch('[A-Za-z]\\.?', middle.rstrip(',')) and re.fullmatch('[A-Za-z]+', last.rstrip('.,')):
@@ -25,12 +28,14 @@ def h_middle_initial(toks: List[str], text: str) -> Optional[int]:
     return None
 
 def h_comma_pair(toks: List[str], text: str) -> Optional[int]:
+    """Split when first token ends with comma."""
     if len(toks) >= 2 and toks[0].endswith(',') and toks[1].rstrip('.,').isalpha():
         if not (toks[0].rstrip(',').isupper() and toks[1].isupper()):
             return 2
     return None
 
 def h_last_first(toks: List[str], text: str) -> Optional[int]:
+    """Split uppercase 'LAST, FIRST' patterns."""
     if len(toks) >= 2 and toks[0].endswith(',') and toks[1].rstrip('.,').isalpha():
         first_tok = toks[0].rstrip(',')
         if first_tok.isupper() and toks[1].isupper():
@@ -40,6 +45,7 @@ def h_last_first(toks: List[str], text: str) -> Optional[int]:
     return None
 
 def h_year(toks: List[str], text: str) -> Optional[int]:
+    """Break before four-digit year tokens."""
     for i in range(1, len(toks)):
         if re.fullmatch('\\d{4}', toks[i]):
             if any((t.rstrip('.,').upper() in SUFFIXES for t in toks[:i])):
@@ -50,6 +56,7 @@ def h_year(toks: List[str], text: str) -> Optional[int]:
     return None
 
 def h_stopword(toks: List[str], text: str) -> Optional[int]:
+    """Stop at stopwords unless suffix follows."""
     for i in range(1, len(toks)):
         tok = toks[i]
         if tok.strip(',').upper() in STOPWORDS:
@@ -65,6 +72,7 @@ def h_stopword(toks: List[str], text: str) -> Optional[int]:
     return None
 
 def h_date_or_month(toks: List[str], text: str) -> Optional[int]:
+    """Break at dates or month names."""
     for i in range(1, len(toks)):
         tok = toks[i].rstrip(',.')
         if re.fullmatch('\\d{1,2}/\\d{1,2}/\\d{2,4}', tok):
@@ -74,6 +82,7 @@ def h_date_or_month(toks: List[str], text: str) -> Optional[int]:
     return None
 
 def h_alphanum(toks: List[str], text: str) -> Optional[int]:
+    """Split on tokens mixing letters and digits."""
     for i in range(1, len(toks)):
         tok = toks[i].rstrip(',.')
         if tok.startswith('#'):
@@ -83,17 +92,20 @@ def h_alphanum(toks: List[str], text: str) -> Optional[int]:
     return None
 
 def h_hash_follow(toks: List[str], text: str) -> Optional[int]:
+    """Break after word following '#number'."""
     for i in range(1, len(toks) - 1):
         if toks[i].startswith('#') and toks[i + 1].isalpha():
             return i + 2
     return None
 
 def h_two_title(toks: List[str], text: str) -> Optional[int]:
+    """Split two consecutive Title-case words."""
     if len(toks) >= 2 and toks[0].istitle() and toks[1].istitle():
         return 2
     return None
 
 def h_column_alignment(toks: List[str], text: str) -> Optional[int]:
+    """Break when column position reaches 45."""
     pos = 0
     for i, tok in enumerate(toks):
         pos += len(tok) + 1
@@ -102,6 +114,7 @@ def h_column_alignment(toks: List[str], text: str) -> Optional[int]:
     return None
 
 def h_last_comma(toks: List[str], text: str) -> Optional[int]:
+    """Return index after the final comma."""
     last = None
     for i, tok in enumerate(toks):
         if tok.endswith(','):
@@ -109,6 +122,7 @@ def h_last_comma(toks: List[str], text: str) -> Optional[int]:
     return last
 
 def h_city_of(toks: List[str], text: str) -> Optional[int]:
+    """Handle 'City of' names with suffix skip."""
     if len(toks) >= 3 and toks[0].upper() == 'CITY' and toks[1].upper() == 'OF':
         idx = 3
         if len(toks) >= 4 and toks[2].upper() == 'SAN':
@@ -126,6 +140,7 @@ def h_city_of(toks: List[str], text: str) -> Optional[int]:
     return None
 
 def h_close_paren(toks: List[str], text: str) -> Optional[int]:
+    """Split after token closing parenthesis."""
     for i in range(len(toks) - 1):
         if toks[i].endswith(')'):
             next_tok = toks[i + 1].rstrip('.,')
@@ -134,18 +149,21 @@ def h_close_paren(toks: List[str], text: str) -> Optional[int]:
     return None
 
 def h_double_space(toks: List[str], text: str) -> Optional[int]:
+    """Split at first double-space gap."""
     m = re.search('\\s{2,}', text)
     if m:
         return len(text[:m.start()].split())
     return None
 
 def h_suffix(toks: List[str], text: str) -> Optional[int]:
+    """Split after trailing suffix tokens."""
     for i in range(len(toks) - 1, -1, -1):
         if toks[i].rstrip('.,').upper() in SUFFIXES:
             return i + 1
     return None
 
 def h_default(toks: List[str], text: str) -> Optional[int]:
+    """Fallback boundary at first token."""
     return 1
 
 HEURISTICS = [
