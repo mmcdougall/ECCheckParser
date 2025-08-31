@@ -261,6 +261,10 @@ class CheckRegisterParser:
             else:
                 payee, desc = self._split_payee_desc_block(block)
 
+        if amount is None:
+            logging.warning("Missing amount in row: %s", " | ".join(chunk.lines))
+            amount = Decimal("0.00")
+
         return CheckEntry(
             section_month=chunk.section_month,
             section_year=chunk.section_year,
@@ -271,7 +275,7 @@ class CheckRegisterParser:
             source=source.strip(),
             payee=payee,
             description=desc,
-            amount=amount if amount is not None else Decimal("0.00"),
+            amount=amount,
             voided=voided,
         )
 
