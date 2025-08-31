@@ -4,7 +4,7 @@ from pathlib import Path
 import unittest
 
 from check_register.models import CheckEntry
-from check_register.payees import update_payees, payee_summary
+from check_register.payees import merge_payees, write_payees, payee_summary
 
 
 class TestPayeeSummary(unittest.TestCase):
@@ -15,7 +15,8 @@ class TestPayeeSummary(unittest.TestCase):
         ]
         with tempfile.TemporaryDirectory() as td:
             path = Path(td, "payees.txt")
-            info = update_payees(entries, path)
+            payees, info = merge_payees(entries, path)
+            write_payees(payees, path)
             lines = payee_summary(entries, path, info, default=True)
             self.assertEqual(path.read_text().splitlines(), ["Alpha", "Beta"])
             self.assertEqual(lines, [f"Payees: 2 (written to {path})"])
@@ -29,7 +30,8 @@ class TestPayeeSummary(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             path = Path(td, "existing.txt")
             path.write_text("Alpha\n", encoding="utf-8")
-            info = update_payees(entries, path)
+            payees, info = merge_payees(entries, path)
+            write_payees(payees, path)
             lines = payee_summary(entries, path, info, default=False)
             self.assertEqual(path.read_text().splitlines(), ["Alpha", "Beta", "Gamma"])
             self.assertEqual(lines[0], f"Added 2 new payees to {path} (total 3)")
