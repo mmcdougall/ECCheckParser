@@ -10,6 +10,7 @@ from .models import CheckEntry, RowChunk
 
 
 def write_csv(entries: List[CheckEntry], out_path: Path) -> None:
+    """Write check entries to a UTF-8 CSV file with a header row."""
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open("w", newline="", encoding="utf-8") as f:
@@ -27,6 +28,7 @@ def write_csv(entries: List[CheckEntry], out_path: Path) -> None:
 
 
 def write_json(entries: List[CheckEntry], out_path: Path) -> None:
+    """Write check entries to a UTF-8 JSON array of dicts."""
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open("w", encoding="utf-8") as f:
@@ -42,6 +44,7 @@ def write_json(entries: List[CheckEntry], out_path: Path) -> None:
 
 
 def write_chunks(chunks: List[RowChunk], out_path: Path) -> None:
+    """Write row chunks to a UTF-8 JSON array."""
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open("w", encoding="utf-8") as f:
