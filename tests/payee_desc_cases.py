@@ -11,7 +11,7 @@ CASES = [
     ),
     (
         "MERCURIO BROS. PRINTING, INC, FD FORM",
-        "MERCURIO BROS. PRINTING, INC",
+        "MERCURIO BROS. PRINTING, INC,",
         "FD FORM",
     ),
     (
