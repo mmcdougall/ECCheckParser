@@ -63,6 +63,15 @@ def _apply_heuristics(tokens: List[str], block: str) -> int:
     return max(range(1, len(tokens)), key=lambda i: (scores[i], -i))
 
 
+def _tidy_text(text: str) -> str:
+    """Normalise spacing and small punctuation quirks."""
+
+    text = re.sub(r"\s+,", ",", text)
+    text = re.sub(r",(?=[A-Za-z])", ", ", text)
+    text = re.sub(r"\b((?:[A-Z]\.)+[A-Z])(?!\.)\b", r"\1.", text)
+    return text.strip()
+
+
 def split_payee_desc_block(block: str) -> Tuple[str, str]:
     """Split a block containing payee and description using weighted votes."""
 
@@ -76,7 +85,7 @@ def split_payee_desc_block(block: str) -> Tuple[str, str]:
 
     best_idx = _apply_heuristics(tokens, block)
 
-    payee = " ".join(tokens[:best_idx]).rstrip(",").strip()
+    payee = " ".join(tokens[:best_idx]).strip()
     desc = " ".join(tokens[best_idx:]).strip()
 
     # Convert "LAST, FIRST" into a nicer upper-case form.
@@ -84,6 +93,9 @@ def split_payee_desc_block(block: str) -> Tuple[str, str]:
         parts = [p.strip() for p in payee.split(",")]
         if len(parts) == 2 and parts[0].istitle() and parts[1].istitle():
             payee = " ".join(parts).upper()
+
+    payee = _tidy_text(payee)
+    desc = _tidy_text(desc)
 
     return (payee, desc)
 

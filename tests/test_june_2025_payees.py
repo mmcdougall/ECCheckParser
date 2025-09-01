@@ -26,9 +26,12 @@ class TestJune2025Payees(unittest.TestCase):
         payees = [e.payee for e in entries if e.section_month == 6 and e.section_year == 2025]
         payees = payees[: len(PAYEES_JUNE_2025)]
         matches = sum(1 for a, b in zip(PAYEES_JUNE_2025, payees) if a == b)
-        # Baseline as of this commit: 154 matches. Update as heuristics improve.
-        self.assertGreaterEqual(matches, 150,
-                                f"Only {matches} of {len(PAYEES_JUNE_2025)} payees matched")
+        # Baseline as of this commit: 158 matches. Update as heuristics improve.
+        self.assertGreaterEqual(
+            matches,
+            158,
+            f"Only {matches} of {len(PAYEES_JUNE_2025)} payees matched",
+        )
 
 
 if __name__ == "__main__":
