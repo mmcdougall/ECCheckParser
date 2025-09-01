@@ -3,6 +3,8 @@ from __future__ import annotations
 import re
 from typing import List, Optional, Tuple, TYPE_CHECKING
 
+from .core import _tidy_text
+
 # ``PositionedWord`` is light-weight and importing it at runtime keeps this
 # helper self contained.  The TYPE_CHECKING block avoids circular imports when
 # building docs while still providing type hints during development.
@@ -163,8 +165,8 @@ def split_payee_desc_by_x(line_words: List[List[PositionedWord]]) -> Optional[Tu
     payee_tokens = [t.text for t in tokens if t.x0 <= threshold]
     desc_tokens = [t.text for t in tokens if t.x0 > threshold]
 
-    payee = " ".join(payee_tokens).rstrip(',').strip()
-    desc = " ".join(desc_tokens).strip()
+    payee = _tidy_text(" ".join(payee_tokens).rstrip(',').strip())
+    desc = _tidy_text(" ".join(desc_tokens).strip())
 
     if not payee and not desc:
         return None
