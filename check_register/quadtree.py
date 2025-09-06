@@ -102,18 +102,8 @@ def layout_rectangles(
 
 def assemble_quadtree_data(rects: List[Dict[str, float]], payees: Dict[str, List[CheckEntry]]):
     """Convert rectangles and payees into quadtree data columns."""
-    data = {
-        "cx": [],
-        "cy": [],
-        "w": [],
-        "h": [],
-        "payee": [],
-        "amount": [],
-        "description": [],
-        "checks": [],
-        "label": [],
-        "color": [],
-    }
+    cols = ("cx", "cy", "w", "h", "payee", "amount", "description", "checks", "label", "color")
+    data = {c: [] for c in cols}
     for r in rects:
         payee = r["label"]
         info = payees[payee]
