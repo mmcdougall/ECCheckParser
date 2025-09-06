@@ -116,6 +116,15 @@ class TestPayeeQuadtreeData(unittest.TestCase):
         self.assertEqual(data["color"][alpha_idx], "#111111")
         self.assertEqual(data["color"][beta_idx], "#222222")
 
+    def test_colors_are_deterministic(self):
+        entries = [
+            CheckEntry(6, 2025, "check", "1", "06/01/2025", "Open", "Accounts Payable", "Alpha", "foo", Decimal("1.00"), False),
+            CheckEntry(6, 2025, "check", "2", "06/02/2025", "Open", "Accounts Payable", "Beta", "bar", Decimal("2.00"), False),
+        ]
+        first = build_payee_quadtree_data(entries)
+        second = build_payee_quadtree_data(entries)
+        self.assertEqual(first["color"], second["color"])
+
     def test_add_rectangles_uses_color_field(self):
         from bokeh.models import ColumnDataSource
         from bokeh.plotting import figure

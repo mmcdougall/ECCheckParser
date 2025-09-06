@@ -3,7 +3,8 @@ from __future__ import annotations
 from calendar import month_name
 from decimal import Decimal
 from pathlib import Path
-from random import randint
+from hashlib import md5
+import re
 from typing import Dict, List, Tuple
 
 from .models import CheckEntry
@@ -52,10 +53,11 @@ def greedy_split_four(items: List[Tuple[str, float]]):
 
 
 def payee_color(payee: str, description: str) -> str:
-    """Return a random light color for a payee."""
-    r = randint(64, 255)
-    g = randint(64, 255)
-    b = randint(64, 255)
+    """Return a deterministic light color for a payee."""
+    digest = md5(payee.encode("utf-8")).digest()
+    r = 64 + digest[0] % 192
+    g = 64 + digest[1] % 192
+    b = 64 + digest[2] % 192
     return f"#{r:02x}{g:02x}{b:02x}"
 
 
@@ -250,11 +252,27 @@ def write_payee_quadtree_html(entries: List[CheckEntry], out_path: Path, drop: i
         out_path: Destination HTML path.
         drop: Number of highest-dollar payees to exclude.
     """
-    from bokeh.plotting import output_file, save
+    from bokeh.embed import file_html
+    from bokeh.resources import CDN
 
     data = build_payee_quadtree_data(entries, drop=drop)
     title = build_payee_quadtree_title(entries, data, drop=drop)
     plot = make_quadtree_figure(data, title=title)
-    output_file(out_path, title=title)
-    save(plot)
+    html = file_html(plot, CDN, title=title)
+    html = _stable_ids(html)
+    out_path.write_text(html, encoding="utf-8")
+
+
+def _stable_ids(html: str) -> str:
+    """Replace Bokeh's random ids with stable placeholders."""
+    patterns = [
+        (r'<div id="([^"\n]+)" data-root-id', "plot"),
+        (r'<script type="application/json" id="([^"\n]+)">', "plot-data"),
+        (r'"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})":', "docid"),
+    ]
+    for pat, repl in patterns:
+        m = re.search(pat, html)
+        if m:
+            html = html.replace(m.group(1), repl)
+    return html
 
