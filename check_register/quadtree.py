@@ -3,6 +3,7 @@ from __future__ import annotations
 from calendar import month_name
 from decimal import Decimal
 from pathlib import Path
+from random import randint
 from typing import Dict, List, Tuple
 
 from .models import CheckEntry
@@ -50,6 +51,14 @@ def greedy_split_four(items: List[Tuple[str, float]]):
     return groups, (sum_left, sum_right)
 
 
+def payee_color(payee: str, description: str) -> str:
+    """Return a random light color for a payee."""
+    r = randint(64, 255)
+    g = randint(64, 255)
+    b = randint(64, 255)
+    return f"#{r:02x}{g:02x}{b:02x}"
+
+
 def layout_rectangles(
     items: List[Tuple[str, float]],
     x: float = 0.0,
@@ -93,7 +102,8 @@ def layout_rectangles(
 
 def assemble_quadtree_data(rects: List[Dict[str, float]], payees: Dict[str, List[CheckEntry]]):
     """Convert rectangles and payees into quadtree data columns."""
-    data = {"cx": [], "cy": [], "w": [], "h": [], "payee": [], "amount": [], "description": [], "checks": [], "label": []}
+    cols = ("cx", "cy", "w", "h", "payee", "amount", "description", "checks", "label", "color")
+    data = {c: [] for c in cols}
     for r in rects:
         payee = r["label"]
         info = payees[payee]
@@ -102,13 +112,15 @@ def assemble_quadtree_data(rects: List[Dict[str, float]], payees: Dict[str, List
         checks = ", ".join(f"{n}: ${a:,.2f}" for n, a in nums)
         w, h = r["w"], r["h"]
         short = shorten_payee(payee)
+        description = "; ".join(descs)
         data["cx"].append(r["x"] + w / 2)
         data["cy"].append(r["y"] + h / 2)
         data["w"].append(w)
         data["h"].append(h)
         data["payee"].append(payee)
         data["amount"].append(r["value"])
-        data["description"].append("; ".join(descs))
+        data["description"].append(description)
+        data["color"].append(payee_color(payee, description))
         data["checks"].append(checks)
         fits_w = w * 960 >= len(short) * 7
         fits_h = h * 600 >= 14
@@ -170,17 +182,12 @@ def build_payee_quadtree_title(entries: List[CheckEntry], data: Dict[str, List],
 def make_quadtree_figure(data: Dict[str, List], title: str | None = None):
     """Create a Bokeh figure for the payee quadtree."""
     from bokeh.models import ColumnDataSource
-    from bokeh.palettes import Viridis256
-    from bokeh.transform import linear_cmap
 
     source = ColumnDataSource(data)
-    low = min(data["amount"]) if data["amount"] else 0
-    high = max(data["amount"]) if data["amount"] else 1
-    color_map = linear_cmap("amount", Viridis256, low, high)
-    return _build_quadtree_plot(source, color_map, title)
+    return _build_quadtree_plot(source, title)
 
 
-def _build_quadtree_plot(source, color_map, title: str | None = None):
+def _build_quadtree_plot(source, title: str | None = None):
     """Build a configured Bokeh plot for the quadtree."""
     from bokeh.plotting import figure
 
@@ -194,7 +201,7 @@ def _build_quadtree_plot(source, color_map, title: str | None = None):
         outline_line_color=None,
         title=title,
     )
-    _add_rectangles(p, source, color_map)
+    _add_rectangles(p, source)
     _add_labels(p, source)
     _add_hover(p)
     p.xgrid.grid_line_color = None
@@ -202,11 +209,11 @@ def _build_quadtree_plot(source, color_map, title: str | None = None):
     return p
 
 
-def _add_rectangles(p, source, color_map):
+def _add_rectangles(p, source):
     """Add colored rectangles to the plot."""
     p.rect(
         x="cx", y="cy", width="w", height="h", source=source,
-        line_color="white", line_width=1, fill_color=color_map, fill_alpha=0.9,
+        line_color="white", line_width=1, fill_color="color", fill_alpha=0.9,
     )
 
 

@@ -1,8 +1,13 @@
 import unittest
 from decimal import Decimal
+from unittest.mock import patch
 
 from check_register.models import CheckEntry
-from check_register.quadtree import build_payee_quadtree_data, build_payee_quadtree_title
+from check_register.quadtree import (
+    _add_rectangles,
+    build_payee_quadtree_data,
+    build_payee_quadtree_title,
+)
 
 
 class TestPayeeQuadtreeData(unittest.TestCase):
@@ -94,6 +99,32 @@ class TestPayeeQuadtreeData(unittest.TestCase):
         self.assertEqual(data["amount"][0], 100.0)
         title = build_payee_quadtree_title(entries, data)
         self.assertEqual(title, "June 2025 Checks/EFT Report: $100.00")
+
+    def test_assigns_colors_per_payee(self):
+        entries = [
+            CheckEntry(6, 2025, "check", "1", "06/01/2025", "Open", "Accounts Payable", "Alpha", "foo", Decimal("1.00"), False),
+            CheckEntry(6, 2025, "check", "2", "06/02/2025", "Open", "Accounts Payable", "Beta", "bar", Decimal("2.00"), False),
+        ]
+
+        def fake_color(payee, description):
+            return {"Alpha": "#111111", "Beta": "#222222"}[payee]
+
+        with patch("check_register.quadtree.payee_color", side_effect=fake_color):
+            data = build_payee_quadtree_data(entries)
+        alpha_idx = data["payee"].index("Alpha")
+        beta_idx = data["payee"].index("Beta")
+        self.assertEqual(data["color"][alpha_idx], "#111111")
+        self.assertEqual(data["color"][beta_idx], "#222222")
+
+    def test_add_rectangles_uses_color_field(self):
+        from bokeh.models import ColumnDataSource
+        from bokeh.plotting import figure
+
+        source = ColumnDataSource({"cx": [0.5], "cy": [0.5], "w": [1.0], "h": [1.0], "color": ["#123456"]})
+        p = figure(width=100, height=100, x_range=(0, 1), y_range=(0, 1))
+        _add_rectangles(p, source)
+        glyph = p.renderers[-1].glyph
+        self.assertEqual(glyph.fill_color, "color")
 
 
 if __name__ == "__main__":
