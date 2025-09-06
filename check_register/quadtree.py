@@ -176,7 +176,8 @@ def make_quadtree_figure(data: Dict[str, List], title: str | None = None):
     source = ColumnDataSource(data)
     low = min(data["amount"]) if data["amount"] else 0
     high = max(data["amount"]) if data["amount"] else 1
-    color_map = linear_cmap("amount", Viridis256, low, high)
+    palette = Viridis256[64:]  # skip darker colors for readability
+    color_map = linear_cmap("amount", palette, low, high)
     return _build_quadtree_plot(source, color_map, title)
 
 
