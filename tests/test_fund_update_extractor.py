@@ -12,6 +12,7 @@ from fund_update.page_extractor import (
     find_fund_update_pages,
 )
 from fund_update_parser import main as fund_update_main
+from project_paths import ORIGINALS_DIR
 
 
 class FundUpdatePdfBuilder:
@@ -154,6 +155,26 @@ class TestFundUpdateExtractor(unittest.TestCase):
             with contextlib.redirect_stdout(io.StringIO()):
                 fund_update_main(argv)
             self.assertTrue(out_path.exists())
+
+    def test_may_2025_packet_pages(self):
+        src = ORIGINALS_DIR / "2025" / "Agenda Packet (rev. 5.7.2025).pdf"
+        self.assertTrue(src.exists(), f"Missing original PDF: {src}")
+
+        pages = find_fund_update_pages(src)
+        self.assertEqual(pages, [537, 538, 539, 540, 541, 542])
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            out = Path(tmpdir) / "fund-update.pdf"
+            extracted = extract_fund_update_pdf(src, out)
+            self.assertEqual(extracted, pages)
+
+            with pdfplumber.open(out) as pdf:
+                self.assertEqual(len(pdf.pages), len(pages))
+                first_text = (pdf.pages[0].extract_text() or "").lower()
+                self.assertIn("general fund budget quarterly update", first_text)
+                last_text = (pdf.pages[-1].extract_text() or "").lower()
+                self.assertIn("general fund", last_text)
+                self.assertIn("fund balance", last_text)
 
 
 if __name__ == "__main__":
