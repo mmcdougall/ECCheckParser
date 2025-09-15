@@ -123,6 +123,12 @@ class TestFundUpdateExtractor(unittest.TestCase):
             default_fund_update_pdf_name(pdf_path),
             Path("2025-09-25-general-fund-update.pdf"),
         )
+
+        pdf_path_without_period = Path("Agenda Packet (rev 9.25.2025).pdf")
+        self.assertEqual(
+            default_fund_update_pdf_name(pdf_path_without_period),
+            Path("2025-09-25-general-fund-update.pdf"),
+        )
         self.assertIsNone(default_fund_update_pdf_name(Path("packet.pdf")))
 
     def test_cli_default_directory(self):
