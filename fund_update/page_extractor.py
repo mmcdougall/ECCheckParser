@@ -11,7 +11,7 @@ _PAGE_COUNT_PATTERN = re.compile(
     r"Page\s+(?P<current>\d{1,2})\s+of\s+(?P<total>\d{1,2})", re.IGNORECASE
 )
 _DATE_PATTERN = re.compile(
-    r"\((?:rev\.\s*)?(?P<month>\d{1,2})\.(?P<day>\d{1,2})\.(?P<year>\d{4})\)",
+    r"\((?:rev\.?\s*)?(?P<month>\d{1,2})\.(?P<day>\d{1,2})\.(?P<year>\d{4})\)",
     re.IGNORECASE,
 )
 
