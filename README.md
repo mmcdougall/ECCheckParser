@@ -48,6 +48,21 @@ The parser requires `pdfplumber` for table extraction.  After running, the scrip
 prints the number of checks parsed and the total disbursed amount as a basic
 sanity check.
 
+## General Fund Budget Update extraction
+
+Agenda packets often include a "General Fund Budget Update" section. The
+`fund_update_parser.py` CLI extracts each page containing that heading into a
+standalone PDF. By default the script stores artifacts under
+`data/artifacts/fund_updates/` using the meeting date embedded in the packet
+filename:
+
+```bash
+python fund_update_parser.py "data/originals/2025/Agenda Packet (rev. 9.25.2025).pdf"
+```
+
+You can supply `--out` to override the destination path or `--artifact-dir` to
+redirect the default directory.
+
 ## Tests
 
 Regression and unit tests reside in the `tests/` directory.  Run them with:
