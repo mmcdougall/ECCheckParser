@@ -34,7 +34,7 @@ class CheckRegisterParser:
     # Match the single line that contains both From/To dates.
     # Example: "From Payment Date: 6/1/2025 - To Payment Date: 6/30/2025"
     _block_hdr = re.compile(
-        r"^From Payment Date:\s*(\d{1,2})/(\d{1,2})/(\d{4})\s*-\s*To Payment Date:\s*(\d{1,2})/(\d{1,2})/(\d{4})$",
+        r"^From Payment Date:?\s*(\d{1,2})/(\d{1,2})/(\d{4})\s*-\s*To Payment Date:?\s*(\d{1,2})/(\d{1,2})/(\d{4})$",
         re.IGNORECASE
     )
 
@@ -54,7 +54,7 @@ class CheckRegisterParser:
     _void_marker = re.compile(r"\bVOID(?:ED|ED/REISSUED)?\b", re.IGNORECASE)
 
     # Amount is last token (with optional minus) like $12,345.67
-    _amount_tail = re.compile(r"\$-?\d{1,3}(?:,\d{3})*(?:\.\d{2})?$")
+    _amount_tail = re.compile(r"\$-?\d[\d,]*(?:\.\d{2}|\d{2})$")
 
     # Obvious non-data lines to skip
     _skip_line = re.compile(
@@ -73,7 +73,9 @@ class CheckRegisterParser:
         s = s.strip().replace("$", "").replace(",", "")
         if s == "":
             return Decimal("0.00")
-        return Decimal(s)
+        if "." in s or len(s) <= 2:
+            return Decimal(s)
+        return Decimal(s) / Decimal(100)
 
     @staticmethod
     def _split_payee_desc_block(block: str) -> Tuple[str, str]:
