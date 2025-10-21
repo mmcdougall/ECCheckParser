@@ -49,3 +49,22 @@ class TestPageExtractor(unittest.TestCase):
             with pdfplumber.open(out) as pdf:
                 self.assertEqual(len(pdf.pages), 7)
 
+    def test_extract_range_october_payment_register(self):
+        src = ORIGINALS_DIR / '2025' / 'Agenda Packet (rev. 10.21.2025).pdf'
+        self.assertTrue(src.exists(), f"Missing original PDF: {src}")
+        with tempfile.TemporaryDirectory() as tmpdir:
+            out = Path(tmpdir) / 'register.pdf'
+            start, end = extract_check_register_pdf(src, out)
+            self.assertEqual((start, end), (46, 52))
+            with pdfplumber.open(out) as pdf:
+                self.assertEqual(len(pdf.pages), 7)
+                first_text = pdf.pages[0].extract_text() or ''
+                lines = [ln.strip() for ln in first_text.splitlines()]
+                self.assertTrue(
+                    any(
+                        'PAYMENT REGISTER' in ln.upper() or CheckRegisterParser._block_hdr.match(ln)
+                        for ln in lines
+                    ),
+                    'start page should contain payment register header',
+                )
+
