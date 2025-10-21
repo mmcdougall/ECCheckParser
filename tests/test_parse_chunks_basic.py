@@ -75,6 +75,32 @@ class TestParseChunksBasic(unittest.TestCase):
         self.assertEqual(entry.payee, 'PERS')
         self.assertEqual(entry.description, 'PE1%')
 
+    def test_amount_without_decimal_separator(self):
+        parser = CheckRegisterParser(Path('dummy'))
+        line_words = [
+            [
+                PositionedWord(text='1002', x0=7.8),
+                PositionedWord(text='09/04/2025', x0=52.0),
+                PositionedWord(text='Open', x0=85.0),
+                PositionedWord(text='Accounts', x0=214.2),
+                PositionedWord(text='Payable', x0=238.2),
+                PositionedWord(text='SAMPLE', x0=287.6),
+                PositionedWord(text='PAYEE', x0=310.0),
+                PositionedWord(text='Service', x0=444.2),
+                PositionedWord(text='fee', x0=460.3),
+                PositionedWord(text='$1,44000', x0=728.8),
+            ]
+        ]
+        chunk = RowChunk(
+            section_month=9,
+            section_year=2025,
+            ap_type='check',
+            lines=['1002 09/04/2025 Open Accounts Payable SAMPLE PAYEE Service fee $1,44000'],
+            line_words=line_words,
+        )
+        entry = parser.parse_chunks([chunk])[0]
+        self.assertEqual(entry.amount, Decimal('1440.00'))
+
 
 if __name__ == '__main__':
     unittest.main()

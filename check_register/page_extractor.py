@@ -34,10 +34,12 @@ def find_check_register_page_range(pdf_path: Path) -> Tuple[int, int]:
                     continue
                 if CheckRegisterParser._block_hdr.match(line):
                     has_block = True
+                upper = line.upper()
                 if (
                     CheckRegisterParser._checks_hdr.match(line)
                     or CheckRegisterParser._efts_hdr.match(line)
-                    or "CHECK REGISTER" in line.upper()
+                    or "CHECK REGISTER" in upper
+                    or "PAYMENT REGISTER" in upper
                 ):
                     has_section_hdr = True
                     page_has_data = True
