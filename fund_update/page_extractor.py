@@ -11,7 +11,7 @@ _PAGE_COUNT_PATTERN = re.compile(
     r"Page\s+(?P<current>\d{1,2})\s+of\s+(?P<total>\d{1,2})", re.IGNORECASE
 )
 _DATE_PATTERN = re.compile(
-    r"\((?:rev\.?\s*)?(?P<month>\d{1,2})\.(?P<day>\d{1,2})\.(?P<year>\d{4})\)",
+    r"\((?:rev\.?\s*)?(?P<month>\d{1,2})\.(?P<day>\d{1,2})\.(?P<year>\d{2,4})\)",
     re.IGNORECASE,
 )
 
@@ -105,5 +105,8 @@ def default_fund_update_pdf_name(pdf_path: Path) -> Path | None:
         return None
     month = int(match.group("month"))
     day = int(match.group("day"))
-    year = int(match.group("year"))
+    year_text = match.group("year")
+    year = int(year_text)
+    if len(year_text) == 2:
+        year += 2000
     return Path(f"{year:04d}-{month:02d}-{day:02d}-general-fund-update.pdf")
