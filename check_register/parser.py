@@ -53,8 +53,8 @@ class CheckRegisterParser:
     # Lines containing a VOID marker anywhere
     _void_marker = re.compile(r"\bVOID(?:ED|ED/REISSUED)?\b", re.IGNORECASE)
 
-    # Amount is last token (with optional minus) like $12,345.67
-    _amount_tail = re.compile(r"\$-?\d[\d,]*(?:\.\d{2}|\d{2})$")
+    # Amount is last token (with optional minus) like $12,345.67 or 12,345.67
+    _amount_tail = re.compile(r"\$?-?\d[\d,]*(?:\.\d{2}|\d{2})$")
 
     # Obvious non-data lines to skip
     _skip_line = re.compile(
@@ -291,6 +291,5 @@ class CheckRegisterParser:
     def extract(self) -> List[CheckEntry]:
         chunks = self.extract_raw_chunks()
         return self.parse_chunks(chunks)
-
 
 
