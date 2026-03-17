@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import patch
 
 from check_register.models import CheckEntry
-from check_register_parser import main
+from check_register_parser import ParsedSection, main
 
 
 class TestPayeesCli(unittest.TestCase):
@@ -22,11 +22,9 @@ class TestPayeesCli(unittest.TestCase):
         entries = self._entries()
         with tempfile.TemporaryDirectory() as td:
             argv = ["check_register_parser.py", "in.pdf", "--payees"]
-            with patch("check_register_parser.CheckRegisterParser") as MockParser, \
+            sections = [ParsedSection(page_range=(1, 1), chunks=[], entries=entries)]
+            with patch("check_register_parser.parse_sections", return_value=sections), \
                  patch("sys.argv", argv):
-                inst = MockParser.return_value
-                inst.extract_raw_chunks.return_value = []
-                inst.parse_chunks.return_value = entries
                 cwd = os.getcwd()
                 os.chdir(td)
                 try:
@@ -50,11 +48,9 @@ class TestPayeesCli(unittest.TestCase):
             existing = Path(td, "existing.txt")
             existing.write_text("Alpha\n", encoding="utf-8")
             argv = ["check_register_parser.py", "in.pdf", "--payees", str(existing)]
-            with patch("check_register_parser.CheckRegisterParser") as MockParser, \
+            sections = [ParsedSection(page_range=(1, 1), chunks=[], entries=entries)]
+            with patch("check_register_parser.parse_sections", return_value=sections), \
                  patch("sys.argv", argv):
-                inst = MockParser.return_value
-                inst.extract_raw_chunks.return_value = []
-                inst.parse_chunks.return_value = entries
                 cwd = os.getcwd()
                 os.chdir(td)
                 try:

@@ -19,8 +19,9 @@ from check_register import (
 )
 from check_register.quadtree import write_payee_quadtree_html
 from check_register.page_extractor import (
-    extract_check_register_pdf,
+    extract_check_register_pdf_range,
     default_pdf_name,
+    find_check_register_page_ranges,
     register_name_prefix,
 )
 from check_register.payees import merge_payees, write_payees, payee_summary
@@ -34,6 +35,13 @@ class OutputPaths:
     chunks_json: Path | None = None
     pdf: Path | None = None
     payees_txt: Path | None = None
+
+
+@dataclass
+class ParsedSection:
+    page_range: tuple[int, int]
+    chunks: list
+    entries: list
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -81,6 +89,45 @@ def derive_output_paths(args: argparse.Namespace, entries: list) -> OutputPaths:
             print("No check register entries found; PDF not created")
             raise SystemExit(1)
     return OutputPaths(csv, json, html, chunks_json, pdf, payees_txt)
+
+
+def derive_output_path_sets(
+    args: argparse.Namespace, entry_groups: list[list],
+) -> list[OutputPaths]:
+    if len(entry_groups) <= 1:
+        return [derive_output_paths(args, entry_groups[0] if entry_groups else [])]
+
+    explicit_paths = (
+        args.csv, args.json, args.html, args.chunks_json, args.pdf_out, args.payees,
+    )
+    if any(opt not in (None, True) for opt in explicit_paths):
+        print(
+            "Packet contains multiple disjoint check register sections; "
+            "explicit output paths are not supported",
+        )
+        raise SystemExit(1)
+
+    prefixes = [register_name_prefix(entries) for entries in entry_groups]
+    if len(prefixes) != len(set(prefixes)):
+        print(
+            "Packet contains multiple disjoint check register sections with "
+            "overlapping default output names",
+        )
+        raise SystemExit(1)
+
+    return [derive_output_paths(args, entries) for entries in entry_groups]
+
+
+def parse_sections(
+    pdf_path: Path, *, keep_voided: bool,
+) -> list[ParsedSection]:
+    parser = CheckRegisterParser(pdf_path, keep_voided=keep_voided)
+    sections: list[ParsedSection] = []
+    for page_range in find_check_register_page_ranges(pdf_path):
+        chunks = parser.extract_raw_chunks(page_range=page_range)
+        entries = parser.parse_chunks(chunks)
+        sections.append(ParsedSection(page_range=page_range, chunks=chunks, entries=entries))
+    return sections
 
 
 def write_outputs(entries: list, paths: OutputPaths, drop: int) -> None:
@@ -141,42 +188,49 @@ def main(argv: list[str] | None = None) -> None:
         or args.payees is not None
     )
 
-    chunks = entries = None
+    sections: list[ParsedSection] = []
     if need_entries or need_chunks:
-        parser = CheckRegisterParser(args.pdf, keep_voided=not args.drop_voided)
         try:
-            chunks = parser.extract_raw_chunks()
+            sections = parse_sections(args.pdf, keep_voided=not args.drop_voided)
         except FileNotFoundError as exc:
             print(exc)
             sys.exit(1)
-        if need_entries:
-            entries = parser.parse_chunks(chunks)
+        except ValueError:
+            sections = []
 
-    paths = derive_output_paths(args, entries or [])
+    path_sets = derive_output_path_sets(
+        args, [section.entries for section in sections],
+    )
 
-    if entries:
-        write_outputs(entries, paths, args.drop)
-        if paths.csv or paths.json or paths.html or args.print_rollups or args.totals:
-            print_stats(entries, paths, rollups=args.print_rollups, totals=args.totals)
-    if paths.payees_txt and entries is not None:
-        payees, info = merge_payees(entries, paths.payees_txt)
-        write_payees(payees, paths.payees_txt)
-        lines = payee_summary(
-            entries, paths.payees_txt, info, default=args.payees is True
-        )
-        for line in lines:
-            print(line)
+    for idx, (section, paths) in enumerate(zip(sections, path_sets)):
+        if len(sections) > 1:
+            if idx:
+                print()
+            print(f"Section: {register_name_prefix(section.entries)}")
 
-    if need_chunks and chunks is not None and paths.chunks_json:
-        write_chunks(chunks, paths.chunks_json)
+        if section.entries:
+            write_outputs(section.entries, paths, args.drop)
+            if paths.csv or paths.json or paths.html or args.print_rollups or args.totals:
+                print_stats(
+                    section.entries, paths, rollups=args.print_rollups, totals=args.totals,
+                )
+        if paths.payees_txt:
+            payees, info = merge_payees(section.entries, paths.payees_txt)
+            write_payees(payees, paths.payees_txt)
+            lines = payee_summary(
+                section.entries, paths.payees_txt, info, default=args.payees is True,
+            )
+            for line in lines:
+                print(line)
 
-    if paths.pdf:
-        try:
-            start, end = extract_check_register_pdf(args.pdf, paths.pdf)
-        except (ValueError, FileNotFoundError) as exc:
-            print(f"PDF extraction failed: {exc}")
-            sys.exit(1)
-        print(f"PDF: {paths.pdf} (pages {start}-{end})")
+        if need_chunks and paths.chunks_json:
+            write_chunks(section.chunks, paths.chunks_json)
+
+        if paths.pdf:
+            start, end = extract_check_register_pdf_range(
+                args.pdf, paths.pdf, *section.page_range,
+            )
+            print(f"PDF: {paths.pdf} (pages {start}-{end})")
 
 
 if __name__ == "__main__":

@@ -38,11 +38,24 @@ run_parser() {
 
 move_artifacts() {
   local tmpdir="$1"
-  local prefix="$2"
-  mv "$tmpdir/${prefix}-register.pdf" "$pdf_dir/"
-  mv "$tmpdir/${prefix}.csv" "$csv_dir/"
-  mv "$tmpdir/${prefix}-chunks.json" "$chunk_dir/"
-  mv "$tmpdir/${prefix}-payees.html" "$html_dir/"
+  local found=0
+
+  while IFS= read -r -d '' csv_path; do
+    found=1
+    local filename
+    local prefix
+    filename="$(basename "$csv_path")"
+    prefix="${filename%.csv}"
+    mv "$tmpdir/${prefix}-register.pdf" "$pdf_dir/"
+    mv "$csv_path" "$csv_dir/"
+    mv "$tmpdir/${prefix}-chunks.json" "$chunk_dir/"
+    mv "$tmpdir/${prefix}-payees.html" "$html_dir/"
+    printf 'Archive updated: %s/%s-register.pdf\n' "$pdf_dir" "$prefix"
+  done < <(find "$tmpdir" -maxdepth 1 -type f -name '*.csv' -print0)
+
+  if [[ "$found" -eq 0 ]]; then
+    return 1
+  fi
 }
 
 extract_fund_update() {
@@ -97,11 +110,7 @@ process_packet() {
   tmpdir=$(mktemp -d)
 
   if run_parser "$packet_pdf" "$tmpdir"; then
-    local prefix
-    prefix=$(cd "$tmpdir" && ls *.csv)
-    prefix="${prefix%.csv}"
-    move_artifacts "$tmpdir" "$prefix"
-    printf 'Archive updated: %s/%s-register.pdf\n' "$pdf_dir" "$prefix"
+    move_artifacts "$tmpdir"
   else
     echo "No register found; skipping"
   fi

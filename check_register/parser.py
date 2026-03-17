@@ -182,7 +182,9 @@ class CheckRegisterParser:
         return chunks
 
     # ---------- raw extraction ----------
-    def extract_raw_chunks(self) -> List[RowChunk]:
+    def extract_raw_chunks(
+        self, page_range: Tuple[int, int] | None = None,
+    ) -> List[RowChunk]:
         chunks: List[RowChunk] = []
         state = _ExtractState()
         if not self.pdf_path.is_file():
@@ -190,7 +192,11 @@ class CheckRegisterParser:
 
         logging.getLogger("pdfminer").setLevel(logging.ERROR)
         with pdfplumber.open(self.pdf_path) as pdf:
-            for page in pdf.pages:
+            pages = pdf.pages
+            if page_range is not None:
+                start_page, end_page = page_range
+                pages = pages[start_page - 1:end_page]
+            for page in pages:
                 lines = (page.extract_text() or "").splitlines()
                 word_lines = self._words_by_line(page)
                 for idx, raw in enumerate(lines):
@@ -288,8 +294,7 @@ class CheckRegisterParser:
         return entries
 
     # ---------- main extraction ----------
-    def extract(self) -> List[CheckEntry]:
-        chunks = self.extract_raw_chunks()
+    def extract(self, page_range: Tuple[int, int] | None = None) -> List[CheckEntry]:
+        chunks = self.extract_raw_chunks(page_range=page_range)
         return self.parse_chunks(chunks)
-
 

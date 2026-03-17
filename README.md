@@ -42,7 +42,10 @@ prefix so files sort chronologically:
 - `--json`: `YYYY-MM.json`
 - `--html`: `YYYY-MM-payees.html`
 - `--chunks-json`: `YYYY-MM-chunks.json`
-- `--pdf`: `YYYY-MM-register.pdf` (multi-month registers emit `YYYY-MM-MM-register.pdf`)
+- `--pdf`: `YYYY-MM-register.pdf` (contiguous multi-month registers emit `YYYY-MM-MM-register.pdf`)
+
+Packets with disjoint register sections emit one output set per section instead
+of combining separated agenda attachments into a single file range.
 
 The parser requires `pdfplumber` for table extraction.  After running, the script
 prints the number of checks parsed and the total disbursed amount as a basic
