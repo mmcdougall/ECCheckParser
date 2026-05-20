@@ -81,6 +81,45 @@ class SplitPayeeDescByXTests(unittest.TestCase):
         self.assertEqual(payee, "BERTRAND, FOX, ELLIOT, OSMAN & WENZEL LLP")
         self.assertEqual(desc, "PERSONNEL MATTER 02/03/25 - 02/28/25")
 
+    def test_bare_amount_token_is_not_description(self):
+        line_words = [[
+            PositionedWord(text="96236", x0=32.2),
+            PositionedWord(text="04/30/2026", x0=89.8),
+            PositionedWord(text="Open", x0=151.4),
+            PositionedWord(text="Accounts", x0=376.2),
+            PositionedWord(text="Payable", x0=410.6),
+            PositionedWord(text="LEXIPOL", x0=468.2),
+            PositionedWord(text="LLC", x0=503.6),
+            PositionedWord(text="SHIELD", x0=762.0),
+            PositionedWord(text="SUITES", x0=795.8),
+            PositionedWord(text="SUBSCRIPTION", x0=828.8),
+            PositionedWord(text="7,235.26", x0=1188.6),
+        ]]
+        payee, desc = split_payee_desc_by_x(line_words)
+        self.assertEqual(payee, "LEXIPOL LLC")
+        self.assertEqual(desc, "SHIELD SUITES SUBSCRIPTION")
+
+    def test_split_dollar_amount_token_is_not_description(self):
+        line_words = [[
+            PositionedWord(text="95182", x0=32.2),
+            PositionedWord(text="01/08/2026", x0=89.8),
+            PositionedWord(text="Open", x0=151.4),
+            PositionedWord(text="Accounts", x0=376.2),
+            PositionedWord(text="Payable", x0=410.6),
+            PositionedWord(text="4LEAF,", x0=468.2),
+            PositionedWord(text="INC.", x0=503.6),
+            PositionedWord(text="PROFESSIONAL", x0=762.0),
+            PositionedWord(text="SERVICES", x0=832.0),
+            PositionedWord(text="STAFFING", x0=884.0),
+            PositionedWord(text="SEP", x0=933.0),
+            PositionedWord(text="2025", x0=957.0),
+            PositionedWord(text="$", x0=1177.0),
+            PositionedWord(text="44,013.73", x0=1188.6),
+        ]]
+        payee, desc = split_payee_desc_by_x(line_words)
+        self.assertEqual(payee, "4LEAF, INC.")
+        self.assertEqual(desc, "PROFESSIONAL SERVICES STAFFING SEP 2025")
+
 
 if __name__ == "__main__":
     unittest.main()

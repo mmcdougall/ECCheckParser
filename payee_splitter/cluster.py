@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 else:  # pragma: no cover - imported lazily for runtime use
     from check_register.models import PositionedWord
 
-_AMOUNT_RE = re.compile(r"\$-?\d{1,3}(?:,\d{3})*(?:\.\d{2})?")
+_AMOUNT_RE = re.compile(r"\$?-?\d{1,3}(?:,\d{3})*(?:\.\d{2})?")
 
 
 def _squeeze_letters(tokens: List[PositionedWord]) -> List[PositionedWord]:
@@ -97,6 +97,8 @@ def _drop_trailing_amount(tokens: List[PositionedWord]) -> List[PositionedWord]:
 
     if tokens and _AMOUNT_RE.fullmatch(tokens[-1].text):
         tokens = tokens[:-1]
+        if tokens and tokens[-1].text == "$":
+            tokens = tokens[:-1]
     return tokens
 
 
