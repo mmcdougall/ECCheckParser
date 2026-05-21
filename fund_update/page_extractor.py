@@ -31,6 +31,49 @@ def _anchor_page_count(text: str) -> int | None:
     return int(match.group("total"))
 
 
+def _is_preface_page(text: str) -> bool:
+    lowered = text.lower()
+    if "general fund" not in lowered or "update" not in lowered:
+        return False
+    return "agenda bill" in lowered or "agenda item" in lowered
+
+
+def _fund_update_pages(
+    normalized_pages: List[str],
+    anchor_index: int,
+    anchor_total: int,
+    total_pages: int,
+) -> List[int]:
+    pages = set(range(anchor_index, min(anchor_index + anchor_total, total_pages + 1)))
+    previous = anchor_index - 1
+    while previous >= 1:
+        if not _is_preface_page(normalized_pages[previous - 1]):
+            break
+        pages.add(previous)
+        previous -= 1
+    return sorted(pages)
+
+
+def _validate_fund_update_pages(
+    pages: List[int],
+    normalized_pages: List[str],
+    anchor_index: int,
+    anchor_total: int,
+) -> None:
+    if pages != list(range(pages[0], pages[-1] + 1)):
+        raise ValueError("General Fund Budget Update pages are not contiguous")
+    if pages[0] == anchor_index:
+        raise ValueError("General Fund Budget Update agenda bill pages not found")
+
+    preface_pages = pages[: pages.index(anchor_index)]
+    if not all(_is_preface_page(normalized_pages[page - 1]) for page in preface_pages):
+        raise ValueError("General Fund Budget Update preface pages failed validation")
+
+    report_pages = pages[pages.index(anchor_index):]
+    if len(report_pages) != anchor_total:
+        raise ValueError("General Fund Budget Update page count mismatch")
+
+
 def find_fund_update_pages(pdf_path: Path) -> List[int]:
     """Return the 1-indexed pages containing the General Fund Budget Update."""
 
@@ -39,8 +82,6 @@ def find_fund_update_pages(pdf_path: Path) -> List[int]:
 
     doc = pdfium.PdfDocument(str(pdf_path))
     normalized_pages: List[str] = []
-    anchor_index: int | None = None
-    anchor_total: int | None = None
 
     try:
         total_pages = len(doc)
@@ -52,37 +93,25 @@ def find_fund_update_pages(pdf_path: Path) -> List[int]:
             text_page.close()
             page.close()
 
-            if anchor_index is None:
-                count = _anchor_page_count(normalized)
-                if count is not None:
-                    anchor_index = page_number + 1
-                    anchor_total = count
-                    break
-
-        if anchor_index is not None and anchor_total is not None:
-            pages = set(range(anchor_index, min(anchor_index + anchor_total, total_pages + 1)))
-            previous = anchor_index - 1
-            while previous >= 1:
-                prev_text = normalized_pages[previous - 1].lower()
-                if "general fund" not in prev_text or "update" not in prev_text:
-                    break
-                pages.add(previous)
-                previous -= 1
-            return sorted(pages)
-
-        for page_number in range(len(normalized_pages), total_pages):
-            page = doc.get_page(page_number)
-            text_page = page.get_textpage()
-            normalized_pages.append(_normalize(text_page.get_text_range() or ""))
-            text_page.close()
-            page.close()
+            count = _anchor_page_count(normalized)
+            if count is not None:
+                pages = _fund_update_pages(
+                    normalized_pages,
+                    page_number + 1,
+                    count,
+                    total_pages,
+                )
+                _validate_fund_update_pages(
+                    pages,
+                    normalized_pages,
+                    page_number + 1,
+                    count,
+                )
+                return pages
     finally:
         doc.close()
 
-    matches = [index + 1 for index, text in enumerate(normalized_pages) if _FUND_UPDATE_PATTERN.search(text)]
-    if not matches:
-        raise ValueError("General Fund Budget Update pages not found")
-    return matches
+    raise ValueError("General Fund Budget Update pages not found")
 
 
 def extract_fund_update_pdf(pdf_path: Path, out_path: Path) -> List[int]:

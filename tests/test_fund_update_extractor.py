@@ -93,22 +93,72 @@ class TestFundUpdateExtractor(unittest.TestCase):
                 pdf_path,
                 [
                     "City Council Meeting",
-                    "General Fund Budget Update\nQ1 Results",
-                    "General fund\nBudget update details",  # mixed case and spacing
+                    "AGENDA BILL\nSubject: General Fund Budget Update",
+                    "Page 1 of 2\nGeneral Fund Budget Update\nQ1 Results",
+                    "Page 2 of 2\nGeneral fund\nBudget update details",  # mixed case and spacing
                     "Other agenda item",
                 ],
             )
             pages = find_fund_update_pages(pdf_path)
-            self.assertEqual(pages, [2, 3])
+            self.assertEqual(pages, [2, 3, 4])
 
             out_path = tmp / "fund-update.pdf"
             extracted = extract_fund_update_pdf(pdf_path, out_path)
-            self.assertEqual(extracted, [2, 3])
+            self.assertEqual(extracted, [2, 3, 4])
 
             with pdfplumber.open(out_path) as pdf:
-                self.assertEqual(len(pdf.pages), 2)
+                self.assertEqual(len(pdf.pages), 3)
                 texts = [page.extract_text().strip() for page in pdf.pages]
-                self.assertIn("General Fund Budget Update", texts[0])
+                self.assertIn("AGENDA BILL", texts[0])
+                self.assertIn("General Fund Budget Update", texts[1])
+
+    def test_includes_adjacent_agenda_item_preface(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            pdf_path = tmp / "Agenda Packet (rev. 9.25.2025).pdf"
+            build_pdf(
+                pdf_path,
+                [
+                    "City Council Meeting",
+                    "AGENDA BILL\nSubject: FY 2025-26 General Fund Budget Update",
+                    "Agenda Item No. 9.A.\nGeneral Fund Third Quarter Update",
+                    "Page 1 of 2\nGeneral Fund Budget Update\nQ1 Results",
+                    "Page 2 of 2\nFund balance details",
+                    "Other agenda item",
+                ],
+            )
+            pages = find_fund_update_pages(pdf_path)
+            self.assertEqual(pages, [2, 3, 4, 5])
+
+    def test_ignores_loose_agenda_mentions_without_report_anchor(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            pdf_path = tmp / "Agenda Packet (rev. 9.25.2025).pdf"
+            build_pdf(
+                pdf_path,
+                [
+                    "City Council Meeting",
+                    "FY 2025-26 Third Quarter General Fund Budget Update\nAction Proposed: receive and file",
+                    "General Fund Balance\nThird Quarter General Fund Budget Update mentioned in presentation notes",
+                ],
+            )
+            with self.assertRaises(ValueError):
+                find_fund_update_pages(pdf_path)
+
+    def test_rejects_report_without_agenda_bill_preface(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            pdf_path = tmp / "Agenda Packet (rev. 9.25.2025).pdf"
+            build_pdf(
+                pdf_path,
+                [
+                    "City Council Meeting",
+                    "Page 1 of 2\nGeneral Fund Budget Update\nQ1 Results",
+                    "Page 2 of 2\nFund balance details",
+                ],
+            )
+            with self.assertRaises(ValueError):
+                find_fund_update_pages(pdf_path)
 
     def test_no_update_pages(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -135,7 +185,13 @@ class TestFundUpdateExtractor(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp = Path(tmpdir)
             pdf_path = tmp / "Agenda Packet (rev. 9.25.2025).pdf"
-            build_pdf(pdf_path, ["General Fund Budget Update"])
+            build_pdf(
+                pdf_path,
+                [
+                    "AGENDA BILL\nSubject: General Fund Budget Update",
+                    "Page 1 of 1\nGeneral Fund Budget Update",
+                ],
+            )
             artifact_dir = tmp / "artifacts"
             argv = [
                 str(pdf_path),
@@ -151,7 +207,13 @@ class TestFundUpdateExtractor(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp = Path(tmpdir)
             pdf_path = tmp / "packet.pdf"
-            build_pdf(pdf_path, ["General Fund Budget Update"])
+            build_pdf(
+                pdf_path,
+                [
+                    "AGENDA BILL\nSubject: General Fund Budget Update",
+                    "Page 1 of 1\nGeneral Fund Budget Update",
+                ],
+            )
             out_path = tmp / "update.pdf"
             argv = [
                 str(pdf_path),
