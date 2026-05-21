@@ -51,6 +51,19 @@ The parser requires `pdfplumber` for table extraction.  After running, the scrip
 prints the number of checks parsed and the total disbursed amount as a basic
 sanity check.
 
+To audit generated artifacts for missing register months and quarterly General
+Fund updates:
+
+```bash
+python check_register_parser.py --audit-archive
+```
+
+The audit scans `data/artifacts/csv/` and `data/artifacts/fund_updates/` by
+default. It reports missing months between the earliest and latest covered
+register months, missing fiscal quarters between the earliest and latest covered
+General Fund update quarters, and exits nonzero when gaps or invalid artifacts
+are found.
+
 ## General Fund Budget Update extraction
 
 Agenda packets often include a "General Fund Budget Update" section. The
