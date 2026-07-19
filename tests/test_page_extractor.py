@@ -13,7 +13,7 @@ from check_register.parser import CheckRegisterParser
 
 class TestPageExtractor(unittest.TestCase):
     def test_extract_range_august(self):
-        src = ORIGINALS_DIR / '2025' / 'Agenda Packet (rev. 8.20.2025).pdf'
+        src = ORIGINALS_DIR / '2025' / 'agenda-packets' / '2025-08-19 Agenda Packet.pdf'
         self.assertTrue(src.exists(), f"Missing original PDF: {src}")
         with tempfile.TemporaryDirectory() as tmpdir:
             out = Path(tmpdir) / 'register.pdf'
@@ -40,7 +40,7 @@ class TestPageExtractor(unittest.TestCase):
                 extract_check_register_pdf(src, out)
 
     def test_extract_range_february(self):
-        src = ORIGINALS_DIR / '2025' / 'Agenda Packet (rev. 3.18.2025).pdf'
+        src = ORIGINALS_DIR / '2025' / 'agenda-packets' / '2025-03-18 Agenda Packet.pdf'
         self.assertTrue(src.exists(), f"Missing original PDF: {src}")
         with tempfile.TemporaryDirectory() as tmpdir:
             out = Path(tmpdir) / 'register.pdf'
@@ -50,7 +50,7 @@ class TestPageExtractor(unittest.TestCase):
                 self.assertEqual(len(pdf.pages), 7)
 
     def test_extract_range_october_payment_register(self):
-        src = ORIGINALS_DIR / '2025' / 'Agenda Packet (rev. 10.21.2025).pdf'
+        src = ORIGINALS_DIR / '2025' / 'agenda-packets' / '2025-10-21 Agenda Packet.pdf'
         self.assertTrue(src.exists(), f"Missing original PDF: {src}")
         with tempfile.TemporaryDirectory() as tmpdir:
             out = Path(tmpdir) / 'register.pdf'
@@ -67,4 +67,3 @@ class TestPageExtractor(unittest.TestCase):
                     ),
                     'start page should contain payment register header',
                 )
-

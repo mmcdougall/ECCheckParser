@@ -14,6 +14,10 @@ _DATE_PATTERN = re.compile(
     r"\((?:rev\.?\s*)?(?P<month>\d{1,2})\.(?P<day>\d{1,2})\.(?P<year>\d{2,4})\)",
     re.IGNORECASE,
 )
+_CANONICAL_DATE_PATTERN = re.compile(
+    r"^(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})(?:\s+\d{4})?\s+Agenda Packet",
+    re.IGNORECASE,
+)
 
 
 def _normalize(text: str) -> str:
@@ -129,7 +133,7 @@ def extract_fund_update_pdf(pdf_path: Path, out_path: Path) -> List[int]:
 def default_fund_update_pdf_name(pdf_path: Path) -> Path | None:
     """Return ``YYYY-MM-DD-general-fund-update.pdf`` derived from the packet name."""
 
-    match = _DATE_PATTERN.search(pdf_path.name)
+    match = _CANONICAL_DATE_PATTERN.search(pdf_path.name) or _DATE_PATTERN.search(pdf_path.name)
     if not match:
         return None
     month = int(match.group("month"))

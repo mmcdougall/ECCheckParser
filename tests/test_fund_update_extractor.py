@@ -168,6 +168,12 @@ class TestFundUpdateExtractor(unittest.TestCase):
                 find_fund_update_pages(pdf_path)
 
     def test_default_name(self):
+        canonical_path = Path("2025-09-16 Agenda Packet.pdf")
+        self.assertEqual(
+            default_fund_update_pdf_name(canonical_path),
+            Path("2025-09-16-general-fund-update.pdf"),
+        )
+
         pdf_path = Path("Agenda Packet (rev. 9.25.2025).pdf")
         self.assertEqual(
             default_fund_update_pdf_name(pdf_path),
@@ -225,7 +231,7 @@ class TestFundUpdateExtractor(unittest.TestCase):
             self.assertTrue(out_path.exists())
 
     def test_may_2025_packet_pages(self):
-        src = ORIGINALS_DIR / "2025" / "Agenda Packet (rev. 5.7.2025).pdf"
+        src = ORIGINALS_DIR / "2025" / "agenda-packets" / "2025-05-06 Agenda Packet.pdf"
         self.assertTrue(src.exists(), f"Missing original PDF: {src}")
 
         pages = find_fund_update_pages(src)
