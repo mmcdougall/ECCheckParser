@@ -28,6 +28,7 @@ Thumbs.db
 # Virtual environment
 codex-wheel-build/
 venv/
+.venv/
 
 # Python bytecode
 **/__pycache__/

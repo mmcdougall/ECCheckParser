@@ -1,22 +1,16 @@
 # AGENTS guidelines
 
-This repository houses an offline parser that extracts the City of El Cerrito's monthly check register from council agenda packet PDFs. The project ships sample data and pre-built wheels so it runs without network access, including in OpenAI's Codex environment.
+This repository houses a parser that extracts the City of El Cerrito's monthly check register from council agenda packet PDFs. The project includes source PDFs and generated artifacts used for regression testing.
 
-## Codex environment
+## Development environment
 
-- Python 3.11 is pinned via `.python-version`. If `pyenv` lacks it, run `pyenv install -s 3.11`.
-- Create a virtual environment with the offline wheels:
-
-```bash
-./scripts/codex_setup.sh  # uses python3.11 internally
-```
-
-  or manually:
+- Use Python 3.11 or newer. The `.python-version` file selects 3.11 as a local default, not as the only supported version.
+- Create a virtual environment and install the dependencies:
 
 ```bash
-python -m venv codex-wheel-build
-source codex-wheel-build/bin/activate
-pip install --no-index --find-links vendor/wheels-linux -r requirements.txt
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
 
 - Keep the working tree clean (`git status --short`) and make small, focused commits.
@@ -72,22 +66,23 @@ Regenerate artifacts in a separate pull request from the code changes; never com
 
 ## Data: originals and artifacts
 
-- `data/originals/` holds agenda packet PDFs downloaded from [www.elcerrito.gov](https://www.elcerrito.gov).
+- `data/originals/YYYY/agenda-packets/` holds canonical agenda packet PDFs downloaded from [www.elcerrito.gov](https://www.elcerrito.gov).
+- Prior packet and agenda versions live under `agenda-packet-revisions/` and `agenda-revisions/`; yearly `manifest.json` files retain source metadata.
 - `data/artifacts/` stores parser outputs such as chunk archives used in tests.
 - The number of data artifacts grows as new agenda packets are added; tests should
   reference specific files instead of iterating the entire directory.
 
-Note: originals may be reissued with revised filenames. For example,
-`Agenda Packet (8.19.2025).pdf` was replaced by
-`Agenda Packet (rev. 8.20.2025).pdf`. Ensure tests reference the current
-filenames and check that referenced files exist.
+Note: originals may be reissued. The CivicClerk archiver preserves superseded
+files in the revision directories and keeps only the latest downloaded version
+in the canonical directory. Ensure tests reference canonical files and check
+that referenced files exist.
 
 ## Running the parser
 
 To generate a CSV from the 2025 statements run:
 
 ```bash
- check_register_parser.py data/originals/2025/"Agenda Packet (rev. 8.20.2025).pdf" --csv out.csv
+python check_register_parser.py "data/originals/2025/agenda-packets/2025-08-19 Agenda Packet.pdf" --csv out.csv
 ```
 
-Each PDF should log `✔ reconciled`. The resulting CSV confirms the parser still works. Run the parser when modifying code to verify behavior offline.
+Each PDF should log `✔ reconciled`. The resulting CSV confirms the parser still works. Run the parser when modifying code that can affect extraction behavior.

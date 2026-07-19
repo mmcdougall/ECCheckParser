@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Generate register artifacts for all agenda packet PDFs under the originals
-# directory using the check_register_parser CLI. Artifacts are stored under
+# Generate register artifacts for canonical agenda packet PDFs under each
+# originals year directory. Artifacts are stored under
 # data/artifacts by default. Outputs include register PDFs, CSVs, chunk JSON,
 # payee quadtree HTML, and extracted General Fund Budget Update PDFs.
 
@@ -16,7 +16,7 @@ originals_dir="${1:-$repo_root/data/originals}"
 archive_dir="${2:-$repo_root/data/artifacts}"
 parser="$repo_root/check_register_parser.py"
 fund_update_parser="$repo_root/fund_update_parser.py"
-py_version="$(cat "$repo_root/.python-version")"
+python_bin="${PYTHON_BIN:-python}"
 
 prepare_dirs() {
   pdf_dir="$archive_dir/pdfs"
@@ -32,7 +32,7 @@ run_parser() {
   local tmpdir="$2"
   (
     cd "$tmpdir"
-    PYENV_VERSION="$py_version" "$parser" "$packet_pdf" --pdf --csv --chunks-json --html
+    "$python_bin" "$parser" "$packet_pdf" --pdf --csv --chunks-json --html
   )
 }
 
@@ -63,7 +63,7 @@ extract_fund_update() {
   local tmpdir="$2"
 
   local output
-  if output=$(PYENV_VERSION="$py_version" "$fund_update_parser" "$packet_pdf" --artifact-dir "$tmpdir" 2>&1); then
+  if output=$("$python_bin" "$fund_update_parser" "$packet_pdf" --artifact-dir "$tmpdir" 2>&1); then
     local -a fund_pdfs=()
     while IFS= read -r -d '' file; do
       fund_pdfs+=("$file")
@@ -127,7 +127,7 @@ main() {
   local packets=()
   while IFS= read -r -d '' packet; do
     packets+=("$packet")
-  done < <(find "$originals_dir" -name '*.pdf' -print0)
+  done < <(find "$originals_dir" -type f -path '*/agenda-packets/*.pdf' -print0)
   local total=${#packets[@]}
   local overall_start=$(date +%s)
 
