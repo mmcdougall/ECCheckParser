@@ -5,11 +5,17 @@ import unittest
 from pathlib import Path
 
 import pdfplumber
+import pypdfium2 as pdfium
+import pypdfium2.raw as pdfium_c
 
 from fund_update.page_extractor import (
+    QuarterlyReportKind,
     default_fund_update_pdf_name,
+    default_quarterly_report_pdf_name,
     extract_fund_update_pdf,
+    extract_quarterly_report_pdf,
     find_fund_update_pages,
+    find_quarterly_report,
 )
 from fund_update_parser import main as fund_update_main
 from project_paths import ORIGINALS_DIR
@@ -101,6 +107,9 @@ class TestFundUpdateExtractor(unittest.TestCase):
             )
             pages = find_fund_update_pages(pdf_path)
             self.assertEqual(pages, [2, 3, 4])
+            report = find_quarterly_report(pdf_path)
+            self.assertEqual(report.kind, QuarterlyReportKind.GENERAL_FUND_UPDATE)
+            self.assertEqual(report.pages, pages)
 
             out_path = tmp / "fund-update.pdf"
             extracted = extract_fund_update_pdf(pdf_path, out_path)
@@ -111,6 +120,58 @@ class TestFundUpdateExtractor(unittest.TestCase):
                 texts = [page.extract_text().strip() for page in pdf.pages]
                 self.assertIn("AGENDA BILL", texts[0])
                 self.assertIn("General Fund Budget Update", texts[1])
+
+    def test_find_and_extract_cash_investment_report(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            pdf_path = tmp / "2026-07-21 Agenda Packet.pdf"
+            build_pdf(
+                pdf_path,
+                [
+                    "AGENDA\nE. FY 2025-26 Fourth Quarter Cash and Investment Report",
+                    (
+                        "AGENDA BILL\nSubject: FY 2025-26 Fourth Quarter Cash and Investment Report\n"
+                        "Action Proposed: Receive the City's Third Quarter Cash and Investment Report"
+                    ),
+                    (
+                        "Agenda Item No. 6.E.\nFinancial Considerations\n"
+                        "The Quarterly Cash and Investment Report complies with City policy"
+                    ),
+                    (
+                        "Attachment 1\nQuarterly Cash and Investment Report\n"
+                        "for the Quarter Ending June 30, 2026\n"
+                        "Trustee/Broker\nTotal Cash and Investments $41,414,168.33"
+                    ),
+                    "Agenda Item No. 6.F.\nOther agenda item",
+                ],
+            )
+
+            report = find_quarterly_report(pdf_path)
+            self.assertEqual(report.kind, QuarterlyReportKind.CASH_INVESTMENT_REPORT)
+            self.assertEqual(report.pages, [2, 3, 4])
+
+            out_path = tmp / "cash-investment.pdf"
+            extracted = extract_quarterly_report_pdf(pdf_path, out_path, report)
+            self.assertEqual(extracted, report)
+
+            with pdfplumber.open(out_path) as pdf:
+                self.assertEqual(len(pdf.pages), 3)
+                texts = [page.extract_text() or "" for page in pdf.pages]
+                self.assertIn("AGENDA BILL", texts[0])
+                self.assertIn("Total Cash and Investments", texts[-1])
+
+    def test_ignores_cash_report_agenda_summary_without_agenda_bill(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            pdf_path = Path(tmpdir) / "packet.pdf"
+            build_pdf(
+                pdf_path,
+                [
+                    "AGENDA\nFY 2025-26 Fourth Quarter Cash and Investment Report",
+                    "Quarterly Cash and Investment Report presentation summary",
+                ],
+            )
+            with self.assertRaises(ValueError):
+                find_quarterly_report(pdf_path)
 
     def test_includes_adjacent_agenda_item_preface(self):
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -187,6 +248,14 @@ class TestFundUpdateExtractor(unittest.TestCase):
         )
         self.assertIsNone(default_fund_update_pdf_name(Path("packet.pdf")))
 
+        self.assertEqual(
+            default_quarterly_report_pdf_name(
+                Path("2026-07-21 Agenda Packet.pdf"),
+                QuarterlyReportKind.CASH_INVESTMENT_REPORT,
+            ),
+            Path("2026-07-21-cash-investment-report.pdf"),
+        )
+
     def test_cli_default_directory(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp = Path(tmpdir)
@@ -230,6 +299,32 @@ class TestFundUpdateExtractor(unittest.TestCase):
                 fund_update_main(argv)
             self.assertTrue(out_path.exists())
 
+    def test_cli_names_cash_investment_report(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            pdf_path = tmp / "2026-07-21 Agenda Packet.pdf"
+            build_pdf(
+                pdf_path,
+                [
+                    "AGENDA BILL\nSubject: Fourth Quarter Cash and Investment Report",
+                    (
+                        "Attachment 1\nQuarterly Cash and Investment Report\n"
+                        "for the Quarter Ending June 30, 2026\nTotal Cash and Investments"
+                    ),
+                ],
+            )
+            artifact_dir = tmp / "artifacts"
+            with contextlib.redirect_stdout(io.StringIO()):
+                fund_update_main([
+                    str(pdf_path),
+                    "--artifact-dir",
+                    str(artifact_dir),
+                ])
+
+            self.assertTrue(
+                (artifact_dir / "2026-07-21-cash-investment-report.pdf").exists()
+            )
+
     def test_may_2025_packet_pages(self):
         src = ORIGINALS_DIR / "2025" / "agenda-packets" / "2025-05-06 Agenda Packet.pdf"
         self.assertTrue(src.exists(), f"Missing original PDF: {src}")
@@ -249,6 +344,35 @@ class TestFundUpdateExtractor(unittest.TestCase):
                 last_text = (pdf.pages[-1].extract_text() or "").lower()
                 self.assertIn("general fund", last_text)
                 self.assertIn("fund balance", last_text)
+
+    def test_july_2026_cash_investment_packet_pages(self):
+        src = ORIGINALS_DIR / "2026" / "agenda-packets" / "2026-07-21 Agenda Packet.pdf"
+        self.assertTrue(src.exists(), f"Missing original PDF: {src}")
+
+        report = find_quarterly_report(src)
+        self.assertEqual(report.kind, QuarterlyReportKind.CASH_INVESTMENT_REPORT)
+        self.assertEqual(report.pages, [93, 94, 95])
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            out = Path(tmpdir) / "cash-investment-report.pdf"
+            extracted = extract_quarterly_report_pdf(src, out, report)
+            self.assertEqual(extracted, report)
+
+            with pdfplumber.open(out) as pdf:
+                self.assertEqual(len(pdf.pages), 3)
+                first_text = (pdf.pages[0].extract_text() or "").lower()
+                self.assertIn("fourth quarter cash and investment report", first_text)
+                last_text = (pdf.pages[-1].extract_text() or "").lower()
+                self.assertIn("total cash and investments", last_text)
+
+            extracted_pdf = pdfium.PdfDocument(str(out))
+            try:
+                for page_index in range(len(extracted_pdf)):
+                    page = extracted_pdf.get_page(page_index)
+                    self.assertEqual(pdfium_c.FPDFPage_GetAnnotCount(page), 0)
+                    page.close()
+            finally:
+                extracted_pdf.close()
 
 
 if __name__ == "__main__":

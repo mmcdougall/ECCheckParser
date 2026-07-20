@@ -4,7 +4,7 @@ set -euo pipefail
 # Generate register artifacts for canonical agenda packet PDFs under each
 # originals year directory. Artifacts are stored under
 # data/artifacts by default. Outputs include register PDFs, CSVs, chunk JSON,
-# payee quadtree HTML, and extracted General Fund Budget Update PDFs.
+# payee quadtree HTML, and extracted quarterly financial report PDFs.
 
 if [[ $# -gt 2 ]]; then
   echo "Usage: $0 [originals-dir] [archive-dir]" >&2
@@ -24,7 +24,10 @@ prepare_dirs() {
   chunk_dir="$archive_dir/chunks"
   html_dir="$archive_dir/html"
   fund_update_dir="$archive_dir/fund_updates"
-  mkdir -p "$pdf_dir" "$csv_dir" "$chunk_dir" "$html_dir" "$fund_update_dir"
+  cash_investment_dir="$archive_dir/cash_investments"
+  mkdir -p \
+    "$pdf_dir" "$csv_dir" "$chunk_dir" "$html_dir" \
+    "$fund_update_dir" "$cash_investment_dir"
 }
 
 run_parser() {
@@ -58,25 +61,30 @@ move_artifacts() {
   fi
 }
 
-extract_fund_update() {
+extract_quarterly_report() {
   local packet_pdf="$1"
   local tmpdir="$2"
 
   local output
   if output=$("$python_bin" "$fund_update_parser" "$packet_pdf" --artifact-dir "$tmpdir" 2>&1); then
-    local -a fund_pdfs=()
+    local -a report_pdfs=()
     while IFS= read -r -d '' file; do
-      fund_pdfs+=("$file")
+      report_pdfs+=("$file")
     done < <(find "$tmpdir" -maxdepth 1 -type f -name '*.pdf' -print0)
 
-    if [[ ${#fund_pdfs[@]} -eq 0 ]]; then
-      printf 'Fund update extraction succeeded but no PDF found for %s\n' "$(basename "$packet_pdf")" >&2
+    if [[ ${#report_pdfs[@]} -eq 0 ]]; then
+      printf 'Quarterly report extraction succeeded but no PDF found for %s\n' "$(basename "$packet_pdf")" >&2
       return 1
     fi
 
-    local source_path="${fund_pdfs[0]}"
-    local filename="$(basename "$source_path")"
-    local destination="$fund_update_dir/$filename"
+    local source_path="${report_pdfs[0]}"
+    local filename
+    filename="$(basename "$source_path")"
+    local destination_dir="$fund_update_dir"
+    if [[ "$filename" == *-cash-investment-report.pdf ]]; then
+      destination_dir="$cash_investment_dir"
+    fi
+    local destination="$destination_dir/$filename"
     mv "$source_path" "$destination"
 
     local pages=""
@@ -84,14 +92,14 @@ extract_fund_update() {
       pages="${BASH_REMATCH[1]}"
     fi
     if [[ -n "$pages" ]]; then
-      printf 'Fund update archived: %s (pages %s)\n' "$destination" "$pages"
+      printf 'Quarterly report archived: %s (pages %s)\n' "$destination" "$pages"
     else
-      printf 'Fund update archived: %s\n' "$destination"
+      printf 'Quarterly report archived: %s\n' "$destination"
     fi
   else
     local status=$?
-    if [[ "$output" == *"No General Fund Budget Update pages found"* ]]; then
-      printf 'Fund update not found; skipping %s\n' "$(basename "$packet_pdf")"
+    if [[ "$output" == *"No quarterly financial report pages found"* ]]; then
+      printf 'Quarterly report not found; skipping %s\n' "$(basename "$packet_pdf")"
       return 0
     fi
     printf '%s\n' "$output" >&2
@@ -115,7 +123,7 @@ process_packet() {
     echo "No register found; skipping"
   fi
 
-  extract_fund_update "$packet_pdf" "$tmpdir"
+  extract_quarterly_report "$packet_pdf" "$tmpdir"
 
   rm -rf "$tmpdir"
   local elapsed=$(( $(date +%s) - start ))

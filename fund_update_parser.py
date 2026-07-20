@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""CLI for extracting General Fund Budget Update pages from agenda packets."""
+"""CLI for extracting quarterly financial reports from agenda packets."""
 
 from __future__ import annotations
 
@@ -8,35 +8,45 @@ from pathlib import Path
 from typing import Iterable
 
 from fund_update.page_extractor import (
-    default_fund_update_pdf_name,
-    extract_fund_update_pdf,
+    QuarterlyReport,
+    QuarterlyReportKind,
+    default_quarterly_report_pdf_name,
+    extract_quarterly_report_pdf,
+    find_quarterly_report,
 )
-from project_paths import ARTIFACT_FUND_UPDATES_DIR
+from project_paths import ARTIFACT_CASH_INVESTMENTS_DIR, ARTIFACT_FUND_UPDATES_DIR
 
 
 def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     ap = argparse.ArgumentParser(
-        description="Extract General Fund Budget Update pages from an agenda packet into a standalone PDF.",
+        description="Extract a quarterly financial report from an agenda packet into a standalone PDF.",
     )
     ap.add_argument("pdf", type=Path, help="Agenda Packet PDF path")
     ap.add_argument("--out", type=Path, default=None, help="Explicit output PDF path")
     ap.add_argument(
         "--artifact-dir",
         type=Path,
-        default=ARTIFACT_FUND_UPDATES_DIR,
-        help="Directory for artifact output when --out is not provided",
+        default=None,
+        help="Override the report-specific artifact directory",
     )
     return ap.parse_args(list(argv) if argv is not None else None)
 
 
-def derive_output_path(args: argparse.Namespace) -> Path:
+def _default_artifact_dir(kind: QuarterlyReportKind) -> Path:
+    if kind == QuarterlyReportKind.CASH_INVESTMENT_REPORT:
+        return ARTIFACT_CASH_INVESTMENTS_DIR
+    return ARTIFACT_FUND_UPDATES_DIR
+
+
+def derive_output_path(args: argparse.Namespace, report: QuarterlyReport) -> Path:
     if args.out:
         return args.out
 
-    default_name = default_fund_update_pdf_name(args.pdf)
+    default_name = default_quarterly_report_pdf_name(args.pdf, report.kind)
     if default_name is None:
         raise SystemExit("Unable to derive default output filename; specify --out")
-    return args.artifact_dir / default_name
+    artifact_dir = args.artifact_dir or _default_artifact_dir(report.kind)
+    return artifact_dir / default_name
 
 
 def main(argv: Iterable[str] | None = None) -> None:
@@ -44,16 +54,17 @@ def main(argv: Iterable[str] | None = None) -> None:
     if not args.pdf.exists():
         raise SystemExit(f"PDF not found: {args.pdf}")
 
-    out_path = derive_output_path(args)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-
     try:
-        pages = extract_fund_update_pdf(args.pdf, out_path)
+        report = find_quarterly_report(args.pdf)
     except ValueError as exc:
-        raise SystemExit(f"No General Fund Budget Update pages found: {exc}") from exc
+        raise SystemExit(f"No quarterly financial report pages found: {exc}") from exc
 
-    page_list = ", ".join(str(page) for page in pages)
-    print(f"PDF: {out_path} (pages {page_list})")
+    out_path = derive_output_path(args, report)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    extract_quarterly_report_pdf(args.pdf, out_path, report)
+
+    page_list = ", ".join(str(page) for page in report.pages)
+    print(f"PDF: {out_path} ({report.kind.value}; pages {page_list})")
 
 
 if __name__ == "__main__":

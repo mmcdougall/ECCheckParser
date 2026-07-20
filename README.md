@@ -90,20 +90,21 @@ register months, missing fiscal quarters between the earliest and latest covered
 General Fund update quarters, and exits nonzero when gaps or invalid artifacts
 are found.
 
-## General Fund Budget Update extraction
+## Quarterly financial report extraction
 
-Agenda packets often include a "General Fund Budget Update" section. The
-`fund_update_parser.py` CLI extracts each page containing that heading into a
-standalone PDF. By default the script stores artifacts under
-`data/artifacts/fund_updates/` using the meeting date embedded in the packet
-filename:
+Agenda packets may include either a General Fund Budget Update or a Quarterly
+Cash and Investment Report. The `fund_update_parser.py` CLI identifies the
+report family and extracts its agenda bill and attachments into a standalone
+PDF. General Fund updates are stored under `data/artifacts/fund_updates/`;
+cash and investment reports are stored under `data/artifacts/cash_investments/`.
+Both use the meeting date embedded in the packet filename:
 
 ```bash
 python fund_update_parser.py "data/originals/2025/agenda-packets/2025-09-16 Agenda Packet.pdf"
 ```
 
 You can supply `--out` to override the destination path or `--artifact-dir` to
-redirect the default directory.
+override the report-specific default directory.
 
 ## Tests
 
