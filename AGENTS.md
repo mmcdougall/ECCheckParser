@@ -77,6 +77,34 @@ files in the revision directories and keeps only the latest downloaded version
 in the canonical directory. Ensure tests reference canonical files and check
 that referenced files exist.
 
+### Archive artifact policy
+
+- The archive is the local historical collection of canonical originals, check
+  register PDFs, CSVs, chunk JSON, payee HTML, and quarterly financial report
+  PDFs. Preserve this layout so it remains useful for browsing records over
+  time as well as for regression tests.
+- Generate standard check-register artifacts from the newest canonical agenda
+  packet only. Do not retain parallel peer artifacts from a superseded packet
+  revision. Keep the source revision under `data/originals/`; replace its
+  derived artifact when a newer packet contains the same report.
+- Standard register artifacts use the register-month stem in all four
+  directories: `pdfs/YYYY-MM-register.pdf`, `csv/YYYY-MM.csv`,
+  `chunks/YYYY-MM-chunks.json`, and `html/YYYY-MM-payees.html`.
+- Before replacing an archived CSV, compare it with the existing CSV. When it
+  changes, call out the changed checks, fields, or totals in the PR summary
+  and update the matching PDF, chunk JSON, and payee HTML as one artifact
+  refresh. Treat this as a minor archive-data update, separate from parser
+  code changes.
+- Use `check_register_parser.py --audit-archive` to maintain coverage. For
+  each reported missing month, first locate or cache its canonical agenda
+  packet, then extract and reconcile the register and add the complete
+  four-file artifact set. If no source packet or register is available, leave
+  the gap visible in the audit until its source can be obtained.
+- Store intentionally nonstandard, exploratory, or one-off output beneath
+  `data/artifacts/investigations/`; do not mix it with the canonical register
+  HTML set. Use a descriptive, date-prefixed filename and do not rely on it in
+  regression tests unless it is promoted to a standard artifact.
+
 ## Running the parser
 
 To generate a CSV from the 2025 statements run:
