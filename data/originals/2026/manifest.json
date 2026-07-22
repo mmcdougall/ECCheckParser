@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "year": 2026,
-  "last_checked_at": "2026-07-19T20:53:16.296371Z",
+  "last_checked_at": "2026-07-21T23:55:49.016113Z",
   "meetings": [
     {
       "meeting_date": "2026-01-20",
@@ -182,6 +182,48 @@
             "sha256": "86df72ddf0023787bac2f37988593c9f018df0b1283b05c5423ebb7945f41c98",
             "source_url": null,
             "migrated_from": "2026/Agenda Packet (rev. 3.17.26).pdf"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-04-07",
+      "title": "Regular City Council Meeting",
+      "event_id": 920,
+      "documents": {
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2026-04-07 Agenda Packet.pdf",
+            "file_id": 3246,
+            "official_name": "Agenda Packet (rev. 4.9.2026)",
+            "published_at": "2026-04-09T10:03:19.67Z",
+            "downloaded_at": "2026-07-21T23:54:17.054584Z",
+            "last_checked_at": "2026-07-21T23:54:17.054584Z",
+            "size": 9737466,
+            "sha256": "cfcd67b5a55713c05a014ecb687fd43cb5e7cbae294e4c565363c47ddbd56d21",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3246,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-04-21",
+      "title": "Special and Regular City Council Meeting",
+      "event_id": 932,
+      "documents": {
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2026-04-21 Agenda Packet.pdf",
+            "file_id": 3278,
+            "official_name": "Agenda Packet (rev. 4.22.2026)",
+            "published_at": "2026-04-22T14:25:01.297Z",
+            "downloaded_at": "2026-07-21T23:55:49.016113Z",
+            "last_checked_at": "2026-07-21T23:55:49.016113Z",
+            "size": 34394813,
+            "sha256": "66a73dc6d752e3a83161515bf361bff2edcebce69a4a2dfcec0ad4f67dd512ef",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3278,plainText=false)"
           },
           "revisions": []
         }
