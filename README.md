@@ -11,9 +11,20 @@ containing one row per check along with a couple of simple aggregates. It can
 also produce an HTML quadtree showing payees sized by total dollar amount and
 optionally extracts the check register pages into a standalone PDF.
 
+ECCheckParser was created and originally architected by **Michael McDougall**
+as an independent civic project. It is not an official project or publication
+of the City of El Cerrito or its Financial Advisory Board. See the
+[civic-purpose statement](docs/CIVIC_PURPOSE.md), [credits](CREDITS.md), and
+[copyright and independence notice](NOTICE.md).
+
 Canonical agenda packets live under `data/originals/YYYY/agenda-packets/` with derived
 artifacts (CSV, chunk JSON, payee HTML and register PDFs) in `data/artifacts/`.
 PDFs are stored through Git LFS.
+
+The parser automates extraction from imperfect PDF source material. Generated
+results are not an audit or official accounting and should be verified against
+the original City documents. [`PROVENANCE.md`](docs/PROVENANCE.md) describes the
+project's approach to traceable, self-identifying outputs.
 
 ## Installation
 
@@ -115,3 +126,33 @@ python -m unittest discover -s tests
 ```
 
 The test suite verifies payee/description splitting and other parsing behavior.
+
+## Citation and attribution
+
+If you use the software or publish analysis produced with it, please preserve
+the creator and contributor credits and cite the project. Machine-readable
+citation metadata is available in [`CITATION.cff`](CITATION.cff).
+
+Suggested citation while the project retains its working name:
+
+> Michael McDougall, *ECCheckParser: an independent civic software project for
+> understanding the City of El Cerrito's published financial records*.
+
+Modified versions should identify their changes and maintainers and should not
+imply that they are maintained or endorsed by Michael McDougall, the City of El
+Cerrito, or its Financial Advisory Board.
+
+## License
+
+Unless a file says otherwise, the original software and project documentation
+are copyright 2025–2026 Michael McDougall and are licensed under the
+[GNU Affero General Public License, version 3 or later](LICENSE).
+
+Commercial use is permitted. Distribution of the software and operation of a
+modified version as a network service are subject to the license's
+corresponding-source requirements. Private use and private modification are
+permitted. The license text controls if this summary and the license differ.
+
+City records in `data/originals/`, extracted public-record material, and
+third-party dependencies are not relicensed by this project. See
+[`NOTICE.md`](NOTICE.md) for the precise scope and origin notice.

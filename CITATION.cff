@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software or its generated analysis, please cite it and
+  preserve the creator credit.
+title: ECCheckParser
+type: software
+authors:
+  - family-names: McDougall
+    given-names: Michael
+abstract: >-
+  An independent civic software project for extracting and examining the City
+  of El Cerrito's published check-register and financial-report records.
+repository-code: https://github.com/mmcdougall/ECCheckParser
+license: AGPL-3.0-or-later
+keywords:
+  - civic technology
+  - financial transparency
+  - public records
+  - El Cerrito
