@@ -1,26 +1,45 @@
 {
   "schema_version": 1,
   "year": 2025,
-  "last_checked_at": null,
+  "last_checked_at": "2026-07-22T05:42:54.671673Z",
   "meetings": [
     {
       "meeting_date": "2025-01-21",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 576,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-01-21 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 1.23.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-01-23",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2253,
+            "official_name": "Packet (rev. 1.23.2025)",
+            "published_at": "2025-01-23T11:33:59.053Z",
+            "downloaded_at": "2026-07-22T05:39:52.598084Z",
+            "last_checked_at": "2026-07-22T05:39:52.598084Z",
             "size": 36265073,
             "sha256": "b571163ce76e078c8e67a7ba160c14bcb264dffcb07abdc37a36e9b8c0280727",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 1.23.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2253,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-02-01",
+      "title": "Special City Council Meeting (Retreat)",
+      "event_id": 590,
+      "documents": {
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-02-01 Agenda Packet.pdf",
+            "file_id": 2267,
+            "official_name": "Packet",
+            "published_at": "2025-04-15T16:00:39.233Z",
+            "downloaded_at": "2026-07-22T05:39:58.302786Z",
+            "last_checked_at": "2026-07-22T05:39:58.302786Z",
+            "size": 4972327,
+            "sha256": "66231bb8733edb962d635a5ec12bd1054a7c9b4c40ddd4dedc235b8b51de095f",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2267,plainText=false)"
           },
           "revisions": []
         }
@@ -28,22 +47,62 @@
     },
     {
       "meeting_date": "2025-02-04",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 565,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-02-04 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 2.5.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-02-05",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2270,
+            "official_name": "Agenda Packet (rev. 2.5.2025)",
+            "published_at": "2025-02-06T08:19:47.453Z",
+            "downloaded_at": "2026-07-22T05:40:01.600950Z",
+            "last_checked_at": "2026-07-22T05:40:01.600950Z",
             "size": 9770964,
             "sha256": "b5f871bee974fa919670a24f22da02ad00a08672069b0a5ac6b1d797aefbad8c",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 2.5.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2270,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-02-06",
+      "title": "Special City Council Meeting (Interviews)",
+      "event_id": 589,
+      "documents": {
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-02-06 Agenda Packet.pdf",
+            "file_id": 2262,
+            "official_name": "Draft Packet",
+            "published_at": "2025-01-30T12:17:32.397Z",
+            "downloaded_at": "2026-07-22T05:40:03.484255Z",
+            "last_checked_at": "2026-07-22T05:40:03.484255Z",
+            "size": 1574808,
+            "sha256": "7cf344d82195a500a0205a2daabd951f50b17443457c6182b6a7f191b3f5cf7f",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2262,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-02-11",
+      "title": "Special City Council Meeting (Interviews)",
+      "event_id": 591,
+      "documents": {
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-02-11 Agenda Packet.pdf",
+            "file_id": 2268,
+            "official_name": "Packet",
+            "published_at": "2025-02-05T15:34:05.51Z",
+            "downloaded_at": "2026-07-22T05:40:04.228024Z",
+            "last_checked_at": "2026-07-22T05:40:04.228024Z",
+            "size": 1574931,
+            "sha256": "fbb3bf8732f63ddd44efac07e908bbb190a8574907acce2e10dbe9633d00388c",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2268,plainText=false)"
           },
           "revisions": []
         }
@@ -51,22 +110,20 @@
     },
     {
       "meeting_date": "2025-02-18",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 577,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-02-18 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 2.21.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-02-21",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2289,
+            "official_name": "Agenda Packet (rev. 2.21.2025)",
+            "published_at": "2025-02-21T09:09:41.063Z",
+            "downloaded_at": "2026-07-22T05:40:05.187186Z",
+            "last_checked_at": "2026-07-22T05:40:05.187186Z",
             "size": 13459150,
             "sha256": "a98367d9f301564f0f6562b0ac924dadd68ce91296e73df3381a6872a72d6053",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 2.21.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2289,plainText=false)"
           },
           "revisions": []
         }
@@ -74,22 +131,20 @@
     },
     {
       "meeting_date": "2025-03-04",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 566,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-03-04 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 3.5.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-03-05",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2304,
+            "official_name": "Agenda Packet (rev. 3.5.2025)",
+            "published_at": "2025-03-05T14:49:47.337Z",
+            "downloaded_at": "2026-07-22T05:40:13.321202Z",
+            "last_checked_at": "2026-07-22T05:40:13.321202Z",
             "size": 7783284,
             "sha256": "8843b27b389a6901cfceae5c9e4b6b59b3ed3d7ea774305aae23133bcfa951e7",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 3.5.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2304,plainText=false)"
           },
           "revisions": []
         }
@@ -97,45 +152,56 @@
     },
     {
       "meeting_date": "2025-03-18",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 578,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-03-18 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 3.18.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-03-18",
-            "downloaded_at": null,
-            "last_checked_at": null,
-            "size": 17545642,
-            "sha256": "e9f03b8cd93799cde03918e59620c0473a9d0e3fcb986658c963892e64834447",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 3.18.2025).pdf"
+            "file_id": 2467,
+            "official_name": "Agenda Packet (v. 3.18.2025)",
+            "published_at": "2025-08-21T10:13:26.297Z",
+            "downloaded_at": "2026-07-22T05:40:19.399367Z",
+            "last_checked_at": "2026-07-22T05:40:19.399367Z",
+            "size": 17542462,
+            "sha256": "ef19f5e79fea472d295af0e5756441abaa60118a9f74f17b406c9fe658bf357a",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2467,plainText=false)"
           },
-          "revisions": []
+          "revisions": [
+            {
+              "path": "agenda-packet-revisions/2025-03-18 Agenda Packet - 2025-03-18.pdf",
+              "file_id": null,
+              "official_name": "Agenda Packet (rev. 3.18.2025).pdf",
+              "published_at": null,
+              "published_date": "2025-03-18",
+              "downloaded_at": null,
+              "last_checked_at": null,
+              "size": 17545642,
+              "sha256": "e9f03b8cd93799cde03918e59620c0473a9d0e3fcb986658c963892e64834447",
+              "source_url": null,
+              "migrated_from": "2025/Agenda Packet (rev. 3.18.2025).pdf",
+              "superseded_at": "2026-07-22T05:40:19.399367Z"
+            }
+          ]
         }
       }
     },
     {
       "meeting_date": "2025-04-01",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 567,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-04-01 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 4.2.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-04-02",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2337,
+            "official_name": "Agenda Packet (rev. 4.2.2025)",
+            "published_at": "2025-04-02T13:38:50.807Z",
+            "downloaded_at": "2026-07-22T05:40:33.836330Z",
+            "last_checked_at": "2026-07-22T05:40:33.836330Z",
             "size": 17592877,
             "sha256": "543588d3785dbe7eddf4912185e5e94cfdd544eeecfdfab0d170859fb0d00698",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 4.2.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2337,plainText=false)"
           },
           "revisions": []
         }
@@ -143,22 +209,20 @@
     },
     {
       "meeting_date": "2025-04-15",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 579,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-04-15 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 4.17.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-04-17",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2357,
+            "official_name": "Agenda Packet (rev. 4.17.2025)",
+            "published_at": "2025-04-17T10:41:29.757Z",
+            "downloaded_at": "2026-07-22T05:40:37.176024Z",
+            "last_checked_at": "2026-07-22T05:40:37.176024Z",
             "size": 8415783,
             "sha256": "48fe66dd4cd8aa6bde5d1dc93b828237d1888ad2242735bcf1374d0776db4e3b",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 4.17.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2357,plainText=false)"
           },
           "revisions": []
         }
@@ -166,22 +230,20 @@
     },
     {
       "meeting_date": "2025-05-06",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 568,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-05-06 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 5.7.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-05-07",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2374,
+            "official_name": "Agenda Packet (rev. 5.7.2025)",
+            "published_at": "2025-05-07T14:11:56.877Z",
+            "downloaded_at": "2026-07-22T05:40:39.856298Z",
+            "last_checked_at": "2026-07-22T05:40:39.856298Z",
             "size": 12094433,
             "sha256": "7a27f5475e951c73d6145c84b57bc93df07443ffb3da77f5ffa4b9ded44b650b",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 5.7.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2374,plainText=false)"
           },
           "revisions": []
         }
@@ -189,22 +251,20 @@
     },
     {
       "meeting_date": "2025-05-20",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 580,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-05-20 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 5.22.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-05-22",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2393,
+            "official_name": "Agenda Packet (rev. 5.22.2025)",
+            "published_at": "2025-05-22T08:37:25.613Z",
+            "downloaded_at": "2026-07-22T05:40:48.159153Z",
+            "last_checked_at": "2026-07-22T05:40:48.159153Z",
             "size": 14419059,
             "sha256": "79dac19294296ac08807c1231320895bcd8c66e7b942143ab73e2483332f60b4",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 5.22.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2393,plainText=false)"
           },
           "revisions": []
         }
@@ -212,22 +272,20 @@
     },
     {
       "meeting_date": "2025-06-03",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Concurrent Public Financing Authority Special Meeting and Regular City Council Meeting",
+      "event_id": 569,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-06-03 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 6.4.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-06-04",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2413,
+            "official_name": "Agenda Packet (rev. 6.4.2025)",
+            "published_at": "2025-06-04T16:21:58.937Z",
+            "downloaded_at": "2026-07-22T05:40:58.307305Z",
+            "last_checked_at": "2026-07-22T05:40:58.307305Z",
             "size": 53958256,
             "sha256": "4c7da7d464df09709ee13e3dd6961e3c7d869063299623f932536edd11526406",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 6.4.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2413,plainText=false)"
           },
           "revisions": []
         }
@@ -235,22 +293,20 @@
     },
     {
       "meeting_date": "2025-06-17",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Special City Council Mtg and Concurrent Public Financing Authority and Regular City Council Meeting",
+      "event_id": 581,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-06-17 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 6.24.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-06-24",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2428,
+            "official_name": "Agenda Packet (rev. 6.24.2025)",
+            "published_at": "2025-06-24T12:58:37.713Z",
+            "downloaded_at": "2026-07-22T05:41:11.807632Z",
+            "last_checked_at": "2026-07-22T05:41:11.807632Z",
             "size": 18489983,
             "sha256": "6a29ca5781ce124f3ff3829d64fe16b98e161972b5bcc7c951b9d52c3080dfb2",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 6.24.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2428,plainText=false)"
           },
           "revisions": []
         }
@@ -258,22 +314,20 @@
     },
     {
       "meeting_date": "2025-07-15",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 582,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-07-15 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 7.17.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-07-17",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2444,
+            "official_name": "Agenda Packet (rev. 7.17.2025)",
+            "published_at": "2025-07-17T10:03:26.267Z",
+            "downloaded_at": "2026-07-22T05:41:25.153230Z",
+            "last_checked_at": "2026-07-22T05:41:25.153230Z",
             "size": 20912836,
             "sha256": "38d5e5b5513b46055d06c2d8bb0f00bd2496cdb82b6b19b5ff58f69aaf184186",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 7.17.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2444,plainText=false)"
           },
           "revisions": []
         }
@@ -281,22 +335,20 @@
     },
     {
       "meeting_date": "2025-08-19",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 583,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-08-19 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 8.20.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-08-20",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2465,
+            "official_name": "Agenda Packet (rev. 8.20.2025)",
+            "published_at": "2025-08-20T12:14:44.26Z",
+            "downloaded_at": "2026-07-22T05:41:28.927510Z",
+            "last_checked_at": "2026-07-22T05:41:28.927510Z",
             "size": 13349286,
             "sha256": "c441efd604d456556024b538dd8054b9f2705ff6d5e9d199df8d29612b77759a",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 8.20.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2465,plainText=false)"
           },
           "revisions": []
         }
@@ -304,22 +356,20 @@
     },
     {
       "meeting_date": "2025-09-16",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Concurrent Successor Agency to the Redevlopment Agency Special Mtg and Regular City Council Mtg",
+      "event_id": 584,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-09-16 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 9.17.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-09-17",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2480,
+            "official_name": "Agenda Packet (rev. 9.17.2025)",
+            "published_at": "2025-09-17T13:39:25.07Z",
+            "downloaded_at": "2026-07-22T05:41:39.033533Z",
+            "last_checked_at": "2026-07-22T05:41:39.033533Z",
             "size": 18490837,
             "sha256": "107510c0b84c38ecbb05d01efee4023b31f395a354c35dfc77012c42aee5e962",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 9.17.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2480,plainText=false)"
           },
           "revisions": [
             {
@@ -340,46 +390,99 @@
       }
     },
     {
-      "meeting_date": "2025-10-21",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "meeting_date": "2025-09-23",
+      "title": "Special City Council Meeting (Interviews)",
+      "event_id": 597,
       "documents": {
         "agenda_packet": {
           "current": {
-            "path": "agenda-packets/2025-10-21 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 10.21.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-10-21",
-            "downloaded_at": null,
-            "last_checked_at": null,
-            "size": 11513832,
-            "sha256": "d9c892e628fa635b8a03a0767c2bbf0733f41bef94e6d914c4ce471f306b37e4",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 10.21.2025).pdf"
+            "path": "agenda-packets/2025-09-23 Agenda Packet.pdf",
+            "file_id": 2500,
+            "official_name": "Packet",
+            "published_at": "2025-09-18T14:34:12.767Z",
+            "downloaded_at": "2026-07-22T05:41:51.675160Z",
+            "last_checked_at": "2026-07-22T05:41:51.675160Z",
+            "size": 874742,
+            "sha256": "0d80a40352c7a6fce0a549e29736ad3e6fcbe4ad3418624a7184159eee9e5d54",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2500,plainText=false)"
           },
           "revisions": []
         }
       }
     },
     {
+      "meeting_date": "2025-10-07",
+      "title": "Regular City Council Meeting",
+      "event_id": 573,
+      "documents": {
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-10-07 Agenda Packet.pdf",
+            "file_id": 2535,
+            "official_name": "Agenda Packet (rev. 10.8.2025)",
+            "published_at": "2025-10-08T11:33:06.537Z",
+            "downloaded_at": "2026-07-22T05:41:52.576510Z",
+            "last_checked_at": "2026-07-22T05:41:52.576510Z",
+            "size": 15439163,
+            "sha256": "d692e2537b8189d7839144db59ff554f3c5fbe33a3570feaf6223ad42d209e35",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2535,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-10-21",
+      "title": "Regular City Council Meeting",
+      "event_id": 585,
+      "documents": {
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-10-21 Agenda Packet.pdf",
+            "file_id": 2548,
+            "official_name": "Agenda Packet (rev. 10.23.2025)",
+            "published_at": "2025-10-23T10:58:30.453Z",
+            "downloaded_at": "2026-07-22T05:41:56.115059Z",
+            "last_checked_at": "2026-07-22T05:41:56.115059Z",
+            "size": 16108502,
+            "sha256": "d762aa77a7c5bd3f1f22ff90039758ae75775fb5cce49f6189d69a4077379078",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2548,plainText=false)"
+          },
+          "revisions": [
+            {
+              "path": "agenda-packet-revisions/2025-10-21 Agenda Packet - 2025-10-21.pdf",
+              "file_id": null,
+              "official_name": "Agenda Packet (rev. 10.21.2025).pdf",
+              "published_at": null,
+              "published_date": "2025-10-21",
+              "downloaded_at": null,
+              "last_checked_at": null,
+              "size": 11513832,
+              "sha256": "d9c892e628fa635b8a03a0767c2bbf0733f41bef94e6d914c4ce471f306b37e4",
+              "source_url": null,
+              "migrated_from": "2025/Agenda Packet (rev. 10.21.2025).pdf",
+              "superseded_at": "2026-07-22T05:41:56.115059Z"
+            }
+          ]
+        }
+      }
+    },
+    {
       "meeting_date": "2025-11-04",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 574,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-11-04 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 11.5.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-11-05",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2583,
+            "official_name": "Agenda Packet (rev. 11.5.2025)",
+            "published_at": "2025-11-05T16:21:04.547Z",
+            "downloaded_at": "2026-07-22T05:42:10.420021Z",
+            "last_checked_at": "2026-07-22T05:42:10.420021Z",
             "size": 85836480,
             "sha256": "530e7b9f0f2fa85a97a0c358a6606c6d992c0d0ae224468697e2c54602bc27ed",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 11.5.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2583,plainText=false)"
           },
           "revisions": []
         }
@@ -387,22 +490,20 @@
     },
     {
       "meeting_date": "2025-11-18",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 586,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-11-18 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 11.19.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-11-19",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2598,
+            "official_name": "Agenda Packet (rev. 11.19.2025)",
+            "published_at": "2025-11-19T13:18:03.64Z",
+            "downloaded_at": "2026-07-22T05:42:25.514646Z",
+            "last_checked_at": "2026-07-22T05:42:25.514646Z",
             "size": 10808897,
             "sha256": "2d79120d59c282f26648baa941bddca0516d4ea0944b3ce24f53d504882b4078",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 11.19.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2598,plainText=false)"
           },
           "revisions": []
         }
@@ -410,22 +511,20 @@
     },
     {
       "meeting_date": "2025-12-02",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 575,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-12-02 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 12.3.2025).pdf",
-            "published_at": null,
-            "published_date": "2025-12-03",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2612,
+            "official_name": "Agenda Packet (rev. 12.3.2025)",
+            "published_at": "2025-12-03T12:27:52.873Z",
+            "downloaded_at": "2026-07-22T05:42:35.496786Z",
+            "last_checked_at": "2026-07-22T05:42:35.496786Z",
             "size": 65315646,
             "sha256": "12c1b7a8e529b2fad4f04d9d0e84d4b866f1a9d872b7522736a4a8569209781b",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 12.3.2025).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2612,plainText=false)"
           },
           "revisions": []
         }
@@ -433,22 +532,20 @@
     },
     {
       "meeting_date": "2025-12-16",
-      "title": "City Council Meeting",
-      "event_id": null,
+      "title": "Regular City Council Meeting",
+      "event_id": 587,
       "documents": {
         "agenda_packet": {
           "current": {
             "path": "agenda-packets/2025-12-16 Agenda Packet.pdf",
-            "file_id": null,
-            "official_name": "Agenda Packet (rev. 12.16.25).pdf",
-            "published_at": null,
-            "published_date": "2025-12-16",
-            "downloaded_at": null,
-            "last_checked_at": null,
+            "file_id": 2621,
+            "official_name": "Packet",
+            "published_at": "2025-12-11T11:20:19.993Z",
+            "downloaded_at": "2026-07-22T05:42:54.671673Z",
+            "last_checked_at": "2026-07-22T05:42:54.671673Z",
             "size": 1863083,
             "sha256": "ca1eff2754a01aaaefaee76b1c7573d28ab75f6b98e68541033f8bdb18f9ccf3",
-            "source_url": null,
-            "migrated_from": "2025/Agenda Packet (rev. 12.16.25).pdf"
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2621,plainText=false)"
           },
           "revisions": []
         }
