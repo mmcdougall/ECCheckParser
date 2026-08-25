@@ -56,6 +56,12 @@ class CachedDocument:
 
 
 _SPACES = re.compile(r"\s+")
+CITY_COUNCIL_MEETING_TYPE = "city-council"
+FINANCIAL_ADVISORY_BOARD_MEETING_TYPE = "financial-advisory-board"
+_MEETING_TYPE_SLUGS = {
+    "city council": CITY_COUNCIL_MEETING_TYPE,
+    "financial advisory board": FINANCIAL_ADVISORY_BOARD_MEETING_TYPE,
+}
 _KIND_ALIASES = {
     "agenda": "agenda",
     "agenda packet": "agenda_packet",
@@ -265,6 +271,18 @@ def normalize_document_kind(kind: str) -> str:
     return _KIND_ALIASES.get(normalized, normalized.replace(" ", "_"))
 
 
+def meeting_type_slug(category: str | None) -> str:
+    if not category:
+        raise ValueError("CivicClerk meeting category is required for the originals archive")
+    normalized = _SPACES.sub(" ", category.strip().lower()).strip()
+    try:
+        return _MEETING_TYPE_SLUGS[normalized]
+    except KeyError as exc:
+        raise ValueError(
+            f"Unsupported CivicClerk meeting category for the originals archive: {category}",
+        ) from exc
+
+
 def document_cache_path(
     meeting: CivicClerkMeeting,
     document: CivicClerkDocument,
@@ -277,6 +295,7 @@ def document_cache_path(
     }[document.kind]
     return (
         originals_dir
+        / meeting_type_slug(meeting.category)
         / str(meeting.event_date.year)
         / directory
         / document_cache_filename(meeting, document)

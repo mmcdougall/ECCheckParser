@@ -81,7 +81,7 @@ class TestCivicClerkDocuments(unittest.TestCase):
         )
         self.assertEqual(
             document_cache_path(meeting, agenda, originals_dir=Path("data/originals")),
-            Path("data/originals/2026/agendas/2026-06-09 Agenda.pdf"),
+            Path("data/originals/city-council/2026/agendas/2026-06-09 Agenda.pdf"),
         )
 
     def test_document_cache_path_separates_packets(self):
@@ -91,7 +91,7 @@ class TestCivicClerkDocuments(unittest.TestCase):
 
         self.assertEqual(
             document_cache_path(meeting, packet, originals_dir=Path("data/originals")),
-            Path("data/originals/2026/agenda-packets/2026-06-09 Agenda Packet.pdf"),
+            Path("data/originals/city-council/2026/agenda-packets/2026-06-09 Agenda Packet.pdf"),
         )
 
     def test_generic_packet_name_does_not_change_canonical_filename(self):
@@ -147,18 +147,67 @@ class TestCivicClerkDocuments(unittest.TestCase):
             with patch("check_register.civicclerk.urlopen", return_value=_FakeResponse(b"second packet")):
                 second = archive_document(meeting, revised, originals_dir=originals_dir)
 
-            canonical = originals_dir / "2026/agenda-packets/2026-06-09 Agenda Packet.pdf"
-            revision = originals_dir / "2026/agenda-packet-revisions/2026-06-09 Agenda Packet - 2026-06-10.pdf"
+            canonical = originals_dir / "city-council/2026/agenda-packets/2026-06-09 Agenda Packet.pdf"
+            revision = originals_dir / "city-council/2026/agenda-packet-revisions/2026-06-09 Agenda Packet - 2026-06-10.pdf"
             self.assertEqual(first.action, "downloaded")
             self.assertEqual(second.action, "revised")
             self.assertEqual(second.revision_path, revision)
             self.assertEqual(canonical.read_bytes(), b"second packet")
             self.assertEqual(revision.read_bytes(), b"first packet")
 
-            manifest = load_manifest(manifest_path(originals_dir, 2026), year=2026)
+            manifest = load_manifest(
+                manifest_path(originals_dir, "city-council", 2026),
+                year=2026,
+            )
             state = manifest["meetings"][0]["documents"]["agenda_packet"]
             self.assertEqual(state["current"]["file_id"], 3410)
             self.assertEqual(state["revisions"][0]["file_id"], 3406)
+
+    def test_archive_document_separates_meeting_types(self):
+        city_council = parse_meeting(_event())
+        financial_advisory_board = parse_meeting(
+            {
+                **_event(),
+                "id": 1374,
+                "eventName": "Financial Advisory Board Regular Meeting",
+                "categoryName": "Financial Advisory Board",
+            },
+        )
+        packet = CivicClerkDocument(
+            file_id=1,
+            kind="agenda_packet",
+            name="Agenda Packet",
+            stream_url="https://example.test/packet.pdf",
+            publish_on="2026-06-10T13:53:08.443Z",
+        )
+
+        with tempfile.TemporaryDirectory() as td:
+            originals_dir = Path(td)
+            with patch(
+                "check_register.civicclerk.urlopen",
+                side_effect=[_FakeResponse(b"city"), _FakeResponse(b"fab")],
+            ):
+                city_document = archive_document(city_council, packet, originals_dir=originals_dir)
+                fab_document = archive_document(financial_advisory_board, packet, originals_dir=originals_dir)
+
+            self.assertEqual(
+                city_document.path,
+                originals_dir / "city-council/2026/agenda-packets/2026-06-09 Agenda Packet.pdf",
+            )
+            self.assertEqual(
+                fab_document.path,
+                originals_dir / "financial-advisory-board/2026/agenda-packets/2026-06-09 Agenda Packet.pdf",
+            )
+            self.assertTrue(manifest_path(originals_dir, "city-council", 2026).exists())
+            self.assertTrue(manifest_path(originals_dir, "financial-advisory-board", 2026).exists())
+
+    def test_document_cache_path_rejects_unknown_category(self):
+        meeting = parse_meeting({**_event(), "categoryName": "Parks and Recreation"})
+        packet = select_document(published_documents(meeting), "agenda_packet")
+        assert packet is not None
+
+        with self.assertRaisesRegex(ValueError, "Unsupported CivicClerk meeting category"):
+            document_cache_path(meeting, packet, originals_dir=Path("data/originals"))
 
     def test_archive_document_skips_unchanged_remote_identity(self):
         meeting = parse_meeting(_event())

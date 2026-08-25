@@ -1,0 +1,339 @@
+{
+  "schema_version": 1,
+  "year": 2026,
+  "last_checked_at": "2026-08-24T20:27:10Z",
+  "meetings": [
+    {
+      "meeting_date": "2026-01-27",
+      "title": "Financial Advisory Board Regular Meeting",
+      "event_id": 1030,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2026-01-27 Agenda.pdf",
+            "file_id": 3176,
+            "official_name": "Agenda",
+            "published_at": "2026-03-12T11:54:47.11Z",
+            "downloaded_at": "2026-08-24T20:19:59.270514Z",
+            "last_checked_at": "2026-08-24T20:19:59.270514Z",
+            "size": 80766,
+            "sha256": "f89832189c0e9b0113385f52ff3991d427b537d0d28318cfd1e46280b6ef1501",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3176,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2026-01-27 Agenda Packet.pdf",
+            "file_id": 3177,
+            "official_name": "Agenda Packet",
+            "published_at": "2026-03-12T11:54:47.11Z",
+            "downloaded_at": "2026-08-24T20:19:59.720185Z",
+            "last_checked_at": "2026-08-24T20:19:59.720185Z",
+            "size": 6086827,
+            "sha256": "5a8d7aefeac2091a9d5ac5aa4012ebe4fd5ed7fdf908fd25869289f96b88b503",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3177,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-02-12",
+      "title": "Financial Advisory Board Special Meeting",
+      "event_id": 1032,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2026-02-12 Agenda.pdf",
+            "file_id": 3174,
+            "official_name": "Agenda",
+            "published_at": "2026-03-12T11:45:36.82Z",
+            "downloaded_at": "2026-08-24T20:20:02.709344Z",
+            "last_checked_at": "2026-08-24T20:20:02.709344Z",
+            "size": 101253,
+            "sha256": "eb6ccf0bfdcfe66f02847c5d960b19364c3355d9c7e3dc8d40fa4d366fea49aa",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3174,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2026-02-12 Agenda Packet.pdf",
+            "file_id": 3175,
+            "official_name": "Agenda Packet",
+            "published_at": "2026-03-12T11:45:36.82Z",
+            "downloaded_at": "2026-08-24T20:20:03.229013Z",
+            "last_checked_at": "2026-08-24T20:20:03.229013Z",
+            "size": 1891093,
+            "sha256": "923da789349cfb77b78a4fa70ea7769f4f7de19f431830c0a42d3c8f4b40fc9e",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3175,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-02-24",
+      "title": "CANCELLED Financial Advisory Board Regular Meeting",
+      "event_id": 1031,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2026-02-24 Agenda.pdf",
+            "file_id": 3178,
+            "official_name": "Notice of Cancellation",
+            "published_at": "2026-03-12T11:55:33.483Z",
+            "downloaded_at": "2026-08-24T20:20:04.614862Z",
+            "last_checked_at": "2026-08-24T20:20:04.614862Z",
+            "size": 14101,
+            "sha256": "65a758692115a31e650641058406038cf445c0f5264034dcdf8dbe57ece8be93",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3178,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-03-24",
+      "title": "Financial Advisory Board Special Meeting",
+      "event_id": 1013,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2026-03-24 Agenda.pdf",
+            "file_id": 3212,
+            "official_name": "Agenda",
+            "published_at": "2026-03-20T09:06:34.61Z",
+            "downloaded_at": "2026-08-24T20:20:04.933782Z",
+            "last_checked_at": "2026-08-24T20:20:04.933782Z",
+            "size": 163639,
+            "sha256": "7e5b9f9f64c3439d6daec2880659af13d43535a2682f015efccaa31112693c29",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3212,plainText=false)"
+          },
+          "revisions": [
+            {
+              "path": "agenda-revisions/2026-03-24 Agenda - ArchiveCenter 8186.pdf",
+              "file_id": 8186,
+              "official_name": "March 24, 2026",
+              "published_at": null,
+              "downloaded_at": "2026-08-24T20:27:10Z",
+              "last_checked_at": "2026-08-24T20:27:10Z",
+              "size": 210830,
+              "sha256": "578723aa2216fafaac1d8923175ae84daa1707d62cce0482fdf28f2b7f94c0b2",
+              "source_url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/8186"
+            }
+          ]
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2026-03-24 Agenda Packet.pdf",
+            "file_id": 3264,
+            "official_name": "Agenda Packet (rev. 4.16.26)",
+            "published_at": "2026-04-16T16:18:23.01Z",
+            "downloaded_at": "2026-08-24T20:20:05.452500Z",
+            "last_checked_at": "2026-08-24T20:20:05.452500Z",
+            "size": 12851095,
+            "sha256": "096ca09d7af4e2971c6fc2ba855ae3c9a6a533717a004827649eb4a5fdc7c18c",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3264,plainText=false)"
+          },
+          "revisions": [
+            {
+              "path": "agenda-packet-revisions/2026-03-24 Agenda Packet - ArchiveCenter 8187.pdf",
+              "file_id": 8187,
+              "official_name": "Attachment Reports - March 24, 2026",
+              "published_at": null,
+              "downloaded_at": "2026-08-24T20:27:10Z",
+              "last_checked_at": "2026-08-24T20:27:10Z",
+              "size": 8046638,
+              "sha256": "9283c291c74f36336e61f6c8b995cd7b19d0f045d7048edaac2b9e809fb6ece2",
+              "source_url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/8187"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-04-28",
+      "title": "CANCELLED Financial Advisory Board Regular Meeting",
+      "event_id": 1014,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2026-04-28 Agenda.pdf",
+            "file_id": 3282,
+            "official_name": "Notice of Cancellation",
+            "published_at": "2026-04-24T09:58:12.193Z",
+            "downloaded_at": "2026-08-24T20:20:09.598987Z",
+            "last_checked_at": "2026-08-24T20:20:09.598987Z",
+            "size": 93068,
+            "sha256": "999fc0bfa84cc437872c1e2eedd9f01122a0be239b63ecd05e2d663a4d118ccd",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3282,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-05-07",
+      "title": "Financial Advisory Board Special Meeting",
+      "event_id": 1370,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2026-05-07 Agenda.pdf",
+            "file_id": 3315,
+            "official_name": "Agenda REVISED (05/06/2026)",
+            "published_at": "2026-05-06T16:24:15.89Z",
+            "downloaded_at": "2026-08-24T20:20:10.026850Z",
+            "last_checked_at": "2026-08-24T20:20:10.026850Z",
+            "size": 213404,
+            "sha256": "b6f601cc744c085a4bd7b4c7b01de03b5ab22cd4a88d35348fae6de89dcffd09",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3315,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2026-05-07 Agenda Packet.pdf",
+            "file_id": 3316,
+            "official_name": "Agenda Packet REVISED (05/06/2026)",
+            "published_at": "2026-05-06T16:24:15.89Z",
+            "downloaded_at": "2026-08-24T20:20:10.410511Z",
+            "last_checked_at": "2026-08-24T20:20:10.410511Z",
+            "size": 5394322,
+            "sha256": "ba8fb063d62dfe38737fdefc204b940ee63bd25c7d99fe1cc522927a73849d9f",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3316,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-05-26",
+      "title": "Financial Advisory Board Regular Meeting",
+      "event_id": 1311,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2026-05-26 Agenda.pdf",
+            "file_id": 3346,
+            "official_name": "Agenda",
+            "published_at": "2026-05-21T16:03:19.587Z",
+            "downloaded_at": "2026-08-24T20:20:12.978184Z",
+            "last_checked_at": "2026-08-24T20:21:02.114619Z",
+            "size": 211163,
+            "sha256": "def7c1e08eef0f3afcbc496cb58cf27469457bb9b6c8e18256f399b582c71dcd",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3346,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2026-05-26 Agenda Packet.pdf",
+            "file_id": 3350,
+            "official_name": "Agenda Packet (rev 05/26/26)",
+            "published_at": "2026-05-26T12:41:18.973Z",
+            "downloaded_at": "2026-08-24T20:20:13.470309Z",
+            "last_checked_at": "2026-08-24T20:21:02.117549Z",
+            "size": 62135677,
+            "sha256": "492de21a1f1524735f0b344c7e1bd24efde6637d87778ab478d7f8e865750c1a",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3350,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-06-04",
+      "title": "Financial Advisory Board Regular Meeting",
+      "event_id": 1312,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2026-06-04 Agenda.pdf",
+            "file_id": 3388,
+            "official_name": "Agenda",
+            "published_at": "2026-06-01T15:18:07.807Z",
+            "downloaded_at": "2026-08-24T20:20:42.693397Z",
+            "last_checked_at": "2026-08-24T20:20:42.693397Z",
+            "size": 210365,
+            "sha256": "d04b160a955075ba53a704ef970093a4fed5e272ad7e055711f0f7f9fe0a7a45",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3388,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2026-06-04 Agenda Packet.pdf",
+            "file_id": 3400,
+            "official_name": "Agenda Packet (rev. 06/04/26 )",
+            "published_at": "2026-06-04T15:19:09.05Z",
+            "downloaded_at": "2026-08-24T20:20:43.247577Z",
+            "last_checked_at": "2026-08-24T20:20:43.247577Z",
+            "size": 775051,
+            "sha256": "85e3a1a8e48749156d94953b8ca5c215659412d8c2a253d6b4ab79b2ff39c4c1",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3400,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-07-28",
+      "title": "CANCELLED Financial Advisory Board Regular Meeting",
+      "event_id": 1313,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2026-07-28 Agenda.pdf",
+            "file_id": 3500,
+            "official_name": "Agenda - Cancellation",
+            "published_at": "2026-07-27T10:49:56.877Z",
+            "downloaded_at": "2026-08-24T20:20:43.917509Z",
+            "last_checked_at": "2026-08-24T20:20:43.917509Z",
+            "size": 196900,
+            "sha256": "5b00f119464bf13b61d49391d6ace0ab9faa84e116f2628ba72274c991a73836",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3500,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2026-07-28 Agenda Packet.pdf",
+            "file_id": 3499,
+            "official_name": "Agenda Packet - Cancellation",
+            "published_at": "2026-07-29T16:30:40.45Z",
+            "downloaded_at": "2026-08-24T20:20:45.538151Z",
+            "last_checked_at": "2026-08-24T20:20:45.538151Z",
+            "size": 311507,
+            "sha256": "d1ed637407c0e723b207ce73982de09fd155e6d84ed18730197a5ce4f8514665",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3499,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2026-08-25",
+      "title": "Financial Advisory Board Regular Meeting",
+      "event_id": 1314,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2026-08-25 Agenda.pdf",
+            "file_id": 3694,
+            "official_name": "Agenda",
+            "published_at": "2026-08-20T14:39:47.663Z",
+            "downloaded_at": "2026-08-24T20:20:46.067056Z",
+            "last_checked_at": "2026-08-24T20:20:46.067056Z",
+            "size": 200234,
+            "sha256": "9f7fa13a7d1af6d258c5523a055e5282b0db9487f55e9a26e103532efd4f4e72",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3694,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    }
+  ]
+}

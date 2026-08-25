@@ -326,7 +326,7 @@ class TestFundUpdateExtractor(unittest.TestCase):
             )
 
     def test_may_2025_packet_pages(self):
-        src = ORIGINALS_DIR / "2025" / "agenda-packets" / "2025-05-06 Agenda Packet.pdf"
+        src = ORIGINALS_DIR / "city-council" / "2025" / "agenda-packets" / "2025-05-06 Agenda Packet.pdf"
         self.assertTrue(src.exists(), f"Missing original PDF: {src}")
 
         pages = find_fund_update_pages(src)
@@ -346,7 +346,7 @@ class TestFundUpdateExtractor(unittest.TestCase):
                 self.assertIn("fund balance", last_text)
 
     def test_july_2026_cash_investment_packet_pages(self):
-        src = ORIGINALS_DIR / "2026" / "agenda-packets" / "2026-07-21 Agenda Packet.pdf"
+        src = ORIGINALS_DIR / "city-council" / "2026" / "agenda-packets" / "2026-07-21 Agenda Packet.pdf"
         self.assertTrue(src.exists(), f"Missing original PDF: {src}")
 
         report = find_quarterly_report(src)

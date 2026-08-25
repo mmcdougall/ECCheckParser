@@ -105,7 +105,7 @@ class TestCliPdf(unittest.TestCase):
 
     def test_multi_section_packet_writes_separate_outputs(self):
         pdf_path = Path(
-            "data/originals/2026/agenda-packets/2026-01-20 Agenda Packet.pdf"
+            "data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf"
         ).resolve()
         with tempfile.TemporaryDirectory() as td:
             cwd = Path.cwd()

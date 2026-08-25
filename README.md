@@ -17,8 +17,10 @@ of the City of El Cerrito or its Financial Advisory Board. See the
 [civic-purpose statement](docs/CIVIC_PURPOSE.md), [credits](CREDITS.md), and
 [copyright and independence notice](NOTICE.md).
 
-Canonical agenda packets live under `data/originals/YYYY/agenda-packets/` with derived
-artifacts (CSV, chunk JSON, payee HTML and register PDFs) in `data/artifacts/`.
+Canonical agenda packets live under meeting-type roots such as
+`data/originals/city-council/YYYY/agenda-packets/` and
+`data/originals/financial-advisory-board/YYYY/agenda-packets/`. Derived artifacts
+(CSV, chunk JSON, payee HTML and register PDFs) remain in `data/artifacts/`.
 PDFs are stored through Git LFS.
 
 The parser automates extraction from imperfect PDF source material. Generated
@@ -57,27 +59,31 @@ of combining separated agenda attachments into a single file range.
 
 ## Discovering and caching CivicClerk agendas
 
-Use `civicclerk_documents.py` to discover City Council meetings through the
-public CivicClerk API and cache published agenda documents locally:
+Use `civicclerk_documents.py` to discover City Council or Financial Advisory
+Board meetings through the public CivicClerk API and cache published agenda
+documents locally:
 
 ```bash
 python civicclerk_documents.py list --year 2026 --month 6
 python civicclerk_documents.py current --scan-registers --extract-registers
 python civicclerk_documents.py cache --year 2026 --month 6 --scan-registers
+python civicclerk_documents.py cache --year 2026 --category 'Financial Advisory Board' --document agenda --document agenda-packet
 ```
 
 `current` selects the next upcoming meeting with published agenda documents, or
 the latest recent meeting when no upcoming documents are available. By default
 the tool caches only the agenda packet. Canonical files use compact names such
-as `2026-07-21 Agenda Packet.pdf` under `agenda-packets/`. Standalone agendas
-use the matching `agendas/` directory when requested with `--document agenda`.
+as `2026-07-21 Agenda Packet.pdf` under the meeting type's `agenda-packets/`
+directory. Standalone agendas use the matching `agendas/` directory when
+requested with `--document agenda`.
 
-Each year has a human-readable `manifest.json` containing CivicClerk file ids,
-publication timestamps, official names, source URLs, sizes, and checksums. The
-tool skips a download when the current file id and publication timestamp have
-not changed. When CivicClerk publishes a new version, the prior canonical file
-moves to `agenda-packet-revisions/` or `agenda-revisions/` with a short
-publication-date suffix before the replacement is installed.
+Each meeting type/year has a human-readable `manifest.json` containing
+CivicClerk file ids, publication timestamps, official names, source URLs,
+sizes, and checksums. The tool skips a download when the current file id and
+publication timestamp have not changed. When CivicClerk publishes a new
+version, the prior canonical file moves to `agenda-packet-revisions/` or
+`agenda-revisions/` with a short publication-date suffix before the replacement
+is installed.
 
 When `--scan-registers` is set, cached agenda packets are checked with the same
 page detection used by `check_register_parser.py`. `--extract-registers` also
@@ -101,6 +107,16 @@ register months, missing fiscal quarters between the earliest and latest covered
 General Fund update quarters, and exits nonzero when gaps or invalid artifacts
 are found.
 
+To verify that cached source PDFs remain under the correct meeting type/year,
+with every manifest path, PDF header, and SHA-256 checksum intact:
+
+```bash
+python check_register_parser.py --audit-originals
+```
+
+This read-only check scans all cached source PDFs, so it is best used before a
+release or after a source refresh rather than during routine parser work.
+
 ## Quarterly financial report extraction
 
 Agenda packets may include either a General Fund Budget Update or a Quarterly
@@ -111,7 +127,7 @@ cash and investment reports are stored under `data/artifacts/cash_investments/`.
 Both use the meeting date embedded in the packet filename:
 
 ```bash
-python fund_update_parser.py "data/originals/2025/agenda-packets/2025-09-16 Agenda Packet.pdf"
+python fund_update_parser.py "data/originals/city-council/2025/agenda-packets/2025-09-16 Agenda Packet.pdf"
 ```
 
 You can supply `--out` to override the destination path or `--artifact-dir` to

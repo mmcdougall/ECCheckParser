@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Generate register artifacts for canonical agenda packet PDFs under each
-# originals year directory. Artifacts are stored under
+# Generate register artifacts for canonical City Council agenda packet PDFs
+# under the category-first originals hierarchy. Artifacts are stored under
 # data/artifacts by default. Outputs include register PDFs, CSVs, chunk JSON,
 # payee quadtree HTML, and extracted quarterly financial report PDFs.
 
@@ -13,6 +13,7 @@ fi
 
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
 originals_dir="${1:-$repo_root/data/originals}"
+city_council_dir="$originals_dir/city-council"
 archive_dir="${2:-$repo_root/data/artifacts}"
 parser="$repo_root/check_register_parser.py"
 fund_update_parser="$repo_root/fund_update_parser.py"
@@ -131,11 +132,15 @@ process_packet() {
 }
 
 main() {
+  if [[ ! -d "$city_council_dir" ]]; then
+    printf 'City Council originals directory not found: %s\n' "$city_council_dir" >&2
+    exit 1
+  fi
   prepare_dirs
   local packets=()
   while IFS= read -r -d '' packet; do
     packets+=("$packet")
-  done < <(find "$originals_dir" -type f -path '*/agenda-packets/*.pdf' -print0)
+  done < <(find "$city_council_dir" -type f -path '*/agenda-packets/*.pdf' -print0)
   local total=${#packets[@]}
   local overall_start=$(date +%s)
 

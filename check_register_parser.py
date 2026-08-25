@@ -26,7 +26,8 @@ from check_register.page_extractor import (
 )
 from check_register.payees import merge_payees, write_payees, payee_summary
 from check_register.archive_audit import audit_register_archive, format_archive_audit
-from project_paths import ARTIFACT_CSV_DIR, ARTIFACT_FUND_UPDATES_DIR
+from check_register.originals_audit import audit_originals, format_originals_audit
+from project_paths import ARTIFACT_CSV_DIR, ARTIFACT_FUND_UPDATES_DIR, ORIGINALS_DIR
 
 
 @dataclass
@@ -65,10 +66,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--pdf", nargs="?", type=Path, const=True, dest="pdf_out", default=None, help="Extract check register pages to a PDF",
     )
     ap.add_argument("--payees", nargs="?", type=Path, const=True, default=None, help="Write/update payee list (optionally to PATH)")
-    ap.add_argument(
+    audit_group = ap.add_mutually_exclusive_group()
+    audit_group.add_argument(
         "--audit-archive",
         action="store_true",
         help="Scan generated CSV artifacts and report missing check register months",
+    )
+    audit_group.add_argument(
+        "--audit-originals",
+        action="store_true",
+        help="Verify the category-first agenda source archive",
     )
     ap.add_argument(
         "--archive-csv-dir",
@@ -81,6 +88,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         type=Path,
         default=ARTIFACT_FUND_UPDATES_DIR,
         help="Fund update artifact directory for --audit-archive",
+    )
+    ap.add_argument(
+        "--originals-dir",
+        type=Path,
+        default=ORIGINALS_DIR,
+        help="Source originals directory for --audit-originals",
     )
     return ap.parse_args(argv)
 
@@ -203,8 +216,16 @@ def main(argv: list[str] | None = None) -> None:
             sys.exit(1)
         return
 
+    if args.audit_originals:
+        audit = audit_originals(args.originals_dir)
+        for line in format_originals_audit(audit):
+            print(line)
+        if audit.problems:
+            sys.exit(1)
+        return
+
     if args.pdf is None:
-        print("PDF path required unless --audit-archive is used")
+        print("PDF path required unless an archive audit is used")
         sys.exit(2)
 
     need_chunks = bool(args.chunks_json)

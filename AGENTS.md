@@ -66,8 +66,13 @@ Regenerate artifacts in a separate pull request from the code changes; never com
 
 ## Data: originals and artifacts
 
-- `data/originals/YYYY/agenda-packets/` holds canonical agenda packet PDFs downloaded from [www.elcerrito.gov](https://www.elcerrito.gov).
-- Prior packet and agenda versions live under `agenda-packet-revisions/` and `agenda-revisions/`; yearly `manifest.json` files retain source metadata.
+- `data/originals/<meeting-type>/YYYY/agenda-packets/` holds canonical agenda
+  packet PDFs downloaded from [www.elcerrito.gov](https://www.elcerrito.gov).
+  Use `city-council` and `financial-advisory-board` as the supported meeting
+  types.
+- Prior packet and agenda versions live under `agenda-packet-revisions/` and
+  `agenda-revisions/`; each meeting type/year has a `manifest.json` retaining
+  source metadata.
 - `data/artifacts/` stores parser outputs such as chunk archives used in tests.
 - The number of data artifacts grows as new agenda packets are added; tests should
   reference specific files instead of iterating the entire directory.
@@ -110,7 +115,7 @@ that referenced files exist.
 To generate a CSV from the 2025 statements run:
 
 ```bash
-python check_register_parser.py "data/originals/2025/agenda-packets/2025-08-19 Agenda Packet.pdf" --csv out.csv
+python check_register_parser.py "data/originals/city-council/2025/agenda-packets/2025-08-19 Agenda Packet.pdf" --csv out.csv
 ```
 
 Each PDF should log `✔ reconciled`. The resulting CSV confirms the parser still works. Run the parser when modifying code that can affect extraction behavior.

@@ -14,6 +14,7 @@ from .civicclerk import (
     CivicClerkDocument,
     CivicClerkMeeting,
     download_document,
+    meeting_type_slug,
 )
 
 
@@ -49,11 +50,17 @@ def canonical_document_path(
 ) -> Path:
     directory = _CANONICAL_DIRS[document.kind]
     filename = f"{meeting.event_date.isoformat()} {_DOCUMENT_LABELS[document.kind]}.pdf"
-    return originals_dir / str(meeting.event_date.year) / directory / filename
+    return (
+        originals_dir
+        / meeting_type_slug(meeting.category)
+        / str(meeting.event_date.year)
+        / directory
+        / filename
+    )
 
 
-def manifest_path(originals_dir: Path, year: int) -> Path:
-    return originals_dir / str(year) / "manifest.json"
+def manifest_path(originals_dir: Path, meeting_type: str, year: int) -> Path:
+    return originals_dir / meeting_type / str(year) / "manifest.json"
 
 
 def load_manifest(path: Path, *, year: int) -> dict[str, Any]:
@@ -88,7 +95,8 @@ def archive_document(
     overwrite: bool = False,
     timeout: float = 60.0,
 ) -> ArchivedDocument:
-    manifest_file = manifest_path(originals_dir, meeting.event_date.year)
+    meeting_type = meeting_type_slug(meeting.category)
+    manifest_file = manifest_path(originals_dir, meeting_type, meeting.event_date.year)
     manifest = load_manifest(manifest_file, year=meeting.event_date.year)
     entry = _meeting_entry(manifest, meeting)
     state = entry["documents"].setdefault(
@@ -187,7 +195,7 @@ def _resolved_canonical_path(
     entry: dict[str, Any],
     state: dict[str, Any],
 ) -> Path:
-    year_dir = originals_dir / str(meeting.event_date.year)
+    year_dir = originals_dir / meeting_type_slug(meeting.category) / str(meeting.event_date.year)
     current = state.get("current")
     if current and current.get("path"):
         return year_dir / current["path"]
