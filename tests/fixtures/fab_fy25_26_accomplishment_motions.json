@@ -1,0 +1,136 @@
+{
+  "scope": {
+    "held_from": "2025-07-01",
+    "held_through": "2026-06-30",
+    "successful_only": true,
+    "exclude_routine": true,
+    "exclude_procedural": true
+  },
+  "reviewed_on": "2026-08-28",
+  "review_basis": "Manual/model review of the official minutes pages named by each record",
+  "motions": [
+    {
+      "held_date": "2025-08-26",
+      "source_file_id": 2760,
+      "physical_page_start": 2,
+      "outcome": "affirmative-recorded-vote",
+      "ayes": 5,
+      "noes": 0,
+      "evidence_contains": "No recommendation made"
+    },
+    {
+      "held_date": "2025-09-23",
+      "source_file_id": 2759,
+      "physical_page_start": 2,
+      "outcome": "explicit-pass",
+      "ayes": 5,
+      "noes": 0,
+      "evidence_contains": "establish a subcommittee"
+    },
+    {
+      "held_date": "2025-10-28",
+      "source_file_id": 2757,
+      "physical_page_start": 2,
+      "outcome": "explicit-pass",
+      "ayes": 5,
+      "noes": 0,
+      "evidence_contains": "17% unassigned reserve goal"
+    },
+    {
+      "held_date": "2025-10-28",
+      "source_file_id": 2757,
+      "physical_page_start": 3,
+      "outcome": "explicit-pass",
+      "ayes": 5,
+      "noes": 0,
+      "evidence_contains": "Prior to Council acting"
+    },
+    {
+      "held_date": "2025-12-18",
+      "source_file_id": 3177,
+      "physical_page_start": 2,
+      "outcome": "explicit-pass",
+      "ayes": 3,
+      "noes": 1,
+      "evidence_contains": "revisions to section 3.2"
+    },
+    {
+      "held_date": "2026-01-27",
+      "source_file_id": 3175,
+      "physical_page_start": 15,
+      "outcome": "explicit-pass",
+      "ayes": 5,
+      "noes": 0,
+      "evidence_contains": "controlling and reducing expenses"
+    },
+    {
+      "held_date": "2026-05-07",
+      "source_file_id": 3350,
+      "physical_page_start": 5,
+      "outcome": "affirmative-recorded-vote",
+      "ayes": 3,
+      "noes": 2,
+      "evidence_contains": "does not drop below 26%"
+    },
+    {
+      "held_date": "2026-05-07",
+      "source_file_id": 3350,
+      "physical_page_start": 5,
+      "outcome": "affirmative-recorded-vote",
+      "ayes": 5,
+      "noes": 0,
+      "evidence_contains": "scenario C & D ($890k)"
+    },
+    {
+      "held_date": "2026-05-26",
+      "source_file_id": 3400,
+      "physical_page_start": 4,
+      "outcome": "affirmative-recorded-vote",
+      "ayes": 4,
+      "noes": 1,
+      "evidence_contains": "planned contributions, uses, and unfunded needs"
+    },
+    {
+      "held_date": "2026-05-26",
+      "source_file_id": 3400,
+      "physical_page_start": 4,
+      "outcome": "affirmative-recorded-vote",
+      "ayes": 5,
+      "noes": 0,
+      "evidence_contains": "ISF policy by December 2026"
+    },
+    {
+      "held_date": "2026-05-26",
+      "source_file_id": 3400,
+      "physical_page_start": 4,
+      "outcome": "affirmative-recorded-vote",
+      "ayes": 3,
+      "noes": 2,
+      "evidence_contains": "fiscal sustainability key performance indicator"
+    },
+    {
+      "held_date": "2026-05-26",
+      "source_file_id": 3400,
+      "physical_page_start": 5,
+      "outcome": "affirmative-recorded-vote",
+      "ayes": 4,
+      "noes": 1,
+      "evidence_contains": "maintaining the expanded CIP"
+    },
+    {
+      "held_date": "2026-06-04",
+      "source_file_id": 3499,
+      "physical_page_start": 4,
+      "outcome": "affirmative-recorded-vote",
+      "ayes": 4,
+      "noes": 0,
+      "evidence_contains": "develop service level agreements"
+    }
+  ],
+  "excluded_procedural_actions": [
+    "2025-11-13 meeting-calendar adoption",
+    "2025-11-13 Comprehensive Financial Policy tabling",
+    "2026-01-27 long-term-forecast deferral",
+    "2026-01-27 cost-allocation-plan deferral"
+  ]
+}
