@@ -24,6 +24,7 @@ Thumbs.db
 # Generated quadtree HTML (keep archived outputs)
 *.html
 !data/artifacts/**/*.html
+!data/references/**/*.html
 
 # Virtual environment
 codex-wheel-build/

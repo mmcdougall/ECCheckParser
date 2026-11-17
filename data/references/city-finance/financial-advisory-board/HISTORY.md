@@ -5,19 +5,37 @@ an official City history.
 
 ## Establishment and legislative history
 
-The City established FAB through **Ordinance 2000-3**, codified as **El Cerrito
-Municipal Code section 2.04.300**, to bring residents into City financial
-deliberations. The City's November 20, 2012 staff report identifies citizen
-input as the founding purpose and traces later amendments: **2007-2** revised
-member appointments, and **2010-1** clarified responsibilities. The 2012
-proposal removed dissolved Redevelopment Agency references and added review of
-Council compensation. The published code's history records adoption of
-**2012-03 on December 18, 2012**.
+The City established FAB on **October 16, 2000**, through **Ordinance 2000-3**,
+codified as **El Cerrito Municipal Code section 2.04.300**. The original
+ordinance explains that the Council had created a citizen board, the
+**Committee of the Whole**, to study City issues and recommend improvements
+to financial and other City functions. That committee presented a financial
+report on **August 7, 2000** and recommended creating FAB. The ordinance
+establishes the board to carry out the committee's identified tasks and duties.
+Its adoption page records a unanimous vote, with no members absent.
 
-Sources: [2012 agenda bill](2012-11-20-fab-enabling-legislation-amendment-agenda-bill.pdf),
-PDF pp. 1 and 3-4;
-[published enabling code](2026-11-17-ecmc-2.04.300-financial-advisory-board.pdf),
-PDF p. 1, especially the ordinance-history lines at the bottom.
+Source: [original Ordinance 2000-3](2000-10-16-ordinance-2000-3-fab-establishment.pdf),
+PDF p. 1, recitals and Division I; PDF p. 2, adoption vote and signatures.
+
+The saved original amendments document the subsequent changes:
+
+- **March 5, 2007, Ordinance 2007-02:** replaces the enabling section. Compared
+  with the 2000 text, it removes the provisions for individual councilmembers
+  to appoint a member serving at that councilmember's pleasure and term.
+  [Original PDF](2007-03-05-ordinance-2007-02-fab-amendment.pdf), pp. 1-2.
+- **January 19, 2010, Ordinance 2010-01:** clarifies the board's advisory
+  responsibilities, including recommendations on the budget and long-term plan,
+  recommended adjustments to that plan, and evaluations requested by staff.
+  [Original PDF](2010-01-19-ordinance-2010-01-fab-amendment.pdf), pp. 1-2.
+- **December 18, 2012, Ordinance 2012-03:** removes dissolved Redevelopment
+  Agency references, includes Council-compensation review and review of the
+  comprehensive financial policy, and clarifies debt and long-term-obligation
+  review. [Original PDF](2012-12-18-ordinance-2012-03-fab-amendment.pdf), pp. 1-2;
+  certification appears on pp. 3-4.
+
+The [November 20, 2012 agenda bill](2012-11-20-fab-enabling-legislation-amendment-agenda-bill.pdf)
+provides additional staff background and the proposed redlined amendment.
+The separately saved enacted ordinance establishes the final text and vote.
 
 ## Why an advisory board?
 
@@ -51,10 +69,15 @@ FAB's creation in 2000 predates the 2019-2021 State Auditor intervention.
 The collected sources do not support describing that later crisis as the
 reason FAB was established.
 
-The saved enabling law is the City's published codified section with its
-amendment history. The original signed 2000 ordinance and its contemporaneous
-Council deliberations are not collected here. These sources establish the
-year, ordinance number, and stated purpose; they do not establish a more
-specific original political or financial trigger. The 2012 agenda-bill
-attachment is explicitly a proposed ordinance, with an incomplete number and
-unsigned approval block.
+The collection includes the original enacted founding ordinance and the three
+amendments listed in the published section's ordinance history. The City
+portal supplies these scans through its "Print (as PDF)" export; the downloaded
+exports are preserved without local edits. Their existing recognition text
+contains errors, so use the page images for exact wording.
+
+The Committee of the Whole's August 7, 2000 report and the contemporaneous
+Council minutes are not collected here. The founding ordinance establishes
+the committee's recommendation and the board's purpose; it does not by itself
+establish every financial or political circumstance behind that recommendation.
+The 2012 agenda-bill attachment remains a proposed ordinance, distinct from
+the signed enacted record now saved alongside it.

@@ -1,0 +1,1220 @@
+City of El Cerrito Corrective Action Plan Progress Report, 2021-09-16
+Publisher: City of El Cerrito
+Document date: 2021-09-16
+Retrieved on: 2026-11-17
+Source URL: https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_september2021.pdf
+Local PDF: 2021-09-16-city-corrective-action-progress-report.pdf
+Extraction: pdftotext -layout, UTF-8; existing recognition text is not corrected.
+Scope: Complete source PDF, including every attachment and certification page.
+PDF page labels are physical page numbers, not printed pagination.
+Preservation: Unmodified complete PDF downloaded from source_url
+Source notes: City-authored submission to the State Auditor, including all attachments. Document date and filename follow the cover letter, which may differ from the submission date reported by a source index.
+Use the scanned PDF page images to verify exact wording, signatures, and votes.
+
+[PDF page 1]
+
+CITY MANAGER’S OFFICE
+
+September 16, 2021
+
+Elaine Howle
+California State Auditor
+621 Capitol Mall, STE 1200
+Sacramento, CA 95814
+
+Dear Ms. Howle:
+
+This letter represents transmittal of the required six-month Progress Report on the City’s Corrective
+Action Plan in response to your Report Number 2020-803 regarding the City of El Cerrito under the
+California State Auditor Local High Risk Program published on March 16, 2021. This Corrective Action
+Plan Progress Report has been prepared with the intent to outline the specific actions that the City of
+El Cerrito has performed since our submittal of the Corrective Action Plan (CAP) in May 2021 to address
+the risk areas identified in the Report and the proposed timing for undertaking those actions.
+
+The CAP Progress Report provides an Executive Summary and updates the matrix of State Auditor High
+Risk Areas and Recommendations, the City Administration’s response to the Recommendations, and
+the Corrective Action that the City has or will take on the Recommendation. The City has also included
+documentation in as noted in the matrix.
+
+As previously reported, the City Council appointed a subcommittee of Councilmembers Lisa
+Motoyama and Tessa Rudnick to work directly with staff to monitor the various actions outlined in the
+CAP, in anticipation of this update outlining the City’s progress in implementing the CAP. The CAP
+Progress Report was presented to the subcommittee for their review and input, and the Progress
+Report will be shared with the entire City Council upon submission. The subcommittee reviewed the
+proposed actions and provided comments.
+
+Since the submittal of the CAP in May 2021, the City has made significant progress in the risk areas
+identified as well as on many of the recommendations contained within the original Report. The City
+Council passed a balanced budget for FY 2021-22, initiated strategies to ensure fiscal sustainability,
+and has continued to review and monitor the City’s budget and financial condition. Notably, the City
+finished Fiscal Year 2020-21 meeting its expenditure targets and exceeding revenue targets, showing
+an unaudited General Fund surplus of over $2 million. It should also be noted that this surplus does
+not include American Rescue Plan Act (ARPA) funding. The surplus, which is targeted for the City’s
+General Fund Reserve, is a direct result of expenditure cuts, careful budget monitoring, and
+conservative revenue estimates.
+
+The City Council committed to the creation of a Fiscal Recovery Plan and has initiated this process as
+well. The Council met on August 31, 2021 and held a study session to discuss strategies for the City’s
+long-term financial sustainability. To that end, the City’s plan is called the Fiscal Recovery and
+Sustainability Plan, to reflect not just the crisis response and short-term improvements but the long-
+term policies needed to sustain and enhance the City’s financial condition. The Plan is under
+development and will continue to be reviewed by the Council for approval in the next two months.
+Once approved, the City will forward this Plan to the State Auditor.
+
+                  CITY HALL 10890 San Pablo Avenue, El Cerrito, CA 94530
+           Telephone (510) 215-4305 Fax (510) 215-4379 http://www.el-cerrito.org
+                                                  1
+
+[PDF page 2]
+
+CITY MANAGER’S OFFICE
+
+The City Council has continued to review the City’s budget and financial condition through continued
+policy discussions and monthly updates at their regular City Council meetings. The City adopted its FY
+2021-22 Budget in June 2021 reflecting the short- and long-term budget strategies and City Council
+direction. City staff has continued to respond to the impacts created by the ongoing COVID-19
+pandemic, both operational and financial, and has taken specific steps to address these impacts in
+preparing the budget so that the City’s financial condition will continue to improve.
+
+The City hopes that this CAP Progress Report serves to satisfy the identified risk areas and that the
+State Auditor agrees that the City has indeed made significant progress in improving its financial
+condition. Should there be any issues that are still pending that the City is required to report, the City
+shall plan to do so at the next six-month mark in March 2022.
+
+Respectfully,
+
+
+
+Karen E. Pinkos, ICMA-CM
+City Manager, City of El Cerrito
+
+
+
+
+                  CITY HALL 10890 San Pablo Avenue, El Cerrito, CA 94530
+           Telephone (510) 215-4305 Fax (510) 215-4379 http://www.el-cerrito.org
+                                                    2
+
+[PDF page 3]
+
+                                       CITY OF EL CERRITO
+                         CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                              Progress Report: September 16, 2021
+
+                                       EXECUTIVE SUMMARY
+                             Overview of High Risk Areas from May 2021
+                                 City Update as of September 2021
+
+Continual Diminishing of Financial Reserves Through Overspending
+
+California State Auditor's    Although El Cerrito describes certain actions it has taken to address
+Assessment Status:            its financial condition, the city will likely need to reduce its
+Pending                       overspending during the next several years to replenish its reserves.
+                              In its fiscal year 2019–20 audited financial statements, El Cerrito
+                              reported that general fund expenditures exceeded revenue by
+                              $71,000 during that year and that its general fund reserves continue
+                              to be negative by $1.8 million at the end of the fiscal year. Based on
+                              financial data through February 2021, El Cerrito estimated that it
+                              would end fiscal year 2020–21 with $633,000 more in revenue than
+                              expenditures in its general fund. However, such a surplus would
+                              offset only a portion of its negative reserves.
+                              El Cerrito states that it expects to receive $4.8 million in funding
+                              from the federal American Rescue Plan Act and plans to use those
+                              proceeds to address its negative reserves, although it acknowledges
+                              that regulations for these funds are still pending. The city
+                              subsequently informed us of its understanding that such regulations
+                              will likely require it to spend these funds by December 2024 but
+                              may enable the city to use other funding sources to replenish its
+                              reserves.
+                              The status of El Cerrito's financial condition is contingent on the
+                              city's ability to develop a fiscally prudent spending plan as part of its
+                              fiscal year 2021–22 budget. City management has taken some
+                              action thus far to involve the community in the development of the
+                              budget, which will assist in its efforts to manage its spending.
+
+
+City Update September 2021: The City has addressed this risk area by making substantial
+improvements to its financial condition, including significant budget cuts beginning in 2020 and
+within the FY 2020-21 Fiscal Response Plan, and by exercising fiscal discipline and careful budget
+monitoring. The City’s unaudited ending year totals reflects over $2 million surplus in the General
+Fund, not including American Rescue Plan Act (ARPA) funding. The City met its reduced expenditure
+targets and, due to conservative projections and a robust real estate market, exceeded revenue
+targets. The surplus is targeted for General Fund Reserves.
+
+
+                                            EXECUTIVE SUMMARY
+                                  Overview of High Risk Areas from May 2021
+                                      City Update as of September 2021
+
+                                                                                                          1
+
+[PDF page 4]
+
+The City was allocated $6.2 million from ARPA and has received its first payment in the amount of
+$3.1 million. This funding, per the direction of the City Council, will be allocated to eligible
+expenditures for FY 2020-21, intended to further improve the amount of General Fund balance. The
+City is working with our independent auditor Badawi & Associates and consultant Management
+Partners to ensure appropriate ARPA spending and reporting.
+
+The FY 2020-21 audit is underway, and, depending upon completed audited actuals, expects that
+the General Fund surplus plus ARPA funding will result in a General Fund balance of approximately
+$4 million, meeting the City’s General Fund minimum reserve target of 10%.
+
+Because of progress in increasing General Fund reserve levels, the City issued a TRAN amount of $5.8
+million for FY 2021-22, which is a decrease from previous years; with the next payment of ARPA
+funding of $3.1 million in 2022, the City hopes to avoid the need for a TRAN for FY 2022-23.
+
+The City Council passed a balanced FY 2021-22 budget that did not include ARPA funding, again using
+conservative revenue projections, personnel reductions for unrepresented employees, and ongoing
+non-personnel expenditure reductions. The City Council continues to monitor and receive budget
+updates and will provide continuous direction to staff, particularly with respect to allocating the
+second ARPA payment of $3.1 million, and will also reassess the FY 2021-22 budget at midyear and
+make adjustments as necessary.
+
+
+Ineffective Budget Development and Monitoring Practices
+
+California State Auditor's     El Cerrito has taken some action to improve its budget development
+Assessment Status:             and monitoring, but it will need to fully address our report's
+Pending                        recommendations to ensure that its budget practices effectively
+                               oversee citywide spending. After we issued our audit report, El
+                               Cerrito implemented a new policy requiring departments to ensure
+                               that they have specific budget authority by type of expenditure
+                               before spending city resources. The change in policy was designed
+                               to address the concern we identified about overriding budgetary
+                               safeguards in the city's financial accounting system. El Cerrito
+                               provided examples of emails to city departments reminding them of
+                               this policy, as well as documentation of an instance when its finance
+                               department rejected a spending request by a department that did
+                               not have sufficient budget authority.
+
+                               El Cerrito also implemented a procedure to improve its budget
+                               development process. To provide more detail for its fiscal year
+                               2021–22 budget, the city now requires departments to complete a
+                               standard form justifying expenditures of more than $10,000 that
+                               are included in the budget.
+
+
+
+                                            EXECUTIVE SUMMARY
+                                  Overview of High Risk Areas from May 2021
+                                      City Update as of September 2021
+
+                                                                                                       2
+
+[PDF page 5]
+
+                               To assist with its budget development and monitoring, El Cerrito
+                               prepared a five-year financial forecast in March 2021 after our
+                               audit's completion. This forecast includes options for permanent
+                               citywide spending reductions of $1 million and $2 million, which will
+                               help the city identify the amount and timing of specific expenditure
+                               reductions it will need to make. However, the city may still need to
+                               consider making additional spending reductions. Even if El Cerrito
+                               can achieve a $2 million reduction in spending in fiscal year 2021–
+                               22, the city stills projects to spend more than its revenue in fiscal
+                               years 2023–24 and 2024–25.
+
+                               Despite the progress it has made, El Cerrito acknowledges that
+                               there are several recommendations from our audit that it is in the
+                               process of addressing. For instance, one of the critical budgeting
+                               practices we identified is the need to track and present financial
+                               information by individual department. The city council could use
+                               such information to hold departments responsible for their
+                               spending. El Cerrito states that it will research the issue and
+                               potentially make this change during fiscal year 2021–22.
+
+                               Further, El Cerrito states that it complies with certain Government
+                               Finance Officers Association (GFOA) best practices. However, the
+                               city did not provide evidence during the audit of complying with
+                               such policies. Our audit identified that El Cerrito does not adhere to
+                               many GFOA best practices pertaining to budget development and
+                               monitoring. As we state in our report, El Cerrito does not develop
+                               revenue projections based on an analysis of past performance and
+                               assumptions regarding future performance, which has resulted in
+                               overspending by its departments. Further, the city does not disclose
+                               in its budget the specific assumptions used for expenditure
+                               projections in relation to revenue assumptions, as we note, thereby
+                               limiting the ability of the city council to determine the
+                               appropriateness of its spending.
+
+City Update September 2021: During the FY 2021-22 budget process, the City increased its focus on
+department budgets. City Management and the Finance Director worked with department directors
+and documented assumptions and data resulting in department budgets that were included within
+the adopted FY 2021-22 budget. Departments presented their budgets to the City Council directly
+during the budget hearings, and the adopted FY 2021-22 budget document reflects this
+departmental emphasis. The City has provided a monthly General Fund report to the City Council
+since 2020, and City staff has worked with the ad-hoc City Council subcommittee to improve monthly
+reporting to City Council to include department updates and trends. Staff will present these updated
+reports to the Council beginning in October/November that will provide the information starting
+from July 2021. City Management and the Finance Director have continued to implement stricter
+policies for department staff to monitor revenues and expenditures. City staff is researching financial
+                                             EXECUTIVE SUMMARY
+                                   Overview of High Risk Areas from May 2021
+                                       City Update as of September 2021
+
+                                                                                                          3
+
+[PDF page 6]
+
+policies and working with the Financial Advisory Board and City Council to determine any
+recommended updates to the current Comprehensive Financial Polices as adopted by City Council
+policy that would change from the current policy of budgeting by fund.
+
+City Management and the Finance Director continue to work directly with departments to monitor
+revenues and expenditures and hold staff accountable. Budget performance will be noted in future
+department director evaluations. Departments are being monitored by City Management to ensure
+appropriate spending within departments as well as compliance with the current financial policy to
+ensure spending authority by fund is not exceeded. As of September 2021 the preliminary,
+unaudited actuals show that all funds (including departments) met their targets for FY 2020-21.
+Additionally, the City Council passed a motion directing staff to set a goal of one million dollars
+minimum surplus funds annually moving forward, at the recommendation of the Financial Advisory
+Board (FAB).
+
+City Management and the Finance Director have initiated a restructuring of the Finance Department.
+The incumbent Finance Supervisor will be retired as of September 30, and the position is proposed
+to be replaced by a Budget Manager position that will specifically focus on budgeting and financial
+analysis for the City, allowing City Management to be responsive to the City Council and the public
+in communicating budget strategies and information. This is expected to be presented to the City
+Council for approval in October, and staff will seek to fill this position by the end of the calendar
+year.
+
+The City continues to follow GFOA best practices to use historical trends and analysis as the basis for
+financial projections, to develop and monitor the City’s financial condition, and implement financial
+policies as adopted by the City Council. Current pandemic conditions continue to provide uncertainty
+within financial projections, however staff worked with our tax consultants HdL and department
+directors to provide a five-year General Fund projection included in the FY 2021-22 budget
+document. The budget document also includes details on the assumptions and trends that are
+reflected within the revenue and expenditure projections throughout the budget. Following the
+adoption of the FY 2021-22 budget and the receipt of the first tranche of ARPA funding, staff and
+the City Council has worked with consultant Management Partners using a model to develop a ten-
+year General Fund projection that was discussed with the City Council at their study session in August
+2021. This model will continue to be updated with information and shared with the Council during
+the fiscal year and will be utilized for future budget processes.
+
+Lack of Formal Financial Recovery Plan
+
+California State Auditor's     El Cerrito states that it is working on its fiscal recovery plan to
+Assessment Status:             include the elements we described in our report, and it anticipates
+Pending                        completing the plan in the summer of 2021. We look forward to
+                               reviewing the city's fiscal recovery plan after its completion.
+
+
+City Update September 2021: The City Council adopted its FY 2021-22 budget in July 2021 that
+included many of the elements as discussed in the Corrective Action Plan sent to the State Auditor
+
+                                             EXECUTIVE SUMMARY
+                                   Overview of High Risk Areas from May 2021
+                                       City Update as of September 2021
+
+                                                                                                          4
+
+[PDF page 7]
+
+in May 2021, and both the Fiscal Response Plan adopted in 2020 and the Corrective Action Plan were
+included within the budget document. The Council then met on August 31, 2021 and held a study
+session facilitated by local government consultant Management Partners to discuss the City’s short-
+term recovery and long-term financial sustainability. The Fiscal Recovery and Sustainability Plan will
+move the City from its previous crisis response to a measured approach toward long term fiscal
+health. The Plan is currently in development and is expected to be adopted by the City Council within
+the next two months.
+
+
+Insufficient Reductions In Ongoing Costs
+
+California State Auditor's     We are concerned that El Cerrito's corrective action plan does not
+Assessment Status:             identify a targeted approach to reduce its spending. El Cerrito's five-
+Pending                        year forecast noted the need to make significant reductions in
+                               spending starting with its fiscal year 2021–22 budget but did not
+                               outline how it planned to do so. In response to our cost-reduction
+                               recommendations, El Cerrito indicated that it is unlikely that it will
+                               complete a salary and compensation study until fiscal year 2022–23.
+                               As we acknowledge in our audit report, any effort by the city to
+                               revise its salary costs will involve negotiations with its employee
+                               unions. In March 2021, El Cerrito sent letters to its labor unions
+                               requesting to meet and discuss the city's financial challenges.
+                               However, to fully engage in salary negotiations, the city will need
+                               information from a compensation study to substantiate any
+                               proposed revisions to the compensation for its employees.
+                               Moreover, the city could consider contracting certain city services
+                               as we recommended. Despite initially disagreeing with this
+                               recommendation, the city now states in its corrective action plan
+                               that it will explore this option with the city council and the
+                               community.
+
+                               In its corrective action plan, El Cerrito reiterates its belief that it is
+                               limited in its ability to conduct a compensation study. Although the
+                               city expressed concern regarding the cost of a study, it did not
+                               address other key actions we recommended that it perform
+                               beforehand, such as analyzing its organizational structure and the
+                               functions it needs to achieve its goals and analyzing the duties and
+                               responsibilities assigned to its current staff positions. Such an effort
+                               should be undertaken before seeking a consultant to conduct a
+                               compensation study. Further, the city's concern about the initial
+                               cost of conducting a compensation study does not acknowledge the
+                               long-term savings that could result from implementing changes
+                               recommended from the study, such as potential opportunities to
+                               reduce the costs of employee benefits, similar to the opportunities
+
+                                             EXECUTIVE SUMMARY
+                                   Overview of High Risk Areas from May 2021
+                                       City Update as of September 2021
+
+                                                                                                            5
+
+[PDF page 8]
+
+                               we note. By not conducting a compensation study and related
+                               analyses, El Cerrito is limiting its ability to reduce its spending.
+
+                               Another example of an area that El Cerrito has not demonstrated its
+                               commitment to managing its spending pertains to salary increases
+                               for its management positions. Our audit described a process that
+                               the city used to authorize or agree to salary increases for certain
+                               management employees that exceeded the threshold established in
+                               the city's salary schedules. El Cerrito's response to the audit stated
+                               that the city had suspended the process for 2020 and would
+                               consider eliminating the process later in fiscal year 2020–21.
+                               However, El Cerrito now states in its corrective action plan that it
+                               will not consider permanently eliminating the process until the
+                               completion of a compensation study. The city manager stated that
+                               any changes to the city's salary structure would need to be studied
+                               to determine the best option for the city. However, our audit cited
+                               specific examples of management employees being paid in excess of
+                               the city's salary schedule and greater than similar positions of
+                               nearby cities, so we are unclear why a compensation study is
+                               necessary to determine whether this process should be eliminated.
+
+                               Furthermore, El Cerrito's corrective action plan reiterates its initial
+                               response to the audit that it eliminated cost of living increases.
+                               However, this statement fails to disclose the full financial impact of
+                               the city's negotiations. Even though El Cerrito negotiated with its
+                               employee unions to eliminate cost-of-living salary increases for
+                               fiscal year 2020–21, it nevertheless agreed to such salary increases
+                               for subsequent years as we describe in our audit report.
+                               Consequently, the city should expect its costs to increase by at least
+                               $1.7 million in fiscal year 2021–22, thereby placing greater pressure
+                               on it to identify other cost reductions. El Cerrito stated that it will
+                               freeze salaries during fiscal year 2021–22 for management
+                               employees not represented by an employee union, but it is unclear
+                               how long the city can continue to defer pay increases for that
+                               group.
+
+
+City Update September 2021: The City Council has expressed interest in completing a
+comprehensive classification and compensation study, and the scope of work will include
+assessments of the functions and staffing of the organization with the intention of providing detailed
+information on the organization, staffing, and comparative compensation levels to the staff and the
+Council. This study will inform any further organizational assessment to evaluate staffing needs and
+opportunities. Staff still intends to issue an RFQ/RFP by the end of calendar year 2021. Based on the
+cost, staff will then determine with the City Council if funding is available, if budget amendments
+
+
+                                             EXECUTIVE SUMMARY
+                                   Overview of High Risk Areas from May 2021
+                                       City Update as of September 2021
+
+                                                                                                         6
+
+[PDF page 9]
+
+would be necessary to fund the study, or if the study should wait until the following fiscal year. It is
+not likely that this study will be completed in FY 2021-22.
+
+The practice of salary increases for Management and Confidential (unrepresented) employees that
+exceed the control point has been indefinitely suspended, as the City has frozen salary increases for
+Management/Confidential since FY 2019-20 and has continued to do so through FY 2021-22. In
+addition, the City Council imposed an additional 2% contribution into CalPERS for a total of 3% in the
+last two fiscal years. Any permanent change to the compensation system that determines salaries
+would be considered pending the completion of a classification/compensation study and discussed
+with the City Council.
+
+As previously indicated, other salary increases for FY 2021-22 were obligated per closed contracts
+for all represented employees within bargaining units. City Management worked with Local 1230
+(representing Fire Department employees), the El Cerrito Police Employees Association
+(representing Police Department employees), SEIU (representing miscellaneous employees), and the
+Public Safety Management Association (representing Public Safety Management) to discuss the
+City’s current financial situation and asked them to defer their COLAs that are included in their closed
+contracts for FY 2021-22. All represented bargaining units declined to defer their salary increases for
+FY 2021-22.
+
+However, two of the units within PSMA (Police Chief and Fire Chief) agreed to increase their CalPERS
+contribution by 2% for a total of 14%. The current MOUs for Local 1230 and SEIU expire in June 2022,
+and City Management will work with the City Council with respect to its direction and authority
+during negotiations for the next MOUs.
+
+The City Council discussed the recommendation to consider contracting out for Police and Fire
+services during their study session on August 31, 2021 and did not direct staff to perform an analysis
+for contracting out services at this time. Public Safety has historically been the highest priority and
+concern of residents of the City. The Council determined that they were not interested in pursuing
+a contract for police services; and while the Council discussed evaluating options for fire services,
+they also recognized the complications involved because the Kensington Fire Protection District
+contracts with the City for fire services. The City Council remains interested in the results of the
+classification/compensation study that will be conducted to inform their discussions on these
+departments, however the Council is not currently considering contracting with another agency for
+public safety services.
+
+
+
+Missed Opportunities to Increase Revenue
+
+California State Auditor's      Although El Cerrito updated some fees for its swim center and
+Assessment Status:              senior services, it plans to conduct an analysis of demand and cost
+Pending                         recovery as conditions relating to the COVID-19 pandemic are more
+                                stable. In May 2021, El Cerrito updated swim center fees and senior
+
+                                             EXECUTIVE SUMMARY
+                                   Overview of High Risk Areas from May 2021
+                                       City Update as of September 2021
+
+                                                                                                           7
+
+[PDF page 10]
+
+                              services fees in its master fee schedule. It increased many of its fees
+                              for its swim center by 2 to 10 percent, although those increases do
+                              not take effect until September 2021. For its senior services, the city
+                              increased the fee by $1 for some of its services. While these fee
+                              increases are likely to result in greater revenue for the city, El
+                              Cerrito still has additional opportunities to increase its revenue.
+
+City Update September 2021: • Recreation staff assessed various fees for swim center and senior
+services, and increased fees were included in the Master Fee Schedule approved by the City Council
+in May 2021. Staff will conduct an analysis on swim center demand, on senior services demand, and
+cost recovery once normal operations resume and a typical season can be conducted. Since the
+pandemic is ongoing, the date of completion cannot be estimated at this time. Other revenue
+opportunities, including grant funding, are continuously being sought out by staff and will continue
+to work with the City Council on any opportunities for increasing fees for services.
+
+
+
+
+                                            EXECUTIVE SUMMARY
+                                  Overview of High Risk Areas from May 2021
+                                      City Update as of September 2021
+
+                                                                                                        8
+
+[PDF page 11]
+
+                                           CITY OF EL CERRITO
+                             CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                  Progress Report: September 16, 2021
+
+
+                                                High Risk Issue # 1
+                                  Financial Condition and General Fund Reserves
+
+Overview: The City Council and City staff are determined to restore the City to fiscal health, increasing the
+General Fund reserves, and provide appropriate levels of service with respect to revenues. City staff will
+continue to monitor revenues and expenditures closely and work with the City Council to determine
+adjustments in a timely manner, if warranted.
+
+       High Risk Area #1 -                       Response                                Corrective Action
+          State Auditor                          May 2021                             Updated: September 2021
+       Recommendations
+1. To eliminate its reliance on     The Administration Agrees with •             The City’s unaudited ending year
+short-term loans, El Cerrito        this Recommendation – The                    totals reflects over $2 million
+should address its                  Administration goal is to not                surplus in the General Fund, not
+overspending and its revenue        have to rely on a TRAN (Tax &                including American Rescue Plan Act
+shortfalls as discussed             Revenue Anticipation Note) in                (ARPA) funding. The City met its
+throughout this report              the future. The City will continue           reduced expenditure targets and,
+                                    to work with the City Council on             due to conservative projections and
+                                    implementing strategies to                   a robust real estate market,
+                                    achieve the                                  exceeded revenue targets. The
+                                    GFOA recommended reserve                     surplus is targeted for General Fund
+                                    levels that will eliminate the               Reserves. Completed for FY 2020-
+                                    need for a TRAN.                             21, and ongoing.
+                                                                       •         The City was allocated $6.2 million
+                                                                                 from ARPA and has received its first
+                                                                                 payment in the amount of $3.1
+                                                                                 million. This funding, per the
+                                                                                 direction of the City Council, will be
+                                                                                 allocated to eligible expenditures for
+                                                                                 FY 2020-21, intended to further
+                                                                                 improve the amount of General
+                                                                                 Fund balance. The City is working
+                                                                                 with our independent auditor
+                                                                                 Badawi & Associates and consultant
+                                                                                 Management Partners to ensure
+                                                                                 appropriate ARPA spending and
+                                                                                 reporting. Estimated Completion:
+                                                                                 FY 2021-22 and ongoing.
+                                                                                 Responsible staff: City
+                                                                                 Management/Finance Department.
+                                                                                                                   1
+                                                   CITY OF EL CERRITO
+                                      CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                           Progress Report: September 16, 2021
+
+[PDF page 12]
+
+                                                                          •   The FY 2020-21 audit is underway,
+                                                                              and, depending upon completed
+                                                                              audited actuals, expects that the
+                                                                              General Fund surplus plus ARPA
+                                                                              funding will result in a General Fund
+                                                                              balance of approximately $4 million,
+                                                                              meeting the City’s General Fund
+                                                                              minimum reserve target of 10%.
+                                                                              Completed. Responsible staff: City
+                                                                              Management/Finance Department.
+                                                                          •   Because of progress in increasing
+                                                                              General Fund reserve levels, the City
+                                                                              issued a TRAN amount of $5.8
+                                                                              million for FY 2021-22, which is a
+                                                                              decrease from previous years; with
+                                                                              the next payment of ARPA funding
+                                                                              of $3.1 million in 2022, the City
+                                                                              hopes to avoid the need for a TRAN
+                                                                              for FY 2022-23. Completed for FY
+                                                                              2021-22, and ongoing. Responsible
+                                                                              staff: Finance Department/City
+                                                                              Management.
+                                                                          •   The City Council passed a motion
+                                                                              directing staff to set a goal of one
+                                                                              million dollars minimum surplus
+                                                                              funds annually moving forward, at
+                                                                              the recommendation of the
+                                                                              Financial Advisory Board (FAB).
+                                                                              Estimated Completion: FY 2022-23
+                                                                              and ongoing.
+                                                                          •   City Management and Finance staff
+                                                                              have implemented stricter policies
+                                                                              for staff to monitor revenues and
+                                                                              expenditures and will continue to
+                                                                              report monthly to City Council on
+                                                                              budget performance. Completed
+                                                                              (May 2021).
+2. To ensure that its rising      The Administration Agrees with •            The City Council has directed City
+pension costs do not jeopardize   this Recommendation – As a                  staff to establish a Section 115
+the City’s ability to provide     first step, the Administration has          Trust. Staff is now researching
+services to its residents or      been focused on building its                vendors and a recommended
+contribute to potential           reserve levels. Establishing a              funding policy for the City Council’s
+insolvency, El Cerrito should     Section 115 Trust would be an               consideration. Financial policies are
+identify and use alternative      extension of those efforts. The             also slated to be discussed by the
+methods of paying for the         Administration intends to work              City’s Financial Advisory Board in the
+                                                                                                                2
+                                                CITY OF EL CERRITO
+                                   CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                        Progress Report: September 16, 2021
+
+[PDF page 13]
+
+obligation, such as establishing    with the City Council to                    coming months. Estimated
+a trust funded by the City or       recommend establishing a                    completion: FY 2022-23.
+through employee                    Section 115 Trust or consider               Responsible staff: City
+contributions that invests          other methods to fund CalPERS               Management/Finance
+amounts that can be used to         obligations.                                Department/Human Resources.
+pay for future pension benefits                                             •   The City Council directed staff to
+and reduce future pension                                                       work with all employee bargaining
+costs                                                                           units to negotiate increased
+                                                                                contributions to CalPERS. The
+                                                                                Management/Confidential group
+                                                                                (which is unrepresented), the Fire
+                                                                                Chief, and the Police Chief are now
+                                                                                contributing an additional 2% as of
+                                                                                FY 2021-22. Estimated completion:
+                                                                                to be determined. Responsible
+                                                                                staff: City Management/Human
+                                                                                Resources.
+3. To ensure that its policy of     The Administration Agrees with          •   City staff is working with the City’s
+allowing individuals to remain      this Recommendation – The                   benefits broker to determine the
+as members of City-sponsored        Administration intends to work              cost impact of retirees on the
+health care plans upon              with its benefits broker to                 healthcare plan and will implement
+retirement does not result in       determine the cost of the                   fees to recover the cost. Estimated
+additional costs for the City, El   implicit subsidy that is provided           completion: FY 2021-22.
+Cerrito should calculate the        to retirees by allowing them to             Responsible staff: Human
+subsidy it provides to those        stay on the City’s plan (at the             Resources/City Management.
+retirees and charge them for        retiree’s cost), and work with
+the difference in cost resulting    the City Council on
+from their inclusion in the         implementing this subsidy fee to
+health care pool                    those respective retirees.
+
+
+
+
+                                                                                                                  3
+                                                  CITY OF EL CERRITO
+                                     CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                          Progress Report: September 16, 2021
+
+[PDF page 14]
+
+                                             High Risk Issue # 2
+                                     Budget Development and Monitoring
+
+Overview: The City is committed to continuous improvement in implementing policies and procedures that
+conform with best practices in local government, and to provide information to the City Council and the
+community in order to make informed and educated decisions.
+
+       High Risk Area #2 -                         Response                                Corrective Action
+          State Auditor                                                                 Updated: September 2021
+       Recommendations
+1. El Cerrito should adopt GFOA       The Administration Agrees with           •   The City continues to follow GFOA
+budgeting best practices that         this Recommendation – The                    best practices to use historical
+specifically include the              Administration believes in                   trends and analysis as the basis for
+following:                            continuous improvement. The                  financial projections. Current
+     o Using historical trends        Administration is committed to               pandemic conditions continue to
+         and analysis as the          implementing procedures that                 provide uncertainty within the
+         basis for financial          hold departments accountable                 projections, however for FY 2021-22
+         projections.                 in keeping with best practices.              staff worked with our tax
+     o Expanding its monthly                                                       consultants and department
+         revenue and                  The Administration does adhere               directors to provide a five-year
+         expenditure budget           to GFOA Budgeting Best                       General Fund projection that was
+         updates to include           Practices (such as using                     presented to the City Council and
+         comparisons to actual        historical trends analysis as the            included in the FY 2021-22 budget
+         results to minimize          basis for projections, monthly               document. Completed. Responsible
+         overspending                 updates do include comparison                staff: Finance Department/City
+     o Establishing                   to actuals) and has consistently             Management.
+         procedures to prevent,       been awarded the GFOA                    •   Following the adoption of the FY
+         detect, and correct          Distinguished Budget                         2021-22 budget and the receipt of
+         deviations from              Presentation Award.                          ARPA funding, staff and the City
+         adopted budgets                                                           Council has worked with
+         during the fiscal year to                                                 Management Partners to develop a
+         ensure that                                                               ten-year General Fund projection
+         departments do not                                                        model. This was discussed with the
+         significantly overspend.                                                  City Council at their study session in
+                                                                                   August 2021 and will continue to be
+                                                                                   updated with information. The ten-
+                                                                                   year projection will be shared in
+                                                                                   detail with the Council as the Fiscal
+                                                                                   Recovery and Sustainability Plan is
+                                                                                   completed, and during the fiscal
+                                                                                   year. Completed for FY 2021-22,
+                                                                                   ongoing. Responsible staff: Finance
+                                                                                   Department/City Management.
+                                                                               •   City staff has worked with the City
+                                                                                   Council subcommittee to improve
+                                                                                                                     4
+                                                     CITY OF EL CERRITO
+                                        CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                             Progress Report: September 16, 2021
+
+[PDF page 15]
+
+                                                                                monthly reporting to City Council,
+                                                                                which started in September 2020 at
+                                                                                the request of Council, to include
+                                                                                department updates and trends.
+                                                                                Staff will present these updated
+                                                                                reports to the Council beginning in
+                                                                                October/November. Estimated
+                                                                                completion: In progress,
+                                                                                October/November 2021.
+                                                                                Responsible staff: Finance
+                                                                                Department/City Management.
+                                                                            •   City Management and the Finance
+                                                                                Director have implemented stricter
+                                                                                policies for department staff to
+                                                                                monitor revenues and expenditures.
+                                                                                Completed (May 2021).
+
+2. To ensure accountability in      The Administration Agrees with          •   City Management and the Finance
+the budget development              this Recommendation – The                   Director worked with department
+process, city management            Administration plans to provide             directors and documented
+should document the                 documentation of assumptions                assumptions and data resulting in
+assumptions and data used to        and data for Department                     department budgets that were
+develop each department’s           projections to the City Council.            included within the adopted FY
+projections of financial activity   Each Department will continue               2021-22 budget. Directors
+for the fiscal year. This           to be required to submit                    presented their budgets directly to
+information should be made          assumptions with revenue and                the City Council during the FY 2021-
+available to the city council       expense projections as                      22 budget hearings. City
+during the budget review and        appropriate.                                Management and Finance continue
+approval process.                                                               to meet with directors regularly to
+                                                                                review progress. Completed.
+                                                                                Responsible staff: City
+                                                                                Management/Finance.
+3. To ensure accountability in      The Administration Agrees with          •   City staff has worked with the City
+monitoring the budget, city         this Recommendation – The                   Council subcommittee to improve
+management should present           Administration will consult with            monthly reporting to City Council to
+monthly updates to the city         the Financial Advisory Board                include department updates and
+council on the current status of    (FAB) to review the City’s                  trends. Staff will present these
+departmental budgets and            current Comprehensive                       updated reports to the Council
+comparisons to prior year           Financial Policy, which calls for           beginning in October/November.
+budgeted and actual amounts.        budgeting by Fund, to consider              Estimated completion: In progress,
+City management should              the impacts of budgeting by                 October/November 2021.
+promptly seek approval of           Department. If the FAB                  •   City staff is researching financial
+proposed budget adjustments         recommends and the City                     policies and working with the
+by department when                  Council approves this policy                Financial Advisory Board and City
+warranted. City management          change, the information                     Council to determine any
+                                                                                                                 5
+                                                  CITY OF EL CERRITO
+                                     CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                          Progress Report: September 16, 2021
+
+[PDF page 16]
+
+should also prepare and             provided to the City Council will           recommended updates to the policy
+provide supporting                  provide justification by                    that would change from the current
+documentation to justify any        Department (including revenues,             policy of budgeting by fund.
+budget increases.                   expenditures, and adjustments).             Estimated completion: FY 2021-22.
+                                                                                Responsible staff: Finance
+                                                                                Department/City Management.
+4. To ensure that it fulfills its   The Administration Agrees with •            The City has provided a monthly
+duty to guard the fiscal health     this Recommendation – The City              General Fund report to the City
+of the city, the city council       Council has directed staff to               Council since 2020, and is working
+should direct staff to provide      provide monthly financial                   to improve this monthly reporting to
+the information described           reports, and this has been done             include department updates and
+above and regularly review          since mid-2020. The                         trends. Estimated completion:
+such documents.                     Administration is committed to              October/November 2021.
+                                    continuing this practice that               Responsible staff: Finance
+                                    includes the recommendations                Department/City Management.
+                                    from the State Auditor that are
+                                    contained in this risk area.
+ 5. To ensure that departments      The Administration Agrees with •            City Management and the Finance
+do not exceed their budgeted        this Recommendation -- The                  Director have implemented policies
+spending authority, the city        current financial policy and the            for departments to monitor
+should establish and enforce        adopted budget gives the City               revenues and expenditures and hold
+safeguards within its financial     spending authority at the fund              staff accountable. Budget
+system that prevent                 level, which permits                        performance will be noted in future
+expenditure from being              departments to balance funding              department director evaluations.
+incurred without appropriate        needs with available budgeted               Finance staff have been directed to
+budget authorization.               funds within the line-item                  return payment requests to
+                                    budget. In the short term, the              departments not in compliance and
+                                    Administration will hold                    report discrepancies to the Finance
+                                    departments accountable to                  Director. Departments are being
+                                    prevent the total departmental              monitored by City Management to
+                                    budget being exceeded. In the               ensure appropriate spending within
+                                    long term, departments will                 departments as well as compliance
+                                    continue to be required to                  with the current financial policy to
+                                    analyze their line item budgets             ensure spending authority by fund is
+                                    to ensure there are adequate                not exceeded. Completed. (May
+                                    funds before submitting                     2021) Note: As of September 2021
+                                    payment requests to Finance,                the preliminary, unaudited actuals
+                                    and/or submit a budget transfer             show that all funds met their
+                                    request to Finance moving funds             targets for FY 2020-21.
+                                    where available to cover the     •          City Management and the Finance
+                                    expense                                     Director have initiated a
+                                                                                restructuring of functions in the
+                                                                                Finance Department. The incumbent
+                                                                                Finance Supervisor will be retired as
+                                                                                of September 30, and the position is
+                                                                                                                 6
+                                                  CITY OF EL CERRITO
+                                     CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                          Progress Report: September 16, 2021
+
+[PDF page 17]
+
+                                           proposed to be replaced by a
+                                           Budget Manager position that will
+                                           specifically focus on budgeting and
+                                           financial analysis for the City,
+                                           allowing City Management to be
+                                           responsive to the City Council and
+                                           the public in communicating budget
+                                           strategies and information. This
+                                           classification is being developed and
+                                           is expected to be presented to the
+                                           City Council for approval in October,
+                                           and staff will seek to fill this position
+                                           by the end of the calendar year.
+                                           Expected Completion: December
+                                           2021.
+
+
+
+
+                                                                                7
+             CITY OF EL CERRITO
+CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+     Progress Report: September 16, 2021
+
+[PDF page 18]
+
+                                                   High Risk Issue # 3
+                                                  Fiscal Recovery Plan
+
+Overview: The City will develop and implement a Fiscal Recovery Plan that will focus on financial sustainability
+and accountability.
+
+High Risk Area #3 -                     Response                                          Corrective Action
+State Auditor Recommendations                                                        Updated: September 2021
+1. To ensure accountability in its      The Administration Agrees           •    The City Council adopted its FY 2021-
+fiscal recovery process, El Cerrito     with this Recommendation                 22 budget in July 2021 that included
+should develop and adopt a              – The Administration will                many of the elements as discussed in
+financial recovery plan by July         expand upon the City’s                   the Corrective Action Plan sent to the
+2021 that describes its goals and       existing Fiscal Response Plan            State Auditor in May 2021, and both
+intended corrective actions,            to include the State                     the Fiscal Response Plan adopted in
+prioritizes its resources, identifies   Auditor’s recommended                    2020 and the Corrective Action Plan
+individuals responsible for             additions. This will be a                were included within the budget
+monitoring its progress in              living document that will                document. The Council then met on
+implementing each action, and           continue to serve as the                 August 31, 2021 and held a study
+outlines when it anticipates            City’s roadmap to financial              session facilitated by local
+completing key milestones               stability in FY 2025-26. The             government consultant Management
+related to each action. City            City Council will be informed            Partners to discuss the City’s short-
+management should also inform           quarterly on                             term recovery and long-term financial
+the city council quarterly of its       implementation progress.                 sustainability. The Fiscal Recovery and
+progress in implementing the                                                     Sustainability Plan will move the City
+plan.                                                                            from its previous crisis response to a
+                                                                                 measured approach toward long term
+                                                                                 fiscal health. The Plan is currently in
+                                                                                 development and is expected to be
+                                                                                 adopted by the City Council in the
+                                                                                 coming months. Estimated
+                                                                                 completion: December 2021.
+                                                                                 Responsible staff: City Management.
+
+
+
+
+                                                                                                                    8
+                                                     CITY OF EL CERRITO
+                                        CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                             Progress Report: September 16, 2021
+
+[PDF page 19]
+
+                                                  High Risk Issue # 4
+                                                   Reducing Costs
+
+Overview: The City will work to ensure that expenses, particularly in personnel, are at appropriate levels within
+the City’s resources while allowing the City to recruit and retain a talented staff to provide services. City
+management will work with all bargaining units to ensure fair and reasonable compensation that is consistent
+with ensuring the financial sustainability of the City.
+
+        High Risk Area #4 -                       Response                                Corrective Action
+State Auditor Recommendations                                                        Updated: September 2021
+1. To identify potential savings      The Administration Agrees            •    The City Council has expressed
+and efficiencies, El Cerrito should   with this Recommendation -                interest in completing a
+perform the following tasks:          A comprehensive study of                  comprehensive classification and
+    o By September 2021,              the City’s classification and             compensation study, and the scope of
+         conduct an analysis of       compensation structure                    work will include assessments of the
+         the organizational           (including total                          functions and staffing of the
+         structure of the city and    compensation – not just base              organization with the intention of
+         assess the functions it      salaries) would be beneficial             providing detailed information on the
+         needs to achieve its goals   to the City. However, costs               organization, staffing, and
+    o Based on the results of         are expected to exceed                    comparative compensation levels to
+         the organizational           $100,000. If the City Council             the staff and the Council. This study
+         structure study, conduct     directed the Administration               will inform any further organizational
+         an analysis of the duties    to allocate funding for a                 assessment to evaluate staffing needs
+         and responsibilities         comprehensive classification              and opportunities. Staff still intends to
+         assigned to each of the      and compensation study,                   issue an RFQ/RFP by the end of
+         city’s current staff         staff believes this cannot be             calendar year 2021. Based on the cost,
+         positions to identify any    completed by September                    staff will then determine with the City
+         overlapping areas of         2021. A study of this                     Council if funding is available, if
+         responsibility and           magnitude must be                         budget amendments would be
+         inefficiencies.              completed by an industry                  necessary to fund the study, or if the
+    o Using the results of its        expert. A Request for                     study should wait until the following
+         organizational structure     Qualifications (RFQ) would                fiscal year. It is not likely that this
+         study and its analysis of    have to be developed, issued              study will be completed in FY 2021-22.
+         duties and                   and a subsequent selection                Estimated completion: FY 2022-23.
+         responsibilities, conduct    process would follow. In                  Responsible staff: Human
+         a compensation study by      addition, the consultant's                Resources/City Management.
+         comparing total              work would take several              •    As previously mentioned, City
+         compensation for its staff   months of extensive research              Management and the Finance Director
+         positions with               of comparing classifications              has initiated a restructuring of
+         compensation paid by         and the intricacies of total              functions in the Finance Department.
+         other cities. Based on the   compensation before the City              The incumbent Finance Supervisor will
+         results of this study,       would be provided with                    be retired as of September 30, and the
+         implement personnel          preliminary findings.                     position is proposed to be replaced by
+                                                                                                                    9
+                                                   CITY OF EL CERRITO
+                                      CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                           Progress Report: September 16, 2021
+
+[PDF page 20]
+
+        and salary changes that                                                 a Budget Manager position that will
+        would result in ongoing                                                 specifically focus on budgeting and
+        cost reductions                                                         financial analysis for the City, allowing
+                                                                                City Management to be responsive to
+                                                                                the City Council and the public in
+                                                                                communicating budget strategies and
+                                                                                information. This classification is being
+                                                                                developed and is expected to be
+                                                                                presented to the City Council for
+                                                                                approval in October, and staff will
+                                                                                seek to fill this position by the end of
+                                                                                the calendar year. Estimated
+                                                                                Completion: December 2021.
+2. To better control its salary       The Administration Agrees            •    This practice has been indefinitely
+costs, El Cerrito should end its      with this Recommendation -                suspended for the Management and
+practice of providing city            The Administration would                  Confidential (unrepresented) group,
+management authority to pay           study management                          with a permanent change to be
+certain employees over the            compensation as part of the               considered pending the completion of
+threshold established in its salary   classification and                        a classification/compensation study.
+ranges                                compensation study                        This study may also be used as a basis
+                                      recommended by the State                  for discussions on compensation
+                                      Auditor.                                  during future negotiations with the
+                                      In 2020, the Administration               PSMA. Estimated completion: FY
+                                      suspended this practice for               2022-23. Responsible staff: Human
+                                      Management & Confidential                 Resources/City Management.
+                                      employees and will consider
+                                      eliminating this when the
+                                      Management & Confidential
+                                      Resolution is updated this
+                                      fiscal year. However, this
+                                      practice was not suspended
+                                      for members of the Public
+                                      Safety Management
+                                      Association (PSMA) as they
+                                      are a bargaining unit,
+                                      therefore, the City would
+                                      have to engage in a meet and
+                                      confer to discuss the
+                                      possibility. The
+                                      Administration cannot
+                                      unilaterally impose the
+                                      elimination of this practice to
+                                      the PSMA.
+
+
+                                                                                                                   10
+                                                   CITY OF EL CERRITO
+                                      CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                           Progress Report: September 16, 2021
+
+[PDF page 21]
+
+3. Based on the results of its        The Administration Partially •            The City has frozen salary increases for
+comprehensive analysis, El            Agrees with this                          Management/Confidential since FY
+Cerrito should do the following:      Recommendation – The                      2019-20 and has continued to do so
+    o Freeze salary increases         Administration would study                through FY 2021-22. City Management
+         for management with          management compensation                   worked with PSMA to discuss
+         salaries above those of      as part of the classification             deferring their COLAs per their closed
+         comparable cities until      and compensation study                    contracts for FY 2021-22, and PSMA
+         they are in line with        recommended by the State                  declined to defer their salary increases
+         those salaries. For          Auditor.                                  for FY 2021-22. However, two of the
+         positions with salaries      The Administration has                    units within PSMA (Police Chief and
+         above those of               already taken action to                   Fire Chief) agreed to increase their
+         comparable cities that       freeze salaries, as no                    CalPERS contribution by 2%.
+         are represented by           unrepresented employees                   Completed for FY 2021-22 and
+         bargaining units, the City   have received merit increases             ongoing. Responsible staff: City
+         should not agree to          this fiscal year and received             Management.
+         additional salary            no COLAs. In addition, the    •           Staff will consider conducting updated
+         increases until those        Administration imposed 26                 salary/benefits surveys for positions
+         positions’ salaries are in   non-paid furlough days                    within the Management group to
+         line with salaries in        (roughly a 10% reduction in               confirm that compensation is within
+         comparable cities            pay) for FY 2020-21 for                   the market of comparable
+    o Seek to eliminate or            unrepresented Management                  cities/agencies; however due to
+         consolidate positions        employees.                                limited staff resources this will likely
+         that have overlapping                                                  not take place until at least the end of
+         responsibilities                                                       calendar year 2021. Estimated
+                                                                                completion: FY 2021-22.
+4. To reduce its fire department’s    The Administration Partially         •    City Management worked with Local
+costs, El Cerrito should develop a    Agrees with this                          1230, who represents Fire
+timeline by July 2021 for             Recommendation – The                      Department employees, to discuss the
+controlling the department’s          Administration continues to               City’s current financial situation and
+personnel expenditures, such as       look into personnel cost                  this recommendation during the FY
+through negotiated salary             reduction options Citywide,               2021-22 budget process. Local 1230
+reductions or freezes.                however, the Administration               declined to defer their salary increases
+                                      has no ability to impose                  for FY 2021-22. The current MOU
+                                      salary reductions or freezes              expires in June 2022 and City
+                                      on the two bargaining groups              Management will work with the City
+                                      that represent sworn                      Council with respect to its direction
+                                      members of the Fire                       and authority during negotiations for
+                                      Department. Any proposals                 the next MOU. Estimated completion:
+                                      from the Administration are               2022. Responsible staff: Human
+                                      subject to meet and confer                Resources/City Management.
+                                      and there is no obligation
+                                      from the labor groups to
+                                      accept. In 2020, the
+                                      Administration negotiated an
+                                      elimination of a 3% COLA set
+                                                                                                                  11
+                                                   CITY OF EL CERRITO
+                                      CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                           Progress Report: September 16, 2021
+
+[PDF page 22]
+
+                                       to take place in July 2020. In
+                                       addition, the City filled three
+                                       long-standing vacancies to
+                                       reduce the amount of
+                                       overtime in the Fire
+                                       Department.
+5. To reduce its police                The Administration Partially         •    City Management worked with the El
+department’s costs, El Cerrito         Agrees with this                          Cerrito Police Employees Association
+should perform the following by        Recommendation – The                      (PEA), who represents Police
+December 2021:                         Administration continues to               Department employees, to discuss the
+    o Assess the services              look into personnel cost                  City’s current financial situation and
+        provided by the police         reduction options Citywide,               this recommendation during the FY
+        department to identify         however, the Administration               2021-22 budget process. PEA declined
+        opportunities to reduce        has no ability to impose                  to defer their salary increases for FY
+        its staffing levels            salary reductions or freezes              2021-22. The current MOU expires in
+    o Negotiate with its police        on the two bargaining groups              June 2024. Estimated completion:
+        union to increase the          that represent sworn                      unknown. Responsible staff: Human
+        overtime threshold for         members of the Police                     Resources/City Management.
+        sworn officers to 86           Department. Any proposals
+        hours over 14 days to 80       from the Administration
+        hours over 14 days.            (including those regarding
+                                       overtime) are subject to
+                                       meet and confer and there is
+                                       no obligation from the labor
+                                       groups to accept.
+                                       In 2020, the Administration
+                                       negotiated an elimination of
+                                       a 3% COLA set to take place
+                                       in January 2020 and another
+                                       3% COLA set to take place in
+                                       January 2021. In addition, the
+                                       Police Chief has conducted
+                                       several assessments and
+                                       implemented a restructuring
+                                       of the Police Department in
+                                       order to achieve cost savings
+                                       while still maintaining critical
+                                       public safety service within
+                                       the community.
+6. To identify all available options   The Administration Does Not          •    Public Safety has been the highest
+to reduce its costs for its fire and   Agree with this                           priority and concern of residents of
+police services, El Cerrito should     Recommendation – The                      the City. The City Council discussed
+perform an analysis by December        Administration would study                this during their study session in
+2021 to determine whether it           public safety personnel costs             August 2021 and did not direct staff to
+would be more cost-effective to        as part of the classification             perform such an analysis at this time.
+                                                                                                                  12
+                                                    CITY OF EL CERRITO
+                                       CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                            Progress Report: September 16, 2021
+
+[PDF page 23]
+
+contract with nearby fire or       and compensation study                    The Council determined that they
+police departments for services.   recommended by the State                  were not interested in pursuing a
+                                   Auditor.                                  contract for police services; and while
+                                   Per conversations with the                the Council discussed evaluating
+                                   State Auditor, the intent of              options for fire services, they also
+                                   this recommendation was for               recognized the complications involved
+                                   the City to “receive a cost               because the Kensington Fire
+                                   estimate.” However, the                   Protection District contracts with the
+                                   Administration believes that              City for fire services. The Council
+                                   it is professionally necessary            remains interested in the results of
+                                   that this analysis of this                the classification/compensation study
+                                   magnitude must be a                       that will be conducted to inform
+                                   comprehensive study                       future discussions on the Fire
+                                   completed by an industry                  Department, as well as the entire
+                                   expert(s) to extensively                  organization however the Council is
+                                   evaluate the detailed service             not currently considering contracting
+                                   delivery impacts in                       out for public safety services.
+                                   contemplating an                          Completed. Responsible staff: City
+                                   outsourcing of both of the                Management.
+                                   City’s Public Safety
+                                   Departments. There would
+                                   be significant impacts to
+                                   current sworn employees
+                                   that would have to be to
+                                   extensively evaluated. The
+                                   amount of work necessary
+                                   plus the costs involved to
+                                   complete such an analysis is
+                                   not realistic by December
+                                   2021. After the City Council is
+                                   informed by the classification
+                                   and compensation study, the
+                                   City Council can determine if
+                                   this is an area they would like
+                                   the Administration to study,
+                                   and allocate the appropriate
+                                   resources to complete.
+
+
+
+
+                                                                                                              13
+                                                CITY OF EL CERRITO
+                                   CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                        Progress Report: September 16, 2021
+
+[PDF page 24]
+
+                                                High Risk Issue # 5
+                                               Increasing Revenues
+
+Overview: The City continues to explore all opportunities for increasing revenues through various fees within all
+departments, in addition to the recommendations listed. City staff also continuously seeks and utilizes grant
+opportunities to supplement revenues.
+
+         High Risk Area #5                       Response                                  Corrective Action
+           State Auditor                                                                Updated: September 2021
+        Recommendations
+1. To more fully recover costs       The Administration Agrees with          •    Recreation staff assessed various fees
+at its swim center after the         this Recommendation – The                    for the swim center, and increased fees
+pandemic, the city should            Administration plans to conduct              were included in the Master Fee
+perform the following:               an analysis during normal                    Schedule approved by the City Council
+     o Conduct an analysis to        conditions (not during the                   in May 2021. Staff will conduct an
+          identify the demand        current pandemic). The                       analysis on swim center demand and
+          for the swim center        Administration has concerns                  cost recovery once normal operations
+          under normal               over the potential                           resume and a typical season can be
+          conditions at different    disproportionate accessibility               conducted. Since the pandemic is
+          times – including          impacts to minority and low-                 ongoing, the date of completion cannot
+          holidays, weekends,        income communities as a result               be estimated at this time. Estimated
+          and when the public        of further increasing swim                   completion: to be determined.
+          has restricted access to   center fees.                                 Responsible staff: Recreation
+          neighboring swim                                                        Department.
+          centers – and
+          determine whether
+          increasing single-use
+          fees during these hours
+          could better cover the
+          costs of operating the
+          swim center
+     o Establish separate
+          single-use fees in its
+          master fee schedule for
+          nonresidents at the
+          swim center, in order
+          to increase revenue
+2. To more fully recover costs       The Administration Agrees with          •    Recreation staff assessed various fees
+for its senior services, the city    this Recommendation – The                    for senior services, and increased fees
+should do the following:             Administration plans to conduct              were included in the Master Fee
+     o By August 2021, assess        an analysis during normal                    Schedule approved by the City Council
+          free and low-fee senior    conditions (not during the                   in May 2021. Staff will conduct an
+          activities and prepare     current pandemic) to                         analysis on future demand for senior
+          an analysis for the city   appropriately understand the                 services once normal operations
+                                                                                                                    14
+                                                     CITY OF EL CERRITO
+                                        CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                             Progress Report: September 16, 2021
+
+[PDF page 25]
+
+        council that includes a     current demand for service.                  resume and a typical operation can be
+        plan for recovering the     Senior Services have been                    conducted. Since the pandemic is
+        full cost of these          closed for the past year and will            ongoing, the date of completion cannot
+        activities                  not likely be reopened before                be estimated at this time. Estimated
+    o   Continue to seek            August. The Administration has               completion: to be determined.
+        opportunities to            racial equity concerns that                  Responsible staff: Recreation
+        sublease its modular        increasing fees for Senior                   Department.
+        buildings and move          Services could have serious       •          Staff continues to explore subleasing
+        senior activities to the    implications for the City’s most             the modular buildings, though due to
+        city-owned community        vulnerable residents, most of                the pandemic and lack of interest, it is
+        center or clubhouses        whom are on fixed incomes.                   more likely that the buildings will be
+                                    The Administration also agrees               removed once the lease expires in
+                                    with the State Auditor’s                     2023. Estimated completion: FY 2022-
+                                    recommendation regarding                     23. Responsible staff: Recreation
+                                    subleasing its costly modular                Department/City Management.
+                                    buildings and moving senior
+                                    activities to city-owned spaces.
+3. To more fully recover the        The Administration Agrees with •             Staff is currently reviewing data and
+costs of the emergency medical      this Recommendation – The                    will provide information to the City
+services it provides, El Cerrito    Administration has completed a               Council regarding increasing emergency
+should conduct an analysis by       preliminary investigation on this            fees, and upon direction will initiate
+July 2021 to identify the cost to   issue and will provide this                  further analysis. Estimated completion:
+the city of providing such          information in written form to               January 2022. Responsible staff: Fire
+services. Using this analysis, El   the City Council. The City can               Department/City Management.
+Cerrito should consider the         conduct a more robust and
+following:                          finalized analysis if directed by
+     o Determine whether it         the City Council.
+         can renegotiate its        Regarding additional revenue
+         contract with Contra       opportunities, the
+         Costa County               Administration is currently
+     o Determine whether            developing an analysis reviewing
+         charging fees for its      various Fire Department fees to
+         services would be cost-    determine if fees align with
+         effective considering      actual costs. Recommendations
+         any additional             will be brought forward to the
+         administrative costs it    City Council as a part of the
+         may incur                  budget process.
+     o Pursue other options
+         to generate revenue
+
+
+
+
+                                                                                                                   15
+                                                    CITY OF EL CERRITO
+                                       CORRECTIVE ACTION PLAN – STATE AUDIT 2020-803
+                                            Progress Report: September 16, 2021

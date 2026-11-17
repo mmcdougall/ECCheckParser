@@ -3,7 +3,7 @@
   "collection": "City of El Cerrito standalone finance reference documents",
   "collected_on": "2026-11-17",
   "path_base": "data/references/city-finance",
-  "notes": "Reference collection separate from the meeting-document manifests and parser artifacts. SHA-256 and byte counts cover preserved PDFs and derived searchable text. Dates on undated snapshot filenames indicate retrieval, not enactment. Public records retain source rights status.",
+  "notes": "Reference collection separate from the meeting-document manifests and parser artifacts. SHA-256 and byte counts cover preserved PDFs and derived searchable text. Dates on undated snapshot filenames indicate retrieval, not enactment. Public records retain source rights status. Enacted ordinance scans use unmodified official portal PDF exports. Interim State Auditor assessments are retained as an original HTML snapshot. City-authored corrective-action submissions are separately identified.",
   "documents": [
     {
       "id": "fab-enabling-code",
@@ -324,6 +324,490 @@
           "sha256": "f7f6fe80d04dde49ebb33f0ee759c767935d39220ba796a0c5b5265d488a10bf"
         }
       ]
+    },
+    {
+      "id": "fab-ordinance-2000-3",
+      "title": "City of El Cerrito Ordinance 2000-3: Financial Advisory Board",
+      "publisher": "City of El Cerrito",
+      "document_date": "2000-10-16",
+      "ordinance_number": "2000-3",
+      "source_url": "https://portal.laserfiche.com/Portal/DocView.aspx?id=56131&repo=r-1179b414",
+      "discovery_url": "https://www.elcerrito.gov/1208/Records",
+      "source_system": "City of El Cerrito Laserfiche Public Portal",
+      "source_entry_id": "56131",
+      "path": "financial-advisory-board/2000-10-16-ordinance-2000-3-fab-establishment.pdf",
+      "preservation": "Unmodified PDF downloaded from the official portal using Print (as PDF), selecting all record pages. This is the portal-provided PDF export of the scanned record, not a locally authored reconstruction or an extracted agenda attachment.",
+      "notes": "Creates the Financial Advisory Board; includes the Committee of the Whole recitals, seven duties, adoption vote, and signatures. Existing recognition text contains errors; the scanned page images control exact wording. Portal creation/modification timestamps are not adoption dates.",
+      "bytes": 95972,
+      "sha256": "bfe0b1f0a5d24b0d1c72947043908a09b4cce062a908ac872639590c84578983",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 2,
+      "text_copies": [
+        {
+          "path": "financial-advisory-board/2000-10-16-ordinance-2000-3-fab-establishment.txt",
+          "source_pdf_pages": [
+            1,
+            2
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 9417,
+          "sha256": "076ff747b3ec7583485b67a74c56d4675929cbc470a63f05861e4c413d85e989"
+        }
+      ]
+    },
+    {
+      "id": "fab-ordinance-2007-02",
+      "title": "City of El Cerrito Ordinance 2007-02: Financial Advisory Board",
+      "publisher": "City of El Cerrito",
+      "document_date": "2007-03-05",
+      "ordinance_number": "2007-02",
+      "source_url": "https://portal.laserfiche.com/Portal/DocView.aspx?id=56087&repo=r-1179b414",
+      "discovery_url": "https://www.elcerrito.gov/1208/Records",
+      "source_system": "City of El Cerrito Laserfiche Public Portal",
+      "source_entry_id": "56087",
+      "path": "financial-advisory-board/2007-03-05-ordinance-2007-02-fab-amendment.pdf",
+      "preservation": "Unmodified PDF downloaded from the official portal using Print (as PDF), selecting all record pages. This is the portal-provided PDF export of the scanned record, not a locally authored reconstruction or an extracted agenda attachment.",
+      "notes": "Replaces ECMC 2.04.300, removing the individual councilmember appointment and term provisions; includes adoption vote and signatures. Existing recognition text contains errors; the scanned page images control exact wording. Portal creation/modification timestamps are not adoption dates.",
+      "bytes": 73259,
+      "sha256": "1b2e47ae98c365dd0144ce95f75103ee3651bc3c3fb25abbf964bded6aa3aeb4",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 2,
+      "text_copies": [
+        {
+          "path": "financial-advisory-board/2007-03-05-ordinance-2007-02-fab-amendment.txt",
+          "source_pdf_pages": [
+            1,
+            2
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 6886,
+          "sha256": "87283e867fc544767fddb43438a28441e6f241c3db557cbcca5913614328295b"
+        }
+      ]
+    },
+    {
+      "id": "fab-ordinance-2010-01",
+      "title": "City of El Cerrito Ordinance 2010-01: Financial Advisory Board",
+      "publisher": "City of El Cerrito",
+      "document_date": "2010-01-19",
+      "ordinance_number": "2010-01",
+      "source_url": "https://portal.laserfiche.com/Portal/DocView.aspx?id=67597&repo=r-1179b414",
+      "discovery_url": "https://www.elcerrito.gov/1208/Records",
+      "source_system": "City of El Cerrito Laserfiche Public Portal",
+      "source_entry_id": "67597",
+      "path": "financial-advisory-board/2010-01-19-ordinance-2010-01-fab-amendment.pdf",
+      "preservation": "Unmodified PDF downloaded from the official portal using Print (as PDF), selecting all record pages. This is the portal-provided PDF export of the scanned record, not a locally authored reconstruction or an extracted agenda attachment.",
+      "notes": "Clarifies FAB duties and responsibilities; includes adoption vote, signatures, and ordinance certification. Existing recognition text contains errors; the scanned page images control exact wording. Portal creation/modification timestamps are not adoption dates.",
+      "bytes": 80695,
+      "sha256": "3f330b8621a4294208db3df9cfc221530988ae414b5f77f4df79f49fb84621ff",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 2,
+      "text_copies": [
+        {
+          "path": "financial-advisory-board/2010-01-19-ordinance-2010-01-fab-amendment.txt",
+          "source_pdf_pages": [
+            1,
+            2
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 7031,
+          "sha256": "82c2d7cf610e8e3fcca846b002728906068bc590e9265c4ab7b8b3d2f79de431"
+        }
+      ]
+    },
+    {
+      "id": "fab-ordinance-2012-03",
+      "title": "City of El Cerrito Ordinance 2012-03: Financial Advisory Board",
+      "publisher": "City of El Cerrito",
+      "document_date": "2012-12-18",
+      "ordinance_number": "2012-03",
+      "source_url": "https://portal.laserfiche.com/Portal/DocView.aspx?id=78059&repo=r-1179b414",
+      "discovery_url": "https://www.elcerrito.gov/1208/Records",
+      "source_system": "City of El Cerrito Laserfiche Public Portal",
+      "source_entry_id": "78059",
+      "path": "financial-advisory-board/2012-12-18-ordinance-2012-03-fab-amendment.pdf",
+      "preservation": "Unmodified PDF downloaded from the official portal using Print (as PDF), selecting all record pages. This is the portal-provided PDF export of the scanned record, not a locally authored reconstruction or an extracted agenda attachment.",
+      "notes": "Updates FAB duties and dissolved Redevelopment Agency references; includes adoption vote, signatures, and certification pages. This is the enacted ordinance, separate from the November 2012 proposed redline. Existing recognition text contains errors; the scanned page images control exact wording. Portal creation/modification timestamps are not adoption dates.",
+      "bytes": 298319,
+      "sha256": "7e4c22d732f678f7aa470774e03bc985d086a7c0fff3c364d4b9607634d7be69",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 4,
+      "text_copies": [
+        {
+          "path": "financial-advisory-board/2012-12-18-ordinance-2012-03-fab-amendment.txt",
+          "source_pdf_pages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 11818,
+          "sha256": "c7ab38795777caf9d10a894128cdc4ada2f0c76342946930d4fea6d24d2c1b9f"
+        }
+      ]
+    },
+    {
+      "id": "city-corrective-action-2021-05",
+      "title": "City of El Cerrito initial Corrective Action Plan, May 2021",
+      "publisher": "City of El Cerrito",
+      "host_publisher": "California State Auditor",
+      "document_date": null,
+      "document_month": "2021-05",
+      "source_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_may2021.pdf",
+      "resolved_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_may2021.pdf",
+      "discovery_url": "https://information.auditor.ca.gov/reports/2020-803/cap/index.html",
+      "path": "state-auditor/city-responses/2021-05-city-corrective-action-plan.pdf",
+      "preservation": "Unmodified complete PDF downloaded from source_url",
+      "notes": "Cover letter is undated. The State Auditor index records submission on May 14, 2021; filename uses the verified month. Includes all attachments.",
+      "submission_date_as_reported_by_state_auditor": "2021-05-14",
+      "bytes": 259172,
+      "sha256": "4cbd7ba110bd9ec041235cb7132b6337c34eea8c26caf0d00d5c57eea48063ce",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 13,
+      "text_copies": [
+        {
+          "path": "state-auditor/city-responses/2021-05-city-corrective-action-plan.txt",
+          "source_pdf_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 47334,
+          "sha256": "f7bfadd46dc7acf89181fb779871410e2ff673c0e648452020e090deed16e556"
+        }
+      ]
+    },
+    {
+      "id": "city-corrective-action-2021-09-16",
+      "title": "City of El Cerrito Corrective Action Plan Progress Report, 2021-09-16",
+      "publisher": "City of El Cerrito",
+      "host_publisher": "California State Auditor",
+      "document_date": "2021-09-16",
+      "document_month": "2021-09",
+      "source_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_september2021.pdf",
+      "resolved_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_september2021.pdf",
+      "discovery_url": "https://information.auditor.ca.gov/reports/2020-803/cap/index.html",
+      "path": "state-auditor/city-responses/2021-09-16-city-corrective-action-progress-report.pdf",
+      "preservation": "Unmodified complete PDF downloaded from source_url",
+      "notes": "City-authored submission to the State Auditor, including all attachments. Document date and filename follow the cover letter, which may differ from the submission date reported by a source index.",
+      "bytes": 935398,
+      "sha256": "fa3d7b26c0ecce7a652204616d9ef6a92d701de5f1ff3e2471142088ac18ee4b",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 25,
+      "text_copies": [
+        {
+          "path": "state-auditor/city-responses/2021-09-16-city-corrective-action-progress-report.txt",
+          "source_pdf_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 98345,
+          "sha256": "d3f321eb53105e91a7d9bd366682478f1a13ed60dd5c63687a3784013e6bbda0"
+        }
+      ]
+    },
+    {
+      "id": "city-corrective-action-2022-03-16",
+      "title": "City of El Cerrito Corrective Action Plan Progress Report, 2022-03-16",
+      "publisher": "City of El Cerrito",
+      "host_publisher": "California State Auditor",
+      "document_date": "2022-03-16",
+      "document_month": "2022-03",
+      "source_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_march2022.pdf",
+      "resolved_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_march2022.pdf",
+      "discovery_url": "https://information.auditor.ca.gov/reports/2020-803/cap/index.html",
+      "path": "state-auditor/city-responses/2022-03-16-city-corrective-action-progress-report.pdf",
+      "preservation": "Unmodified complete PDF downloaded from source_url",
+      "notes": "City-authored submission to the State Auditor, including all attachments. Document date and filename follow the cover letter, which may differ from the submission date reported by a source index.",
+      "bytes": 487175,
+      "sha256": "43d711f1b81c37e5fc37cf10b607814363789cc564a5caebc69ef41776a4fe66",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 26,
+      "text_copies": [
+        {
+          "path": "state-auditor/city-responses/2022-03-16-city-corrective-action-progress-report.txt",
+          "source_pdf_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 99425,
+          "sha256": "094c596f7e1624b3bf1f4782b3a4947b5ad34f562a393155c8a0c1399715c2fd"
+        }
+      ]
+    },
+    {
+      "id": "city-corrective-action-2022-09-16",
+      "title": "City of El Cerrito Corrective Action Plan Progress Report, 2022-09-16",
+      "publisher": "City of El Cerrito",
+      "host_publisher": "California State Auditor",
+      "document_date": "2022-09-16",
+      "document_month": "2022-09",
+      "source_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_september2022.pdf",
+      "resolved_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_september2022.pdf",
+      "discovery_url": "https://information.auditor.ca.gov/reports/2020-803/cap/index.html",
+      "path": "state-auditor/city-responses/2022-09-16-city-corrective-action-progress-report.pdf",
+      "preservation": "Unmodified complete PDF downloaded from source_url",
+      "notes": "City-authored submission to the State Auditor, including all attachments. Document date and filename follow the cover letter, which may differ from the submission date reported by a source index.",
+      "bytes": 405245,
+      "sha256": "4d36e31f88dfb2d71dac7d59b51f1f4fb36bece9c5baa0c4e1f259b89a958bf3",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 27,
+      "text_copies": [
+        {
+          "path": "state-auditor/city-responses/2022-09-16-city-corrective-action-progress-report.txt",
+          "source_pdf_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 97348,
+          "sha256": "53f4b0cbcfe0cda9b77caf32ebef74f7d62d6528bec3d132acaaad86e6be2672"
+        }
+      ]
+    },
+    {
+      "id": "city-corrective-action-2023-03-16",
+      "title": "City of El Cerrito Corrective Action Plan Progress Report, 2023-03-16",
+      "publisher": "City of El Cerrito",
+      "host_publisher": "California State Auditor",
+      "document_date": "2023-03-16",
+      "document_month": "2023-03",
+      "source_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_march2023.pdf",
+      "resolved_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_march2023.pdf",
+      "discovery_url": "https://information.auditor.ca.gov/reports/2020-803/cap/index.html",
+      "path": "state-auditor/city-responses/2023-03-16-city-corrective-action-progress-report.pdf",
+      "preservation": "Unmodified complete PDF downloaded from source_url",
+      "notes": "City-authored submission to the State Auditor, including all attachments. Document date and filename follow the cover letter, which may differ from the submission date reported by a source index.",
+      "bytes": 755226,
+      "sha256": "1dd011879324431f2486f007aa576a47d6e8e3b954dde83f7dd5d69da0dbec30",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 23,
+      "text_copies": [
+        {
+          "path": "state-auditor/city-responses/2023-03-16-city-corrective-action-progress-report.txt",
+          "source_pdf_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 87256,
+          "sha256": "27c7d9f612d033f2905a8dd699195b477915d25b5ef943f46d848e9a716823af"
+        }
+      ]
+    },
+    {
+      "id": "city-corrective-action-2023-09-16",
+      "title": "City of El Cerrito Corrective Action Plan Progress Report, 2023-09-16",
+      "publisher": "City of El Cerrito",
+      "host_publisher": "California State Auditor",
+      "document_date": "2023-09-16",
+      "document_month": "2023-09",
+      "source_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_september2023.pdf",
+      "resolved_url": "https://information.auditor.ca.gov/reports/2020-803/cap/2020-803_september2023.pdf",
+      "discovery_url": "https://information.auditor.ca.gov/reports/2020-803/cap/index.html",
+      "path": "state-auditor/city-responses/2023-09-16-city-corrective-action-progress-report.pdf",
+      "preservation": "Unmodified complete PDF downloaded from source_url",
+      "notes": "City-authored submission to the State Auditor, including all attachments. Document date and filename follow the cover letter, which may differ from the submission date reported by a source index.",
+      "bytes": 363183,
+      "sha256": "502ed6d31bc8f78c0368274adcc4bccf8c585d111c8b16079ddfd25c7f7a7f71",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 21,
+      "text_copies": [
+        {
+          "path": "state-auditor/city-responses/2023-09-16-city-corrective-action-progress-report.txt",
+          "source_pdf_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 76495,
+          "sha256": "281ae89717968a5bc93fcce2d8a1f820d7dbb4834591867d3cabd194413b8c0d"
+        }
+      ]
+    },
+    {
+      "id": "city-corrective-action-2024-03-16",
+      "title": "City of El Cerrito Corrective Action Plan Progress Report, 2024-03-16",
+      "publisher": "City of El Cerrito",
+      "host_publisher": "City of El Cerrito",
+      "document_date": "2024-03-16",
+      "document_month": "2024-03",
+      "source_url": "https://www.elcerrito.gov/DocumentCenter/View/20224/El-Cerrito-CAP-Progress-Report---March-2024",
+      "resolved_url": "https://www.elcerrito.gov/DocumentCenter/View/20224/El-Cerrito-CAP-Progress-Report---March-2024",
+      "discovery_url": "https://www.elcerrito.gov/1565/State-Auditors-Report",
+      "path": "state-auditor/city-responses/2024-03-16-city-corrective-action-progress-report.pdf",
+      "preservation": "Unmodified complete PDF downloaded from source_url",
+      "notes": "City-authored submission to the State Auditor, including all attachments. Document date and filename follow the cover letter, which may differ from the submission date reported by a source index.",
+      "bytes": 430881,
+      "sha256": "3db8e0089bd9a59e0d7bbec3e52b1c936b537825582495ed47366028dc389b4c",
+      "retrieved_on": "2026-11-17",
+      "pdf_pages": 19,
+      "text_copies": [
+        {
+          "path": "state-auditor/city-responses/2024-03-16-city-corrective-action-progress-report.txt",
+          "source_pdf_pages": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ],
+          "scope": "Complete PDF text, including all attachments and certification pages.",
+          "extraction_method": "pdftotext -layout -enc UTF-8",
+          "bytes": 68865,
+          "sha256": "d5e0f4639eecba5f7ed0509fc95b5ca22b06a424df9ba16566efa5c7b83f4b6e"
+        }
+      ]
     }
   ],
   "supporting_sources": [
@@ -335,6 +819,31 @@
       "consulted_on": "2026-11-17",
       "local_summary": "financial-advisory-board/HISTORY.md",
       "preservation": "Paraphrased summary with attribution; complete third-party article not copied."
+    }
+  ],
+  "web_snapshots": [
+    {
+      "id": "state-auditor-interim-corrective-action-assessments",
+      "title": "Corrective Action Plan and Assessment - City of El Cerrito, May 2021 through September 2023",
+      "publisher": "California State Auditor",
+      "source_url": "https://information.auditor.ca.gov/reports/2020-803/cap/index.html",
+      "path": "state-auditor/2026-11-17-state-auditor-corrective-action-assessments.html",
+      "format": "text/html",
+      "document_date": null,
+      "retrieved_on": "2026-11-17",
+      "preservation": "Complete source HTML retained without editorial changes; relative links remain as published and may require the online source.",
+      "notes": "The source publishes these State Auditor assessments as a combined webpage; it links separately to City-authored PDF submissions. The local HTML filename uses retrieval date. Assessment sections are labeled by the City submission periods, not necessarily by the dates the State Auditor posted its assessment.",
+      "bytes": 81074,
+      "sha256": "4a349d4d934ec78d2e204c3879215db2486b5a8999033ba60e67ac6d46afa6b3",
+      "text_copies": [
+        {
+          "path": "state-auditor/2026-11-17-state-auditor-corrective-action-assessments.txt",
+          "scope": "Complete webpage text, excluding scripts, styles, and head content.",
+          "extraction_method": "Python HTMLParser; HTML character references decoded and whitespace normalized",
+          "bytes": 57800,
+          "sha256": "c0d4b1fbd651bb9470365142eff498eb5585cbfd623e192ca2716f1f3b11ee76"
+        }
+      ]
     }
   ]
 }

@@ -1,11 +1,24 @@
 # City finance reference documents
 
-Collected November 17, 2026. Original PDFs are preserved without modification.
+Collected November 17, 2026. Downloaded source files are preserved without
+modification, including the City's PDF exports of its scanned ordinance records.
 The [manifest](manifest.json) records official source URLs, retrieval dates,
 checksums, page counts, and the scope of each text extraction. Text is a search
 aid; page images control when extraction loses formatting, edits, or characters.
 
 ## Financial Advisory Board
+
+- **Original enacted ordinances:** complete scans downloaded from the
+  [City's official records portal](https://portal.laserfiche.com/Portal/Welcome.aspx?repo=r-1179b414).
+  These include signatures, adoption votes, and any certification pages in each
+  portal record; they are separate from the codified summary and proposed amendment.
+
+  | Adopted | Ordinance | Original record | Searchable text |
+  | --- | --- | --- | --- |
+  | October 16, 2000 | 2000-3: creates FAB | [PDF](financial-advisory-board/2000-10-16-ordinance-2000-3-fab-establishment.pdf) | [TXT](financial-advisory-board/2000-10-16-ordinance-2000-3-fab-establishment.txt) |
+  | March 5, 2007 | 2007-02: revises the enabling section | [PDF](financial-advisory-board/2007-03-05-ordinance-2007-02-fab-amendment.pdf) | [TXT](financial-advisory-board/2007-03-05-ordinance-2007-02-fab-amendment.txt) |
+  | January 19, 2010 | 2010-01: clarifies FAB duties | [PDF](financial-advisory-board/2010-01-19-ordinance-2010-01-fab-amendment.pdf) | [TXT](financial-advisory-board/2010-01-19-ordinance-2010-01-fab-amendment.txt) |
+  | December 18, 2012 | 2012-03: updates duties and Redevelopment Agency references | [PDF](financial-advisory-board/2012-12-18-ordinance-2012-03-fab-amendment.pdf) | [TXT](financial-advisory-board/2012-12-18-ordinance-2012-03-fab-amendment.txt) |
 
 - **Enabling legislation:** El Cerrito Municipal Code section 2.04.300,
   the one-page PDF linked as "Enabling Legislation" on the
@@ -41,6 +54,16 @@ aid; page images control when extraction loses formatting, edits, or characters.
   [full PDF](state-auditor/2024-12-19-state-auditor-follow-up-report-2024-801.pdf)
   / [full text](state-auditor/2024-12-19-state-auditor-follow-up-report-2024-801.txt)
   / [public letter and El Cerrito section](state-auditor/2024-12-19-state-auditor-el-cerrito-follow-up-excerpt.txt).
+- **State Auditor's interim assessments:** the official webpage containing
+  assessments of the City's May 2021 through September 2023 filings, preserved
+  in its original web format.
+  [HTML snapshot](state-auditor/2026-11-17-state-auditor-corrective-action-assessments.html)
+  / [searchable text](state-auditor/2026-11-17-state-auditor-corrective-action-assessments.txt).
+  November 17, 2026 is the retrieval date, not the date of every assessment.
+- **[City corrective-action submissions, 2021-2024](state-auditor/city-responses/README.md):**
+  the initial plan and six progress reports, preserved as complete original
+  PDFs with attachments and text copies. These are City-authored responses to
+  the audit, distinct from the State Auditor's assessments and conclusions.
 
 ### Historical sequence
 
