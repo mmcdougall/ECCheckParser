@@ -29,9 +29,7 @@ class RowChunk:
     ap_type: str                 # "check" or "eft"
     lines: List[str]             # original PDF text lines belonging to the row
 
-    # TODO: Explore migrating away from line-based parsing. These positioned
-    # words capture x-coordinates for each token so that future column
-    # detection can rely on geometry rather than normalized spaces.
+    # Word coordinates preserve the payee and description column boundaries.
     line_words: List[List["PositionedWord"]] = field(default_factory=list)
 
 

@@ -5,7 +5,7 @@ import unittest
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from check_register.models import PositionedWord
-from payee_splitter.cluster import split_payee_desc_by_x
+from payee_splitter.cluster import infer_description_column_x0, split_payee_desc_by_x
 
 
 class SplitPayeeDescByXTests(unittest.TestCase):
@@ -80,6 +80,50 @@ class SplitPayeeDescByXTests(unittest.TestCase):
         payee, desc = split_payee_desc_by_x(line_words)
         self.assertEqual(payee, "BERTRAND, FOX, ELLIOT, OSMAN & WENZEL LLP")
         self.assertEqual(desc, "PERSONNEL MATTER 02/03/25 - 02/28/25")
+
+    def test_long_description_does_not_extend_payee(self):
+        line_words = [[
+            PositionedWord(text="97125", x0=29.5385),
+            PositionedWord(text="08/06/2026", x0=86.5846),
+            PositionedWord(text="Open", x0=147.5077),
+            PositionedWord(text="Accounts", x0=369.7846),
+            PositionedWord(text="Payable", x0=405.0426539),
+            PositionedWord(text="REDWOOD", x0=460.8),
+            PositionedWord(text="PUBLIC", x0=505.4794657),
+            PositionedWord(text="LAW,", x0=536.49597905),
+            PositionedWord(text="LLP", x0=558.46498395),
+            PositionedWord(text="CALIFORNIA", x0=671.2615),
+            PositionedWord(text="VOTING", x0=721.10654765),
+            PositionedWord(text="RIGHTS", x0=753.59882815),
+            PositionedWord(text="ACT", x0=785.7219684),
+            PositionedWord(text="ISSUES", x0=803.81301605),
+            PositionedWord(text="(LABOR)", x0=835.382049),
+            PositionedWord(text="6/01/26", x0=869.7192369),
+            PositionedWord(text="-", x0=898.5137641),
+            PositionedWord(text="6/30/26", x0=903.3133812),
+            PositionedWord(text="14,256.30", x0=1016.6634375),
+        ]]
+
+        rows = [line_words]
+        for offset in (1, 2):
+            rows.append([[
+                PositionedWord(
+                    text=word.text,
+                    x0=word.x0 + offset if word.x0 > 671.2615 else word.x0,
+                )
+                for word in line_words[0]
+            ]])
+
+        description_x0 = infer_description_column_x0(rows)
+        self.assertEqual(description_x0, 671.2615)
+
+        payee, desc = split_payee_desc_by_x(line_words, description_x0)
+
+        self.assertEqual(payee, "REDWOOD PUBLIC LAW, LLP")
+        self.assertEqual(
+            desc,
+            "CALIFORNIA VOTING RIGHTS ACT ISSUES (LABOR) 6/01/26 - 6/30/26",
+        )
 
     def test_bare_amount_token_is_not_description(self):
         line_words = [[

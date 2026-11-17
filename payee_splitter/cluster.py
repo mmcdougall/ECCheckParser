@@ -1,19 +1,14 @@
 from __future__ import annotations
 
-import re
+from dataclasses import replace
 from typing import List, Optional, Tuple, TYPE_CHECKING
+
+from register_format import AMOUNT_RE, SOURCE_RE, split_row_header
 
 from .core import _tidy_text
 
-# ``PositionedWord`` is light-weight and importing it at runtime keeps this
-# helper self contained.  The TYPE_CHECKING block avoids circular imports when
-# building docs while still providing type hints during development.
 if TYPE_CHECKING:
     from check_register.models import PositionedWord
-else:  # pragma: no cover - imported lazily for runtime use
-    from check_register.models import PositionedWord
-
-_AMOUNT_RE = re.compile(r"\$?-?\d{1,3}(?:,\d{3})*(?:\.\d{2})?")
 
 
 def _squeeze_letters(tokens: List[PositionedWord]) -> List[PositionedWord]:
@@ -41,13 +36,13 @@ def _squeeze_letters(tokens: List[PositionedWord]) -> List[PositionedWord]:
                 j < len(tokens)
                 and len(tokens[j].text) == 1
                 and tokens[j].text.isalpha()
-                and tokens[j].x0 - x_last <= 6  # small gap indicates same word
+                and 0 <= tokens[j].x0 - x_last <= 6
             ):
                 letters.append(tokens[j].text)
                 x_last = tokens[j].x0
                 j += 1
             if len(letters) > 1:
-                squeezed.append(PositionedWord(text="".join(letters), x0=t.x0))
+                squeezed.append(replace(t, text="".join(letters)))
                 i = j
                 continue
         squeezed.append(t)
@@ -55,35 +50,28 @@ def _squeeze_letters(tokens: List[PositionedWord]) -> List[PositionedWord]:
     return squeezed
 
 
-def _collect_tokens_after_payable(
+def _collect_tokens_after_source(
     line_words: List[List[PositionedWord]],
 ) -> Optional[List[PositionedWord]]:
-    """Gather tokens starting after the ``PAYABLE`` marker.
-
-    The first line holds check metadata followed by the literal marker
-    ``PAYABLE``.  Tokens to its right belong to the payee and description
-    columns.  All subsequent lines are part of the entry and are appended as
-    is.  Returns ``None`` when the marker is absent or no tokens follow it.
-    """
-
-    if not line_words:
+    """Gather the row payload using the shared metadata boundary."""
+    if not line_words or not line_words[0]:
         return None
-
-    tokens: List[PositionedWord] = []
-    found = False
-    for w in line_words[0]:
-        if not found:
-            if w.text.upper() == "PAYABLE":
-                found = True
-            continue
-        tokens.append(w)
-
-    if not found:
-        return None
-
-    for lw in line_words[1:]:
-        tokens.extend(lw)
-
+    first = line_words[0]
+    text = " ".join(word.text for word in first)
+    source = SOURCE_RE.search(text)
+    if source:
+        start = len(text[:source.end()].split())
+    else:
+        fields = split_row_header(text)
+        if fields is None:
+            return None
+        start = len(first) - len(fields[4].split())
+    tokens = []
+    amount_found = False
+    for line in [first[start:], *line_words[1:]]:
+        payload = line if amount_found else _drop_trailing_amount(line)
+        amount_found = amount_found or len(payload) < len(line)
+        tokens.extend(payload)
     return tokens or None
 
 
@@ -95,7 +83,7 @@ def _drop_trailing_amount(tokens: List[PositionedWord]) -> List[PositionedWord]:
     detection only sees payee and description words.
     """
 
-    if tokens and _AMOUNT_RE.fullmatch(tokens[-1].text):
+    if tokens and AMOUNT_RE.fullmatch(tokens[-1].text):
         tokens = tokens[:-1]
         if tokens and tokens[-1].text == "$":
             tokens = tokens[:-1]
@@ -130,7 +118,33 @@ def _determine_column_threshold(tokens: List[PositionedWord]) -> Optional[float]
     return best_thresh
 
 
-def split_payee_desc_by_x(line_words: List[List[PositionedWord]]) -> Optional[Tuple[str, str]]:
+def infer_description_column_x0(
+    rows: List[List[List[PositionedWord]]],
+) -> Optional[float]:
+    """Return the left edge of the most frequent column alignment.
+
+    Starts within one PDF point share an alignment. Its left edge includes
+    descriptions whose placement differs slightly between rows.
+    """
+    positions = []
+    for line_words in rows:
+        tokens = _collect_tokens_after_source(line_words)
+        if tokens:
+            positions.extend(token.x0 for token in tokens[1:])
+
+    alignments: List[List[float]] = []
+    for position in sorted(positions):
+        if not alignments or position - alignments[-1][0] >= 1:
+            alignments.append([])
+        alignments[-1].append(position)
+    column = max(alignments, key=lambda values: (len(values), values[0]), default=[])
+    return column[0] if len(column) >= 3 else None
+
+
+def split_payee_desc_by_x(
+    line_words: List[List[PositionedWord]],
+    description_x0: Optional[float] = None,
+) -> Optional[Tuple[str, str]]:
     """Split payee/description using x-coordinate clustering.
 
     The parser provides ``line_words`` which captures each PDF word and its
@@ -150,22 +164,21 @@ def split_payee_desc_by_x(line_words: List[List[PositionedWord]]) -> Optional[Tu
     expected pattern.
     """
 
-    tokens = _collect_tokens_after_payable(line_words)
-    if not tokens:
-        return None
-
-    tokens = _drop_trailing_amount(tokens)
+    tokens = _collect_tokens_after_source(line_words)
     if not tokens:
         return None
 
     tokens = _squeeze_letters(tokens)
 
-    threshold = _determine_column_threshold(tokens)
-    if threshold is None:
-        return None
-
-    payee_tokens = [t.text for t in tokens if t.x0 <= threshold]
-    desc_tokens = [t.text for t in tokens if t.x0 > threshold]
+    if description_x0 is None:
+        threshold = _determine_column_threshold(tokens)
+        if threshold is None:
+            return None
+        payee_tokens = [t.text for t in tokens if t.x0 <= threshold]
+        desc_tokens = [t.text for t in tokens if t.x0 > threshold]
+    else:
+        payee_tokens = [t.text for t in tokens if t.x0 < description_x0 - 0.01]
+        desc_tokens = [t.text for t in tokens if t.x0 >= description_x0 - 0.01]
 
     payee = _tidy_text(" ".join(payee_tokens).rstrip(',').strip())
     desc = _tidy_text(" ".join(desc_tokens).strip())
