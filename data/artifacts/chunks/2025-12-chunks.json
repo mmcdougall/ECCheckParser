@@ -13314,7 +13314,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3511 12/11/2025 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT CA - CA Tax $ 97.68"
     ],
@@ -13390,7 +13390,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3512 12/11/2025 Open Accounts Payable IRS FED - Fed Tax* 2,524.89"
     ],
@@ -13446,7 +13446,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3542 12/12/2025 Open Accounts Payable California State Disbursement Unit Payroll Deduction 2,227.84"
     ],
@@ -13506,7 +13506,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3543 12/12/2025 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT CA - CA Tax 56,311.46"
     ],
@@ -13578,7 +13578,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3544 12/12/2025 Open Accounts Payable IRS FED - Fed Tax* 216,398.98"
     ],
@@ -13634,7 +13634,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3545 12/12/2025 Open Accounts Payable MIssionSquare (name chg 03-2021 formerly ICMA) ICM1 - ICMA-457 #300530 FLAT DOLLAR* 54,493.15"
     ],
@@ -13718,7 +13718,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3546 12/12/2025 Open Accounts Payable P E R S PE1% - PERS SEIU* 233,235.56"
     ],
@@ -13786,7 +13786,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3547 12/09/2025 Open Accounts Payable PITNEY BOWES PURCHASE POWER PURCHASE POWER PASTAGE CL PYMT NOV 25 400.00"
     ],
@@ -13866,7 +13866,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3548 12/01/2025 Open Accounts Payable U.S. BANK - CORPORATE PAYMENT SYS CALCARD NOV 2025 PAYMENT 59,246.07"
     ],
@@ -13942,7 +13942,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3549 12/30/2025 Open Accounts Payable KS STATEBANK 2023 CHEVROLET TAHOE SPECIAL SERVICE VEHICLES WITH UPFITTING DEC 4,907.41"
     ],
@@ -14022,7 +14022,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3550 12/30/2025 Open Accounts Payable STRYKER CORPORATION STRYKER EQUIPMENT/ SVC LEASE AGRMNT DEC 2025 6,308.59"
     ],
@@ -14094,7 +14094,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3551 12/23/2025 Open Accounts Payable PG&E PG&E 11/04/25-12/01/25 22,823.43"
     ],
@@ -14142,7 +14142,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3552 12/23/2025 Open Accounts Payable PG&E PG&E 11/05/25-12/07/25 28.74"
     ],
@@ -14190,7 +14190,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3553 12/23/2025 Open Accounts Payable PG&E PG&E 11/1/25-11/30/25 34,341.89"
     ],
@@ -14238,7 +14238,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3554 12/29/2025 Open Accounts Payable SUTTER HEALTH PLUS SUTTER HEALTH PLAN - JAN 2026 PAYMENT 36,226.20"
     ],
@@ -14314,7 +14314,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3555 12/31/2025 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - NOV2025 854.49"
     ],
@@ -14390,7 +14390,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3556 12/31/2025 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - NOV2025 60.16"
     ],
@@ -14466,7 +14466,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3557 12/31/2025 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - NOV2025 788.71"
     ],
@@ -14542,7 +14542,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3558 12/31/2025 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - NOV2025 96.18"
     ],
@@ -14618,7 +14618,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3559 12/31/2025 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - NOV2025 455.92"
     ],
@@ -14694,7 +14694,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3560 12/31/2025 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - NOV2025 38.38"
     ],
@@ -14770,7 +14770,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3561 12/31/2025 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - NOV2025 38.37"
     ],
@@ -14846,7 +14846,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3562 12/31/2025 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - NOV2025 38.40"
     ],
@@ -14922,7 +14922,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3563 12/31/2025 Open Accounts Payable AMEX/AMERICAN EXPRESS MERCHANT FEE EXPENSE - NOV2025 44.58"
     ],
@@ -14986,7 +14986,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3564 12/31/2025 Open Accounts Payable CLOVER MERCHANT FEE EXPENSE - NOV2025 23.90"
     ],
@@ -15046,7 +15046,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3565 12/31/2025 Open Accounts Payable AUTHORIZE.NET MERCHANT FEE EXPENSE - NOV2025 35.60"
     ],
@@ -15106,7 +15106,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3566 12/31/2025 Open Accounts Payable AUTHORIZE.NET MERCHANT FEE EXPENSE - NOV2025 20.00"
     ],
@@ -15166,7 +15166,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3567 12/31/2025 Open Accounts Payable CARDCONNECT MERCHANT FEE EXPENSE - NOV2025 7,827.71"
     ],
@@ -15226,7 +15226,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3568 12/31/2025 Open Accounts Payable CARDCONNECT MERCHANT FEE EXPENSE - NOV2025 1,785.64"
     ],
@@ -15286,7 +15286,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3569 12/31/2025 Open Accounts Payable CARDCONNECT MERCHANT FEE EXPENSE - NOV2025 2,544.52"
     ],
@@ -15346,7 +15346,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3570 12/31/2025 Open Accounts Payable MECHANICS BANK MERCHANT FEE EXPENSE - NOV2025 958.88"
     ],
@@ -15410,7 +15410,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3571 12/29/2025 Open Accounts Payable U.S. BANK - CORPORATE PAYMENT SYS CALCARD DEC 2025 PAYMENT 46,792.53"
     ],
@@ -15486,7 +15486,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3572 12/26/2025 Open Accounts Payable California State Disbursement Unit Payroll Deduction 2,227.84"
     ],
@@ -15546,7 +15546,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3573 12/26/2025 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT CA - CA Tax 40,364.12"
     ],
@@ -15618,7 +15618,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3574 12/26/2025 Open Accounts Payable IRS FED - Fed Tax* 166,420.52"
     ],
@@ -15674,7 +15674,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3575 12/26/2025 Open Accounts Payable MIssionSquare (name chg 03-2021 formerly ICMA) ICM1 - ICMA-457 #300530 FLAT DOLLAR* 51,141.91"
     ],
@@ -15758,7 +15758,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3577 12/26/2025 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT CA - CA Tax 10.00"
     ],
@@ -15830,7 +15830,7 @@
   {
     "section_month": 12,
     "section_year": 2025,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3578 12/26/2025 Open Accounts Payable IRS FED - Fed Tax* 73.14"
     ],

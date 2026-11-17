@@ -1968,6 +1968,66 @@
     "section_year": 2024,
     "ap_type": "check",
     "lines": [
+      "90862 09/05/2024 Voided/Reissued Printing Error 09/05/2024 Accounts Payable PETTY CASH VOID $212.50"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "90862",
+          "x0": 25.304977899999926
+        },
+        {
+          "text": "09/05/2024",
+          "x0": 86.24306059999992
+        },
+        {
+          "text": "Voided/Reissued",
+          "x0": 135.1795122999999
+        },
+        {
+          "text": "Printing",
+          "x0": 206.55345029999992
+        },
+        {
+          "text": "Error",
+          "x0": 235.38836228999992
+        },
+        {
+          "text": "09/05/2024",
+          "x0": 267.49153299999995
+        },
+        {
+          "text": "Accounts",
+          "x0": 380.48172259999996
+        },
+        {
+          "text": "Payable",
+          "x0": 415.39057260999994
+        },
+        {
+          "text": "PETTY",
+          "x0": 489.56939509999995
+        },
+        {
+          "text": "CASH",
+          "x0": 517.1596346299999
+        },
+        {
+          "text": "VOID",
+          "x0": 652.2749501999999
+        },
+        {
+          "text": "$212.50",
+          "x0": 943.7079329
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 9,
+    "section_year": 2024,
+    "ap_type": "check",
+    "lines": [
       "90863 09/05/2024 Open Accounts Payable PINNACLE PETROLEUM INC UNLEADED FUEL $16,906.61"
     ],
     "line_words": [
@@ -7939,6 +7999,70 @@
         {
           "text": "$70.00",
           "x0": 948.0509299
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 9,
+    "section_year": 2024,
+    "ap_type": "check",
+    "lines": [
+      "90950 09/19/2024 Voided/Reissued Printing Error 09/19/2024 Accounts Payable CONFAB MANUFACTURING COMPANY VOID $16,185.59"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "90950",
+          "x0": 25.29241609999997
+        },
+        {
+          "text": "09/19/2024",
+          "x0": 86.23049879999996
+        },
+        {
+          "text": "Voided/Reissued",
+          "x0": 135.16695049999996
+        },
+        {
+          "text": "Printing",
+          "x0": 206.54088849999997
+        },
+        {
+          "text": "Error",
+          "x0": 235.37580048999996
+        },
+        {
+          "text": "09/19/2024",
+          "x0": 267.4789712
+        },
+        {
+          "text": "Accounts",
+          "x0": 380.4691608
+        },
+        {
+          "text": "Payable",
+          "x0": 415.37801081
+        },
+        {
+          "text": "CONFAB",
+          "x0": 489.5568333
+        },
+        {
+          "text": "MANUFACTURING",
+          "x0": 524.92508349
+        },
+        {
+          "text": "COMPANY",
+          "x0": 596.90148747
+        },
+        {
+          "text": "VOID",
+          "x0": 652.2623884
+        },
+        {
+          "text": "$16,185.59",
+          "x0": 932.7826298
         }
       ]
     ]

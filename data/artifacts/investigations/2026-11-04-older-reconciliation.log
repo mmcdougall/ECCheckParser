@@ -1,0 +1,35 @@
+2023-12 ✔ reconciled amount 3689528.40 rows 247 printed 247 changes 5 fields {'payee': 5, 'description': 5}
+2024-01 ✔ reconciled amount 5030970.57 rows 325 printed 325 changes 11 fields {'ap_type': 11}
+2024-02 ✔ reconciled amount 4378421.18 rows 346 printed 348 changes 5 fields {'payee': 2, 'description': 2, 'ap_type': 1}
+2024-03 ✔ reconciled amount 3176726.88 rows 268 printed 268 changes 5 fields {'payee': 5, 'description': 5}
+2024-04 ✔ reconciled amount 5735621.41 rows 302 printed 301 changes 302 fields {}
+2024-05 ✔ reconciled amount 4338678.27 rows 326 printed 326 changes 3 fields {'payee': 2, 'description': 2}
+2024-06 ✔ reconciled amount 4193738.65 rows 344 printed 344 changes 232 fields {'payee': 5, 'description': 5}
+2024-07 ✔ reconciled amount 13550435.96 rows 355 printed 355 changes 355 fields {}
+2024-08 ✔ reconciled amount 4775735.55 rows 389 printed 389 changes 297 fields {'payee': 2, 'description': 2}
+2024-09 ✔ reconciled amount 3224583.35 rows 246 printed 246 changes 34 fields {'payee': 32, 'description': 32}
+2024-10 ✔ reconciled amount 3817282.54 rows 367 printed 367 changes 11 fields {'payee': 8, 'description': 8}
+2024-11 ✔ reconciled amount 3186002.78 rows 293 printed 293 changes 156 fields {}
+2024-12 ✔ reconciled amount 3633206.93 rows 276 printed 276 changes 191 fields {}
+2025-01 ✔ reconciled amount 3621600.52 rows 324 printed 324 changes 9 fields {'payee': 9, 'description': 9}
+2025-02 ✔ reconciled amount 4591587.29 rows 303 printed 303 changes 6 fields {'payee': 6, 'description': 6, 'amount': 2}
+2025-03 ✔ reconciled amount 4538078.33 rows 349 printed 349 changes 8 fields {'payee': 5, 'description': 5}
+2025-04 ✔ reconciled amount 3310471.47 rows 250 printed 250 changes 6 fields {'payee': 5, 'description': 5}
+2025-05 ✔ reconciled amount 4337878.82 rows 371 printed 371 changes 1 fields {'payee': 1, 'description': 1}
+2025-06 ✔ reconciled amount 3337953.05 rows 336 printed 336 changes 1 fields {'payee': 1, 'description': 1}
+2025-07 ✔ reconciled amount 16084080.50 rows 451 printed 451 changes 10 fields {'payee': 6, 'description': 6}
+2025-08 ✔ reconciled amount 4457785.53 rows 310 printed 310 changes 222 fields {}
+2025-09 ✔ reconciled amount 2892816.82 rows 261 printed 261 changes 202 fields {'description': 202}
+2025-10 ✔ reconciled amount 4997378.57 rows 314 printed 314 changes 314 fields {'description': 119, 'ap_type': 46, 'payee': 32}
+2025-11 ✔ reconciled amount 3520422.57 rows 326 printed 326 changes 0 fields {}
+2025-12 ✔ reconciled amount 5328234.95 rows 232 printed 232 changes 0 fields {}
+2026-01 ✔ reconciled amount 4274435.71 rows 335 printed 335 changes 0 fields {}
+2026-02 ✔ reconciled amount 2870270.55 rows 303 printed 303 changes 0 fields {}
+2026-03 ✔ reconciled amount 3828300.11 rows 274 printed 274 changes 1 fields {'payee': 1}
+2026-04 ✔ reconciled amount 4630332.26 rows 319 printed 319 changes 36 fields {'ap_type': 36}
+2026-05 ✔ reconciled amount 4218511.71 rows 281 printed 281 changes 0 fields {}
+2026-06 ✔ reconciled amount 3360231.08 rows 277 printed 277 changes 0 fields {}
+2026-07 ✔ reconciled amount 16042643.16 rows 372 printed 372 changes 0 fields {}
+2026-08 ✔ reconciled amount 3565481.69 rows 336 printed 336 changes 1 fields {'payee': 1}
+2026-09 ✔ reconciled amount 2821806.95 rows 231 printed 231 changes 0 fields {}
+ALL 34 months 10639 rows 1959 added 0 removed

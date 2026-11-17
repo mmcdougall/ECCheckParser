@@ -1,0 +1,2315 @@
+{
+  "schema_version": 1,
+  "as_of_local_date": "2026-11-03",
+  "timezone": "America/Los_Angeles",
+  "completed_at": "2026-11-03T22:44:29.562460+00:00",
+  "scope": "Refresh all published 2026 City Council and Financial Advisory Board agenda packets and parse supported check-register and quarterly financial report sections using canonical originals",
+  "source_refresh": {
+    "canonical_packet_counts": {
+      "city-council": 23,
+      "financial-advisory-board": 8
+    },
+    "new_packets": [
+      {
+        "path": "data/originals/city-council/2026/agenda-packets/2026-10-20 Agenda Packet.pdf",
+        "meeting_type": "city-council",
+        "meeting_date": "2026-10-20",
+        "source": {
+          "path": "agenda-packets/2026-10-20 Agenda Packet.pdf",
+          "file_id": 3799,
+          "official_name": "Packet (rev. 10.21.2026)",
+          "published_at": "2026-10-21T11:34:24.847Z",
+          "downloaded_at": "2026-11-03T22:26:42.105621Z",
+          "last_checked_at": "2026-11-03T22:26:42.105621Z",
+          "size": 9346291,
+          "sha256": "8dd8fcf2f59f6fe92b99b326bd618509fcc2aa0405bfadb8c0097e7bfbcfe5d0",
+          "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3799,plainText=false)"
+        }
+      }
+    ],
+    "revised_existing_packets": [],
+    "all_existing_source_pdf_hashes_preserved": true,
+    "revision_mechanism": "Existing civicclerk_archive.py and per-year manifests/revision directories",
+    "cancellations_without_new_packets": [
+      "City Council 2026-11-03",
+      "Financial Advisory Board 2026-09-22",
+      "Financial Advisory Board 2026-10-27"
+    ],
+    "future_meetings_without_published_packets": "CivicClerk cache logs retain the unpublished meeting entries; these are not counted as missing archived packets"
+  },
+  "packet_inventory": [
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-01-10",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-10 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-01-10 Agenda Packet.pdf",
+        "file_id": 3078,
+        "official_name": "Agenda Packet (rev. 1.26.2026)",
+        "published_at": "2026-01-26T16:23:35.613Z",
+        "downloaded_at": "2026-07-22T05:42:56.449497Z",
+        "last_checked_at": "2026-11-03T22:26:42.071105Z",
+        "size": 6951747,
+        "sha256": "c009d3677e8e7a71f04dfaa85452862264c581ad2eca76c8a46aabd5e6857d87",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3078,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 76
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-01-20",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "file_id": 3076,
+        "official_name": "Agenda Packet (rev. 1.22.2026) v2",
+        "published_at": "2026-01-22T11:28:06.54Z",
+        "downloaded_at": "2026-07-22T05:43:03.703564Z",
+        "last_checked_at": "2026-11-03T22:26:42.073785Z",
+        "size": 18861171,
+        "sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3076,plainText=false)"
+      },
+      "register_pages": [
+        {
+          "page": 70,
+          "periods": [
+            [
+              "11/1/2025",
+              "11/30/2025"
+            ]
+          ]
+        },
+        {
+          "page": 71,
+          "periods": [
+            [
+              "11/1/2025",
+              "11/30/2025"
+            ]
+          ]
+        },
+        {
+          "page": 72,
+          "periods": [
+            [
+              "11/1/2025",
+              "11/30/2025"
+            ]
+          ]
+        },
+        {
+          "page": 73,
+          "periods": [
+            [
+              "11/1/2025",
+              "11/30/2025"
+            ]
+          ]
+        },
+        {
+          "page": 74,
+          "periods": [
+            [
+              "11/1/2025",
+              "11/30/2025"
+            ]
+          ]
+        },
+        {
+          "page": 75,
+          "periods": [
+            [
+              "11/1/2025",
+              "11/30/2025"
+            ]
+          ]
+        },
+        {
+          "page": 76,
+          "periods": [
+            [
+              "11/1/2025",
+              "11/30/2025"
+            ]
+          ]
+        },
+        {
+          "page": 79,
+          "periods": [
+            [
+              "12/1/2025",
+              "12/31/2025"
+            ]
+          ]
+        },
+        {
+          "page": 80,
+          "periods": [
+            [
+              "12/1/2025",
+              "12/31/2025"
+            ]
+          ]
+        },
+        {
+          "page": 81,
+          "periods": [
+            [
+              "12/1/2025",
+              "12/31/2025"
+            ]
+          ]
+        },
+        {
+          "page": 82,
+          "periods": [
+            [
+              "12/1/2025",
+              "12/31/2025"
+            ]
+          ]
+        },
+        {
+          "page": 83,
+          "periods": [
+            [
+              "12/1/2025",
+              "12/31/2025"
+            ]
+          ]
+        }
+      ],
+      "quarterly_reports": [],
+      "pdf_pages": 235
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-02-03",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-02-03 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-02-03 Agenda Packet.pdf",
+        "file_id": 3086,
+        "official_name": "Agenda Packet (rev. 2.4.2026)",
+        "published_at": "2026-02-04T12:28:04.3Z",
+        "downloaded_at": "2026-07-22T05:43:06.113183Z",
+        "last_checked_at": "2026-11-03T22:26:42.075035Z",
+        "size": 13063429,
+        "sha256": "d20b2fc5f9a34fccfb26b832cf54e98c87c14c47a8ddf3655f0f80c9fd0f609c",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3086,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [
+        {
+          "kind": "general-fund-update",
+          "pages": [
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210
+          ]
+        },
+        {
+          "kind": "cash-investment-report",
+          "pages": [
+            181,
+            182,
+            183
+          ]
+        }
+      ],
+      "pdf_pages": 324
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-02-10",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-02-10 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-02-10 Agenda Packet.pdf",
+        "file_id": 3093,
+        "official_name": "Packet",
+        "published_at": "2026-02-05T14:30:16.91Z",
+        "downloaded_at": "2026-07-22T05:43:15.511655Z",
+        "last_checked_at": "2026-11-03T22:26:42.076262Z",
+        "size": 595257,
+        "sha256": "66b6731352e2d67ab595cf5bfd1ad4ae2c82689ee48f347d19147acfc7bd9050",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3093,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 9
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-02-17",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-02-17 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-02-17 Agenda Packet.pdf",
+        "file_id": 3115,
+        "official_name": "Agenda Packet (rev. 2.18.2026)",
+        "published_at": "2026-02-18T12:02:43.727Z",
+        "downloaded_at": "2026-07-22T05:43:16.354743Z",
+        "last_checked_at": "2026-11-03T22:26:42.077333Z",
+        "size": 31534637,
+        "sha256": "db3e0639d647feb24f0bf6db0f26038329cf6fa49d8a0c21b5e8d7e82f86d266",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3115,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 151
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-02-19",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-02-19 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-02-19 Agenda Packet.pdf",
+        "file_id": 3123,
+        "official_name": "Agenda Packet (rev. 2.19.2026)",
+        "published_at": "2026-02-19T15:04:28.74Z",
+        "downloaded_at": "2026-07-22T05:43:43.082057Z",
+        "last_checked_at": "2026-11-03T22:26:42.078490Z",
+        "size": 2844675,
+        "sha256": "fb0ee1995395ec815921be66c9529c257221f8830ca69c0d25ea0709b5e79c33",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3123,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 80
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-02-24",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-02-24 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-02-24 Agenda Packet.pdf",
+        "file_id": 3121,
+        "official_name": "Packet",
+        "published_at": "2026-02-19T12:30:16.207Z",
+        "downloaded_at": "2026-07-22T05:43:45.847477Z",
+        "last_checked_at": "2026-11-03T22:26:42.079879Z",
+        "size": 571970,
+        "sha256": "5c590e5fb351ac9275c8f3682564e896befca954dff6ffbf196fc432324f476f",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3121,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 9
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-03-03",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-03 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-03-03 Agenda Packet.pdf",
+        "file_id": 3153,
+        "official_name": "Agenda Packet (rev. 3.4.2026)",
+        "published_at": "2026-03-04T12:20:01.61Z",
+        "downloaded_at": "2026-07-22T05:43:46.962509Z",
+        "last_checked_at": "2026-11-03T22:26:42.088841Z",
+        "size": 9487398,
+        "sha256": "6360a5c37baa9c10cc0e03c52087274f2b5e6ec2a1b56dac9011fa7082f28f71",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3153,plainText=false)"
+      },
+      "register_pages": [
+        {
+          "page": 33,
+          "periods": [
+            [
+              "1/1/2026",
+              "1/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 34,
+          "periods": [
+            [
+              "1/1/2026",
+              "1/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 35,
+          "periods": [
+            [
+              "1/1/2026",
+              "1/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 36,
+          "periods": [
+            [
+              "1/1/2026",
+              "1/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 37,
+          "periods": [
+            [
+              "1/1/2026",
+              "1/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 38,
+          "periods": [
+            [
+              "1/1/2026",
+              "1/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 39,
+          "periods": [
+            [
+              "1/1/2026",
+              "1/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 40,
+          "periods": [
+            [
+              "1/1/2026",
+              "1/31/2026"
+            ]
+          ]
+        }
+      ],
+      "quarterly_reports": [],
+      "pdf_pages": 106
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-03-17",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-17 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-03-17 Agenda Packet.pdf",
+        "file_id": 3197,
+        "official_name": "Agenda Packet (rev. 3.18.2026)",
+        "published_at": "2026-03-18T10:16:15.597Z",
+        "downloaded_at": "2026-07-22T05:43:57.110678Z",
+        "last_checked_at": "2026-11-03T22:26:42.090247Z",
+        "size": 16793408,
+        "sha256": "7652f0694095f960046155274b676595f9977dd1c61b6439b361f5d8833cc1bf",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3197,plainText=false)"
+      },
+      "register_pages": [
+        {
+          "page": 24,
+          "periods": [
+            [
+              "2/1/2026",
+              "2/28/2026"
+            ]
+          ]
+        },
+        {
+          "page": 25,
+          "periods": [
+            [
+              "2/1/2026",
+              "2/28/2026"
+            ]
+          ]
+        },
+        {
+          "page": 26,
+          "periods": [
+            [
+              "2/1/2026",
+              "2/28/2026"
+            ]
+          ]
+        },
+        {
+          "page": 27,
+          "periods": [
+            [
+              "2/1/2026",
+              "2/28/2026"
+            ]
+          ]
+        },
+        {
+          "page": 28,
+          "periods": [
+            [
+              "2/1/2026",
+              "2/28/2026"
+            ]
+          ]
+        },
+        {
+          "page": 29,
+          "periods": [
+            [
+              "2/1/2026",
+              "2/28/2026"
+            ]
+          ]
+        }
+      ],
+      "quarterly_reports": [],
+      "pdf_pages": 215
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-04-07",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-04-07 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-04-07 Agenda Packet.pdf",
+        "file_id": 3246,
+        "official_name": "Agenda Packet (rev. 4.9.2026)",
+        "published_at": "2026-04-09T10:03:19.67Z",
+        "downloaded_at": "2026-07-21T23:54:17.054584Z",
+        "last_checked_at": "2026-11-03T22:26:42.091337Z",
+        "size": 9737466,
+        "sha256": "cfcd67b5a55713c05a014ecb687fd43cb5e7cbae294e4c565363c47ddbd56d21",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3246,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 159
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-04-21",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-04-21 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-04-21 Agenda Packet.pdf",
+        "file_id": 3278,
+        "official_name": "Agenda Packet (rev. 4.22.2026)",
+        "published_at": "2026-04-22T14:25:01.297Z",
+        "downloaded_at": "2026-07-21T23:55:49.016113Z",
+        "last_checked_at": "2026-11-03T22:26:42.092806Z",
+        "size": 34394813,
+        "sha256": "66a73dc6d752e3a83161515bf361bff2edcebce69a4a2dfcec0ad4f67dd512ef",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3278,plainText=false)"
+      },
+      "register_pages": [
+        {
+          "page": 26,
+          "periods": [
+            [
+              "3/1/2026",
+              "3/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 27,
+          "periods": [
+            [
+              "3/1/2026",
+              "3/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 28,
+          "periods": [
+            [
+              "3/1/2026",
+              "3/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 29,
+          "periods": [
+            [
+              "3/1/2026",
+              "3/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 30,
+          "periods": [
+            [
+              "3/1/2026",
+              "3/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 31,
+          "periods": [
+            [
+              "3/1/2026",
+              "3/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 32,
+          "periods": [
+            [
+              "3/1/2026",
+              "3/31/2026"
+            ]
+          ]
+        }
+      ],
+      "quarterly_reports": [
+        {
+          "kind": "cash-investment-report",
+          "pages": [
+            33,
+            34,
+            35
+          ]
+        }
+      ],
+      "pdf_pages": 563
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-05-05",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-05-05 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-05-05 Agenda Packet.pdf",
+        "file_id": 3307,
+        "official_name": "Agenda Packet (rev. 5.6.2026)",
+        "published_at": "2026-05-06T13:05:15.353Z",
+        "downloaded_at": "2026-07-22T05:44:01.749478Z",
+        "last_checked_at": "2026-11-03T22:26:42.093889Z",
+        "size": 28014801,
+        "sha256": "88521f6a20971b007fd1466d6a7cda43c3cd52702a42e18dce5f8738b0ca9ba2",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3307,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [
+        {
+          "kind": "general-fund-update",
+          "pages": [
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ]
+        }
+      ],
+      "pdf_pages": 528
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-05-19",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-05-19 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-05-19 Agenda Packet.pdf",
+        "file_id": 3340,
+        "official_name": "Agenda Packet",
+        "published_at": "2026-05-14T14:41:59.057Z",
+        "downloaded_at": "2026-07-22T05:44:38.246986Z",
+        "last_checked_at": "2026-11-03T22:26:42.094973Z",
+        "size": 14904806,
+        "sha256": "ea6354c28dd48ff1769dee298fa3add0c9512bc4e9878985f35e82b5f8cec907",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3340,plainText=false)"
+      },
+      "register_pages": [
+        {
+          "page": 59,
+          "periods": [
+            [
+              "4/1/2026",
+              "4/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 60,
+          "periods": [
+            [
+              "4/1/2026",
+              "4/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 61,
+          "periods": [
+            [
+              "4/1/2026",
+              "4/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 62,
+          "periods": [
+            [
+              "4/1/2026",
+              "4/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 63,
+          "periods": [
+            [
+              "4/1/2026",
+              "4/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 64,
+          "periods": [
+            [
+              "4/1/2026",
+              "4/30/2026"
+            ]
+          ]
+        }
+      ],
+      "quarterly_reports": [],
+      "pdf_pages": 201
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-06-02",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-06-02 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-06-02 Agenda Packet.pdf",
+        "file_id": 3391,
+        "official_name": "Agenda Packet (rev. 6.3.2026)",
+        "published_at": "2026-06-03T14:32:27.787Z",
+        "downloaded_at": "2026-07-22T05:45:04.017697Z",
+        "last_checked_at": "2026-11-03T22:26:42.096230Z",
+        "size": 22414924,
+        "sha256": "e21fedc90022893054320940fc7f0f3b58673a3d1d8501e9dca219cdccce7fb2",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3391,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 155
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-06-09",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-06-09 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-06-09 Agenda Packet.pdf",
+        "file_id": 3406,
+        "official_name": "Agenda Packet (rev. 6.10.2026)",
+        "published_at": "2026-06-10T13:53:08.443Z",
+        "downloaded_at": "2026-07-22T05:45:49.688954Z",
+        "last_checked_at": "2026-11-03T22:26:42.097331Z",
+        "size": 9687243,
+        "sha256": "f994804274f4a3a28d5ee23d70e7ee1ff17fc22445eb147d28990480c71ed9ae",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3406,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 45
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-06-16",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-06-16 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-06-16 Agenda Packet.pdf",
+        "file_id": 3434,
+        "official_name": "Agenda Packet (rev. 06.18.2026)",
+        "published_at": "2026-06-18T09:54:55.223Z",
+        "downloaded_at": "2026-07-22T05:46:00.817126Z",
+        "last_checked_at": "2026-11-03T22:26:42.098370Z",
+        "size": 41668562,
+        "sha256": "0b93ae459730ac9ac791803d05881e2028038d97f1fceea59a52f157241c9f8b",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3434,plainText=false)"
+      },
+      "register_pages": [
+        {
+          "page": 82,
+          "periods": [
+            [
+              "5/1/2026",
+              "5/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 83,
+          "periods": [
+            [
+              "5/1/2026",
+              "5/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 84,
+          "periods": [
+            [
+              "5/1/2026",
+              "5/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 85,
+          "periods": [
+            [
+              "5/1/2026",
+              "5/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 86,
+          "periods": [
+            [
+              "5/1/2026",
+              "5/31/2026"
+            ]
+          ]
+        }
+      ],
+      "quarterly_reports": [],
+      "pdf_pages": 320
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-07-07",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-07-07 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-07-07 Agenda Packet.pdf",
+        "file_id": 3457,
+        "official_name": "Agenda Packet (rev. 7.8.2026)",
+        "published_at": "2026-07-08T10:46:21.863Z",
+        "downloaded_at": "2026-07-19T20:53:16.296371Z",
+        "last_checked_at": "2026-11-03T22:26:42.099521Z",
+        "size": 35636569,
+        "sha256": "ba2d3f44d5011838a24a5565ac7c53ec93fdd328c4418e8a0c71ffe24bc4aa2e",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3457,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 139
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-07-14",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-07-14 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-07-14 Agenda Packet.pdf",
+        "file_id": 3464,
+        "official_name": "Agenda Packet",
+        "published_at": "2026-07-09T11:12:07.5Z",
+        "downloaded_at": "2026-07-22T05:46:43.019144Z",
+        "last_checked_at": "2026-11-03T22:26:42.100561Z",
+        "size": 591643,
+        "sha256": "23f44d034ab344473d5a0fbad9c3ee07fb1042182d341a804a684f811be22c16",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3464,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 8
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-07-21",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-07-21 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-07-21 Agenda Packet.pdf",
+        "file_id": 3493,
+        "official_name": "Packet (rev. 7.22.2026)",
+        "published_at": "2026-07-22T12:06:27.137Z",
+        "downloaded_at": "2026-10-06T22:22:18.663396Z",
+        "last_checked_at": "2026-11-03T22:26:42.101866Z",
+        "size": 50386296,
+        "sha256": "a4c5a52ac8b4d6c8a8ff43e2a5ecc28194b5843f8ec44bb32405595be37598e7",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3493,plainText=false)"
+      },
+      "register_pages": [
+        {
+          "page": 88,
+          "periods": [
+            [
+              "6/1/2026",
+              "6/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 89,
+          "periods": [
+            [
+              "6/1/2026",
+              "6/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 90,
+          "periods": [
+            [
+              "6/1/2026",
+              "6/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 91,
+          "periods": [
+            [
+              "6/1/2026",
+              "6/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 92,
+          "periods": [
+            [
+              "6/1/2026",
+              "6/30/2026"
+            ]
+          ]
+        }
+      ],
+      "quarterly_reports": [
+        {
+          "kind": "cash-investment-report",
+          "pages": [
+            93,
+            94,
+            95
+          ]
+        }
+      ],
+      "pdf_pages": 218
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-08-18",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-08-18 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-08-18 Agenda Packet.pdf",
+        "file_id": 3686,
+        "official_name": "Packet (rev. 8.19.2026)",
+        "published_at": "2026-08-19T11:45:41.053Z",
+        "downloaded_at": "2026-10-06T22:22:23.121615Z",
+        "last_checked_at": "2026-11-03T22:26:42.102779Z",
+        "size": 16176100,
+        "sha256": "2935cc2807b24e1f654feb605b6e9c7d38e9888442e76e0afe3ec14c0c864f25",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3686,plainText=false)"
+      },
+      "register_pages": [
+        {
+          "page": 23,
+          "periods": [
+            [
+              "7/1/2026",
+              "7/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 24,
+          "periods": [
+            [
+              "7/1/2026",
+              "7/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 25,
+          "periods": [
+            [
+              "7/1/2026",
+              "7/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 26,
+          "periods": [
+            [
+              "7/1/2026",
+              "7/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 27,
+          "periods": [
+            [
+              "7/1/2026",
+              "7/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 28,
+          "periods": [
+            [
+              "7/1/2026",
+              "7/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 29,
+          "periods": [
+            [
+              "7/1/2026",
+              "7/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 30,
+          "periods": [
+            [
+              "7/1/2026",
+              "7/31/2026"
+            ]
+          ]
+        }
+      ],
+      "quarterly_reports": [],
+      "pdf_pages": 215
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-09-15",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-09-15 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-09-15 Agenda Packet.pdf",
+        "file_id": 3757,
+        "official_name": "Packet (rev. 9.17.2026)",
+        "published_at": "2026-09-17T12:13:20.343Z",
+        "downloaded_at": "2026-10-06T22:22:24.953789Z",
+        "last_checked_at": "2026-11-03T22:26:42.103751Z",
+        "size": 55502419,
+        "sha256": "72473e63f49b742c02fb3fa461701dec5b78e2f2ff02ed374868dfa28245e0f9",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3757,plainText=false)"
+      },
+      "register_pages": [
+        {
+          "page": 68,
+          "periods": [
+            [
+              "8/1/2026",
+              "8/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 69,
+          "periods": [
+            [
+              "8/1/2026",
+              "8/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 70,
+          "periods": [
+            [
+              "8/1/2026",
+              "8/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 71,
+          "periods": [
+            [
+              "8/1/2026",
+              "8/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 72,
+          "periods": [
+            [
+              "8/1/2026",
+              "8/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 73,
+          "periods": [
+            [
+              "8/1/2026",
+              "8/31/2026"
+            ]
+          ]
+        },
+        {
+          "page": 74,
+          "periods": [
+            [
+              "8/1/2026",
+              "8/31/2026"
+            ]
+          ]
+        }
+      ],
+      "quarterly_reports": [
+        {
+          "kind": "general-fund-update",
+          "pages": [
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138
+          ]
+        }
+      ],
+      "pdf_pages": 361
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-10-06",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-10-06 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-10-06 Agenda Packet.pdf",
+        "file_id": 3775,
+        "official_name": "Packet",
+        "published_at": "2026-10-01T17:23:19.453Z",
+        "downloaded_at": "2026-10-06T22:22:29.734465Z",
+        "last_checked_at": "2026-11-03T22:26:42.104690Z",
+        "size": 5539400,
+        "sha256": "dd2379511e1de3bdc01a1c2bdf1cc4d7d8d1479f18c6079375dcaccf9d269427",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3775,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 89
+    },
+    {
+      "meeting_type": "city-council",
+      "meeting_date": "2026-10-20",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-10-20 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-10-20 Agenda Packet.pdf",
+        "file_id": 3799,
+        "official_name": "Packet (rev. 10.21.2026)",
+        "published_at": "2026-10-21T11:34:24.847Z",
+        "downloaded_at": "2026-11-03T22:26:42.105621Z",
+        "last_checked_at": "2026-11-03T22:26:42.105621Z",
+        "size": 9346291,
+        "sha256": "8dd8fcf2f59f6fe92b99b326bd618509fcc2aa0405bfadb8c0097e7bfbcfe5d0",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3799,plainText=false)"
+      },
+      "register_pages": [
+        {
+          "page": 89,
+          "periods": [
+            [
+              "9/1/2026",
+              "9/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 90,
+          "periods": [
+            [
+              "9/1/2026",
+              "9/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 91,
+          "periods": [
+            [
+              "9/1/2026",
+              "9/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 92,
+          "periods": [
+            [
+              "9/1/2026",
+              "9/30/2026"
+            ]
+          ]
+        },
+        {
+          "page": 93,
+          "periods": [
+            [
+              "9/1/2026",
+              "9/30/2026"
+            ]
+          ]
+        }
+      ],
+      "quarterly_reports": [
+        {
+          "kind": "cash-investment-report",
+          "pages": [
+            84,
+            85,
+            86
+          ]
+        }
+      ],
+      "pdf_pages": 106
+    },
+    {
+      "meeting_type": "financial-advisory-board",
+      "meeting_date": "2026-01-27",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/financial-advisory-board/2026/agenda-packets/2026-01-27 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-01-27 Agenda Packet.pdf",
+        "file_id": 3177,
+        "official_name": "Agenda Packet",
+        "published_at": "2026-03-12T11:54:47.11Z",
+        "downloaded_at": "2026-08-24T20:19:59.720185Z",
+        "last_checked_at": "2026-11-03T22:27:18.296080Z",
+        "size": 6086827,
+        "sha256": "5a8d7aefeac2091a9d5ac5aa4012ebe4fd5ed7fdf908fd25869289f96b88b503",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3177,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 255
+    },
+    {
+      "meeting_type": "financial-advisory-board",
+      "meeting_date": "2026-02-12",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/financial-advisory-board/2026/agenda-packets/2026-02-12 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-02-12 Agenda Packet.pdf",
+        "file_id": 3175,
+        "official_name": "Agenda Packet",
+        "published_at": "2026-03-12T11:45:36.82Z",
+        "downloaded_at": "2026-08-24T20:20:03.229013Z",
+        "last_checked_at": "2026-11-03T22:27:18.299125Z",
+        "size": 1891093,
+        "sha256": "923da789349cfb77b78a4fa70ea7769f4f7de19f431830c0a42d3c8f4b40fc9e",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3175,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 86
+    },
+    {
+      "meeting_type": "financial-advisory-board",
+      "meeting_date": "2026-03-24",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/financial-advisory-board/2026/agenda-packets/2026-03-24 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-03-24 Agenda Packet.pdf",
+        "file_id": 3264,
+        "official_name": "Agenda Packet (rev. 4.16.26)",
+        "published_at": "2026-04-16T16:18:23.01Z",
+        "downloaded_at": "2026-08-24T20:20:05.452500Z",
+        "last_checked_at": "2026-11-03T22:27:18.301860Z",
+        "size": 12851095,
+        "sha256": "096ca09d7af4e2971c6fc2ba855ae3c9a6a533717a004827649eb4a5fdc7c18c",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3264,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 109
+    },
+    {
+      "meeting_type": "financial-advisory-board",
+      "meeting_date": "2026-05-07",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/financial-advisory-board/2026/agenda-packets/2026-05-07 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-05-07 Agenda Packet.pdf",
+        "file_id": 3316,
+        "official_name": "Agenda Packet REVISED (05/06/2026)",
+        "published_at": "2026-05-06T16:24:15.89Z",
+        "downloaded_at": "2026-08-24T20:20:10.410511Z",
+        "last_checked_at": "2026-11-03T22:27:18.304035Z",
+        "size": 5394322,
+        "sha256": "ba8fb063d62dfe38737fdefc204b940ee63bd25c7d99fe1cc522927a73849d9f",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3316,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 166,
+      "report_errors": [
+        "General Fund Budget Update agenda bill pages not found"
+      ]
+    },
+    {
+      "meeting_type": "financial-advisory-board",
+      "meeting_date": "2026-05-26",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/financial-advisory-board/2026/agenda-packets/2026-05-26 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-05-26 Agenda Packet.pdf",
+        "file_id": 3350,
+        "official_name": "Agenda Packet (rev 05/26/26)",
+        "published_at": "2026-05-26T12:41:18.973Z",
+        "downloaded_at": "2026-08-24T20:20:13.470309Z",
+        "last_checked_at": "2026-11-03T22:27:18.306408Z",
+        "size": 62135677,
+        "sha256": "492de21a1f1524735f0b344c7e1bd24efde6637d87778ab478d7f8e865750c1a",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3350,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 529
+    },
+    {
+      "meeting_type": "financial-advisory-board",
+      "meeting_date": "2026-06-04",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/financial-advisory-board/2026/agenda-packets/2026-06-04 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-06-04 Agenda Packet.pdf",
+        "file_id": 3400,
+        "official_name": "Agenda Packet (rev. 06/04/26 )",
+        "published_at": "2026-06-04T15:19:09.05Z",
+        "downloaded_at": "2026-08-24T20:20:43.247577Z",
+        "last_checked_at": "2026-11-03T22:27:18.309419Z",
+        "size": 775051,
+        "sha256": "85e3a1a8e48749156d94953b8ca5c215659412d8c2a253d6b4ab79b2ff39c4c1",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3400,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 10
+    },
+    {
+      "meeting_type": "financial-advisory-board",
+      "meeting_date": "2026-07-28",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/financial-advisory-board/2026/agenda-packets/2026-07-28 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-07-28 Agenda Packet.pdf",
+        "file_id": 3499,
+        "official_name": "Agenda Packet - Cancellation",
+        "published_at": "2026-07-29T16:30:40.45Z",
+        "downloaded_at": "2026-08-24T20:20:45.538151Z",
+        "last_checked_at": "2026-11-03T22:27:18.311117Z",
+        "size": 311507,
+        "sha256": "d1ed637407c0e723b207ce73982de09fd155e6d84ed18730197a5ce4f8514665",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3499,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 4
+    },
+    {
+      "meeting_type": "financial-advisory-board",
+      "meeting_date": "2026-08-25",
+      "path": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/financial-advisory-board/2026/agenda-packets/2026-08-25 Agenda Packet.pdf",
+      "source": {
+        "path": "agenda-packets/2026-08-25 Agenda Packet.pdf",
+        "file_id": 3711,
+        "official_name": "Agenda Packet (rev. 08/27/2026)",
+        "published_at": "2026-08-27T12:17:26.143Z",
+        "downloaded_at": "2026-10-06T22:22:53.973589Z",
+        "last_checked_at": "2026-11-03T22:27:18.312466Z",
+        "size": 353035,
+        "sha256": "093a4ffa03ae539e196fa7465730b71dfb05d283cd158c1004a0f4b503337142",
+        "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3711,plainText=false)"
+      },
+      "register_pages": [],
+      "quarterly_reports": [],
+      "pdf_pages": 6
+    }
+  ],
+  "register_parsing": {
+    "months": [
+      {
+        "register_month": "2025-11",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "source_sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "row_count": 326,
+        "total_including_voids": "3520422.57",
+        "total_nonvoid": "3520314.52",
+        "source_ap_summary": {
+          "count": 326,
+          "total_including_voids": "3520422.57"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Reconciled": {
+            "count": 197,
+            "amount": "2640058.60"
+          },
+          "Open": {
+            "count": 128,
+            "amount": "880255.92"
+          },
+          "Voided": {
+            "count": 1,
+            "amount": "108.05"
+          }
+        },
+        "csv_existed": true,
+        "old_row_count": 128,
+        "old_total_nonvoid": "880255.92",
+        "changed_fields": {
+          "payee": 25,
+          "description": 128,
+          "ap_type": 2
+        },
+        "added_rows": 198,
+        "removed_rows": 0,
+        "changed_existing_rows": 128
+      },
+      {
+        "register_month": "2025-12",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "source_sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "row_count": 232,
+        "total_including_voids": "5328234.95",
+        "total_nonvoid": "5328234.95",
+        "source_ap_summary": {
+          "count": 232,
+          "total_including_voids": "5328234.95"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Open": {
+            "count": 232,
+            "amount": "5328234.95"
+          }
+        },
+        "csv_existed": true,
+        "old_row_count": 232,
+        "old_total_nonvoid": "5328234.95",
+        "changed_fields": {
+          "payee": 196,
+          "description": 232,
+          "ap_type": 38
+        },
+        "added_rows": 0,
+        "removed_rows": 0,
+        "changed_existing_rows": 232
+      },
+      {
+        "register_month": "2026-01",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-03 Agenda Packet.pdf",
+        "source_sha256": "6360a5c37baa9c10cc0e03c52087274f2b5e6ec2a1b56dac9011fa7082f28f71",
+        "row_count": 335,
+        "total_including_voids": "4274435.71",
+        "total_nonvoid": "4253307.91",
+        "source_ap_summary": {
+          "count": 335,
+          "total_including_voids": "4274435.71"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Open": {
+            "count": 333,
+            "amount": "4253307.91"
+          },
+          "Voided": {
+            "count": 2,
+            "amount": "21127.80"
+          }
+        },
+        "csv_existed": true,
+        "old_row_count": 333,
+        "old_total_nonvoid": "4253307.91",
+        "changed_fields": {
+          "payee": 240,
+          "description": 333,
+          "ap_type": 40
+        },
+        "added_rows": 2,
+        "removed_rows": 0,
+        "changed_existing_rows": 333
+      },
+      {
+        "register_month": "2026-02",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-17 Agenda Packet.pdf",
+        "source_sha256": "7652f0694095f960046155274b676595f9977dd1c61b6439b361f5d8833cc1bf",
+        "row_count": 303,
+        "total_including_voids": "2870270.55",
+        "total_nonvoid": "2869423.55",
+        "source_ap_summary": {
+          "count": 303,
+          "total_including_voids": "2870270.55"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Open": {
+            "count": 302,
+            "amount": "2869423.55"
+          },
+          "Voided": {
+            "count": 1,
+            "amount": "847.00"
+          }
+        },
+        "csv_existed": true,
+        "old_row_count": 302,
+        "old_total_nonvoid": "2869423.55",
+        "changed_fields": {
+          "payee": 2,
+          "description": 2,
+          "ap_type": 45
+        },
+        "added_rows": 1,
+        "removed_rows": 0,
+        "changed_existing_rows": 46
+      },
+      {
+        "register_month": "2026-03",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-04-21 Agenda Packet.pdf",
+        "source_sha256": "66a73dc6d752e3a83161515bf361bff2edcebce69a4a2dfcec0ad4f67dd512ef",
+        "row_count": 274,
+        "total_including_voids": "3828300.11",
+        "total_nonvoid": "3828300.11",
+        "source_ap_summary": {
+          "count": 274,
+          "total_including_voids": "3828300.11"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Open": {
+            "count": 70,
+            "amount": "233491.63"
+          },
+          "Reconciled": {
+            "count": 204,
+            "amount": "3594808.48"
+          }
+        },
+        "csv_existed": false,
+        "old_row_count": 0,
+        "old_total_nonvoid": "0",
+        "changed_fields": {},
+        "added_rows": 274,
+        "removed_rows": 0,
+        "changed_existing_rows": 0
+      },
+      {
+        "register_month": "2026-04",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-05-19 Agenda Packet.pdf",
+        "source_sha256": "ea6354c28dd48ff1769dee298fa3add0c9512bc4e9878985f35e82b5f8cec907",
+        "row_count": 319,
+        "total_including_voids": "4630332.26",
+        "total_nonvoid": "4630332.26",
+        "source_ap_summary": {
+          "count": 319,
+          "total_including_voids": "4630332.26"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Reconciled": {
+            "count": 240,
+            "amount": "4195061.59"
+          },
+          "Open": {
+            "count": 79,
+            "amount": "435270.67"
+          }
+        },
+        "csv_existed": true,
+        "old_row_count": 79,
+        "old_total_nonvoid": "435270.67",
+        "changed_fields": {},
+        "added_rows": 240,
+        "removed_rows": 0,
+        "changed_existing_rows": 0
+      },
+      {
+        "register_month": "2026-05",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-06-16 Agenda Packet.pdf",
+        "source_sha256": "0b93ae459730ac9ac791803d05881e2028038d97f1fceea59a52f157241c9f8b",
+        "row_count": 281,
+        "total_including_voids": "4218511.71",
+        "total_nonvoid": "4216675.92",
+        "source_ap_summary": {
+          "count": 281,
+          "total_including_voids": "4218511.71"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Open": {
+            "count": 280,
+            "amount": "4216675.92"
+          },
+          "Voided": {
+            "count": 1,
+            "amount": "1835.79"
+          }
+        },
+        "csv_existed": false,
+        "old_row_count": 0,
+        "old_total_nonvoid": "0",
+        "changed_fields": {},
+        "added_rows": 281,
+        "removed_rows": 0,
+        "changed_existing_rows": 0
+      },
+      {
+        "register_month": "2026-06",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-07-21 Agenda Packet.pdf",
+        "source_sha256": "a4c5a52ac8b4d6c8a8ff43e2a5ecc28194b5843f8ec44bb32405595be37598e7",
+        "row_count": 277,
+        "total_including_voids": "3360231.08",
+        "total_nonvoid": "3358286.08",
+        "source_ap_summary": {
+          "count": 277,
+          "total_including_voids": "3360231.08"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Open": {
+            "count": 276,
+            "amount": "3358286.08"
+          },
+          "Voided": {
+            "count": 1,
+            "amount": "1945.00"
+          }
+        },
+        "csv_existed": true,
+        "old_row_count": 275,
+        "old_total_nonvoid": "3357652.08",
+        "changed_fields": {
+          "payee": 1,
+          "description": 1,
+          "ap_type": 35
+        },
+        "added_rows": 2,
+        "removed_rows": 0,
+        "changed_existing_rows": 36
+      },
+      {
+        "register_month": "2026-07",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-08-18 Agenda Packet.pdf",
+        "source_sha256": "2935cc2807b24e1f654feb605b6e9c7d38e9888442e76e0afe3ec14c0c864f25",
+        "row_count": 372,
+        "total_including_voids": "16042643.16",
+        "total_nonvoid": "16041939.16",
+        "source_ap_summary": {
+          "count": 372,
+          "total_including_voids": "16042643.16"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Reconciled": {
+            "count": 238,
+            "amount": "5546165.78"
+          },
+          "Open": {
+            "count": 133,
+            "amount": "10495773.38"
+          },
+          "Voided": {
+            "count": 1,
+            "amount": "704.00"
+          }
+        },
+        "csv_existed": false,
+        "old_row_count": 0,
+        "old_total_nonvoid": "0",
+        "changed_fields": {},
+        "added_rows": 372,
+        "removed_rows": 0,
+        "changed_existing_rows": 0
+      },
+      {
+        "register_month": "2026-08",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-09-15 Agenda Packet.pdf",
+        "source_sha256": "72473e63f49b742c02fb3fa461701dec5b78e2f2ff02ed374868dfa28245e0f9",
+        "row_count": 336,
+        "total_including_voids": "3565481.69",
+        "total_nonvoid": "3562481.69",
+        "source_ap_summary": {
+          "count": 336,
+          "total_including_voids": "3565481.69"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Open": {
+            "count": 334,
+            "amount": "3562481.69"
+          },
+          "Voided": {
+            "count": 2,
+            "amount": "3000.00"
+          }
+        },
+        "csv_existed": true,
+        "old_row_count": 334,
+        "old_total_nonvoid": "3562481.69",
+        "changed_fields": {
+          "ap_type": 36
+        },
+        "added_rows": 2,
+        "removed_rows": 0,
+        "changed_existing_rows": 36
+      },
+      {
+        "register_month": "2026-09",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-10-20 Agenda Packet.pdf",
+        "source_sha256": "8dd8fcf2f59f6fe92b99b326bd618509fcc2aa0405bfadb8c0097e7bfbcfe5d0",
+        "row_count": 231,
+        "total_including_voids": "2821806.95",
+        "total_nonvoid": "2814613.87",
+        "source_ap_summary": {
+          "count": 231,
+          "total_including_voids": "2821806.95"
+        },
+        "reconciled": true,
+        "status_breakdown": {
+          "Reconciled": {
+            "count": 152,
+            "amount": "1219468.69"
+          },
+          "Open": {
+            "count": 77,
+            "amount": "1595145.18"
+          },
+          "Voided": {
+            "count": 2,
+            "amount": "7193.08"
+          }
+        },
+        "csv_existed": false,
+        "old_row_count": 0,
+        "old_total_nonvoid": "0",
+        "changed_fields": {},
+        "added_rows": 231,
+        "removed_rows": 0,
+        "changed_existing_rows": 0
+      }
+    ],
+    "2026_row_count": 2728,
+    "all_refreshed_rows": 3286,
+    "recovered_rows_in_existing_csvs": 445,
+    "matched_existing_rows_with_changed_amounts": 0,
+    "new_register_months": [
+      "2026-03",
+      "2026-05",
+      "2026-07",
+      "2026-09"
+    ],
+    "csv_comparison_file": "data/artifacts/investigations/2026-11-03-register-csv-changes.json",
+    "source_summary_scope": "Each monthly count and dollar total reconciles to the source Accounts Payable summary including voids. Payroll and packet grand totals are separate. Non-void totals exclude voided rows.",
+    "artifacts": [
+      {
+        "path": "data/artifacts/pdfs/2025-11-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "source_sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "register_month": "2025-11",
+        "original_csv_sha256": "adf45bae5922d6a62df61607dec087e25e7b0651698c5590889335bc3a3e75f8",
+        "sha256": "42cfbe5d9e05be0ed2d6ca90dd7aa32cc4d398b7b54f478559dda52e042816d8"
+      },
+      {
+        "path": "data/artifacts/csv/2025-11.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "source_sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "register_month": "2025-11",
+        "original_csv_sha256": "adf45bae5922d6a62df61607dec087e25e7b0651698c5590889335bc3a3e75f8",
+        "sha256": "42250998a34e3b5d99f5c68b181a86aa40b2e4441777e6cc42589253a404dce9"
+      },
+      {
+        "path": "data/artifacts/chunks/2025-11-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "source_sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "register_month": "2025-11",
+        "original_csv_sha256": "adf45bae5922d6a62df61607dec087e25e7b0651698c5590889335bc3a3e75f8",
+        "sha256": "52fbf86cec14746a7014b18086b7874c05d041039c52d3b4d76cffe072b43523"
+      },
+      {
+        "path": "data/artifacts/html/2025-11-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "source_sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "register_month": "2025-11",
+        "original_csv_sha256": "adf45bae5922d6a62df61607dec087e25e7b0651698c5590889335bc3a3e75f8",
+        "sha256": "50ab119437b28f883ebbcae1532931f91fbf53914068de6d411e9d49daeba46e"
+      },
+      {
+        "path": "data/artifacts/pdfs/2025-12-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "source_sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "register_month": "2025-12",
+        "original_csv_sha256": "bbccf96ef9741f14546d61875cfeb2e6951204f84bf5a8f3f5024028d64fd281",
+        "sha256": "aa04bb096359462a98433bacaf216dbe53f2255fb3065323e3cba1aecc03c1d8"
+      },
+      {
+        "path": "data/artifacts/csv/2025-12.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "source_sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "register_month": "2025-12",
+        "original_csv_sha256": "bbccf96ef9741f14546d61875cfeb2e6951204f84bf5a8f3f5024028d64fd281",
+        "sha256": "59d1b13e862b17dcbf88ca1b468b65e7593cc7bd9b88802e4987bfacfbf5007d"
+      },
+      {
+        "path": "data/artifacts/chunks/2025-12-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "source_sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "register_month": "2025-12",
+        "original_csv_sha256": "bbccf96ef9741f14546d61875cfeb2e6951204f84bf5a8f3f5024028d64fd281",
+        "sha256": "f8796c58dd923f50953fe0e495bc547be84097405acbd3655ef8b5bd3ca8eea7"
+      },
+      {
+        "path": "data/artifacts/html/2025-12-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-01-20 Agenda Packet.pdf",
+        "source_sha256": "f9cac5f0c168112371ef7c7bdbebd486c8de83d91a216492cd6b445238bf6123",
+        "register_month": "2025-12",
+        "original_csv_sha256": "bbccf96ef9741f14546d61875cfeb2e6951204f84bf5a8f3f5024028d64fd281",
+        "sha256": "0a839420fe22716dbf4e75d635dd54dcf595e6d82082825a34077629207aba82"
+      },
+      {
+        "path": "data/artifacts/pdfs/2026-01-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-03 Agenda Packet.pdf",
+        "source_sha256": "6360a5c37baa9c10cc0e03c52087274f2b5e6ec2a1b56dac9011fa7082f28f71",
+        "register_month": "2026-01",
+        "original_csv_sha256": "ad5eb13cc9571045fe70600fa0fe84886ee9d1665895655d0feebd4686ba27cb",
+        "sha256": "acfac676565177ce053dde276cce050bce5cc4ffc08d32ad44f66798d2ccd801"
+      },
+      {
+        "path": "data/artifacts/csv/2026-01.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-03 Agenda Packet.pdf",
+        "source_sha256": "6360a5c37baa9c10cc0e03c52087274f2b5e6ec2a1b56dac9011fa7082f28f71",
+        "register_month": "2026-01",
+        "original_csv_sha256": "ad5eb13cc9571045fe70600fa0fe84886ee9d1665895655d0feebd4686ba27cb",
+        "sha256": "9888bc32add05dc79d9bb37be97456eff66e75fbb0090dda1ac572ff64378c4b"
+      },
+      {
+        "path": "data/artifacts/chunks/2026-01-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-03 Agenda Packet.pdf",
+        "source_sha256": "6360a5c37baa9c10cc0e03c52087274f2b5e6ec2a1b56dac9011fa7082f28f71",
+        "register_month": "2026-01",
+        "original_csv_sha256": "ad5eb13cc9571045fe70600fa0fe84886ee9d1665895655d0feebd4686ba27cb",
+        "sha256": "e6080de70e3e09e6cedc38511dc4c6a1fccf4531905850ac28e789cd1aa06ca1"
+      },
+      {
+        "path": "data/artifacts/html/2026-01-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-03 Agenda Packet.pdf",
+        "source_sha256": "6360a5c37baa9c10cc0e03c52087274f2b5e6ec2a1b56dac9011fa7082f28f71",
+        "register_month": "2026-01",
+        "original_csv_sha256": "ad5eb13cc9571045fe70600fa0fe84886ee9d1665895655d0feebd4686ba27cb",
+        "sha256": "2b2fb751cad0718fcbe20f98a10d4e0348691e515aa53241d53b96cd7952a07a"
+      },
+      {
+        "path": "data/artifacts/pdfs/2026-02-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-17 Agenda Packet.pdf",
+        "source_sha256": "7652f0694095f960046155274b676595f9977dd1c61b6439b361f5d8833cc1bf",
+        "register_month": "2026-02",
+        "original_csv_sha256": "bed03bf314bce93028a46d6873fd163540ae45554835fe0b8e3b8dff3355a129",
+        "sha256": "919ff83e267e91b43d45e3db6512a9c97a454347881eb8111f3f54dfb5204743"
+      },
+      {
+        "path": "data/artifacts/csv/2026-02.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-17 Agenda Packet.pdf",
+        "source_sha256": "7652f0694095f960046155274b676595f9977dd1c61b6439b361f5d8833cc1bf",
+        "register_month": "2026-02",
+        "original_csv_sha256": "bed03bf314bce93028a46d6873fd163540ae45554835fe0b8e3b8dff3355a129",
+        "sha256": "78e1a38ca6d5d080bd529d9519dc039ebdb64a82f3f5fdcc591cb59953af80f0"
+      },
+      {
+        "path": "data/artifacts/chunks/2026-02-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-17 Agenda Packet.pdf",
+        "source_sha256": "7652f0694095f960046155274b676595f9977dd1c61b6439b361f5d8833cc1bf",
+        "register_month": "2026-02",
+        "original_csv_sha256": "bed03bf314bce93028a46d6873fd163540ae45554835fe0b8e3b8dff3355a129",
+        "sha256": "aea3b2b655e35f19f714e017aa49a5f012d6dc769489a69ddc9de10d7bb05b46"
+      },
+      {
+        "path": "data/artifacts/html/2026-02-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-03-17 Agenda Packet.pdf",
+        "source_sha256": "7652f0694095f960046155274b676595f9977dd1c61b6439b361f5d8833cc1bf",
+        "register_month": "2026-02",
+        "original_csv_sha256": "bed03bf314bce93028a46d6873fd163540ae45554835fe0b8e3b8dff3355a129",
+        "sha256": "37392a1b2a5ccb468a89c3f0cef7653238f15a09e97945dac02eca1fa3488f42"
+      },
+      {
+        "path": "data/artifacts/pdfs/2026-03-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-04-21 Agenda Packet.pdf",
+        "source_sha256": "66a73dc6d752e3a83161515bf361bff2edcebce69a4a2dfcec0ad4f67dd512ef",
+        "register_month": "2026-03",
+        "original_csv_sha256": null,
+        "sha256": "2b159c292b0faaeeff5874044846e2bb03bac5d1d4779b82a80d8a73ca6680df"
+      },
+      {
+        "path": "data/artifacts/csv/2026-03.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-04-21 Agenda Packet.pdf",
+        "source_sha256": "66a73dc6d752e3a83161515bf361bff2edcebce69a4a2dfcec0ad4f67dd512ef",
+        "register_month": "2026-03",
+        "original_csv_sha256": null,
+        "sha256": "2dd9c7a962456f651bd9e71394c90164b93604056eb7d6f37d7c7c166b3d9ff0"
+      },
+      {
+        "path": "data/artifacts/chunks/2026-03-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-04-21 Agenda Packet.pdf",
+        "source_sha256": "66a73dc6d752e3a83161515bf361bff2edcebce69a4a2dfcec0ad4f67dd512ef",
+        "register_month": "2026-03",
+        "original_csv_sha256": null,
+        "sha256": "9c59f9a77e280f63a02bbd0bb603607e8d0544cd0bb6f75f739ce724fce898b6"
+      },
+      {
+        "path": "data/artifacts/html/2026-03-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-04-21 Agenda Packet.pdf",
+        "source_sha256": "66a73dc6d752e3a83161515bf361bff2edcebce69a4a2dfcec0ad4f67dd512ef",
+        "register_month": "2026-03",
+        "original_csv_sha256": null,
+        "sha256": "b9aff35ec615a1d939285695f830b4de5f5a300c87fe325592b05eed7e2a2ac2"
+      },
+      {
+        "path": "data/artifacts/pdfs/2026-04-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-05-19 Agenda Packet.pdf",
+        "source_sha256": "ea6354c28dd48ff1769dee298fa3add0c9512bc4e9878985f35e82b5f8cec907",
+        "register_month": "2026-04",
+        "original_csv_sha256": "81e103a733f4ae44fc3f5ca9fc90d597dd2ba860b698b25d5e8ffb015069de7e",
+        "sha256": "b39a1e013557d80eecdacc7bde33b897db1aaf849a874ac534ffde6d6d4439a6"
+      },
+      {
+        "path": "data/artifacts/csv/2026-04.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-05-19 Agenda Packet.pdf",
+        "source_sha256": "ea6354c28dd48ff1769dee298fa3add0c9512bc4e9878985f35e82b5f8cec907",
+        "register_month": "2026-04",
+        "original_csv_sha256": "81e103a733f4ae44fc3f5ca9fc90d597dd2ba860b698b25d5e8ffb015069de7e",
+        "sha256": "3e62b117d603350fbe60ea4087db0def5b8caf37fab15728858ed9de105e33a8"
+      },
+      {
+        "path": "data/artifacts/chunks/2026-04-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-05-19 Agenda Packet.pdf",
+        "source_sha256": "ea6354c28dd48ff1769dee298fa3add0c9512bc4e9878985f35e82b5f8cec907",
+        "register_month": "2026-04",
+        "original_csv_sha256": "81e103a733f4ae44fc3f5ca9fc90d597dd2ba860b698b25d5e8ffb015069de7e",
+        "sha256": "f517ba7b7ad3141dc6c7ed2ab9dd90170664c2272103871a9d7dfdacfe9e7355"
+      },
+      {
+        "path": "data/artifacts/html/2026-04-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-05-19 Agenda Packet.pdf",
+        "source_sha256": "ea6354c28dd48ff1769dee298fa3add0c9512bc4e9878985f35e82b5f8cec907",
+        "register_month": "2026-04",
+        "original_csv_sha256": "81e103a733f4ae44fc3f5ca9fc90d597dd2ba860b698b25d5e8ffb015069de7e",
+        "sha256": "9a2b7dabb761c55c15512dd8b618e1aaa304de9ea51acab0d167708811a4ea34"
+      },
+      {
+        "path": "data/artifacts/pdfs/2026-05-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-06-16 Agenda Packet.pdf",
+        "source_sha256": "0b93ae459730ac9ac791803d05881e2028038d97f1fceea59a52f157241c9f8b",
+        "register_month": "2026-05",
+        "original_csv_sha256": null,
+        "sha256": "1903ea67bb223adad1d9976f3048e312a29df94324485c6b268b8e5e35138615"
+      },
+      {
+        "path": "data/artifacts/csv/2026-05.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-06-16 Agenda Packet.pdf",
+        "source_sha256": "0b93ae459730ac9ac791803d05881e2028038d97f1fceea59a52f157241c9f8b",
+        "register_month": "2026-05",
+        "original_csv_sha256": null,
+        "sha256": "9381ad4fd69b9b9fcd46b863d1b2210b95937c439b8db7b1530b74a6b989afcd"
+      },
+      {
+        "path": "data/artifacts/chunks/2026-05-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-06-16 Agenda Packet.pdf",
+        "source_sha256": "0b93ae459730ac9ac791803d05881e2028038d97f1fceea59a52f157241c9f8b",
+        "register_month": "2026-05",
+        "original_csv_sha256": null,
+        "sha256": "33761559555dcf583628b6137315c1afa88e1b6bdaeaca0a1c426922eef3d72d"
+      },
+      {
+        "path": "data/artifacts/html/2026-05-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-06-16 Agenda Packet.pdf",
+        "source_sha256": "0b93ae459730ac9ac791803d05881e2028038d97f1fceea59a52f157241c9f8b",
+        "register_month": "2026-05",
+        "original_csv_sha256": null,
+        "sha256": "174e8816a2c129bd78731d2b1b1c42b136fa21d50f6b2cca8bd18400707e1319"
+      },
+      {
+        "path": "data/artifacts/pdfs/2026-06-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-07-21 Agenda Packet.pdf",
+        "source_sha256": "a4c5a52ac8b4d6c8a8ff43e2a5ecc28194b5843f8ec44bb32405595be37598e7",
+        "register_month": "2026-06",
+        "original_csv_sha256": "7e5f1139a1b9cc0b58712feba0b4d2e3b9b2feffdb9d49303e4812b7adc0900f",
+        "sha256": "5f35e07450d4b3a985911e4a09654b3bfe8275d62bc064538b2471aea645857c"
+      },
+      {
+        "path": "data/artifacts/csv/2026-06.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-07-21 Agenda Packet.pdf",
+        "source_sha256": "a4c5a52ac8b4d6c8a8ff43e2a5ecc28194b5843f8ec44bb32405595be37598e7",
+        "register_month": "2026-06",
+        "original_csv_sha256": "7e5f1139a1b9cc0b58712feba0b4d2e3b9b2feffdb9d49303e4812b7adc0900f",
+        "sha256": "08eed43d0a9949bad53cd0b039f97727a6cda3dabeb66d4e8bf956bd1060822c"
+      },
+      {
+        "path": "data/artifacts/chunks/2026-06-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-07-21 Agenda Packet.pdf",
+        "source_sha256": "a4c5a52ac8b4d6c8a8ff43e2a5ecc28194b5843f8ec44bb32405595be37598e7",
+        "register_month": "2026-06",
+        "original_csv_sha256": "7e5f1139a1b9cc0b58712feba0b4d2e3b9b2feffdb9d49303e4812b7adc0900f",
+        "sha256": "6d107ddfb7204e0ab1631e8932dcb147f21de12f890fd250385a91a6ccc040cb"
+      },
+      {
+        "path": "data/artifacts/html/2026-06-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-07-21 Agenda Packet.pdf",
+        "source_sha256": "a4c5a52ac8b4d6c8a8ff43e2a5ecc28194b5843f8ec44bb32405595be37598e7",
+        "register_month": "2026-06",
+        "original_csv_sha256": "7e5f1139a1b9cc0b58712feba0b4d2e3b9b2feffdb9d49303e4812b7adc0900f",
+        "sha256": "fc905f29986c0c2b1d57e4748fdf95183272193a55c462ff3bfef2a1320f50dc"
+      },
+      {
+        "path": "data/artifacts/pdfs/2026-07-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-08-18 Agenda Packet.pdf",
+        "source_sha256": "2935cc2807b24e1f654feb605b6e9c7d38e9888442e76e0afe3ec14c0c864f25",
+        "register_month": "2026-07",
+        "original_csv_sha256": null,
+        "sha256": "638443f77a7f574895ffdbfea365bceaf4f938edf3c9ead82636ceb3f4e1f5da"
+      },
+      {
+        "path": "data/artifacts/csv/2026-07.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-08-18 Agenda Packet.pdf",
+        "source_sha256": "2935cc2807b24e1f654feb605b6e9c7d38e9888442e76e0afe3ec14c0c864f25",
+        "register_month": "2026-07",
+        "original_csv_sha256": null,
+        "sha256": "912e0716b1805a98d070125b869dab6a5203852c5e03689068a7af1225c901e4"
+      },
+      {
+        "path": "data/artifacts/chunks/2026-07-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-08-18 Agenda Packet.pdf",
+        "source_sha256": "2935cc2807b24e1f654feb605b6e9c7d38e9888442e76e0afe3ec14c0c864f25",
+        "register_month": "2026-07",
+        "original_csv_sha256": null,
+        "sha256": "a92529072d2e4322eb93dcfa4b4d8bb2f1458f947ae9ef4a13438b48edebb9e8"
+      },
+      {
+        "path": "data/artifacts/html/2026-07-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-08-18 Agenda Packet.pdf",
+        "source_sha256": "2935cc2807b24e1f654feb605b6e9c7d38e9888442e76e0afe3ec14c0c864f25",
+        "register_month": "2026-07",
+        "original_csv_sha256": null,
+        "sha256": "b50f0c782f39c4377d115841af790ef23b8a9df9c556c0f5d724032a13bc599f"
+      },
+      {
+        "path": "data/artifacts/pdfs/2026-08-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-09-15 Agenda Packet.pdf",
+        "source_sha256": "72473e63f49b742c02fb3fa461701dec5b78e2f2ff02ed374868dfa28245e0f9",
+        "register_month": "2026-08",
+        "original_csv_sha256": "1abf438024536b8369fb887dee08c7389a30c0dac7c341a8746e0830a2c2d545",
+        "sha256": "c16e7c0d629fc58726fc6f46a79669fff5eb0cc8b2e58d34cabc5c2d7c12c368"
+      },
+      {
+        "path": "data/artifacts/csv/2026-08.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-09-15 Agenda Packet.pdf",
+        "source_sha256": "72473e63f49b742c02fb3fa461701dec5b78e2f2ff02ed374868dfa28245e0f9",
+        "register_month": "2026-08",
+        "original_csv_sha256": "1abf438024536b8369fb887dee08c7389a30c0dac7c341a8746e0830a2c2d545",
+        "sha256": "1e51af17cf641ddbf89ca544378b7f7edc60f61b971445e10e7c059258d4eb02"
+      },
+      {
+        "path": "data/artifacts/chunks/2026-08-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-09-15 Agenda Packet.pdf",
+        "source_sha256": "72473e63f49b742c02fb3fa461701dec5b78e2f2ff02ed374868dfa28245e0f9",
+        "register_month": "2026-08",
+        "original_csv_sha256": "1abf438024536b8369fb887dee08c7389a30c0dac7c341a8746e0830a2c2d545",
+        "sha256": "81d437200250cd4b40f231c34bc8964df1d59ff75e17ec890fe105d589c648c4"
+      },
+      {
+        "path": "data/artifacts/html/2026-08-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-09-15 Agenda Packet.pdf",
+        "source_sha256": "72473e63f49b742c02fb3fa461701dec5b78e2f2ff02ed374868dfa28245e0f9",
+        "register_month": "2026-08",
+        "original_csv_sha256": "1abf438024536b8369fb887dee08c7389a30c0dac7c341a8746e0830a2c2d545",
+        "sha256": "7635785f56f1687d9c7d72a8abea18b991c61f0600f34767a8200bcf312256dd"
+      },
+      {
+        "path": "data/artifacts/pdfs/2026-09-register.pdf",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-10-20 Agenda Packet.pdf",
+        "source_sha256": "8dd8fcf2f59f6fe92b99b326bd618509fcc2aa0405bfadb8c0097e7bfbcfe5d0",
+        "register_month": "2026-09",
+        "original_csv_sha256": null,
+        "sha256": "5fab2161d89c180a2c5dce61909cba2cbde60eccc2a43f12b486cf4a27cb39d8"
+      },
+      {
+        "path": "data/artifacts/csv/2026-09.csv",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-10-20 Agenda Packet.pdf",
+        "source_sha256": "8dd8fcf2f59f6fe92b99b326bd618509fcc2aa0405bfadb8c0097e7bfbcfe5d0",
+        "register_month": "2026-09",
+        "original_csv_sha256": null,
+        "sha256": "4654b96553cfaaab55704f73b789ffa294c688880c1161b94864e366cd8524b4"
+      },
+      {
+        "path": "data/artifacts/chunks/2026-09-chunks.json",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-10-20 Agenda Packet.pdf",
+        "source_sha256": "8dd8fcf2f59f6fe92b99b326bd618509fcc2aa0405bfadb8c0097e7bfbcfe5d0",
+        "register_month": "2026-09",
+        "original_csv_sha256": null,
+        "sha256": "b74dfd7fc253605537d71127b5c62fd5ec55768e4da22655285080a8ba6c3afe"
+      },
+      {
+        "path": "data/artifacts/html/2026-09-payees.html",
+        "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-10-20 Agenda Packet.pdf",
+        "source_sha256": "8dd8fcf2f59f6fe92b99b326bd618509fcc2aa0405bfadb8c0097e7bfbcfe5d0",
+        "register_month": "2026-09",
+        "original_csv_sha256": null,
+        "sha256": "1465da4975c5ee2ea616f07d64a583e4790ffac2c266182ea4be0a1971fe261f"
+      }
+    ],
+    "latest_full_packet_cli_matches_archived_csv": true
+  },
+  "quarterly_reports": [
+    {
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-02-03 Agenda Packet.pdf",
+      "source_sha256": "d20b2fc5f9a34fccfb26b832cf54e98c87c14c47a8ddf3655f0f80c9fd0f609c",
+      "meeting_date": "2026-02-03",
+      "kind": "general-fund-update",
+      "source_pages": [
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210
+      ],
+      "candidate": "/tmp/eccheckparser-2026-refresh-2026-11-03/quarterly/fund_updates/2026-02-03-general-fund-update.pdf",
+      "path": "data/artifacts/fund_updates/2026-02-03-general-fund-update.pdf",
+      "action": "renamed-to-meeting-date",
+      "previous_path": "data/artifacts/fund_updates/2026-02-04-general-fund-update.pdf",
+      "sha256": "ad2c6d2fb2d94fa805f4fef8c2d8af93975ac80112ee322d554b47c2686f81cf"
+    },
+    {
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-02-03 Agenda Packet.pdf",
+      "source_sha256": "d20b2fc5f9a34fccfb26b832cf54e98c87c14c47a8ddf3655f0f80c9fd0f609c",
+      "meeting_date": "2026-02-03",
+      "kind": "cash-investment-report",
+      "source_pages": [
+        181,
+        182,
+        183
+      ],
+      "candidate": "/tmp/eccheckparser-2026-refresh-2026-11-03/quarterly/cash_investments/2026-02-03-cash-investment-report.pdf",
+      "path": "data/artifacts/cash_investments/2026-02-03-cash-investment-report.pdf",
+      "action": "added",
+      "sha256": "c7080b6558f248de45e1a8b34ba668fc6ece0d0e32ccdfcba8a7c414b4f427fa"
+    },
+    {
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-04-21 Agenda Packet.pdf",
+      "source_sha256": "66a73dc6d752e3a83161515bf361bff2edcebce69a4a2dfcec0ad4f67dd512ef",
+      "meeting_date": "2026-04-21",
+      "kind": "cash-investment-report",
+      "source_pages": [
+        33,
+        34,
+        35
+      ],
+      "candidate": "/tmp/eccheckparser-2026-refresh-2026-11-03/quarterly/cash_investments/2026-04-21-cash-investment-report.pdf",
+      "path": "data/artifacts/cash_investments/2026-04-21-cash-investment-report.pdf",
+      "action": "unchanged",
+      "sha256": "228dc1e5e446272e3a17869a8ef394872d919009bd4f697c10fc8eda4951cc61"
+    },
+    {
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-05-05 Agenda Packet.pdf",
+      "source_sha256": "88521f6a20971b007fd1466d6a7cda43c3cd52702a42e18dce5f8738b0ca9ba2",
+      "meeting_date": "2026-05-05",
+      "kind": "general-fund-update",
+      "source_pages": [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ],
+      "candidate": "/tmp/eccheckparser-2026-refresh-2026-11-03/quarterly/fund_updates/2026-05-05-general-fund-update.pdf",
+      "path": "data/artifacts/fund_updates/2026-05-05-general-fund-update.pdf",
+      "action": "refreshed",
+      "sha256": "44141d0da605905d571968096205f9c4a48484dc175e2723512e945bb52ad3c7"
+    },
+    {
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-07-21 Agenda Packet.pdf",
+      "source_sha256": "a4c5a52ac8b4d6c8a8ff43e2a5ecc28194b5843f8ec44bb32405595be37598e7",
+      "meeting_date": "2026-07-21",
+      "kind": "cash-investment-report",
+      "source_pages": [
+        93,
+        94,
+        95
+      ],
+      "candidate": "/tmp/eccheckparser-2026-refresh-2026-11-03/quarterly/cash_investments/2026-07-21-cash-investment-report.pdf",
+      "path": "data/artifacts/cash_investments/2026-07-21-cash-investment-report.pdf",
+      "action": "refreshed",
+      "sha256": "c1bfcb71b35a0f4882454484b352a94eb444e15e2b14d3ea945ab6c05fbe8236"
+    },
+    {
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-09-15 Agenda Packet.pdf",
+      "source_sha256": "72473e63f49b742c02fb3fa461701dec5b78e2f2ff02ed374868dfa28245e0f9",
+      "meeting_date": "2026-09-15",
+      "kind": "general-fund-update",
+      "source_pages": [
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138
+      ],
+      "candidate": "/tmp/eccheckparser-2026-refresh-2026-11-03/quarterly/fund_updates/2026-09-15-general-fund-update.pdf",
+      "path": "data/artifacts/fund_updates/2026-09-15-general-fund-update.pdf",
+      "action": "refreshed",
+      "sha256": "b199fb0bc19ec92254e8890ef5d851e50ae695998157d502ff5690cce0a84f09"
+    },
+    {
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-10-20 Agenda Packet.pdf",
+      "source_sha256": "8dd8fcf2f59f6fe92b99b326bd618509fcc2aa0405bfadb8c0097e7bfbcfe5d0",
+      "meeting_date": "2026-10-20",
+      "kind": "cash-investment-report",
+      "source_pages": [
+        84,
+        85,
+        86
+      ],
+      "candidate": "/tmp/eccheckparser-2026-refresh-2026-11-03/quarterly/cash_investments/2026-10-20-cash-investment-report.pdf",
+      "path": "data/artifacts/cash_investments/2026-10-20-cash-investment-report.pdf",
+      "action": "added",
+      "sha256": "93b8183d8f98f8ad8e74e7ba7d1f283209dc49fd45d06e841b40c3d5ee5c0a9e"
+    }
+  ],
+  "parser_changes": {
+    "files": [
+      "check_register/parser.py",
+      "payee_splitter/cluster.py",
+      "tests/test_payment_register_status.py"
+    ],
+    "behaviors": [
+      "Recognize reconciliation/void dates before source labels",
+      "Recognize standalone Check/EFT headings and retain the payment type across repeated page headers",
+      "Include miscellaneous billing/refund transactions",
+      "Recover overlapping source text without losing the original description",
+      "Align word coordinates to transaction numbers when PDF line grouping differs from text lines",
+      "Keep the first payee token from being selected as the description boundary"
+    ],
+    "regression_tests_added": 9,
+    "existing_changes_preserved": true,
+    "code_and_data_changes_uncommitted": true
+  },
+  "validation": {
+    "full_unit_suite": {
+      "tests": 140,
+      "seconds": 75.81,
+      "result": "passed"
+    },
+    "originals_audit": [
+      "Originals archive: /Users/mikey/Data/Sources/ECCheckParser/data/originals",
+      "city-council: 4 manifests, 79 PDFs, 79 manifest records",
+      "financial-advisory-board: 3 manifests, 68 PDFs, 68 manifest records",
+      "Originals problems: none"
+    ],
+    "artifact_audit": [
+      "CSV artifacts: 31 in /Users/mikey/Data/Sources/ECCheckParser/data/artifacts/csv",
+      "Covered months: 2023-12 through 2026-09 (32 of 34 expected)",
+      "Missing check register months:",
+      "  2024-04",
+      "  2024-07",
+      "Fund update artifacts: 11 in /Users/mikey/Data/Sources/ECCheckParser/data/artifacts/fund_updates",
+      "Covered fund update quarters: FY 2023-24 Q2 through FY 2025-26 Q4 (11 of 11 expected)",
+      "Missing quarterly fund updates: none"
+    ],
+    "visual_review": "Reviewed contact sheets for extracted registers and quarterly reports, plus source summary pages for March, July, and September registers",
+    "blank_payees_in_refreshed_csvs": 0,
+    "complete_four_file_register_sets": 11,
+    "git_diff_check_for_changed_code": "passed"
+  },
+  "issues": [
+    {
+      "kind": "source-status-subtotal-discrepancy",
+      "register_month": "2026-04",
+      "source_packet": "data/originals/city-council/2026/agenda-packets/2026-05-19 Agenda Packet.pdf",
+      "source_page": 64,
+      "printed_ap_summary": {
+        "Open": {
+          "count": 95,
+          "amount": "454931.05"
+        },
+        "Reconciled": {
+          "count": 224,
+          "amount": "4175401.21"
+        },
+        "total_count": 319,
+        "total_amount": "4630332.26"
+      },
+      "itemized_rows": {
+        "Open": {
+          "count": 79,
+          "amount": "435270.67"
+        },
+        "Reconciled": {
+          "count": 240,
+          "amount": "4195061.59"
+        },
+        "total_count": 319,
+        "total_amount": "4630332.26"
+      },
+      "handling": "Preserve itemized row statuses and amounts. Overall count and total reconcile; status subtotals do not. No explanation inferred."
+    },
+    {
+      "kind": "wrapped-source-label",
+      "register_month": "2026-07",
+      "check_number": "96937",
+      "handling": "The source column wraps Refund below Miscellaneous Billing and overlaps the following row. The exported source retains the first-line label Miscellaneous Billing; the check number, payee, and amount are recovered."
+    },
+    {
+      "kind": "archivecenter-unavailable",
+      "observed_error": "Could not fetch https://www.elcerrito.gov/Archive.aspx?AMID=62: HTTP Error 404: Not Found",
+      "handling": "CivicClerk is the verified live index; the old FAB Archive Center index still returns HTTP 404. No successful Archive Center completeness claim is made."
+    },
+    {
+      "kind": "older-archive-gaps",
+      "missing_months": [
+        [
+          2024,
+          4
+        ],
+        [
+          2024,
+          7
+        ]
+      ],
+      "handling": "April and July 2024 remain visible in the archive audit; this refresh is scoped to 2026 packet sources."
+    }
+  ],
+  "boundaries": {
+    "staged": false,
+    "committed": false,
+    "pushed": false,
+    "external_messages_sent": false,
+    "unrelated_work_preserved": true,
+    "notes": "Code changes and archive-data changes should be reviewed in separate PRs under AGENTS.md."
+  }
+}

@@ -1,0 +1,19 @@
+[1/1] 2025-08-19 Agenda Packet.pdf
+Section: 2025-06
+Rows: 336  (checks=301, efts=35)
+Total (non-void): $3,337,953.05
+CSV: 2025-06.csv
+HTML: 2025-06-payees.html
+PDF: 2025-06-register.pdf (pages 7-13)
+
+Section: 2025-07
+Rows: 451  (checks=414, efts=37)
+Total (non-void): $16,027,047.61
+CSV: 2025-07.csv
+HTML: 2025-07-payees.html
+PDF: 2025-07-register.pdf (pages 14-21)
+Archive updated: /tmp/eccheckparser-older-review/script-sample/pdfs/2025-07-register.pdf
+Archive updated: /tmp/eccheckparser-older-review/script-sample/pdfs/2025-06-register.pdf
+Quarterly report archived: /tmp/eccheckparser-older-review/script-sample/cash_investments/2025-08-19-cash-investment-report.pdf
+Elapsed: 14s
+Processed 1 packets in 14s

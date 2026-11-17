@@ -1,0 +1,46 @@
+[1/5] 2026-08-18 Agenda Packet.pdf
+Rows: 372  (checks=335, efts=37)
+Total (non-void): $16,041,939.16
+CSV: 2026-07.csv
+HTML: 2026-07-payees.html
+PDF: 2026-07-register.pdf (pages 23-30)
+Archive updated: /tmp/eccheckparser-description-review/candidate-archive/pdfs/2026-07-register.pdf
+Quarterly report not found; skipping 2026-08-18 Agenda Packet.pdf
+Elapsed: 28s
+[2/5] 2026-09-15 Agenda Packet.pdf
+Rows: 336  (checks=300, efts=36)
+Total (non-void): $3,562,481.69
+CSV: 2026-08.csv
+HTML: 2026-08-payees.html
+PDF: 2026-08-register.pdf (pages 68-74)
+Archive updated: /tmp/eccheckparser-description-review/candidate-archive/pdfs/2026-08-register.pdf
+Quarterly report archived: /tmp/eccheckparser-description-review/candidate-archive/fund_updates/2026-09-15-general-fund-update.pdf
+Elapsed: 30s
+[3/5] 2026-07-21 Agenda Packet.pdf
+Rows: 277  (checks=242, efts=35)
+Total (non-void): $3,358,286.08
+CSV: 2026-06.csv
+HTML: 2026-06-payees.html
+PDF: 2026-06-register.pdf (pages 88-92)
+Archive updated: /tmp/eccheckparser-description-review/candidate-archive/pdfs/2026-06-register.pdf
+Quarterly report archived: /tmp/eccheckparser-description-review/candidate-archive/cash_investments/2026-07-21-cash-investment-report.pdf
+Elapsed: 25s
+[4/5] 2026-10-20 Agenda Packet.pdf
+Rows: 231  (checks=195, efts=36)
+Total (non-void): $2,814,613.87
+CSV: 2026-09.csv
+HTML: 2026-09-payees.html
+PDF: 2026-09-register.pdf (pages 89-93)
+Archive updated: /tmp/eccheckparser-description-review/candidate-archive/pdfs/2026-09-register.pdf
+Quarterly report archived: /tmp/eccheckparser-description-review/candidate-archive/cash_investments/2026-10-20-cash-investment-report.pdf
+Elapsed: 11s
+[5/5] 2026-06-16 Agenda Packet.pdf
+Rows: 281  (checks=238, efts=43)
+Total (non-void): $4,216,675.92
+CSV: 2026-05.csv
+HTML: 2026-05-payees.html
+PDF: 2026-05-register.pdf (pages 82-86)
+Archive updated: /tmp/eccheckparser-description-review/candidate-archive/pdfs/2026-05-register.pdf
+Quarterly report not found; skipping 2026-06-16 Agenda Packet.pdf
+Elapsed: 133s
+Processed 5 packets in 227s

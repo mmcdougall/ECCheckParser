@@ -8608,6 +8608,98 @@
     "section_year": 2026,
     "ap_type": "check",
     "lines": [
+      "95584 02/12/2026 Voided/ Enter Correct Vendor Legal Name 02/12/2026 Accounts Payable S. AND A. PACIFIC CONSTRUCTION LLC, Lukas, Vera $847.00"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "95584",
+          "x0": 32.339
+        },
+        {
+          "text": "02/12/2026",
+          "x0": 80.1356
+        },
+        {
+          "text": "Voided/",
+          "x0": 140.5424
+        },
+        {
+          "text": "Enter",
+          "x0": 172.678
+        },
+        {
+          "text": "Correct",
+          "x0": 194.03227562
+        },
+        {
+          "text": "Vendor",
+          "x0": 222.50570074
+        },
+        {
+          "text": "Legal",
+          "x0": 250.56982434
+        },
+        {
+          "text": "Name",
+          "x0": 272.53249969999996
+        },
+        {
+          "text": "02/12/2026",
+          "x0": 307.5254
+        },
+        {
+          "text": "Accounts",
+          "x0": 369.5593
+        },
+        {
+          "text": "Payable",
+          "x0": 404.74336632
+        },
+        {
+          "text": "S.",
+          "x0": 478.5763
+        },
+        {
+          "text": "AND",
+          "x0": 488.33845854000003
+        },
+        {
+          "text": "A.",
+          "x0": 507.25358266
+        },
+        {
+          "text": "PACIFIC",
+          "x0": 517.0157412
+        },
+        {
+          "text": "CONSTRUCTION",
+          "x0": 550.5760861800001
+        },
+        {
+          "text": "LLC,",
+          "x0": 616.0690887000001
+        },
+        {
+          "text": "Lukas,",
+          "x0": 635.18807036
+        },
+        {
+          "text": "Vera",
+          "x0": 661.0184864399998
+        },
+        {
+          "text": "$847.00",
+          "x0": 1248.0
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 2,
+    "section_year": 2026,
+    "ap_type": "check",
+    "lines": [
       "95585 02/12/2026 Open Accounts Payable SHAHKAR, MEHRAN Professional Services $1,020.00"
     ],
     "line_words": [
@@ -20846,7 +20938,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3618 02/06/2026 Open Accounts Payable California State Disbursement Unit Payroll Deduction $2,509.38"
     ],
@@ -20906,7 +20998,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3619 02/06/2026 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT Personnel - 02/06/2026 Tax CA Tax $45,955.79"
     ],
@@ -20986,7 +21078,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3620 02/06/2026 Open Accounts Payable IRS Personnel - 02/06/2026 Tax Fed Tax $184,160.29"
     ],
@@ -21050,7 +21142,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3621 02/06/2026 Open Accounts Payable MIssionSquare (name chg 03-2021 formerly ICMA) Personnel - 02/06/2026 Benefit Deferred Comp - 457 Plan $69,779.97"
     ],
@@ -21146,7 +21238,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3622 02/06/2026 Open Accounts Payable P E R S Personnel - 02/06/2026 Benefit PERS Fire 13.54% -Tier 2 $215,136.23"
     ],
@@ -21234,7 +21326,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3623 02/09/2026 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT Personnel - 02/06/2026 Tax CA Tax $9.36"
     ],
@@ -21314,7 +21406,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3624 02/06/2026 Open Accounts Payable IRS Personnel - 02/06/2026 Tax Fed Tax $918.09"
     ],
@@ -21378,7 +21470,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3625 02/09/2026 Open Accounts Payable P E R S Personnel - 02/06/2026 Benefit PERS Fire 13.54% -Tier 2 $7,397.39"
     ],
@@ -21466,7 +21558,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3626 02/11/2026 Open Accounts Payable P E R S Personnel - 12/11/2025 Benefit PERS Misc-Employer $2,959.48"
     ],
@@ -21542,7 +21634,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3627 02/20/2026 Open Accounts Payable California State Disbursement Unit Payroll Deduction $2,509.38"
     ],
@@ -21602,7 +21694,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3628 02/20/2026 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT Personnel - 02/20/2026 Tax CA Tax $41,891.90"
     ],
@@ -21682,7 +21774,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3629 02/20/2026 Open Accounts Payable IRS Personnel - 02/20/2026 Tax Fed Tax $175,123.16"
     ],
@@ -21746,7 +21838,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3630 02/20/2026 Open Accounts Payable MIssionSquare (name chg 03-2021 formerly ICMA) Personnel - 02/20/2026 Benefit Deferred Comp - 457 Plan $67,628.52"
     ],
@@ -21842,7 +21934,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3631 02/20/2026 Open Accounts Payable P E R S Personnel - 02/20/2026 Benefit PERS COUNCIL-PEPRA $210,122.08"
     ],
@@ -21918,7 +22010,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3632 02/23/2026 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT Personnel - 02/23/2026 Tax CA Tax $1,850.52"
     ],
@@ -21998,7 +22090,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3633 02/23/2026 Open Accounts Payable IRS Personnel - 02/23/2026 Tax Fed Tax $6,384.50"
     ],
@@ -22062,7 +22154,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3634 02/20/2026 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT Personnel - 02/20/2026 Tax CA Tax $9.36"
     ],
@@ -22142,7 +22234,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3635 02/20/2026 Open Accounts Payable IRS Personnel - 02/20/2026 Tax Fed Tax $912.95"
     ],
@@ -22206,7 +22298,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3636 02/24/2026 Open Accounts Payable P E R S Personnel - 02/20/2026 Benefit PERS Fire 13.54% -Tier 2 $7,288.04"
     ],
@@ -22294,7 +22386,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3637 02/20/2026 Open Accounts Payable PG&E UTILITIES - FY 25-26 UTILITIES ALLOCATIONS - PG&E $24,155.99"
     ],
@@ -22366,7 +22458,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3638 02/20/2026 Open Accounts Payable PG&E UTILITIES - FY 25-26 UTILITIES ALLOCATIONS - PG&E $39,210.34"
     ],
@@ -22438,7 +22530,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3639 02/06/2026 Open Accounts Payable PITNEY BOWES PURCHASE POWER Supplies - PURCHASE POWER PASTAGE CL PYMT JAN 2026 $500.00"
     ],
@@ -22526,7 +22618,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3640 02/25/2026 Open Accounts Payable PG&E UTILITIES - FY 25-26 UTILITIES ALLOCATIONS - PG&E $28.42"
     ],
@@ -22598,7 +22690,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3641 02/25/2026 Open Accounts Payable PG&E UTILITIES - FY 25-26 UTILITIES ALLOCATIONS - PG&E $70.11"
     ],
@@ -22670,7 +22762,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3642 02/26/2026 Open Accounts Payable STRYKER CORPORATION LEASE - STRYKER EQUIPMENT/ SVC LEASE AGRMNT FEB 2026 $6,308.59"
     ],
@@ -22750,7 +22842,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3643 02/26/2026 Open Accounts Payable KS STATEBANK VEHICLE & FLEET MTNCE/REPAIRS - 2023 CHEVROLET TAHOE SPECIAL SVC VEHICLES WITH UPFITTING FEB 26 $4,907.41"
     ],
@@ -22854,7 +22946,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3644 02/26/2026 Open Accounts Payable SUTTER HEALTH PLUS Personnel - SUTTER HEALTH PLAN - MAR 2026 PAYMENT $33,185.50"
     ],
@@ -22938,7 +23030,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3645 02/28/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC FEES - MERCHANT FEE EXPENSE - JAN2026 $969.49"
     ],
@@ -23022,7 +23114,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3646 02/28/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC FEES - MERCHANT FEE EXPENSE - JAN2026 $57.29"
     ],
@@ -23106,7 +23198,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3647 02/28/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC FEES - MERCHANT FEE EXPENSE - JAN2026 $680.61"
     ],
@@ -23190,7 +23282,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3648 02/28/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC FEES - MERCHANT FEE EXPENSE - JAN2026 $110.36"
     ],
@@ -23274,7 +23366,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3649 02/28/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC FEES - MERCHANT FEE EXPENSE - JAN2026 $692.86"
     ],
@@ -23358,7 +23450,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3650 02/28/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC FEES - MERCHANT FEE EXPENSE - JAN2026 $38.38"
     ],
@@ -23442,7 +23534,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3651 02/28/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC FEES - MERCHANT FEE EXPENSE - JAN2026 $38.37"
     ],
@@ -23526,7 +23618,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3652 02/28/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC FEES - MERCHANT FEE EXPENSE - JAN2026 $38.40"
     ],
@@ -23610,7 +23702,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3653 02/28/2026 Open Accounts Payable AMEX/AMERICAN EXPRESS FEES - MERCHANT FEE EXPENSE - JAN2026 $80.71"
     ],
@@ -23682,7 +23774,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3654 02/28/2026 Open Accounts Payable CLOVER FEES - MERCHANT FEE EXPENSE - JAN2026 $23.90"
     ],
@@ -23750,7 +23842,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3655 02/28/2026 Open Accounts Payable AUTHORIZE.NET FEES - MERCHANT FEE EXPENSE - JAN2026 $35.20"
     ],
@@ -23818,7 +23910,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3656 02/28/2026 Open Accounts Payable AUTHORIZE.NET FEES - MERCHANT FEE EXPENSE - JAN2026 $20.00"
     ],
@@ -23886,7 +23978,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3657 02/28/2026 Open Accounts Payable CARDCONNECT FEES - MERCHANT FEE EXPENSE - JAN2026 $7,625.32"
     ],
@@ -23954,7 +24046,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3658 02/28/2026 Open Accounts Payable CARDCONNECT FEES - MERCHANT FEE EXPENSE - JAN2026 $1,504.65"
     ],
@@ -24022,7 +24114,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3659 02/28/2026 Open Accounts Payable CARDCONNECT FEES - MERCHANT FEE EXPENSE - JAN2026 $5,339.37"
     ],
@@ -24090,7 +24182,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3660 02/28/2026 Open Accounts Payable MECHANICS BANK FEES - MERCHANT FEE EXPENSE - JAN2026 $254.87"
     ],
@@ -24162,7 +24254,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3661 02/27/2026 Open Accounts Payable IRS Personnel - 02/20/2026 Tax Fed Tax $109.11"
     ],
@@ -24226,7 +24318,7 @@
   {
     "section_month": 2,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3662 02/26/2026 Open Accounts Payable P E R S Personnel - 02/20/2026 Benefit PERS Public Safety-Fire $678.76"
     ],

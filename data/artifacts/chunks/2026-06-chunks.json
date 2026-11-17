@@ -7536,6 +7536,70 @@
     "section_year": 2026,
     "ap_type": "check",
     "lines": [
+      "96601 06/15/2026 Open Miscellaneous Billing Refund Burger King-Sohrabi Enterprises II, Inc. Refund 634.00"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "96601",
+          "x0": 34.2857
+        },
+        {
+          "text": "06/15/2026",
+          "x0": 91.5
+        },
+        {
+          "text": "Open",
+          "x0": 152.7857
+        },
+        {
+          "text": "Miscellaneous",
+          "x0": 376.5
+        },
+        {
+          "text": "Billing",
+          "x0": 427.92252102
+        },
+        {
+          "text": "Refund",
+          "x0": 450.4143735
+        },
+        {
+          "text": "Burger",
+          "x0": 497.5714
+        },
+        {
+          "text": "King-Sohrabi",
+          "x0": 523.4899934
+        },
+        {
+          "text": "Enterprises",
+          "x0": 571.26535842
+        },
+        {
+          "text": "II,",
+          "x0": 612.83500822
+        },
+        {
+          "text": "Inc.",
+          "x0": 620.9753018399999
+        },
+        {
+          "text": "Refund",
+          "x0": 744.2143
+        },
+        {
+          "text": "634.00",
+          "x0": 1188.8144399999999
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 6,
+    "section_year": 2026,
+    "ap_type": "check",
+    "lines": [
       "96602 06/18/2026 Open Accounts Payable CALPERS LONG TERM CARE PROGRAM PER3 - CALPERS Longterm Care Ins 47.96"
     ],
     "line_words": [
@@ -12780,6 +12844,66 @@
     "section_year": 2026,
     "ap_type": "check",
     "lines": [
+      "96677 06/18/2026 Voided/Reissued Incorrect Address 06/26/2026 Accounts Payable THE PLUMBING MINISTRY 1,945.00"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "96677",
+          "x0": 34.2857
+        },
+        {
+          "text": "06/18/2026",
+          "x0": 91.5
+        },
+        {
+          "text": "Voided/Reissued",
+          "x0": 152.7857
+        },
+        {
+          "text": "Incorrect",
+          "x0": 237.2143
+        },
+        {
+          "text": "Address",
+          "x0": 269.99826814
+        },
+        {
+          "text": "06/26/2026",
+          "x0": 313.7143
+        },
+        {
+          "text": "Accounts",
+          "x0": 376.5
+        },
+        {
+          "text": "Payable",
+          "x0": 411.63717662
+        },
+        {
+          "text": "THE",
+          "x0": 497.5714
+        },
+        {
+          "text": "PLUMBING",
+          "x0": 515.78497992
+        },
+        {
+          "text": "MINISTRY",
+          "x0": 559.50248746
+        },
+        {
+          "text": "1,945.00",
+          "x0": 1182.1780740000002
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 6,
+    "section_year": 2026,
+    "ap_type": "check",
+    "lines": [
       "96678 06/18/2026 Open Accounts Payable UNIVERSAL BUILDING SERVICE BUILDING SUPPLIES FOR FIRE 4/2/2026 200.71"
     ],
     "line_words": [
@@ -16822,7 +16946,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3782 06/12/2026 Open Accounts Payable California State Disbursement Unit Payroll Deduction $ 2,486.30"
     ],
@@ -16886,7 +17010,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3783 06/12/2026 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT CA - CA Tax 49,322.25"
     ],
@@ -16958,7 +17082,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3784 06/12/2026 Open Accounts Payable IRS FED - Fed Tax* 197,193.65"
     ],
@@ -17014,7 +17138,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3785 06/12/2026 Open Accounts Payable MIssionSquare (name chg 03-2021 formerly ICMA) ICM1 - ICMA-457 #300530 FLAT DOLLAR* 72,879.39"
     ],
@@ -17098,7 +17222,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3786 06/12/2026 Open Accounts Payable P E R S PE1% - PERS SEIU* 233,482.99"
     ],
@@ -17166,7 +17290,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3787 06/26/2026 Open Accounts Payable California State Disbursement Unit Payroll Deduction 2,486.30"
     ],
@@ -17226,7 +17350,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3788 06/26/2026 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT CA - CA Tax 52,041.80"
     ],
@@ -17298,7 +17422,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3789 06/26/2026 Open Accounts Payable IRS FED - Fed Tax* 206,034.82"
     ],
@@ -17354,7 +17478,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3790 06/26/2026 Open Accounts Payable MIssionSquare (name chg 03-2021 formerly ICMA) ICM1 - ICMA-457 #300530 FLAT DOLLAR* 70,473.87"
     ],
@@ -17438,7 +17562,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3791 06/26/2026 Open Accounts Payable P E R S PE1% - PERS SEIU* 232,961.28"
     ],
@@ -17506,7 +17630,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3792 06/30/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - MAY2026 909.47"
     ],
@@ -17582,7 +17706,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3793 06/30/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - MAY2026 57.01"
     ],
@@ -17658,7 +17782,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3794 06/30/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - MAY2026 508.71"
     ],
@@ -17734,7 +17858,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3795 06/30/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - MAY2026 157.32"
     ],
@@ -17810,7 +17934,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3796 06/30/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - MAY2026 861.96"
     ],
@@ -17886,7 +18010,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3797 06/30/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - MAY2026 38.38"
     ],
@@ -17962,7 +18086,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3798 06/30/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - MAY2026 38.37"
     ],
@@ -18038,7 +18162,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3799 06/30/2026 Open Accounts Payable FIRST DATA MERCHANT SERVICES INC MERCHANT FEE EXPENSE - MAY2026 38.40"
     ],
@@ -18114,7 +18238,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3800 06/30/2026 Open Accounts Payable AMEX/AMERICAN EXPRESS MERCHANT FEE EXPENSE - MAY2026 187.85"
     ],
@@ -18178,7 +18302,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3801 06/30/2026 Open Accounts Payable CLOVER MERCHANT FEE EXPENSE - MAY2026 23.90"
     ],
@@ -18238,7 +18362,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3802 06/30/2026 Open Accounts Payable AUTHORIZE.NET MERCHANT FEE EXPENSE - MAY2026 35.00"
     ],
@@ -18298,7 +18422,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3803 06/30/2026 Open Accounts Payable AUTHORIZE.NET MERCHANT FEE EXPENSE - MAY2026 20.00"
     ],
@@ -18358,7 +18482,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3804 06/30/2026 Open Accounts Payable CARDCONNECT MERCHANT FEE EXPENSE - MAY2026 10,613.73"
     ],
@@ -18418,7 +18542,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3805 06/30/2026 Open Accounts Payable CARDCONNECT MERCHANT FEE EXPENSE - MAY2026 2,725.96"
     ],
@@ -18478,7 +18602,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3806 06/30/2026 Open Accounts Payable CARDCONNECT MERCHANT FEE EXPENSE - MAY2026 5,742.82"
     ],
@@ -18538,7 +18662,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3807 06/30/2026 Open Accounts Payable MECHANICS BANK MERCHANT FEE EXPENSE - MAY2026 489.93"
     ],
@@ -18602,7 +18726,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3808 06/23/2026 Open Accounts Payable PG&E PG&E 5/2/26-6/1/26 22,519.16"
     ],
@@ -18650,7 +18774,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3809 06/23/2026 Open Accounts Payable PG&E PG&E 5/1/26-5/31/26 28,355.34"
     ],
@@ -18698,7 +18822,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3810 06/23/2026 Open Accounts Payable PG&E PG&E 5/7/26-6/5/26 41.55"
     ],
@@ -18746,7 +18870,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3811 06/23/2026 Open Accounts Payable PG&E PG&E 5/7/26-6/5/26 58.97"
     ],
@@ -18794,7 +18918,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3812 06/09/2026 Open Accounts Payable PITNEY BOWES PURCHASE POWER PURCHASE POWER PASTAGE CL PYMT MAY 2026 1,005.00"
     ],
@@ -18874,7 +18998,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3813 06/26/2026 Open Accounts Payable CalPERS (CA Public Employees' Retirement System) CALPERS SAFETY SURVIVOR CONTRIBUTION FY25-26 4,258.80"
     ],
@@ -18954,7 +19078,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3814 06/26/2026 Open Accounts Payable STRYKER CORPORATION STRYKER EQUIPMENT/ SVC LEASE AGRMNT JUN 2026 6,308.59"
     ],
@@ -19026,7 +19150,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3815 06/29/2026 Open Accounts Payable U.S. BANK - CORPORATE PAYMENT SYS CALCARD JUN 2026 PAYMENT 72,852.10"
     ],
@@ -19102,7 +19226,7 @@
   {
     "section_month": 6,
     "section_year": 2026,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "3816 06/26/2026 Open Accounts Payable SUTTER HEALTH PLUS SUTTER HEALTH PLAN - JULY 2026 PAYMENT 34,560.10"
     ],

@@ -1,0 +1,5086 @@
+{
+  "date": "2026-11-04",
+  "scope": [
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09"
+  ],
+  "findings": [
+    "September descriptions are 3.05 PDF points below the payment baseline. A fixed 3-point line tolerance separates them from the payment row.",
+    "The old extractor closes the row at the amount before collecting the offset description. Column inference then treats name fragments as descriptions.",
+    "Word extraction and text extraction previously produced different line lists, requiring two repair routines. One positioned-word stream now supplies both text and coordinates.",
+    "Word grouping uses half the font height. Tight word extraction prevents letters on adjacent source-label baselines from interleaving.",
+    "Column inference is scoped to the register month so different layouts in one packet cannot set each other's boundary."
+  ],
+  "iterations": [
+    "Prototype single-stream font-relative row grouping: restored September descriptions; May through August CSVs unchanged.",
+    "Separated column inference by month: fixed June 2025 check 93575 TRANSUNION suffix; current baseline and new extraction both retain 787 rows and total 19422033.55 in the June/July source register.",
+    "Rebuilt complete artifact sets from five canonical packets using scripts/build_register_archive.sh; independently checked all September source payee/description fields using fixed page-column regions and payment row anchors."
+  ],
+  "validation": {
+    "baseline_unit_tests": 140,
+    "final_unit_tests": 145,
+    "unit_test_result": "passed",
+    "existing_accuracy_thresholds": "unchanged",
+    "june_2025_fixture_matches": {
+      "before": 158,
+      "after": 158,
+      "expected_payees": 162
+    },
+    "top_payee_fixture_matches": {
+      "before": 31,
+      "after": 31,
+      "expected_payees": 31
+    },
+    "september_independent_source_comparison": {
+      "rows": 231,
+      "differences": 0,
+      "normalization": "Whitespace, commas, and periods removed from both strings for comparison; raw source text retained below."
+    },
+    "repeated_name_check": {
+      "corrected_payee_rows": 80,
+      "distinct_corrected_payees": 59,
+      "corrected_rows_with_same_complete_payee_in_prior_four_months": 65,
+      "method": "Exact complete-name agreement is corroborating evidence; source PDF geometry remains authoritative. No historical CSV names are used as parser rules."
+    },
+    "september_regenerated_pdf_matches_archived_render_and_text": true
+  },
+  "months": [
+    {
+      "month": "2026-05",
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-06-16 Agenda Packet.pdf",
+      "source_sha256": "0b93ae459730ac9ac791803d05881e2028038d97f1fceea59a52f157241c9f8b",
+      "rows": 281,
+      "total_including_voids": "4218511.71",
+      "total_excluding_voids": "4216675.92",
+      "printed_ap_summary_reconciled": true,
+      "before_csv_sha256": "9381ad4fd69b9b9fcd46b863d1b2210b95937c439b8db7b1530b74a6b989afcd",
+      "after_csv_sha256": "9381ad4fd69b9b9fcd46b863d1b2210b95937c439b8db7b1530b74a6b989afcd",
+      "changed_rows": 0,
+      "changed_fields": {},
+      "blank_descriptions_before": 0,
+      "blank_descriptions_after": 0,
+      "changes": []
+    },
+    {
+      "month": "2026-06",
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-07-21 Agenda Packet.pdf",
+      "source_sha256": "a4c5a52ac8b4d6c8a8ff43e2a5ecc28194b5843f8ec44bb32405595be37598e7",
+      "rows": 277,
+      "total_including_voids": "3360231.08",
+      "total_excluding_voids": "3358286.08",
+      "printed_ap_summary_reconciled": true,
+      "before_csv_sha256": "08eed43d0a9949bad53cd0b039f97727a6cda3dabeb66d4e8bf956bd1060822c",
+      "after_csv_sha256": "08eed43d0a9949bad53cd0b039f97727a6cda3dabeb66d4e8bf956bd1060822c",
+      "changed_rows": 0,
+      "changed_fields": {},
+      "blank_descriptions_before": 1,
+      "blank_descriptions_after": 1,
+      "changes": []
+    },
+    {
+      "month": "2026-07",
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-08-18 Agenda Packet.pdf",
+      "source_sha256": "2935cc2807b24e1f654feb605b6e9c7d38e9888442e76e0afe3ec14c0c864f25",
+      "rows": 372,
+      "total_including_voids": "16042643.16",
+      "total_excluding_voids": "16041939.16",
+      "printed_ap_summary_reconciled": true,
+      "before_csv_sha256": "912e0716b1805a98d070125b869dab6a5203852c5e03689068a7af1225c901e4",
+      "after_csv_sha256": "912e0716b1805a98d070125b869dab6a5203852c5e03689068a7af1225c901e4",
+      "changed_rows": 0,
+      "changed_fields": {},
+      "blank_descriptions_before": 2,
+      "blank_descriptions_after": 2,
+      "changes": []
+    },
+    {
+      "month": "2026-08",
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-09-15 Agenda Packet.pdf",
+      "source_sha256": "72473e63f49b742c02fb3fa461701dec5b78e2f2ff02ed374868dfa28245e0f9",
+      "rows": 336,
+      "total_including_voids": "3565481.69",
+      "total_excluding_voids": "3562481.69",
+      "printed_ap_summary_reconciled": true,
+      "before_csv_sha256": "1e51af17cf641ddbf89ca544378b7f7edc60f61b971445e10e7c059258d4eb02",
+      "after_csv_sha256": "1e51af17cf641ddbf89ca544378b7f7edc60f61b971445e10e7c059258d4eb02",
+      "changed_rows": 0,
+      "changed_fields": {},
+      "blank_descriptions_before": 2,
+      "blank_descriptions_after": 2,
+      "changes": []
+    },
+    {
+      "month": "2026-09",
+      "source_packet": "/Users/mikey/Data/Sources/ECCheckParser/data/originals/city-council/2026/agenda-packets/2026-10-20 Agenda Packet.pdf",
+      "source_sha256": "8dd8fcf2f59f6fe92b99b326bd618509fcc2aa0405bfadb8c0097e7bfbcfe5d0",
+      "rows": 231,
+      "total_including_voids": "2821806.95",
+      "total_excluding_voids": "2814613.87",
+      "printed_ap_summary_reconciled": true,
+      "before_csv_sha256": "4654b96553cfaaab55704f73b789ffa294c688880c1161b94864e366cd8524b4",
+      "after_csv_sha256": "adf5b32033fa7001de7b79e69676420153033ff8e7ec4fb34a69c03bc39d5c74",
+      "changed_rows": 228,
+      "changed_fields": {
+        "payee": 80,
+        "description": 228
+      },
+      "blank_descriptions_before": 150,
+      "blank_descriptions_after": 2,
+      "changes": [
+        {
+          "number": "97369",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "AMERICAN MECHANICAL",
+              "after": "AMERICAN MECHANICAL SERVICES, INC."
+            },
+            "description": {
+              "before": "SERVICES, INC.",
+              "after": "CITY HALL HVAC MAINTENANCE MAY-JULY 2026"
+            }
+          }
+        },
+        {
+          "number": "97370",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "FIBER DATA LINE 7/13/26-8/12/26"
+            }
+          }
+        },
+        {
+          "number": "97371",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PARKEC MAILER POSTCARDS"
+            }
+          }
+        },
+        {
+          "number": "97372",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CINTAS CORPORATION #054",
+              "after": "CINTAS CORPORATION #054 UNIFORMS"
+            },
+            "description": {
+              "before": "UNIFORMS",
+              "after": "CORP YARD WEEKLY UNIFORM RENTALS"
+            }
+          }
+        },
+        {
+          "number": "97373",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PRE-EMPLOYMENT EXAM 7/15/26"
+            }
+          }
+        },
+        {
+          "number": "97374",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "BUSINESS CARD FOR COMM DEV STAFF"
+            }
+          }
+        },
+        {
+          "number": "97375",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CONTRA COSTA COUNTY",
+              "after": "CONTRA COSTA COUNTY CHIEFS' ASSOCIATION"
+            },
+            "description": {
+              "before": "CHIEFS' ASSOCIATION",
+              "after": "ANNUAL MEMEBERSHIP DUES FY 26-27"
+            }
+          }
+        },
+        {
+          "number": "97376",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "DOOR REPAIR @ STA 51"
+            }
+          }
+        },
+        {
+          "number": "97377",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CRIME SCENE CLEANERS",
+              "after": "CRIME SCENE CLEANERS, INC."
+            },
+            "description": {
+              "before": "INC.",
+              "after": "BIOHAZARD REMOVAL 8/14/26"
+            }
+          }
+        },
+        {
+          "number": "97378",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "EL CERRITO ART ASSOC 49TH ANNUAL ART SHOW AWARDS"
+            }
+          }
+        },
+        {
+          "number": "97380",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "FLEET MANAGEMENT HOLDINGS",
+              "after": "FLEET MANAGEMENT HOLDINGS, LLC"
+            },
+            "description": {
+              "before": "LLC",
+              "after": "R3: FUEL + AIR FILTERS + OIL CHANGE + WATER SEPARATOR"
+            }
+          }
+        },
+        {
+          "number": "97381",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "SPORTS CAMP SESSION #9 8/10/26-8/14/26"
+            }
+          }
+        },
+        {
+          "number": "97382",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "POTTERY MATERIALS FOR TASSAJARA STUDIO 6/24/26-7/22/26"
+            }
+          }
+        },
+        {
+          "number": "97383",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "ADULT BALLET AUGUST 2026"
+            }
+          }
+        },
+        {
+          "number": "97384",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "GYMNASTIC CAMPS SESSION 6,8 & 9"
+            }
+          }
+        },
+        {
+          "number": "97385",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CITYWIDE CUSTODIAL SUPPLIES"
+            }
+          }
+        },
+        {
+          "number": "97386",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CENTRAL PARK SERVICE 8/18/26-9/14/26"
+            }
+          }
+        },
+        {
+          "number": "97387",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "OPEN CERMAICS THRU JULY 2026"
+            }
+          }
+        },
+        {
+          "number": "97388",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "FD UNIFORM 8/17/26"
+            }
+          }
+        },
+        {
+          "number": "97389",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "MALLORY SAFETY & SUPPLY",
+              "after": "MALLORY SAFETY & SUPPLY LLC"
+            },
+            "description": {
+              "before": "LLC",
+              "after": "2 NEW SCBA MASKS"
+            }
+          }
+        },
+        {
+          "number": "97390",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "OFF THE BLOCK STEM SUMMER SESSION #9 2026"
+            }
+          }
+        },
+        {
+          "number": "97391",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "NORTHERN CALIFORNIA",
+              "after": "NORTHERN CALIFORNIA SPELMANSLAG"
+            },
+            "description": {
+              "before": "SPELMANSLAG",
+              "after": "SCANDINAVIAN FOLK DANCING AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97392",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "ODP BUSINESS SOLUTIONS",
+              "after": "ODP BUSINESS SOLUTIONS, LLC"
+            },
+            "description": {
+              "before": "LLC",
+              "after": "OFFICE SUPPLIES FOR REC"
+            }
+          }
+        },
+        {
+          "number": "97393",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CREDIT CARD PROCESSING FEES JULY 2026"
+            }
+          }
+        },
+        {
+          "number": "97394",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "UNLEADED FUEL 8/21/26"
+            }
+          }
+        },
+        {
+          "number": "97395",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "RUBICON ENTERPRISES",
+              "after": "RUBICON ENTERPRISES INC"
+            },
+            "description": {
+              "before": "INC",
+              "after": "MONTHLY PARK LANDSCAPE MAINT. JULY 2026"
+            }
+          }
+        },
+        {
+          "number": "97396",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "TS & SL MAINT & RESPONSE CENTRAL & CARLSON"
+            }
+          }
+        },
+        {
+          "number": "97397",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "2012 FORD FUEL PUMP 7/21/26"
+            }
+          }
+        },
+        {
+          "number": "97398",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "INSPECTOR 2D CLASS 8/4-8/7/26"
+            }
+          }
+        },
+        {
+          "number": "97400",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "ARMOUR PETROLEUM SERVICE",
+              "after": "ARMOUR PETROLEUM SERVICE & EQUIPMENT CORP"
+            },
+            "description": {
+              "before": "& EQUIPMENT CORP",
+              "after": "UST Diesel sample fr nozzle deliver to lab for analys #4632"
+            }
+          }
+        },
+        {
+          "number": "97401",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CALIFORNIA SOCIETY OF",
+              "after": "CALIFORNIA SOCIETY OF MUNICIPAL FINANCE OFFICERS"
+            },
+            "description": {
+              "before": "MUNICIPAL FINANCE OFFICERS",
+              "after": "CSMFO AWARDS PROGRAM DUES & SUBSCRIPTION"
+            }
+          }
+        },
+        {
+          "number": "97402",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "Annual Software Subscription 8/1/26-7/31/27"
+            }
+          }
+        },
+        {
+          "number": "97404",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "EKI ENVIRONMENT & WATER",
+              "after": "EKI ENVIRONMENT & WATER, INC."
+            },
+            "description": {
+              "before": "INC.",
+              "after": "Stormwater Compliance Support - FY25-26 Annual Report"
+            }
+          }
+        },
+        {
+          "number": "97405",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "KITTELSON & ASSOCIATES",
+              "after": "KITTELSON & ASSOCIATES INC"
+            },
+            "description": {
+              "before": "INC",
+              "after": "Local Road Safety Plan July 2026"
+            }
+          }
+        },
+        {
+          "number": "97406",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "Medical Waste Pickup Sept 2026"
+            }
+          }
+        },
+        {
+          "number": "97407",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "TWO BROTHERS POOL &",
+              "after": "TWO BROTHERS POOL & SPA, INC"
+            },
+            "description": {
+              "before": "SPA, INC",
+              "after": "August Services and Reagents"
+            }
+          }
+        },
+        {
+          "number": "97408",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CAL OES LODGING"
+            }
+          }
+        },
+        {
+          "number": "97409",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "TRAFFIC COLLISION LUNCH 5 DAYS"
+            }
+          }
+        },
+        {
+          "number": "97410",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "NEGOTIATION TRAINING LUNCH 5 DAYS"
+            }
+          }
+        },
+        {
+          "number": "97411",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "DART TRAINING LUNCH 4 DAYS"
+            }
+          }
+        },
+        {
+          "number": "97412",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "DART TRAINING LUNCH 4 DAYS"
+            }
+          }
+        },
+        {
+          "number": "97413",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "REAL PROPERTY TAX REBATE FOR 618 LIBERTY"
+            }
+          }
+        },
+        {
+          "number": "97414",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "Real Property Tax Rebate for 410 Norvell St"
+            }
+          }
+        },
+        {
+          "number": "97415",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CALPERS LONG TERM CARE",
+              "after": "CALPERS LONG TERM CARE PROGRAM"
+            },
+            "description": {
+              "before": "PROGRAM",
+              "after": "PER3 - CALPERS Longterm Care Ins"
+            }
+          }
+        },
+        {
+          "number": "97416",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "DEN1 - Dental 1*"
+            }
+          }
+        },
+        {
+          "number": "97417",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "DUE4 - UNION LOCAL 1230"
+            }
+          }
+        },
+        {
+          "number": "97418",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "KAISER FOUNDATION HEALTH",
+              "after": "KAISER FOUNDATION HEALTH PLAN"
+            },
+            "description": {
+              "before": "PLAN",
+              "after": "K1 - Kaiser 1*"
+            }
+          }
+        },
+        {
+          "number": "97419",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "LEGL - PRE-PAID LEGAL SRVC"
+            }
+          }
+        },
+        {
+          "number": "97420",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "NATIONWIDE TRUST COMPANY",
+              "after": "NATIONWIDE TRUST COMPANY, FSB"
+            },
+            "description": {
+              "before": "FSB",
+              "after": "FHEA - Fire Health Savings Acct"
+            }
+          }
+        },
+        {
+          "number": "97421",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "COPE - VOLUNTARY COPE DEDUCTION*"
+            }
+          }
+        },
+        {
+          "number": "97422",
+          "date": "09/03/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "U.S. BANK - INSTITUTIONAL",
+              "after": "U.S. BANK - INSTITUTIONAL TRUST - W REGION"
+            },
+            "description": {
+              "before": "TRUST - W REGION",
+              "after": "PAR - PARS - ARS 457*"
+            }
+          }
+        },
+        {
+          "number": "97423",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "ALAMEDA COUNTY FIRE",
+              "after": "ALAMEDA COUNTY FIRE DEPARTMENT"
+            },
+            "description": {
+              "before": "DEPARTMENT",
+              "after": "REPAIR OF VARIOUS FD VEHICLES"
+            }
+          }
+        },
+        {
+          "number": "97424",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "AMAZON CAPITAL SERVICES",
+              "after": "AMAZON CAPITAL SERVICES, INC."
+            },
+            "description": {
+              "before": "INC.",
+              "after": "ADVENTURE CAMP PROGRAM SUPPLIES FOR REC"
+            }
+          }
+        },
+        {
+          "number": "97425",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MOBILE EXPENSE SEP 2026"
+            }
+          }
+        },
+        {
+          "number": "97426",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PRINTING FOR PW"
+            }
+          }
+        },
+        {
+          "number": "97427",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CALIFORNIA PUBLIC POLICY",
+              "after": "CALIFORNIA PUBLIC POLICY GROUP INC."
+            },
+            "description": {
+              "before": "GROUP INC.",
+              "after": "GRANT WRITING & ADVOCACY SVCS AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97428",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CHILDCARE AIDE FAIRMONT"
+            }
+          }
+        },
+        {
+          "number": "97429",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "FLAMENCO AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97430",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "VEHICLE MAINTENANCE FIRE TRUCK #55"
+            }
+          }
+        },
+        {
+          "number": "97431",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "OFFICE SUPPLIES FOR CD"
+            }
+          }
+        },
+        {
+          "number": "97432",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "WRITTEN TEST FOR ADMIN RECRUITMENT"
+            }
+          }
+        },
+        {
+          "number": "97433",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "EBMUD 7/1/26-8/31/26"
+            }
+          }
+        },
+        {
+          "number": "97434",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "AQUA ZUMBA JULY-AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97435",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "ARMORED TRANSPORTATION SVCS SEP 2026"
+            }
+          }
+        },
+        {
+          "number": "97436",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "OFF-SITE RECORDS STORAGE AND SERVICES 7/29/26-8/25/26"
+            }
+          }
+        },
+        {
+          "number": "97437",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "OPEN CERAMICS TH AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97438",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "HATHA YOGA / ROLL AND STRETCH AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97439",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MEDICAL REVIEW AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97440",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "AIKIDO AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97441",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "OPEN CERAMICS / INTRO THROWING AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97442",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "I-80 CENTRAL AVE PROJECT"
+            }
+          }
+        },
+        {
+          "number": "97443",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "4TH OF JULY BANNERS"
+            }
+          }
+        },
+        {
+          "number": "97444",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CERAMICS INDEPENDENT JUN-AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97445",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "STRENGTH AND BALANCE AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97446",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "TALENTNOOK SUMMER CAMP SESSION# 6 & 9"
+            }
+          }
+        },
+        {
+          "number": "97447",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "TRAINING SUPPORT"
+            }
+          }
+        },
+        {
+          "number": "97448",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "RESTROOM KEYS REPLACEMENT"
+            }
+          }
+        },
+        {
+          "number": "97449",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "BRIDGE AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97450",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "West Contra Costa Transportation",
+              "after": "West Contra Costa Transportation (WCCTC)"
+            },
+            "description": {
+              "before": "(WCCTC)",
+              "after": "FY26-27 MEMBER DUES"
+            }
+          }
+        },
+        {
+          "number": "97451",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MILEAGE REIMBURSEMENT FOR TRAINING - PSHRA MINI CONF"
+            }
+          }
+        },
+        {
+          "number": "97452",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "REAL PROPERTY TAX REBATE FOR 6524 ALTA VISTA DR"
+            }
+          }
+        },
+        {
+          "number": "97453",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CROSSTOWN CONNECT JULY 2026"
+            }
+          }
+        },
+        {
+          "number": "97454",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "HOUSING FUND - LEGAL SERVICES JULY 2026"
+            }
+          }
+        },
+        {
+          "number": "97455",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "FIRSTWATCH ANNUAL FEE"
+            }
+          }
+        },
+        {
+          "number": "97456",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "SOUTH COUNTY INDUSTRIAL",
+              "after": "SOUTH COUNTY INDUSTRIAL EMERGENCY COUNCIL"
+            },
+            "description": {
+              "before": "EMERGENCY COUNCIL",
+              "after": "HAZMAT CLASS FOR THE ACADEMY"
+            }
+          }
+        },
+        {
+          "number": "97457",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "AUGUST HAZARDOUS WASTE"
+            }
+          }
+        },
+        {
+          "number": "97458",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "ALP & COMM SEV MIGRATION PROJECT"
+            }
+          }
+        },
+        {
+          "number": "97459",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CROSSTOWN CONNECT/DEL NORTE TOD/RISHMOND ST./ACTIVE TRANSPORTATION PLAN"
+            }
+          }
+        },
+        {
+          "number": "97460",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MAYOR'S CONFERENCE MEAL (MOTOYAMA)"
+            }
+          }
+        },
+        {
+          "number": "97461",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PROFESSIONAL SERVICES - STAFFING"
+            }
+          }
+        },
+        {
+          "number": "97462",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "COACHING CERTIFICATION TO COACH GATORS SWIM TEAM"
+            }
+          }
+        },
+        {
+          "number": "97463",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "REIMBURSEMENT PW26-0534 ENCROACHMENT PERMIT FEE"
+            }
+          }
+        },
+        {
+          "number": "97464",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "HATS AND VEST POUCHES FOR PD"
+            }
+          }
+        },
+        {
+          "number": "97465",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PROPANE FOR FORKLIFTS 8/6/26 + 8/25/26"
+            }
+          }
+        },
+        {
+          "number": "97466",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "ASBURY ENVIRONMENTAL",
+              "after": "ASBURY ENVIRONMENTAL SERVICES"
+            },
+            "description": {
+              "before": "SERVICES",
+              "after": "USED MOTOR OIL RECYCLING 8/26/26"
+            }
+          }
+        },
+        {
+          "number": "97467",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "COMMUNITY CENTER PEST CONTROL SERVICE AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97468",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "BAY CITIES PYROTECTOR",
+              "after": "BAY CITIES PYROTECTOR, INC"
+            },
+            "description": {
+              "before": "INC",
+              "after": "FIRE EXTINGUISHER SERVICE 8/25/26"
+            }
+          }
+        },
+        {
+          "number": "97469",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "BEND MAILING SERVICES",
+              "after": "BEND MAILING SERVICES, LLC"
+            },
+            "description": {
+              "before": "LLC",
+              "after": "GREENER EC BILL INSERT + STREET SWEEPING MAP VOL 47"
+            }
+          }
+        },
+        {
+          "number": "97470",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CHALLENGE ISLAND BAY",
+              "after": "CHALLENGE ISLAND BAY AREA"
+            },
+            "description": {
+              "before": "AREA",
+              "after": "CHALLENGE ISLAND SUMMER CAMPS 2026"
+            }
+          }
+        },
+        {
+          "number": "97471",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "FAIRMONT CHILDCARE AIDE"
+            }
+          }
+        },
+        {
+          "number": "97472",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MOBILE ROUTER ANTENNAS"
+            }
+          }
+        },
+        {
+          "number": "97473",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CINTAS CORPORATION #054",
+              "after": "CINTAS CORPORATION #054 UNIFORMS"
+            },
+            "description": {
+              "before": "UNIFORMS",
+              "after": "CORP YARD UNIFORMS WEEKLY RENTALS"
+            }
+          }
+        },
+        {
+          "number": "97474",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "2015 FORD TOWING"
+            }
+          }
+        },
+        {
+          "number": "97475",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CONTRA COSTA COUNTY",
+              "after": "CONTRA COSTA COUNTY OFFICE OF SHERIFF-CORONER"
+            },
+            "description": {
+              "before": "OFFICE OF SHERIFF-CORONER",
+              "after": "ARIES MAINTENANCE 26/27 FOR PD"
+            }
+          }
+        },
+        {
+          "number": "97476",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CONTRA COSTA HEALTH",
+              "after": "CONTRA COSTA HEALTH SERVICES"
+            },
+            "description": {
+              "before": "SERVICES",
+              "after": "TIPPING WALL INSPECTION 8/16/26"
+            }
+          }
+        },
+        {
+          "number": "97477",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CORODATA SHREDDING",
+              "after": "CORODATA SHREDDING INC."
+            },
+            "description": {
+              "before": "INC.",
+              "after": "SHREDDING SVCS AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97478",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "ANIMALCONTROL SERVICES 7/1/26-9/30/26"
+            }
+          }
+        },
+        {
+          "number": "97479",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "DORIS WALKER, DBA COMP",
+              "after": "DORIS WALKER, DBA COMP GRAPHIC"
+            },
+            "description": {
+              "before": "GRAPHIC",
+              "after": "FALL 2026 GARAGE SALE STICKERS"
+            }
+          }
+        },
+        {
+          "number": "97480",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "EBMUD 7/9/26-9/4/26"
+            }
+          }
+        },
+        {
+          "number": "97481",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "EL CERRITO HIGH STUDENT",
+              "after": "EL CERRITO HIGH STUDENT ACTIVITY FUND"
+            },
+            "description": {
+              "before": "ACTIVITY FUND",
+              "after": "4TH OF JULY BIKE VALET SERVICES"
+            }
+          }
+        },
+        {
+          "number": "97482",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "FIRST SERVE PRODUCTIONS",
+              "after": "FIRST SERVE PRODUCTIONS INC"
+            },
+            "description": {
+              "before": "INC",
+              "after": "ARLINGTON TENNIS COURT RESURFING"
+            }
+          }
+        },
+        {
+          "number": "97483",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "FLEET MANAGEMENT HOLDINGS",
+              "after": "FLEET MANAGEMENT HOLDINGS, LLC"
+            },
+            "description": {
+              "before": "LLC",
+              "after": "2019 TRUCK R4: AC LEAK REPAIR"
+            }
+          }
+        },
+        {
+          "number": "97484",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "SPORTS CAMP AUDIT TO CORRECT FOR DROP-INS 2026"
+            }
+          }
+        },
+        {
+          "number": "97485",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "BUSINESS CARDS FOR FD"
+            }
+          }
+        },
+        {
+          "number": "97486",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "GOLDEN BEAR TRANSFER",
+              "after": "GOLDEN BEAR TRANSFER STATION"
+            },
+            "description": {
+              "before": "STATION",
+              "after": "SWEEP SPOILS DISPOSAL ON 8/25/26"
+            }
+          }
+        },
+        {
+          "number": "97487",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "HORIZON DISTRIBUTORS",
+              "after": "HORIZON DISTRIBUTORS, INC"
+            },
+            "description": {
+              "before": "INC",
+              "after": "TORO IRRIGATION CONTROLLER TROUBLESHOOTING & REPAIR"
+            }
+          }
+        },
+        {
+          "number": "97488",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "J & O'S COMMERCIAL TIRE",
+              "after": "J & O'S COMMERCIAL TIRE CENTER"
+            },
+            "description": {
+              "before": "CENTER",
+              "after": "MAINTENANCE TRUCK M41 FLAT TIRE REPAIR"
+            }
+          }
+        },
+        {
+          "number": "97489",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CAPOEIRA YOUTH CLASSES JUN-AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97490",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CLEANED + SERVICED RECYCL CNTR HVAC UNITS 8/10/26"
+            }
+          }
+        },
+        {
+          "number": "97491",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "LEGAL UPDATES 11/15/26-11/15/27"
+            }
+          }
+        },
+        {
+          "number": "97492",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "MORTON'S URBAN PEST",
+              "after": "MORTON'S URBAN PEST MANAGEMENT"
+            },
+            "description": {
+              "before": "MANAGEMENT",
+              "after": "FAIRMONT CLUBHOUSE PEST CONTROL SVS AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97493",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "DRY CLEANING AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97494",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "NORTHERN CALIFORNIA",
+              "after": "NORTHERN CALIFORNIA RECYCLING ASSOCIATION"
+            },
+            "description": {
+              "before": "RECYCLING ASSOCIATION",
+              "after": "INTRO TO RECYCL COURSE CRB 10/26/26"
+            }
+          }
+        },
+        {
+          "number": "97495",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "ODP BUSINESS SOLUTIONS",
+              "after": "ODP BUSINESS SOLUTIONS, LLC"
+            },
+            "description": {
+              "before": "LLC",
+              "after": "CORP YARD OFFICE SUPPLIES"
+            }
+          }
+        },
+        {
+          "number": "97496",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "LARGE SIGNS FOR PROJECT AREA"
+            }
+          }
+        },
+        {
+          "number": "97497",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "REDWOOD PUBLIC LAW",
+              "after": "REDWOOD PUBLIC LAW, LLP"
+            },
+            "description": {
+              "before": "LLP",
+              "after": "MONTHLY LEGAL SERVICES"
+            }
+          }
+        },
+        {
+          "number": "97498",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "ROUND STAR SAN FRANCISCO",
+              "after": "ROUND STAR SAN FRANCISCO, LLC"
+            },
+            "description": {
+              "before": "LLC",
+              "after": "SUPER SOCCER SUMMER SESSION 2026"
+            }
+          }
+        },
+        {
+          "number": "97499",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "XFIT BOOT CAMP AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97500",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "STALUBE, DIESEL EXHAUST + HYDRAULIC FLUID"
+            }
+          }
+        },
+        {
+          "number": "97501",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "SAN DIEGO POLICE EQUIPMENT",
+              "after": "SAN DIEGO POLICE EQUIPMENT CO."
+            },
+            "description": {
+              "before": "CO.",
+              "after": "AMMO FOR PD"
+            }
+          }
+        },
+        {
+          "number": "97502",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "ARLINGTON CLUBHOUSE ALARM SVCS UPGRADE PER AGREEMENT"
+            }
+          }
+        },
+        {
+          "number": "97503",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "TESCO BATTERIES FOR AVIS & MOESER SIGNAL AND TS & SL MAINTENANCE & RESPONSE"
+            }
+          }
+        },
+        {
+          "number": "97504",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "WASTE DISPOSAL PD 8/25/26"
+            }
+          }
+        },
+        {
+          "number": "97505",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "1998 FORD RANGER PW MISSING PARTS"
+            }
+          }
+        },
+        {
+          "number": "97506",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PALS RECERTIFICATION FOR PARAMEDIC LICENSE"
+            }
+          }
+        },
+        {
+          "number": "97507",
+          "date": "09/17/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PURCHASED SUPPLIES FOR TRUCK SCREEN MOUNT"
+            }
+          }
+        },
+        {
+          "number": "97508",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "GYM MEMBERSHIP AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97509",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "ARMOUR PETROLEUM SERVICE",
+              "after": "ARMOUR PETROLEUM SERVICE & EQUIPMENT CORP"
+            },
+            "description": {
+              "before": "& EQUIPMENT CORP",
+              "after": "UST VISUAL INSPECTION ON 9/1/26"
+            }
+          }
+        },
+        {
+          "number": "97510",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "TRANSLATION SERVICES"
+            }
+          }
+        },
+        {
+          "number": "97511",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MEDICAL SUPPLIES"
+            }
+          }
+        },
+        {
+          "number": "97512",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "HARDING CLUBHOUSE CHILDCARE AIDE"
+            }
+          }
+        },
+        {
+          "number": "97513",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CINTAS CORPORATION #054",
+              "after": "CINTAS CORPORATION #054 UNIFORMS"
+            },
+            "description": {
+              "before": "UNIFORMS",
+              "after": "CORP YARD UNIFORMS WEEKLY RENTALS"
+            }
+          }
+        },
+        {
+          "number": "97514",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "ANNUAL DUES FOR FY 26-27"
+            }
+          }
+        },
+        {
+          "number": "97515",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CAD SEPT 2026"
+            }
+          }
+        },
+        {
+          "number": "97516",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "COMCAST BUSINESS INTERNET 9/11/26-10/10/26"
+            }
+          }
+        },
+        {
+          "number": "97517",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "COMMUNITY CONSERVATION",
+              "after": "COMMUNITY CONSERVATION CENTERS, INC."
+            },
+            "description": {
+              "before": "CENTERS, INC.",
+              "after": "PROCESSING MIXED PAPER + HDPE AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97518",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CONSERVATION CORPS",
+              "after": "CONSERVATION CORPS NORTH BAY, INC."
+            },
+            "description": {
+              "before": "NORTH BAY, INC.",
+              "after": "BULKY DROP-OFF EVENT 8/29/26"
+            }
+          }
+        },
+        {
+          "number": "97519",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "E-NEWSLETTER SOFTWARE"
+            }
+          }
+        },
+        {
+          "number": "97520",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CORODATA SHREDDING",
+              "after": "CORODATA SHREDDING INC."
+            },
+            "description": {
+              "before": "INC.",
+              "after": "SHREDDING SVCS AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97521",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CSW/STUBER-STROEH ENGINEERING",
+              "after": "CSW/STUBER-STROEH ENGINEERING GROUP INC"
+            },
+            "description": {
+              "before": "GROUP INC",
+              "after": "COMMUNITY CENTER LANDSCAPE PLAN THRU JUN 30 2026"
+            }
+          }
+        },
+        {
+          "number": "97522",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "EBMUD 7/13/26-9/8/26"
+            }
+          }
+        },
+        {
+          "number": "97523",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CAFE COSTA CONTRIBUTION REIMBURSEMENT JUL 2026"
+            }
+          }
+        },
+        {
+          "number": "97524",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "FLEET MANAGEMENT HOLDINGS",
+              "after": "FLEET MANAGEMENT HOLDINGS, LLC"
+            },
+            "description": {
+              "before": "LLC",
+              "after": "2019 TRUCK R4: BIN LIFTER BOUND UP"
+            }
+          }
+        },
+        {
+          "number": "97525",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "FORENSICS 7/1/26-7/31/26"
+            }
+          }
+        },
+        {
+          "number": "97526",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CK# 97434 PAID $300, WAS SHORT BY $383.10"
+            }
+          }
+        },
+        {
+          "number": "97527",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CAR WASH FOR PD"
+            }
+          }
+        },
+        {
+          "number": "97528",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CONTRACT SVCS - SALES TAX JUL-SEPT 2026 Q1"
+            }
+          }
+        },
+        {
+          "number": "97529",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "HERITAGE POOL SUPPLY",
+              "after": "HERITAGE POOL SUPPLY GROUP, INC."
+            },
+            "description": {
+              "before": "GROUP, INC.",
+              "after": "SODIUM HYPO 4/22/26"
+            }
+          }
+        },
+        {
+          "number": "97530",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CA RESOURCE RECOVERY ASSOC CONFERENCE 8/30/26-9/2/26"
+            }
+          }
+        },
+        {
+          "number": "97531",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "ODP BUSINESS SOLUTIONS",
+              "after": "ODP BUSINESS SOLUTIONS, LLC"
+            },
+            "description": {
+              "before": "LLC",
+              "after": "OFFICE SUPPLIES FOR PD 7/15/26"
+            }
+          }
+        },
+        {
+          "number": "97532",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "UNLEADED FUEL 9/9/26"
+            }
+          }
+        },
+        {
+          "number": "97533",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "REDWOOD PUBLIC LAW",
+              "after": "REDWOOD PUBLIC LAW, LLP"
+            },
+            "description": {
+              "before": "LLP",
+              "after": "CA VOTING RIGHTS ACT ISSUES (LABOR) 8/3/26-8/31/26"
+            }
+          }
+        },
+        {
+          "number": "97534",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CURBSIDE RECYCL PROCESSING AUG 2026"
+            }
+          }
+        },
+        {
+          "number": "97535",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "ROTO ROOTER SERVICES",
+              "after": "ROTO ROOTER SERVICES COMPANY"
+            },
+            "description": {
+              "before": "COMPANY",
+              "after": "PUBLIC TOILET WORK AT RECYCL"
+            }
+          }
+        },
+        {
+          "number": "97536",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "SINGLE CYLINDER REPAIR",
+              "after": "SINGLE CYLINDER REPAIR INC"
+            },
+            "description": {
+              "before": "INC",
+              "after": "STORM DRAIN INFRASTRUCTURE SUPPLIES"
+            }
+          }
+        },
+        {
+          "number": "97537",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "ARLINGTON CLUBHOUSE ALARM SVCS OCT 2026"
+            }
+          }
+        },
+        {
+          "number": "97538",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "INVESTIGATION DATA 8/25/26-9/23/26"
+            }
+          }
+        },
+        {
+          "number": "97539",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "2019 FORD B3: OIL CHANGE, AIR FILTER & CABIN FILTER REPCMT"
+            }
+          }
+        },
+        {
+          "number": "97540",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "UNDERGROUND SERVICE",
+              "after": "UNDERGROUND SERVICE ALERT OF NORTHERN CALIFORNIA"
+            },
+            "description": {
+              "before": "ALERT OF NORTHERN CALIFORNIA",
+              "after": "CA REGULATORY FEES FY26-27"
+            }
+          }
+        },
+        {
+          "number": "97541",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "JANITORIAL SERVICES -RECYCLE CENTER JUL 2026"
+            }
+          }
+        },
+        {
+          "number": "97542",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "WIRELESS PHONE BILL 06/20/26-7/19/26"
+            }
+          }
+        },
+        {
+          "number": "97543",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "SOCIAL HALL DEPOSIT REFUND"
+            }
+          }
+        },
+        {
+          "number": "97544",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "2026 SURFACE SEAL PROJECT 8/1-8/31/2026"
+            }
+          }
+        },
+        {
+          "number": "97545",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "FBD VANGUARD CONSTRUCTION",
+              "after": "FBD VANGUARD CONSTRUCTION, INC"
+            },
+            "description": {
+              "before": "INC",
+              "after": "El Cerrito 2025 Access Modifications Project"
+            }
+          }
+        },
+        {
+          "number": "97546",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "STUDIO SUPPLIES FOR CERAMICS CLASSES AT POTTERY STUDIO"
+            }
+          }
+        },
+        {
+          "number": "97547",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "J & O'S COMMERCIAL TIRE",
+              "after": "J & O'S COMMERCIAL TIRE CENTER"
+            },
+            "description": {
+              "before": "CENTER",
+              "after": "BALANCE DUE SALES TAX"
+            }
+          }
+        },
+        {
+          "number": "97548",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "JULY 2026 SWEEPING"
+            }
+          }
+        },
+        {
+          "number": "97549",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CALIFORNIA DOJ FINGERPRINTING SERVICES JULY 2026"
+            }
+          }
+        },
+        {
+          "number": "97550",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "APA CALIFORNIA 2026 CONFERENCE REGISTRATION 10/3-10/6/2026"
+            }
+          }
+        },
+        {
+          "number": "97551",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PERMIT 4923 REFUND (ACCT 2673)"
+            }
+          }
+        },
+        {
+          "number": "97552",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "REFUND OF PARKING PERMIT (PLAZA) PERMIT 4987"
+            }
+          }
+        },
+        {
+          "number": "97553",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "CALPERS LONG TERM CARE",
+              "after": "CALPERS LONG TERM CARE PROGRAM"
+            },
+            "description": {
+              "before": "PROGRAM",
+              "after": "PER3 - CALPERS Longterm Care Ins"
+            }
+          }
+        },
+        {
+          "number": "97554",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "EL CERRITO FIRE DEPT MGMT",
+              "after": "EL CERRITO FIRE DEPT MGMT GRP"
+            },
+            "description": {
+              "before": "GRP",
+              "after": "MGT1 - FIRE DEPT MGMT GROUP"
+            }
+          }
+        },
+        {
+          "number": "97555",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "EL CERRITO PUBLIC SFTY",
+              "after": "EL CERRITO PUBLIC SFTY EE MGMT"
+            },
+            "description": {
+              "before": "EE MGMT",
+              "after": "MGT2 - SAFETY EMPLYEE MGMT GROUP"
+            }
+          }
+        },
+        {
+          "number": "97556",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "DUE2 - FIRE ASSN DUES CK"
+            }
+          }
+        },
+        {
+          "number": "97557",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "LIFE INSURANCE OF NORTH",
+              "after": "LIFE INSURANCE OF NORTH AMERICA"
+            },
+            "description": {
+              "before": "AMERICA",
+              "after": "ACCD - Accidental Death & Dismembermt"
+            }
+          }
+        },
+        {
+          "number": "97558",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "DUE1 - POLICE ASSN DUES"
+            }
+          }
+        },
+        {
+          "number": "97559",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "PRO FIREFIGHTERS ASSN",
+              "after": "PRO FIREFIGHTERS ASSN DUES"
+            },
+            "description": {
+              "before": "DUES",
+              "after": "DUE3 - EC PRO FIREFIGHTERS DUES"
+            }
+          }
+        },
+        {
+          "number": "97560",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "COPE - VOLUNTARY COPE DEDUCTION*"
+            }
+          }
+        },
+        {
+          "number": "97561",
+          "date": "09/24/2026",
+          "ap_type": "check",
+          "changes": {
+            "payee": {
+              "before": "U.S. BANK - INSTITUTIONAL",
+              "after": "U.S. BANK - INSTITUTIONAL TRUST - W REGION"
+            },
+            "description": {
+              "before": "TRUST - W REGION",
+              "after": "PAR - PARS - ARS 457*"
+            }
+          }
+        },
+        {
+          "number": "97562",
+          "date": "09/10/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "IMPROV SUMMER CAMP SESSIONS 9 8/10/-8/14/26"
+            }
+          }
+        },
+        {
+          "number": "97563",
+          "date": "09/30/2026",
+          "ap_type": "check",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "Display lids for clubhouse waste containers"
+            }
+          }
+        },
+        {
+          "number": "3890",
+          "date": "09/04/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "California State Disbursement",
+              "after": "California State Disbursement Unit"
+            },
+            "description": {
+              "before": "Unit",
+              "after": "Payroll Deduction"
+            }
+          }
+        },
+        {
+          "number": "3891",
+          "date": "09/04/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CA - CA Tax"
+            }
+          }
+        },
+        {
+          "number": "3892",
+          "date": "09/04/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "FED - Fed Tax*"
+            }
+          }
+        },
+        {
+          "number": "3893",
+          "date": "09/04/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "MIssionSquare (name chg",
+              "after": "MIssionSquare (name chg 03-2021 formerly ICMA)"
+            },
+            "description": {
+              "before": "03-2021 formerly ICMA)",
+              "after": "ICM1 - ICMA-457 #300530 FLAT DOLLAR*"
+            }
+          }
+        },
+        {
+          "number": "3894",
+          "date": "09/04/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PE1% - PERS SEIU*"
+            }
+          }
+        },
+        {
+          "number": "3895",
+          "date": "09/24/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "FED - Fed Tax*"
+            }
+          }
+        },
+        {
+          "number": "3896",
+          "date": "09/18/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "California State Disbursement",
+              "after": "California State Disbursement Unit"
+            },
+            "description": {
+              "before": "Unit",
+              "after": "Payroll Deduction"
+            }
+          }
+        },
+        {
+          "number": "3897",
+          "date": "09/18/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "CA - CA Tax"
+            }
+          }
+        },
+        {
+          "number": "3898",
+          "date": "09/18/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "FED - Fed Tax*"
+            }
+          }
+        },
+        {
+          "number": "3899",
+          "date": "09/18/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "MIssionSquare (name chg",
+              "after": "MIssionSquare (name chg 03-2021 formerly ICMA)"
+            },
+            "description": {
+              "before": "03-2021 formerly ICMA)",
+              "after": "ICM1 - ICMA-457 #300530 FLAT DOLLAR*"
+            }
+          }
+        },
+        {
+          "number": "3900",
+          "date": "09/18/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PE1% - PERS SEIU*"
+            }
+          }
+        },
+        {
+          "number": "3901",
+          "date": "09/14/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "CalPERS (CA Public Employees'",
+              "after": "CalPERS (CA Public Employees' Retirement System)"
+            },
+            "description": {
+              "before": "Retirement System)",
+              "after": "GASB-68 REPORTING FEE 2026"
+            }
+          }
+        },
+        {
+          "number": "3902",
+          "date": "09/29/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PG&E 8/5/26-9/3/26"
+            }
+          }
+        },
+        {
+          "number": "3903",
+          "date": "09/28/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PGE 8/4/26-9/1/26"
+            }
+          }
+        },
+        {
+          "number": "3904",
+          "date": "09/28/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PGE 8/6/26-9/3/26"
+            }
+          }
+        },
+        {
+          "number": "3905",
+          "date": "09/28/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "PGE 8/1/26-8/31/26"
+            }
+          }
+        },
+        {
+          "number": "3906",
+          "date": "09/09/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "PITNEY BOWES PURCHASE",
+              "after": "PITNEY BOWES PURCHASE POWER"
+            },
+            "description": {
+              "before": "POWER",
+              "after": "PURCHASE POWER PASTAGE CL PYMT SEPT26"
+            }
+          }
+        },
+        {
+          "number": "3907",
+          "date": "09/28/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "SUTTER HEALTH PLAN - OCT 2026 PAYMENT"
+            }
+          }
+        },
+        {
+          "number": "3908",
+          "date": "09/29/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "U.S. BANK - CORPORATE",
+              "after": "U.S. BANK - CORPORATE PAYMENT SYS"
+            },
+            "description": {
+              "before": "PAYMENT SYS",
+              "after": "CALCARD SEPT 2026 PAYMENT"
+            }
+          }
+        },
+        {
+          "number": "3909",
+          "date": "09/29/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "STRYKER EQUIPMENT/ SVC LEASE AGRMNT SEPT 2026"
+            }
+          }
+        },
+        {
+          "number": "3915",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "FIRST DATA MERCHANT",
+              "after": "FIRST DATA MERCHANT SERVICES INC"
+            },
+            "description": {
+              "before": "SERVICES INC",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3916",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "FIRST DATA MERCHANT",
+              "after": "FIRST DATA MERCHANT SERVICES INC"
+            },
+            "description": {
+              "before": "SERVICES INC",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3917",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "FIRST DATA MERCHANT",
+              "after": "FIRST DATA MERCHANT SERVICES INC"
+            },
+            "description": {
+              "before": "SERVICES INC",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3918",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "FIRST DATA MERCHANT",
+              "after": "FIRST DATA MERCHANT SERVICES INC"
+            },
+            "description": {
+              "before": "SERVICES INC",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3919",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "FIRST DATA MERCHANT",
+              "after": "FIRST DATA MERCHANT SERVICES INC"
+            },
+            "description": {
+              "before": "SERVICES INC",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3920",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "FIRST DATA MERCHANT",
+              "after": "FIRST DATA MERCHANT SERVICES INC"
+            },
+            "description": {
+              "before": "SERVICES INC",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3921",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "FIRST DATA MERCHANT",
+              "after": "FIRST DATA MERCHANT SERVICES INC"
+            },
+            "description": {
+              "before": "SERVICES INC",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3922",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "payee": {
+              "before": "FIRST DATA MERCHANT",
+              "after": "FIRST DATA MERCHANT SERVICES INC"
+            },
+            "description": {
+              "before": "SERVICES INC",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3923",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3924",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3925",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3926",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3927",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3928",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3929",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        },
+        {
+          "number": "3930",
+          "date": "09/30/2026",
+          "ap_type": "eft",
+          "changes": {
+            "description": {
+              "before": "",
+              "after": "MERCHANT FEE EXPENSE - AUG2026"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Legacy text-only splitting and its existing heuristics remain available for inputs lacking positioned words; no new name rules or vendor exceptions are added.",
+    "July check 96937 retains its existing first-line Miscellaneous Billing source label; the wrapped Refund label is not assigned to a neighboring payment.",
+    "The June/July 2025 artifact CSV predates other parser changes already present at task start. This review compares old and new code on the same source and does not refresh that historical archive."
+  ],
+  "code_files": [
+    "check_register/parser.py",
+    "tests/test_register_geometry.py",
+    "tests/fixtures/register_word_rows.json",
+    "tests/test_payment_register_status.py"
+  ],
+  "artifact_files": [
+    {
+      "path": "data/artifacts/csv/2026-09.csv",
+      "before_sha256": "4654b96553cfaaab55704f73b789ffa294c688880c1161b94864e366cd8524b4",
+      "after_sha256": "adf5b32033fa7001de7b79e69676420153033ff8e7ec4fb34a69c03bc39d5c74"
+    },
+    {
+      "path": "data/artifacts/chunks/2026-09-chunks.json",
+      "before_sha256": "b74dfd7fc253605537d71127b5c62fd5ec55768e4da22655285080a8ba6c3afe",
+      "after_sha256": "15c490506e4ffef71052d91ab40fd6f6e3757de0db9b90f60c2526c3a2fe264d"
+    },
+    {
+      "path": "data/artifacts/html/2026-09-payees.html",
+      "before_sha256": "1465da4975c5ee2ea616f07d64a583e4790ffac2c266182ea4be0a1971fe261f",
+      "after_sha256": "97742e0d1ad75b0ab55d082c8aad051dd79ebe90759b5860480e69463116676e"
+    },
+    {
+      "path": "data/artifacts/pdfs/2026-09-register.pdf",
+      "before_sha256": "5fab2161d89c180a2c5dce61909cba2cbde60eccc2a43f12b486cf4a27cb39d8",
+      "after_sha256": "5fab2161d89c180a2c5dce61909cba2cbde60eccc2a43f12b486cf4a27cb39d8",
+      "regenerated_sha256": "0889b2fb941e8719e2000e782e50b8241243b22e7e64f300aa060814d05db834",
+      "handling": "Preserved existing PDF bytes after verifying all five regenerated pages have identical text, page sizes, and rendered pixels; source packet is unchanged."
+    }
+  ],
+  "review_scope": "CSV comparisons cover all 1497 rows in the latest five monthly files. Visual inspection covers representative source pages; the independent September geometry comparison covers all 231 payments.",
+  "git_handling": "Pre-existing staged and unstaged work is preserved. This task does not stage, commit, or push. Parser code and archive data are listed separately for separate PRs.",
+  "september_source_rows": [
+    {
+      "number": "97369",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "AMERICAN MECHANICAL SERVICES, INC.",
+        "description": "CITY HALL HVAC MAINTENANCE MAY-JULY 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97370",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "AT&T DW HOLDINGS, INC",
+        "description": "FIBER DATA LINE 7/13/26-8/12/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97371",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "BPX PRINTING & GRAPHICS",
+        "description": "PARKEC MAILER POSTCARDS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97372",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CINTAS CORPORATION #054 UNIFORMS",
+        "description": "CORP YARD WEEKLY UNIFORM RENTALS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97373",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CONCENTRA MEDICAL CENTERS",
+        "description": "PRE-EMPLOYMENT EXAM 7/15/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97374",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CONTRA COSTA COUNTY",
+        "description": "BUSINESS CARD FOR COMM DEV STAFF"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97375",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CONTRA COSTA COUNTY CHIEFS' ASSOCIATION",
+        "description": "ANNUAL MEMEBERSHIP DUES FY 26-27"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97376",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CONTRA COSTA DOOR CO.",
+        "description": "DOOR REPAIR @ STA 51"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97377",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CRIME SCENE CLEANERS, INC.",
+        "description": "BIOHAZARD REMOVAL 8/14/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97378",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "EL CERRITO ART ASSOCIATION",
+        "description": "EL CERRITO ART ASSOC 49TH ANNUAL ART SHOW AWARDS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97379",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "ENGBERG, GERI",
+        "description": ""
+      },
+      "differences": {}
+    },
+    {
+      "number": "97380",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "FLEET MANAGEMENT HOLDINGS, LLC",
+        "description": "R3: FUEL + AIR FILTERS + OIL CHANGE + WATER SEPARATOR"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97381",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "FRIEDMAN, NORM",
+        "description": "SPORTS CAMP SESSION #9 8/10/26-8/14/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97382",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "FUJIWARA, PATRICIA, Y.",
+        "description": "POTTERY MATERIALS FOR TASSAJARA STUDIO 6/24/26-7/22/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97383",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "GABRIEL, BARBARA, A.",
+        "description": "ADULT BALLET AUGUST 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97384",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "GRAUL, BELINDA",
+        "description": "GYMNASTIC CAMPS SESSION 6,8 & 9"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97385",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "HILLYARD",
+        "description": "CITYWIDE CUSTODIAL SUPPLIES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97386",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "HONEY BUCKET",
+        "description": "CENTRAL PARK SERVICE 8/18/26-9/14/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97387",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "JAFFE, SCOT",
+        "description": "OPEN CERMAICS THRU JULY 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97388",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "L.N. CURTIS & SONS",
+        "description": "FD UNIFORM 8/17/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97389",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "MALLORY SAFETY & SUPPLY LLC",
+        "description": "2 NEW SCBA MASKS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97390",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "MCAVOY, IAN",
+        "description": "OFF THE BLOCK STEM SUMMER SESSION #9 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97391",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "NORTHERN CALIFORNIA SPELMANSLAG",
+        "description": "SCANDINAVIAN FOLK DANCING AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97392",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "ODP BUSINESS SOLUTIONS, LLC",
+        "description": "OFFICE SUPPLIES FOR REC"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97393",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "PAYMENTUS CORPORATION",
+        "description": "CREDIT CARD PROCESSING FEES JULY 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97394",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "PINNACLE PETROLEUM INC",
+        "description": "UNLEADED FUEL 8/21/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97395",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "RUBICON ENTERPRISES INC",
+        "description": "MONTHLY PARK LANDSCAPE MAINT. JULY 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97396",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "ST. FRANCIS ELECTRIC",
+        "description": "TS & SL MAINT & RESPONSE CENTRAL & CARLSON"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97397",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "Tecknica Auto, Inc.",
+        "description": "2012 FORD FUEL PUMP 7/21/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97398",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CROOKS, JASON",
+        "description": "INSPECTOR 2D CLASS 8/4-8/7/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97399",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "ACE UNIFORMS LLC",
+        "description": "DRAG STABILIZER AMMO"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97400",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "ARMOUR PETROLEUM SERVICE & EQUIPMENT CORP",
+        "description": "UST Diesel sample fr nozzle deliver to lab for analys #4632"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97401",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CALIFORNIA SOCIETY OF MUNICIPAL FINANCE OFFICERS",
+        "description": "CSMFO AWARDS PROGRAM DUES & SUBSCRIPTION"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97402",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "DAVEY RESOURCE GROUP",
+        "description": "Annual Software Subscription 8/1/26-7/31/27"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97403",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "DYVERT, LLC",
+        "description": ""
+      },
+      "differences": {}
+    },
+    {
+      "number": "97404",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "EKI ENVIRONMENT & WATER, INC.",
+        "description": "Stormwater Compliance Support - FY25-26 Annual Report"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97405",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "KITTELSON & ASSOCIATES INC",
+        "description": "Local Road Safety Plan July 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97406",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "STERICYCLE, INC.",
+        "description": "Medical Waste Pickup Sept 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97407",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "TWO BROTHERS POOL & SPA, INC",
+        "description": "August Services and Reagents"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97408",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CASTREJON, JOSE",
+        "description": "CAL OES LODGING"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97409",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "KARKI, RAVI",
+        "description": "TRAFFIC COLLISION LUNCH 5 DAYS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97410",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "MA, SANG",
+        "description": "NEGOTIATION TRAINING LUNCH 5 DAYS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97411",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "SEPE, WILLIAM",
+        "description": "DART TRAINING LUNCH 4 DAYS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97412",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "SREEKANTHAN, PRAVEEN",
+        "description": "DART TRAINING LUNCH 4 DAYS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97413",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CORAGGIO, CHRISTOPHER",
+        "description": "REAL PROPERTY TAX REBATE FOR 618 LIBERTY"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97414",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "HELLER, RYAN",
+        "description": "Real Property Tax Rebate for 410 Norvell St"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97415",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "CALPERS LONG TERM CARE PROGRAM",
+        "description": "PER3 - CALPERS Longterm Care Ins"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97416",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "HEALTH CARE DENTAL TRUST",
+        "description": "DEN1 - Dental 1*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97417",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "IAFF LOCAL 1230",
+        "description": "DUE4 - UNION LOCAL 1230"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97418",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "KAISER FOUNDATION HEALTH PLAN",
+        "description": "K1 - Kaiser 1*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97419",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "LEGALSHIELD",
+        "description": "LEGL - PRE-PAID LEGAL SRVC"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97420",
+      "source_page": 89,
+      "source_fields": {
+        "payee": "NATIONWIDE TRUST COMPANY, FSB",
+        "description": "FHEA - Fire Health Savings Acct"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97421",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "SEIU LOCAL 1021",
+        "description": "COPE - VOLUNTARY COPE DEDUCTION*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97422",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "U.S. BANK - INSTITUTIONAL TRUST - W REGION",
+        "description": "PAR - PARS - ARS 457*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97423",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "ALAMEDA COUNTY FIRE DEPARTMENT",
+        "description": "REPAIR OF VARIOUS FD VEHICLES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97424",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "AMAZON CAPITAL SERVICES, INC.",
+        "description": "ADVENTURE CAMP PROGRAM SUPPLIES FOR REC"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97425",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "BLUECOSMO",
+        "description": "MOBILE EXPENSE SEP 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97426",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "BPX PRINTING & GRAPHICS",
+        "description": "PRINTING FOR PW"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97427",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "CALIFORNIA PUBLIC POLICY GROUP INC.",
+        "description": "GRANT WRITING & ADVOCACY SVCS AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97428",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "CHILDCARE CAREERS, LLC",
+        "description": "CHILDCARE AIDE FAIRMONT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97429",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "COOKE, JOANNE",
+        "description": "FLAMENCO AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97430",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "CUMMINS WEST, INC.",
+        "description": "VEHICLE MAINTENANCE FIRE TRUCK #55"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97431",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "DIABLO TROPHIES & AWARDS",
+        "description": "OFFICE SUPPLIES FOR CD"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97432",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "DONNOE & ASSOCIATES",
+        "description": "WRITTEN TEST FOR ADMIN RECRUITMENT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97433",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "EBMUD",
+        "description": "EBMUD 7/1/26-8/31/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97434",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "FURTADO, IPSHEETA",
+        "description": "AQUA ZUMBA JULY-AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97435",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "GARDA CL WEST,INC.",
+        "description": "ARMORED TRANSPORTATION SVCS SEP 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97436",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "IRON MOUNTAIN",
+        "description": "OFF-SITE RECORDS STORAGE AND SERVICES 7/29/26-8/25/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97437",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "JAFFE, SCOT",
+        "description": "OPEN CERAMICS TH AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97438",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "JONES, HIROMI",
+        "description": "HATHA YOGA / ROLL AND STRETCH AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97439",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "KENNEDY, GREG, C",
+        "description": "MEDICAL REVIEW AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97440",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "KI RESEARCH INSTITUTE",
+        "description": "AIKIDO AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97441",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "LACK, CHRIS",
+        "description": "OPEN CERAMICS / INTRO THROWING AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97442",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "NICHOLS CONSULTING ENGINEERS",
+        "description": "I-80 CENTRAL AVE PROJECT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97443",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "PREMIER GRAPHICS",
+        "description": "4TH OF JULY BANNERS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97444",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "RILE, KATHRYN",
+        "description": "CERAMICS INDEPENDENT JUN-AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97445",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "SHAHKAR, MEHRAN",
+        "description": "STRENGTH AND BALANCE AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97446",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "TALENTNOOK INC.",
+        "description": "TALENTNOOK SUMMER CAMP SESSION# 6 & 9"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97447",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "TYLER TECHNOLOGIES",
+        "description": "TRAINING SUPPORT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97448",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "U.S. SECURITY SUPPLY, INC.",
+        "description": "RESTROOM KEYS REPLACEMENT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97449",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "VICKI BRUMBY",
+        "description": "BRIDGE AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97450",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "West Contra Costa Transportation (WCCTC)",
+        "description": "FY26-27 MEMBER DUES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97451",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "WRIGHT, CLAUDIA",
+        "description": "MILEAGE REIMBURSEMENT FOR TRAINING - PSHRA MINI CONF"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97452",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "LU, MICHELLE",
+        "description": "REAL PROPERTY TAX REBATE FOR 6524 ALTA VISTA DR"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97453",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "FEHR & PEERS",
+        "description": "CROSSTOWN CONNECT JULY 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97454",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "GOLDFARB & LIPMAN LLP",
+        "description": "HOUSING FUND - LEGAL SERVICES JULY 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97455",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "IMAGETREND LLC",
+        "description": "FIRSTWATCH ANNUAL FEE"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97456",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "SOUTH COUNTY INDUSTRIAL EMERGENCY COUNCIL",
+        "description": "HAZMAT CLASS FOR THE ACADEMY"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97457",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "STERICYCLE, INC.",
+        "description": "AUGUST HAZARDOUS WASTE"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97458",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "SUPERION, LLC",
+        "description": "ALP & COMM SEV MIGRATION PROJECT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97459",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "THEIS ENGINEERING & ASSOCIATES",
+        "description": "CROSSTOWN CONNECT/DEL NORTE TOD/RISHMOND ST./ACTIVE TRANSPORTATION PLAN"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97460",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "TOWN OF MORAGA",
+        "description": "MAYOR'S CONFERENCE MEAL (MOTOYAMA)"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97461",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "TRB AND ASSOCIATES, INC.",
+        "description": "PROFESSIONAL SERVICES - STAFFING"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97462",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "ROBINS, ALEJANDRA",
+        "description": "COACHING CERTIFICATION TO COACH GATORS SWIM TEAM"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97463",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "SARVER, MAUREEN",
+        "description": "REIMBURSEMENT PW26-0534 ENCROACHMENT PERMIT FEE"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97464",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "ACE UNIFORMS LLC",
+        "description": "HATS AND VEST POUCHES FOR PD"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97465",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "AMERIGAS PROPANE INC",
+        "description": "PROPANE FOR FORKLIFTS 8/6/26 + 8/25/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97466",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "ASBURY ENVIRONMENTAL SERVICES",
+        "description": "USED MOTOR OIL RECYCLING 8/26/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97467",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "ATCO PEST CONTROL INC",
+        "description": "COMMUNITY CENTER PEST CONTROL SERVICE AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97468",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "BAY CITIES PYROTECTOR, INC",
+        "description": "FIRE EXTINGUISHER SERVICE 8/25/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97469",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "BEND MAILING SERVICES, LLC",
+        "description": "GREENER EC BILL INSERT + STREET SWEEPING MAP VOL 47"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97470",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "CHALLENGE ISLAND BAY AREA",
+        "description": "CHALLENGE ISLAND SUMMER CAMPS 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97471",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "CHILDCARE CAREERS, LLC",
+        "description": "FAIRMONT CHILDCARE AIDE"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97472",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "CHIP GEORGE INC",
+        "description": "MOBILE ROUTER ANTENNAS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97473",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "CINTAS CORPORATION #054 UNIFORMS",
+        "description": "CORP YARD UNIFORMS WEEKLY RENTALS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97474",
+      "source_page": 90,
+      "source_fields": {
+        "payee": "CIVIC CENTER AUTO CARE",
+        "description": "2015 FORD TOWING"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97475",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CONTRA COSTA COUNTY OFFICE OF SHERIFF-CORONER",
+        "description": "ARIES MAINTENANCE 26/27 FOR PD"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97476",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CONTRA COSTA HEALTH SERVICES",
+        "description": "TIPPING WALL INSPECTION 8/16/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97477",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CORODATA SHREDDING INC.",
+        "description": "SHREDDING SVCS AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97478",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "COUNTY TREASURER",
+        "description": "ANIMALCONTROL SERVICES 7/1/26-9/30/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97479",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "DORIS WALKER, DBA COMP GRAPHIC",
+        "description": "FALL 2026 GARAGE SALE STICKERS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97480",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "EBMUD",
+        "description": "EBMUD 7/9/26-9/4/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97481",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "EL CERRITO HIGH STUDENT ACTIVITY FUND",
+        "description": "4TH OF JULY BIKE VALET SERVICES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97482",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "FIRST SERVE PRODUCTIONS INC",
+        "description": "ARLINGTON TENNIS COURT RESURFING"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97483",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "FLEET MANAGEMENT HOLDINGS, LLC",
+        "description": "2019 TRUCK R4: AC LEAK REPAIR"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97484",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "FRIEDMAN, NORM",
+        "description": "SPORTS CAMP AUDIT TO CORRECT FOR DROP-INS 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97485",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "GILMAN PRESS",
+        "description": "BUSINESS CARDS FOR FD"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97486",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "GOLDEN BEAR TRANSFER STATION",
+        "description": "SWEEP SPOILS DISPOSAL ON 8/25/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97487",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "HORIZON DISTRIBUTORS, INC",
+        "description": "TORO IRRIGATION CONTROLLER TROUBLESHOOTING & REPAIR"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97488",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "J & O'S COMMERCIAL TIRE CENTER",
+        "description": "MAINTENANCE TRUCK M41 FLAT TIRE REPAIR"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97489",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "JADSON SOUZA DE JESUS",
+        "description": "CAPOEIRA YOUTH CLASSES JUN-AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97490",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "KEL-AIRE",
+        "description": "CLEANED + SERVICED RECYCL CNTR HVAC UNITS 8/10/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97491",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "LEGAL UPDATES, LLC",
+        "description": "LEGAL UPDATES 11/15/26-11/15/27"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97492",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "MORTON'S URBAN PEST MANAGEMENT",
+        "description": "FAIRMONT CLUBHOUSE PEST CONTROL SVS AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97493",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "NORGE CLEANERS",
+        "description": "DRY CLEANING AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97494",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "NORTHERN CALIFORNIA RECYCLING ASSOCIATION",
+        "description": "INTRO TO RECYCL COURSE CRB 10/26/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97495",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "ODP BUSINESS SOLUTIONS, LLC",
+        "description": "CORP YARD OFFICE SUPPLIES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97496",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "PREMIER GRAPHICS",
+        "description": "LARGE SIGNS FOR PROJECT AREA"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97497",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "REDWOOD PUBLIC LAW, LLP",
+        "description": "MONTHLY LEGAL SERVICES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97498",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "ROUND STAR SAN FRANCISCO, LLC",
+        "description": "SUPER SOCCER SUMMER SESSION 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97499",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "RUIZ, JOE",
+        "description": "XFIT BOOT CAMP AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97500",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "S.P. AUTOMOTIVE",
+        "description": "STALUBE, DIESEL EXHAUST + HYDRAULIC FLUID"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97501",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "SAN DIEGO POLICE EQUIPMENT CO.",
+        "description": "AMMO FOR PD"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97502",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "SSD ALARM",
+        "description": "ARLINGTON CLUBHOUSE ALARM SVCS UPGRADE PER AGREEMENT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97503",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "ST. FRANCIS ELECTRIC",
+        "description": "TESCO BATTERIES FOR AVIS & MOESER SIGNAL AND TS & SL MAINTENANCE & RESPONSE"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97504",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "STERICYCLE, INC.",
+        "description": "WASTE DISPOSAL PD 8/25/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97505",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "Tecknica Auto, Inc.",
+        "description": "1998 FORD RANGER PW MISSING PARTS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97506",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "ELLSWORTH, COLIN",
+        "description": "PALS RECERTIFICATION FOR PARAMEDIC LICENSE"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97507",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CARABAJAL, RICHARD",
+        "description": "PURCHASED SUPPLIES FOR TRUCK SCREEN MOUNT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97508",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "24 HOUR FITNESS USA, LLC",
+        "description": "GYM MEMBERSHIP AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97509",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "ARMOUR PETROLEUM SERVICE & EQUIPMENT CORP",
+        "description": "UST VISUAL INSPECTION ON 9/1/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97510",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "AVANTPAGE INC.",
+        "description": "TRANSLATION SERVICES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97511",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "BOUNDTREE MEDICAL LLC",
+        "description": "MEDICAL SUPPLIES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97512",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CHILDCARE CAREERS, LLC",
+        "description": "HARDING CLUBHOUSE CHILDCARE AIDE"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97513",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CINTAS CORPORATION #054 UNIFORMS",
+        "description": "CORP YARD UNIFORMS WEEKLY RENTALS"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97514",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CITY OF BERKELEY",
+        "description": "ANNUAL DUES FOR FY 26-27"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97515",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CITY OF RICHMOND",
+        "description": "CAD SEPT 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97516",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "COMCAST",
+        "description": "COMCAST BUSINESS INTERNET 9/11/26-10/10/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97517",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "COMMUNITY CONSERVATION CENTERS, INC.",
+        "description": "PROCESSING MIXED PAPER + HDPE AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97518",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CONSERVATION CORPS NORTH BAY, INC.",
+        "description": "BULKY DROP-OFF EVENT 8/29/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97519",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CONSTANT CONTACT, INC.",
+        "description": "E-NEWSLETTER SOFTWARE"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97520",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CORODATA SHREDDING INC.",
+        "description": "SHREDDING SVCS AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97521",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "CSW/STUBER-STROEH ENGINEERING GROUP INC",
+        "description": "COMMUNITY CENTER LANDSCAPE PLAN THRU JUN 30 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97522",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "EBMUD",
+        "description": "EBMUD 7/13/26-9/8/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97523",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "EHSD-CC SENIOR NUTRITION",
+        "description": "CAFE COSTA CONTRIBUTION REIMBURSEMENT JUL 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97524",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "FLEET MANAGEMENT HOLDINGS, LLC",
+        "description": "2019 TRUCK R4: BIN LIFTER BOUND UP"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97525",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "FORENSIC SERVICES DIVISION",
+        "description": "FORENSICS 7/1/26-7/31/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97526",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "FURTADO, IPSHEETA",
+        "description": "CK# 97434 PAID $300, WAS SHORT BY $383.10"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97527",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "GRAND PRIX CAR WASH",
+        "description": "CAR WASH FOR PD"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97528",
+      "source_page": 91,
+      "source_fields": {
+        "payee": "HdL Companies",
+        "description": "CONTRACT SVCS - SALES TAX JUL-SEPT 2026 Q1"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97529",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "HERITAGE POOL SUPPLY GROUP, INC.",
+        "description": "SODIUM HYPO 4/22/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97530",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "HERNANDEZ, CARLOS",
+        "description": "CA RESOURCE RECOVERY ASSOC CONFERENCE 8/30/26-9/2/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97531",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "ODP BUSINESS SOLUTIONS, LLC",
+        "description": "OFFICE SUPPLIES FOR PD 7/15/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97532",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "PINNACLE PETROLEUM INC",
+        "description": "UNLEADED FUEL 9/9/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97533",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "REDWOOD PUBLIC LAW, LLP",
+        "description": "CA VOTING RIGHTS ACT ISSUES (LABOR) 8/3/26-8/31/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97534",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "REPUBLIC SERVICES, INC.",
+        "description": "CURBSIDE RECYCL PROCESSING AUG 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97535",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "ROTO ROOTER SERVICES COMPANY",
+        "description": "PUBLIC TOILET WORK AT RECYCL"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97536",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "SINGLE CYLINDER REPAIR INC",
+        "description": "STORM DRAIN INFRASTRUCTURE SUPPLIES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97537",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "SSD ALARM",
+        "description": "ARLINGTON CLUBHOUSE ALARM SVCS OCT 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97538",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "T-MOBILE USA, Inc.",
+        "description": "INVESTIGATION DATA 8/25/26-9/23/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97539",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "Tecknica Auto, Inc.",
+        "description": "2019 FORD B3: OIL CHANGE, AIR FILTER & CABIN FILTER REPCMT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97540",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "UNDERGROUND SERVICE ALERT OF NORTHERN CALIFORNIA",
+        "description": "CA REGULATORY FEES FY26-27"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97541",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "UNIVERSAL BUILDING SERVICE",
+        "description": "JANITORIAL SERVICES -RECYCLE CENTER JUL 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97542",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "VERIZON WIRELESS",
+        "description": "WIRELESS PHONE BILL 06/20/26-7/19/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97543",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "SANDOVAL , JESUS",
+        "description": "SOCIAL HALL DEPOSIT REFUND"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97544",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "AVILA PROJECT MANAGEMENT",
+        "description": "2026 SURFACE SEAL PROJECT 8/1-8/31/2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97545",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "FBD VANGUARD CONSTRUCTION, INC",
+        "description": "El Cerrito 2025 Access Modifications Project"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97546",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "FUJIWARA, PATRICIA, Y.",
+        "description": "STUDIO SUPPLIES FOR CERAMICS CLASSES AT POTTERY STUDIO"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97547",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "J & O'S COMMERCIAL TIRE CENTER",
+        "description": "BALANCE DUE SALES TAX"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97548",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "SCA OF CA, LLC",
+        "description": "JULY 2026 SWEEPING"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97549",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "STATE OF CA DEPT OF JUSTICE",
+        "description": "CALIFORNIA DOJ FINGERPRINTING SERVICES JULY 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97550",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "GARCIA, CLAUDIA",
+        "description": "APA CALIFORNIA 2026 CONFERENCE REGISTRATION 10/3-10/6/2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97551",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "HOTTA, ANN",
+        "description": "PERMIT 4923 REFUND (ACCT 2673)"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97552",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "WALSH, JOSEPH",
+        "description": "REFUND OF PARKING PERMIT (PLAZA) PERMIT 4987"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97553",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "CALPERS LONG TERM CARE PROGRAM",
+        "description": "PER3 - CALPERS Longterm Care Ins"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97554",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "EL CERRITO FIRE DEPT MGMT GRP",
+        "description": "MGT1 - FIRE DEPT MGMT GROUP"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97555",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "EL CERRITO PUBLIC SFTY EE MGMT",
+        "description": "MGT2 - SAFETY EMPLYEE MGMT GROUP"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97556",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "FIRE ASSOCIATION",
+        "description": "DUE2 - FIRE ASSN DUES CK"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97557",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "LIFE INSURANCE OF NORTH AMERICA",
+        "description": "ACCD - Accidental Death & Dismembermt"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97558",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "POLICE ASSN.",
+        "description": "DUE1 - POLICE ASSN DUES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97559",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "PRO FIREFIGHTERS ASSN DUES",
+        "description": "DUE3 - EC PRO FIREFIGHTERS DUES"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97560",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "SEIU LOCAL 1021",
+        "description": "COPE - VOLUNTARY COPE DEDUCTION*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97561",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "U.S. BANK - INSTITUTIONAL TRUST - W REGION",
+        "description": "PAR - PARS - ARS 457*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97562",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "ENGBERG, GERI",
+        "description": "IMPROV SUMMER CAMP SESSIONS 9 8/10/-8/14/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "97563",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "DYVERT, LLC",
+        "description": "Display lids for clubhouse waste containers"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3890",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "California State Disbursement Unit",
+        "description": "Payroll Deduction"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3891",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "EDD - PAYROLL TAX DEPOSIT",
+        "description": "CA - CA Tax"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3892",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "IRS",
+        "description": "FED - Fed Tax*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3893",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "MIssionSquare (name chg 03-2021 formerly ICMA)",
+        "description": "ICM1 - ICMA-457 #300530 FLAT DOLLAR*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3894",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "P E R S",
+        "description": "PE1% - PERS SEIU*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3895",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "IRS",
+        "description": "FED - Fed Tax*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3896",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "California State Disbursement Unit",
+        "description": "Payroll Deduction"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3897",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "EDD - PAYROLL TAX DEPOSIT",
+        "description": "CA - CA Tax"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3898",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "IRS",
+        "description": "FED - Fed Tax*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3899",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "MIssionSquare (name chg 03-2021 formerly ICMA)",
+        "description": "ICM1 - ICMA-457 #300530 FLAT DOLLAR*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3900",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "P E R S",
+        "description": "PE1% - PERS SEIU*"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3901",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "CalPERS (CA Public Employees' Retirement System)",
+        "description": "GASB-68 REPORTING FEE 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3902",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "PG&E",
+        "description": "PG&E 8/5/26-9/3/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3903",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "PG&E",
+        "description": "PGE 8/4/26-9/1/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3904",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "PG&E",
+        "description": "PGE 8/6/26-9/3/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3905",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "PG&E",
+        "description": "PGE 8/1/26-8/31/26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3906",
+      "source_page": 92,
+      "source_fields": {
+        "payee": "PITNEY BOWES PURCHASE POWER",
+        "description": "PURCHASE POWER PASTAGE CL PYMT SEPT26"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3907",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "SUTTER HEALTH PLUS",
+        "description": "SUTTER HEALTH PLAN - OCT 2026 PAYMENT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3908",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "U.S. BANK - CORPORATE PAYMENT SYS",
+        "description": "CALCARD SEPT 2026 PAYMENT"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3909",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "STRYKER CORPORATION",
+        "description": "STRYKER EQUIPMENT/ SVC LEASE AGRMNT SEPT 2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3915",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "FIRST DATA MERCHANT SERVICES INC",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3916",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "FIRST DATA MERCHANT SERVICES INC",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3917",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "FIRST DATA MERCHANT SERVICES INC",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3918",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "FIRST DATA MERCHANT SERVICES INC",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3919",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "FIRST DATA MERCHANT SERVICES INC",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3920",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "FIRST DATA MERCHANT SERVICES INC",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3921",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "FIRST DATA MERCHANT SERVICES INC",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3922",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "FIRST DATA MERCHANT SERVICES INC",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3923",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "AMEX/AMERICAN EXPRESS",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3924",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "CLOVER",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3925",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "AUTHORIZE.NET",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3926",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "AUTHORIZE.NET",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3927",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "CARDCONNECT",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3928",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "CARDCONNECT",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3929",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "CARDCONNECT",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    },
+    {
+      "number": "3930",
+      "source_page": 93,
+      "source_fields": {
+        "payee": "MECHANICS BANK",
+        "description": "MERCHANT FEE EXPENSE - AUG2026"
+      },
+      "differences": {}
+    }
+  ],
+  "logs": {
+    "archive-build.log": "data/artifacts/investigations/2026-11-04-description-archive-build.log",
+    "final-tests.log": "data/artifacts/investigations/2026-11-04-description-final-tests.log"
+  }
+}

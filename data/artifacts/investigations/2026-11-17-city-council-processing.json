@@ -1,0 +1,129 @@
+{
+  "as_of_local_date": "2026-11-17",
+  "source_packet": "data/originals/city-council/2026/agenda-packets/2026-11-17 Agenda Packet.pdf",
+  "source_sha256": "bef243e2aeab70707f2e1a603556b58f229eab18f882468bd9e3d27a8485a5cf",
+  "source_register_pages": [
+    14,
+    22
+  ],
+  "source_fund_update_pages": [
+    51,
+    61
+  ],
+  "register_month": "2026-10",
+  "reconciled": true,
+  "row_count": 357,
+  "check_summary": {
+    "count": 312,
+    "amount": "1966020.54"
+  },
+  "eft_summary": {
+    "count": 45,
+    "amount": "2035798.60"
+  },
+  "accounts_payable_total": "4001819.14",
+  "status_counts": {
+    "Reconciled": 239,
+    "Open": 118
+  },
+  "payroll_summary": {
+    "count": 906,
+    "amount": "2000216.20",
+    "included_in_csv": false
+  },
+  "disbursements_including_payroll": "6002035.34",
+  "csv_existed": false,
+  "source_discrepancies": [
+    {
+      "source_pages": [
+        12,
+        22
+      ],
+      "detail": "The agenda bill states 908 payroll-related payments; the register summary lists 906. Both give a $6,002,035.34 overall total."
+    },
+    {
+      "source_pages": [
+        51,
+        52,
+        53,
+        60
+      ],
+      "detail": "The budget agenda bill states a $23.1 million projected year-end total fund balance; the attached report and Table 6 project $22,699,875 (about $22.7 million). Source documents are preserved as published."
+    }
+  ],
+  "validation": {
+    "pdf_source_text_and_dimensions_match": true,
+    "csv_rows_match_chunk_count": true,
+    "empty_payees": 0,
+    "empty_descriptions": 0,
+    "duplicate_payment_identifiers": 0,
+    "all_extracted_pdf_pages_visually_reviewed": true,
+    "unit_tests": {
+      "count": 170,
+      "elapsed_seconds": 49.423,
+      "result": "passed"
+    },
+    "archive_audit": {
+      "result": "passed",
+      "register_months": 35,
+      "register_coverage": [
+        "2023-12",
+        "2026-10"
+      ],
+      "fund_update_quarters": 12,
+      "last_fund_update_quarter": "FY 2026-27 Q1",
+      "missing_months": [],
+      "missing_quarters": [],
+      "problems": []
+    },
+    "originals_audit": {
+      "result": "passed",
+      "pdf_count": 151,
+      "manifest_records": 151,
+      "problems": []
+    }
+  },
+  "outputs": [
+    {
+      "path": "data/artifacts/pdfs/2026-10-register.pdf",
+      "bytes": 339549,
+      "sha256": "17406ad5bfc077ea0e4115f43433b8b79591e447efb9333891f970a6845ff5ad"
+    },
+    {
+      "path": "data/artifacts/csv/2026-10.csv",
+      "bytes": 43716,
+      "sha256": "3ab6a508610de0d376b4c3d24cbb36f75c6b552c093340af4bddaddb442939e3"
+    },
+    {
+      "path": "data/artifacts/chunks/2026-10-chunks.json",
+      "bytes": 541100,
+      "sha256": "74afd7ed7ee41bd8bfd671589ed2aa0345a38d8b0ac4aa0a87a087a548b3876f"
+    },
+    {
+      "path": "data/artifacts/html/2026-10-payees.html",
+      "bytes": 60253,
+      "sha256": "476835fcd0b8e2cfb578c5073d54bc912bd394bb7806ec1b48d39596ee3f9e82"
+    },
+    {
+      "path": "data/artifacts/fund_updates/2026-11-17-general-fund-update.pdf",
+      "bytes": 363983,
+      "sha256": "411aa1f10d32aeb389393e9d401bb26ab5e9a80e7bc05315373ecb80fdb42b41"
+    }
+  ],
+  "source_metadata": {
+    "path": "agenda-packets/2026-11-17 Agenda Packet.pdf",
+    "file_id": 3848,
+    "official_name": "Agenda",
+    "published_at": "2026-11-12T15:43:55.597Z",
+    "downloaded_at": "2026-11-17T22:52:41.859906Z",
+    "last_checked_at": "2026-11-17T22:52:41.859906Z",
+    "size": 7051423,
+    "sha256": "bef243e2aeab70707f2e1a603556b58f229eab18f882468bd9e3d27a8485a5cf",
+    "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3848,plainText=false)"
+  },
+  "existing_csv_replacements": [],
+  "processing_commands": [
+    "python check_register_parser.py \"data/originals/city-council/2026/agenda-packets/2026-11-17 Agenda Packet.pdf\" --pdf --csv --chunks-json --html --print-rollups --totals",
+    "python fund_update_parser.py \"data/originals/city-council/2026/agenda-packets/2026-11-17 Agenda Packet.pdf\""
+  ]
+}
