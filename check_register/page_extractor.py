@@ -16,66 +16,59 @@ def _quiet_pdfminer() -> None:
 
 
 def find_check_register_page_ranges(pdf_path: Path) -> List[Tuple[int, int]]:
-    """Locate contiguous check register page ranges within a packet."""
+    """Locate check register page ranges, separating reporting months."""
     pdf_path = Path(pdf_path)
     if not pdf_path.is_file():
         raise FileNotFoundError(f"PDF not found: {pdf_path}")
 
     ranges: List[Tuple[int, int]] = []
-    start_page = None
-    end_page = None
-    in_section = False
+    section_month = None
 
     _quiet_pdfminer()
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages, start=1):
-            lines = (page.extract_text() or "").splitlines()
-            has_block = False
-            has_rows = False
-            for line in lines:
-                line = line.strip()
-                if not line:
-                    continue
-                if CheckRegisterParser._block_hdr.match(line):
-                    has_block = True
-                if (
-                    CheckRegisterParser._row_start.match(line)
-                    or CheckRegisterParser._skip_line.match(line)
-                ):
-                    has_rows = True
-            page_has_register = has_block or has_rows
-            if not in_section:
-                if has_block:
-                    start_page = i
-                    end_page = i
-                    in_section = True
-            elif page_has_register:
-                end_page = i
-            elif in_section:
-                ranges.append((start_page, end_page))
-                start_page = None
-                end_page = None
-                in_section = False
+            page_month, has_register = _register_page_info(page.extract_text() or "")
+            if not has_register:
+                section_month = None
+                continue
+            if page_month is not None:
+                if page_month != section_month:
+                    ranges.append((i, i))
+                section_month = page_month
+            if section_month is not None:
+                ranges[-1] = (ranges[-1][0], i)
 
-    if in_section and start_page is not None and end_page is not None:
-        ranges.append((start_page, end_page))
     if not ranges:
         raise ValueError("Check register pages not found")
     return ranges
 
 
+def _register_page_info(text: str) -> tuple[tuple[int, int] | None, bool]:
+    """Read the reporting month and continuation markers on a page."""
+    month = None
+    has_rows = False
+    for line in text.splitlines():
+        line = line.strip()
+        header = CheckRegisterParser._block_hdr.match(line)
+        if header:
+            month = (int(header.group(6)), int(header.group(4)))
+        if CheckRegisterParser._row_start.match(line) or CheckRegisterParser._skip_line.match(line):
+            has_rows = True
+    return month, month is not None or has_rows
+
+
 def find_check_register_page_range(pdf_path: Path) -> Tuple[int, int]:
-    """Locate the start and end pages of the check register within a packet.
+    """Find one contiguous register range, combining adjacent monthly sections.
 
     Raises
     ------
     ValueError
-        If no check register page range can be determined.
+        If no register is found or its sections are separated by other pages.
     """
     ranges = find_check_register_page_ranges(pdf_path)
-    if len(ranges) != 1:
+    if any(right[0] != left[1] + 1 for left, right in zip(ranges, ranges[1:])):
         raise ValueError("Multiple disjoint check register sections found")
-    return ranges[0]
+    return ranges[0][0], ranges[-1][1]
 
 
 def extract_check_register_pdf_range(
