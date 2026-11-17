@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "year": 2023,
+  "last_checked_at": "2026-10-06T22:35:18.129747Z",
+  "meetings": [
+    {
+      "meeting_date": "2023-09-19",
+      "title": "Special and Regular City Council Meeting",
+      "event_id": 500,
+      "documents": {
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2023-09-19 Agenda Packet.pdf",
+            "file_id": 1839,
+            "official_name": "Packet (rev. 9.20.2023)",
+            "published_at": "2023-09-20T10:56:33.813Z",
+            "downloaded_at": "2026-10-06T22:35:18.129747Z",
+            "last_checked_at": "2026-10-06T22:35:18.129747Z",
+            "size": 13388947,
+            "sha256": "8bb7f1a175321ab1add1de78058e74932086110ad03024172f8385111e87de27",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=1839,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    }
+  ]
+}
