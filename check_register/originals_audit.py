@@ -10,21 +10,10 @@ from pathlib import Path, PurePosixPath
 import re
 from typing import Any
 
-from .civicclerk import (
-    CITY_COUNCIL_MEETING_TYPE,
-    FINANCIAL_ADVISORY_BOARD_MEETING_TYPE,
-)
 from .civicclerk_archive import SCHEMA_VERSION
+from .originals_layout import DOCUMENT_LAYOUTS, validate_meeting_type
 
 
-MEETING_TYPES = (
-    CITY_COUNCIL_MEETING_TYPE,
-    FINANCIAL_ADVISORY_BOARD_MEETING_TYPE,
-)
-_DOCUMENT_DIRECTORIES = {
-    "agenda": ("agendas", "agenda-revisions"),
-    "agenda_packet": ("agenda-packets", "agenda-packet-revisions"),
-}
 _IGNORED_ENTRY_NAMES = {".DS_Store"}
 _SHA256_PATTERN = re.compile(r"[0-9a-f]{64}")
 
@@ -47,21 +36,17 @@ class ManifestRecord:
 
 
 def audit_originals(originals_dir: Path) -> OriginalsAudit:
-    manifest_counts = {meeting_type: 0 for meeting_type in MEETING_TYPES}
-    pdf_counts = {meeting_type: 0 for meeting_type in MEETING_TYPES}
-    record_counts = {meeting_type: 0 for meeting_type in MEETING_TYPES}
+    manifest_counts: dict[str, int] = {}
+    pdf_counts: dict[str, int] = {}
+    record_counts: dict[str, int] = {}
     problems: list[str] = []
 
     if not originals_dir.is_dir():
         problems.append(f"Originals directory not found: {originals_dir}")
         return OriginalsAudit(originals_dir, manifest_counts, pdf_counts, record_counts, problems)
 
-    _audit_root_entries(originals_dir, problems)
-    for meeting_type in MEETING_TYPES:
+    for meeting_type in _meeting_types(originals_dir, problems):
         meeting_root = originals_dir / meeting_type
-        if not meeting_root.is_dir():
-            problems.append(f"Meeting type directory not found: {meeting_root}")
-            continue
         manifests, pdfs, records = _audit_meeting_type(meeting_root, problems)
         manifest_counts[meeting_type] = manifests
         pdf_counts[meeting_type] = pdfs
@@ -72,7 +57,7 @@ def audit_originals(originals_dir: Path) -> OriginalsAudit:
 
 def format_originals_audit(audit: OriginalsAudit) -> list[str]:
     lines = [f"Originals archive: {audit.originals_dir}"]
-    for meeting_type in MEETING_TYPES:
+    for meeting_type in audit.manifest_counts:
         lines.append(
             f"{meeting_type}: {audit.manifest_counts[meeting_type]} manifests, "
             f"{audit.pdf_counts[meeting_type]} PDFs, "
@@ -86,10 +71,23 @@ def format_originals_audit(audit: OriginalsAudit) -> list[str]:
     return lines
 
 
-def _audit_root_entries(originals_dir: Path, problems: list[str]) -> None:
+def _meeting_types(originals_dir: Path, problems: list[str]) -> list[str]:
+    meeting_types = []
     for entry in sorted(originals_dir.iterdir()):
-        if entry.name not in MEETING_TYPES and not _is_ignored_entry(entry):
+        if _is_ignored_entry(entry):
+            continue
+        try:
+            validate_meeting_type(entry.name)
+            valid = entry.is_dir() and not entry.is_symlink()
+        except ValueError:
+            valid = False
+        if valid:
+            meeting_types.append(entry.name)
+        else:
             problems.append(f"Unexpected originals root entry: {entry}")
+    if not meeting_types:
+        problems.append(f"No meeting type directories found: {originals_dir}")
+    return meeting_types
 
 
 def _audit_meeting_type(meeting_root: Path, problems: list[str]) -> tuple[int, int, int]:
@@ -195,7 +193,7 @@ def _manifest_records(
             continue
         for kind, state in documents.items():
             record_context = f"{context} {kind}"
-            if kind not in _DOCUMENT_DIRECTORIES:
+            if kind not in DOCUMENT_LAYOUTS:
                 problems.append(f"Unsupported document kind: {record_context}")
                 continue
             if not isinstance(state, dict):
@@ -250,7 +248,8 @@ def _audit_record(record: ManifestRecord, year_dir: Path, problems: list[str]) -
         problems.append(f"Unsafe document path: {record.context}")
         return None
 
-    expected_directory = _DOCUMENT_DIRECTORIES[record.kind][int(record.revision)]
+    layout = DOCUMENT_LAYOUTS[record.kind]
+    expected_directory = layout.revisions if record.revision else layout.canonical
     if len(relative_path.parts) != 2 or relative_path.parts[0] != expected_directory:
         problems.append(f"Document path is in the wrong directory: {record.context}")
         return None

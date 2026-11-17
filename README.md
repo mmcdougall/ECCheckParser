@@ -95,6 +95,45 @@ page detection used by `check_register_parser.py`. `--extract-registers` also
 writes found register pages to `data/artifacts/pdfs/` using the existing
 `YYYY-MM-register.pdf` naming.
 
+## Discovering and caching City Archive Center records
+
+`archivecenter_documents.py` reads selected indexes from the City's
+[Archive Center](https://www.elcerrito.gov/Archive.aspx). It supports agendas,
+agenda packets, minutes, work plans, and reports for any named board, committee,
+council, or other source category. Each `--index KIND=AMID` maps a document kind
+to the index ID in an official `Archive.aspx?AMID=...` URL. Repeat the option
+to read several kinds. For example, the FAB work-plan index can be listed with:
+
+```bash
+python archivecenter_documents.py list --index work-plan=146
+```
+
+To cache custom indexes, supply `--meeting-type` with a lowercase folder name
+such as `subdivision-committee`, the selected `--index` options, and a date
+selection (`--date`, `--year`, or `--start` and `--end`). `--dry-run` prints the
+planned paths and actions. Documents go under
+`data/originals/<meeting-type>/YYYY/` using the same manifests and revision
+layout as the existing archive. `--document` can restrict the selected kinds.
+
+Caching accepts only unambiguous dated PDFs. Multiple same-date records of one
+kind are reported as ambiguous. Listings containing only a fiscal year or a
+year range remain visible in `list`; they need a verified full source date
+before they can be filed in the dated archive. The tool does not derive a
+meeting date from a fiscal-year label.
+
+The legacy invocation without `--index` retains FAB agenda/report IDs 62 and 93
+and the `financial-advisory-board` destination. Those indexes depend on the
+City continuing to publish them. This legacy feed requires one same-date
+agenda before an attachment report is accepted as an agenda packet. Custom
+indexes can opt into that check with `--require-matching-agenda`.
+
+The tool keeps a CivicClerk canonical file in place. `--include-variants` saves
+a differing Archive Center copy as a source-marked revision, while an identical
+copy is recorded as equivalent provenance without duplicating bytes. Archive
+Center records use `archive_id` and `source_system: "archivecenter"`; CivicClerk
+`file_id` values remain reserved for CivicClerk files.
+
+
 The parser requires `pdfplumber` for table extraction.  After running, the script
 prints the number of checks parsed and the total disbursed amount as a basic
 sanity check.
@@ -119,8 +158,14 @@ with every manifest path, PDF header, and SHA-256 checksum intact:
 python check_register_parser.py --audit-originals
 ```
 
-This read-only check scans all cached source PDFs, so it is best used before a
-release or after a source refresh rather than during routine parser work.
+This read-only check discovers the category folders present in the archive,
+including additional committees and commissions. It verifies current and
+revision copies of agendas, packets, minutes, work plans, and reports, and
+reports unreferenced PDFs, missing files, invalid locations, and changed bytes.
+It scans all cached source PDFs, so it is best used before a release or after
+a source refresh rather than during routine parser work. It checks the
+integrity of the local collection; it does not establish that every published
+City document has been collected.
 
 ## Quarterly financial report extraction
 
