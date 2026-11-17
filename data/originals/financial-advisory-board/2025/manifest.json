@@ -1,0 +1,475 @@
+{
+  "schema_version": 1,
+  "year": 2025,
+  "last_checked_at": "2026-08-27T12:40:21.120355Z",
+  "meetings": [
+    {
+      "meeting_date": "2025-01-28",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 773,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-01-28 Agenda.pdf",
+            "file_id": 2746,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:19:17.04Z",
+            "downloaded_at": "2026-08-25T23:32:31.123977Z",
+            "last_checked_at": "2026-08-25T23:32:31.123977Z",
+            "size": 119812,
+            "sha256": "3e15e56415c1f226222e5d8686db16e4cf65ff0d9025b38f57542c8aa6d20d49",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2746,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-01-28 Agenda Packet.pdf",
+            "file_id": 2777,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:19:17.04Z",
+            "downloaded_at": "2026-08-25T23:32:31.548790Z",
+            "last_checked_at": "2026-08-25T23:32:31.548790Z",
+            "size": 7384802,
+            "sha256": "7b7e2987d7fd1d85bc25a528acdb917e61235ba2bc74c82ea4828247acfa2995",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2777,plainText=false)"
+          },
+          "revisions": []
+        },
+        "work_plan": {
+          "current": {
+            "path": "work-plans/2025-01-28 Work Plan.pdf",
+            "archive_id": 7932,
+            "official_name": "FY 2025/2026 - 2026/2027 Workplan",
+            "adopted_at": "2025-01-28",
+            "published_at": null,
+            "downloaded_at": "2026-08-25T23:43:06Z",
+            "last_checked_at": "2026-08-25T23:43:06Z",
+            "size": 204238,
+            "sha256": "d468d2e4a589939a2a55dfc9da0fc69b611628f275f0c501578c08879ac0d7c5",
+            "source_url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/7932"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-02-25",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 772,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-02-25 Agenda.pdf",
+            "file_id": 2747,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:13:24.587Z",
+            "downloaded_at": "2026-08-25T23:32:33.168714Z",
+            "last_checked_at": "2026-08-25T23:32:33.168714Z",
+            "size": 31669,
+            "sha256": "1840bdc52add77841b26430f07d1113d054524cf82dd28459a9f06adf1edac08",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2747,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-02-25 Agenda Packet.pdf",
+            "file_id": 2768,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:13:24.587Z",
+            "downloaded_at": "2026-08-25T23:32:33.511891Z",
+            "last_checked_at": "2026-08-25T23:32:33.511891Z",
+            "size": 1938292,
+            "sha256": "1fe437776edb437946a36439d8c5259dcc7838e3fc4181e95d0f61d7b0967e1f",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2768,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-03-25",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 771,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-03-25 Agenda.pdf",
+            "file_id": 2748,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:12:10.113Z",
+            "downloaded_at": "2026-08-25T23:32:34.431423Z",
+            "last_checked_at": "2026-08-25T23:32:34.431423Z",
+            "size": 141368,
+            "sha256": "9cd8df2b6e840fee5a2c8c8b78ccb6f414b65b9ffc0d19548a94b0f46c5a522b",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2748,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-03-25 Agenda Packet.pdf",
+            "file_id": 2767,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:12:10.113Z",
+            "downloaded_at": "2026-08-25T23:32:34.874356Z",
+            "last_checked_at": "2026-08-25T23:32:34.874356Z",
+            "size": 3038887,
+            "sha256": "4239b13488b26b99648c74509219901c39bb386d668ce9d492d2def63496b3b6",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2767,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-04-29",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 770,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-04-29 Agenda.pdf",
+            "file_id": 2749,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:07:00.993Z",
+            "downloaded_at": "2026-08-25T23:32:35.798386Z",
+            "last_checked_at": "2026-08-25T23:32:35.798386Z",
+            "size": 832205,
+            "sha256": "63e856ca98aac3d3ecacb5fad41dcf6bed9cb311afc219b0b1656bd2fb180794",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2749,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-04-29 Agenda Packet.pdf",
+            "file_id": 2764,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:07:00.993Z",
+            "downloaded_at": "2026-08-25T23:32:36.608730Z",
+            "last_checked_at": "2026-08-25T23:32:36.608730Z",
+            "size": 2420208,
+            "sha256": "bd4eae23ef9fd63d97fda24218376047ec24637fce9850f2c29997c8d165fb09",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2764,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-05-27",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 769,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-05-27 Agenda.pdf",
+            "file_id": 2765,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:06:52.883Z",
+            "downloaded_at": "2026-08-25T23:32:37.815171Z",
+            "last_checked_at": "2026-08-25T23:32:37.815171Z",
+            "size": 84367,
+            "sha256": "3c151bbb9c4785fc0c3008cfec8de5713630dce052ca1a29dd4da46897b102fd",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2765,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-05-27 Agenda Packet.pdf",
+            "file_id": 2766,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:06:52.883Z",
+            "downloaded_at": "2026-08-25T23:32:38.286497Z",
+            "last_checked_at": "2026-08-25T23:32:38.286497Z",
+            "size": 2399703,
+            "sha256": "4eb952770130f80f7a0d0ed678635114a9fc8b70f63bbd094bc76154a4a2664a",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2766,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-06-24",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 768,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-06-24 Agenda.pdf",
+            "file_id": 2750,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:06:05.507Z",
+            "downloaded_at": "2026-08-25T23:32:39.336105Z",
+            "last_checked_at": "2026-08-25T23:32:39.336105Z",
+            "size": 76263,
+            "sha256": "945d2ca00ddbe7807f7a8cde6c050e8a29ffbd77a954f0741f0116bb183e28d9",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2750,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-06-24 Agenda Packet.pdf",
+            "file_id": 2763,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:06:05.507Z",
+            "downloaded_at": "2026-08-25T23:32:39.687797Z",
+            "last_checked_at": "2026-08-25T23:32:39.687797Z",
+            "size": 3079420,
+            "sha256": "f5cf53d8b34c8a7bbd3f4ba942362fc6a0d94878a62abf92c5d297094448eda4",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2763,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-07-22",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 767,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-07-22 Agenda.pdf",
+            "file_id": 2751,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:05:52.583Z",
+            "downloaded_at": "2026-08-25T23:32:40.755344Z",
+            "last_checked_at": "2026-08-25T23:32:40.755344Z",
+            "size": 31741,
+            "sha256": "b1960ac788793d2379a10223bcfcd495c49096227793ccd812eccd2fd28c26a9",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2751,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-07-22 Agenda Packet.pdf",
+            "file_id": 2762,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:05:52.583Z",
+            "downloaded_at": "2026-08-25T23:32:41.115009Z",
+            "last_checked_at": "2026-08-25T23:32:41.115009Z",
+            "size": 83178,
+            "sha256": "dc34e6bfeaf054b1a920f3115918ae87ac7a0f28006918dcb97daf3ba6ebe58e",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2762,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-08-26",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 766,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-08-26 Agenda.pdf",
+            "file_id": 2752,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:05:42.737Z",
+            "downloaded_at": "2026-08-25T23:32:41.742408Z",
+            "last_checked_at": "2026-08-25T23:32:41.742408Z",
+            "size": 43947,
+            "sha256": "83cbe0c7ba5c5ab4e31d68d308b1d1b08a68fda66543c2b31f208d26af05ce53",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2752,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-08-26 Agenda Packet.pdf",
+            "file_id": 2761,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:05:42.737Z",
+            "downloaded_at": "2026-08-25T23:32:42.205658Z",
+            "last_checked_at": "2026-08-25T23:32:42.205658Z",
+            "size": 1203215,
+            "sha256": "c851736f05c207cd8999799d9e18e119c605d2a48e27d3128eb18b8d4db45fbd",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2761,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-09-23",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 765,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-09-23 Agenda.pdf",
+            "file_id": 2753,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:04:35.63Z",
+            "downloaded_at": "2026-08-25T23:32:43.358081Z",
+            "last_checked_at": "2026-08-25T23:32:43.358081Z",
+            "size": 43371,
+            "sha256": "3f0a2642f0195f69a504f7fec8afb2fe755ca36fd61331df290ca2546318677d",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2753,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-09-23 Agenda Packet.pdf",
+            "file_id": 2760,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:04:35.63Z",
+            "downloaded_at": "2026-08-25T23:32:43.925070Z",
+            "last_checked_at": "2026-08-25T23:32:43.925070Z",
+            "size": 4114998,
+            "sha256": "1aebf3e270d51f96cd93d9030d04a97bd532671b2a370817d89ada3f5d8d6ba0",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2760,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-10-28",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 764,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-10-28 Agenda.pdf",
+            "file_id": 2754,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:04:09.137Z",
+            "downloaded_at": "2026-08-25T23:32:45.448897Z",
+            "last_checked_at": "2026-08-25T23:32:45.448897Z",
+            "size": 116547,
+            "sha256": "0079d94ea35719aa09da0eb69821d8a87f8b6feb8f48b0a3ea77e4e2d881ab20",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2754,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-10-28 Agenda Packet.pdf",
+            "file_id": 2759,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:04:09.137Z",
+            "downloaded_at": "2026-08-25T23:32:45.853021Z",
+            "last_checked_at": "2026-08-25T23:32:45.853021Z",
+            "size": 5109521,
+            "sha256": "950dc427559bf831f966d55fa4918412e954a573709bc80a207a98f93b7bb34b",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2759,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-11-13",
+      "title": "Financial Advisory Board Meeting",
+      "event_id": 763,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-11-13 Agenda.pdf",
+            "file_id": 2755,
+            "official_name": "Agenda",
+            "published_at": "2025-12-12T14:03:05.687Z",
+            "downloaded_at": "2026-08-25T23:32:47.325205Z",
+            "last_checked_at": "2026-08-25T23:32:47.325205Z",
+            "size": 122414,
+            "sha256": "c14b672939486b6b76ade09064edf210216dbb9a644ed86aa3bdcb2b3c8729a3",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2755,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-11-13 Agenda Packet.pdf",
+            "file_id": 2757,
+            "official_name": "Agenda Packet",
+            "published_at": "2025-12-12T14:03:05.687Z",
+            "downloaded_at": "2026-08-25T23:32:47.888431Z",
+            "last_checked_at": "2026-08-25T23:32:47.888431Z",
+            "size": 876992,
+            "sha256": "b180731a07c44944765eb4655c6765d15e03efee2f04c37286088ecce1ca3465",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2757,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-11-20",
+      "title": "CANCELLED Financial Advisory Board Meeting",
+      "event_id": 733,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-11-20 Agenda.pdf",
+            "file_id": 2756,
+            "official_name": "Agenda Cancellation",
+            "published_at": "2025-12-12T14:02:34.493Z",
+            "downloaded_at": "2026-08-25T23:32:48.572101Z",
+            "last_checked_at": "2026-08-25T23:32:48.572101Z",
+            "size": 60510,
+            "sha256": "079e97d213c5f84ac94b8701ba6eeb33a1364d388ce71015b3c55e1c1116dbd3",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2756,plainText=false)"
+          },
+          "revisions": []
+        }
+      }
+    },
+    {
+      "meeting_date": "2025-12-18",
+      "title": "Financial Advisory Board Regular Meeting",
+      "event_id": null,
+      "documents": {
+        "agenda": {
+          "current": {
+            "path": "agendas/2025-12-18 Agenda.pdf",
+            "file_id": null,
+            "archive_id": 8127,
+            "official_name": "December 18, 2025",
+            "published_at": null,
+            "downloaded_at": "2026-08-27T12:12:53Z",
+            "last_checked_at": "2026-08-27T12:40:21.117695Z",
+            "size": 34175,
+            "sha256": "99bde34f5cf23c56976912fa4dd0f6678f78d78562cc083f0453e9b4efcb49a2",
+            "source_url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/8127",
+            "source_system": "archivecenter",
+            "listing_title": "December 18, 2025",
+            "listing_description": null,
+            "listing_date": "2025-12-18",
+            "archive_listing_url": "https://www.elcerrito.gov/Archive.aspx?ADID=8127"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2025-12-18 Agenda Packet.pdf",
+            "file_id": null,
+            "archive_id": 8128,
+            "official_name": "Attachment Reports - December 18, 2025 Meeting",
+            "published_at": null,
+            "downloaded_at": "2026-08-27T12:12:53Z",
+            "last_checked_at": "2026-08-27T12:40:21.120355Z",
+            "size": 1129799,
+            "sha256": "f66140e70421f78ca8070b070f7c5d26f6c4849d1c696e84d1ae6ea980207ea3",
+            "source_url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/8128",
+            "source_system": "archivecenter",
+            "listing_title": "Attachment Reports - December 18, 2025 Meeting",
+            "listing_description": null,
+            "listing_date": "2025-12-18",
+            "archive_listing_url": "https://www.elcerrito.gov/Archive.aspx?ADID=8128"
+          },
+          "revisions": []
+        }
+      }
+    }
+  ]
+}

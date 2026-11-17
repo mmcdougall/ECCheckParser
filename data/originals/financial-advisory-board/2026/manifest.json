@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "year": 2026,
-  "last_checked_at": "2026-08-24T20:27:10Z",
+  "last_checked_at": "2026-11-03T22:27:18.312466Z",
   "meetings": [
     {
       "meeting_date": "2026-01-27",
@@ -29,7 +29,7 @@
             "official_name": "Agenda Packet",
             "published_at": "2026-03-12T11:54:47.11Z",
             "downloaded_at": "2026-08-24T20:19:59.720185Z",
-            "last_checked_at": "2026-08-24T20:19:59.720185Z",
+            "last_checked_at": "2026-11-03T22:27:18.296080Z",
             "size": 6086827,
             "sha256": "5a8d7aefeac2091a9d5ac5aa4012ebe4fd5ed7fdf908fd25869289f96b88b503",
             "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3177,plainText=false)"
@@ -64,7 +64,7 @@
             "official_name": "Agenda Packet",
             "published_at": "2026-03-12T11:45:36.82Z",
             "downloaded_at": "2026-08-24T20:20:03.229013Z",
-            "last_checked_at": "2026-08-24T20:20:03.229013Z",
+            "last_checked_at": "2026-11-03T22:27:18.299125Z",
             "size": 1891093,
             "sha256": "923da789349cfb77b78a4fa70ea7769f4f7de19f431830c0a42d3c8f4b40fc9e",
             "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3175,plainText=false)"
@@ -132,7 +132,7 @@
             "official_name": "Agenda Packet (rev. 4.16.26)",
             "published_at": "2026-04-16T16:18:23.01Z",
             "downloaded_at": "2026-08-24T20:20:05.452500Z",
-            "last_checked_at": "2026-08-24T20:20:05.452500Z",
+            "last_checked_at": "2026-11-03T22:27:18.301860Z",
             "size": 12851095,
             "sha256": "096ca09d7af4e2971c6fc2ba855ae3c9a6a533717a004827649eb4a5fdc7c18c",
             "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3264,plainText=false)"
@@ -200,7 +200,7 @@
             "official_name": "Agenda Packet REVISED (05/06/2026)",
             "published_at": "2026-05-06T16:24:15.89Z",
             "downloaded_at": "2026-08-24T20:20:10.410511Z",
-            "last_checked_at": "2026-08-24T20:20:10.410511Z",
+            "last_checked_at": "2026-11-03T22:27:18.304035Z",
             "size": 5394322,
             "sha256": "ba8fb063d62dfe38737fdefc204b940ee63bd25c7d99fe1cc522927a73849d9f",
             "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3316,plainText=false)"
@@ -235,7 +235,7 @@
             "official_name": "Agenda Packet (rev 05/26/26)",
             "published_at": "2026-05-26T12:41:18.973Z",
             "downloaded_at": "2026-08-24T20:20:13.470309Z",
-            "last_checked_at": "2026-08-24T20:21:02.117549Z",
+            "last_checked_at": "2026-11-03T22:27:18.306408Z",
             "size": 62135677,
             "sha256": "492de21a1f1524735f0b344c7e1bd24efde6637d87778ab478d7f8e865750c1a",
             "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3350,plainText=false)"
@@ -270,7 +270,7 @@
             "official_name": "Agenda Packet (rev. 06/04/26 )",
             "published_at": "2026-06-04T15:19:09.05Z",
             "downloaded_at": "2026-08-24T20:20:43.247577Z",
-            "last_checked_at": "2026-08-24T20:20:43.247577Z",
+            "last_checked_at": "2026-11-03T22:27:18.309419Z",
             "size": 775051,
             "sha256": "85e3a1a8e48749156d94953b8ca5c215659412d8c2a253d6b4ab79b2ff39c4c1",
             "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3400,plainText=false)"
@@ -305,7 +305,7 @@
             "official_name": "Agenda Packet - Cancellation",
             "published_at": "2026-07-29T16:30:40.45Z",
             "downloaded_at": "2026-08-24T20:20:45.538151Z",
-            "last_checked_at": "2026-08-24T20:20:45.538151Z",
+            "last_checked_at": "2026-11-03T22:27:18.311117Z",
             "size": 311507,
             "sha256": "d1ed637407c0e723b207ce73982de09fd155e6d84ed18730197a5ce4f8514665",
             "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3499,plainText=false)"
@@ -330,6 +330,20 @@
             "size": 200234,
             "sha256": "9f7fa13a7d1af6d258c5523a055e5282b0db9487f55e9a26e103532efd4f4e72",
             "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3694,plainText=false)"
+          },
+          "revisions": []
+        },
+        "agenda_packet": {
+          "current": {
+            "path": "agenda-packets/2026-08-25 Agenda Packet.pdf",
+            "file_id": 3711,
+            "official_name": "Agenda Packet (rev. 08/27/2026)",
+            "published_at": "2026-08-27T12:17:26.143Z",
+            "downloaded_at": "2026-10-06T22:22:53.973589Z",
+            "last_checked_at": "2026-11-03T22:27:18.312466Z",
+            "size": 353035,
+            "sha256": "093a4ffa03ae539e196fa7465730b71dfb05d283cd158c1004a0f4b503337142",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3711,plainText=false)"
           },
           "revisions": []
         }
