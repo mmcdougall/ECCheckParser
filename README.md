@@ -23,6 +23,10 @@ Canonical agenda packets live under meeting-type roots such as
 (CSV, chunk JSON, payee HTML and register PDFs) remain in `data/artifacts/`.
 PDFs are stored through Git LFS.
 
+Standalone finance legislation, historical background, and State Auditor records
+live in [`data/references/city-finance/`](data/references/city-finance/README.md).
+That collection includes original PDFs, searchable text, and source metadata.
+
 The parser automates extraction from imperfect PDF source material. Generated
 results are not an audit or official accounting and should be verified against
 the original City documents. [`PROVENANCE.md`](docs/PROVENANCE.md) describes the

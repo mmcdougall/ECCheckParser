@@ -1,0 +1,111 @@
+Local Government High Risk Audit Program - City of El Cerrito: letter requesting approval of an audit
+Publisher: California State Auditor; published by the Joint Legislative Audit Committee
+Document date: 2020-01-13
+Retrieved on: 2026-11-17
+Source URL: https://legaudit.legislature.ca.gov/sites/legaudit.assembly.ca.gov/files/2020-803%20Local%20High%20Risk%20%E2%80%93%20City%20of%20El%20Cerrito%20%28State%20Auditor%29_Redacted.pdf
+Local PDF: 2020-01-13-state-auditor-el-cerrito-audit-request-letter.pdf
+Extraction: pdftotext -layout, UTF-8; source text is not corrected.
+PDF page labels below are physical page numbers, not printed pagination.
+Scope: Complete PDF text, including blank pages and all attachments.
+Source notes: Legislature-published redacted copy: signature is obscured in the source. Existing text layer has recognition errors, including in El Cerrito and numbers; verify quotations and figures against the scan. Describes October 2019 screening and requests an audit; not the completed 2021 audit.
+The source PDF controls; text extraction may lose graphics, redlines, or characters.
+
+[PDF page 1]
+
+                                                                                     Elaine M. Howle State Auditor
+'"""'====================
+
+
+
+
+                                                                                                             JAN1 3 2020
+January 13, 2020
+
+
+The Honorable Rudy Salas, Chairman
+Joint Legislative Audit Committee
+1020 N Street, Room 107
+Sacramento, California 95814
+
+RE: Local Government High Risk Audit Program - City of El Cerrito
+
+Dear Chairman Salas:
+
+Government Code section 8546.10 permits the California State Auditor' s Office (office) to
+develop a high-risk local government agency audit program for the purpose of identifying.
+auditing. and issuing reports on any local government agency, including a city, county, special
+district or other publicly created entity, that the office identifies as being at high risk for the
+potential of waste, fraud, abuse, or mismanagement or that has major challenges associated with
+its economy, efficiency, or effectiveness. Pursuant to this provision, I am respectfuLly requesting
+the committee 's approval ofan audit of the City of El Ce1Tito.
+
+El Cerrito is a city in Contra Costa County with a population of roughly 25 ,000. In
+November 2018, El Ce1Tito became a charter city, which provides it with authority over municipal
+affairs and enables it to establish certain local taxes beyond those allowed to general law cities.
+The city operates a full-service government and also provides fire services, though a contractual
+agreement, to its neighboring city, the City of Kensington. El Cerrito had fiscal year 2018- 19
+general fw1d revenues of $35.8 million.
+
+ln October 2019, my office identified El Cerrito as the seventh most fiscal ly challenged city in the
+State due to its inadequate general fund reserves, cash flow and liquidity challenges, and escalating
+pension costs. However, El Cerrito has not developed a long-term approach to improve its financial
+condition and has not addressed its increasing pension costs. During the great recession, El Cerrito
+used its general fund reserve to maintain service levels rather than scaling back on costs of services
+and, by fiscal year 2016- 17, the city depleted this reserve entirely. As of fiscal year 2017- 18, the
+city was operating with a deficit of $2.2 million. El Cerrito has significant cash flow problems and
+has relied on short-term loans to cover its expenses since fiscal year 2012- 13. The amounts
+of these loans have increased from $5 million in fiscal year 2012- 13 to $9 million in fiscal year
+2019- 20. Fmther, the city's annual pension costs are expected to rise from $5.7 million in fi scal
+year 2017-18 to $9 million by fiscal year 2024- 25 . Moreover, as of June 30, 2018, El Cerrito had
+a $2.8 million liability for other post-employment benefits such as retiree health care, but it had no
+current plans for funding this liability.
+
+
+
+
+ 621 Cap itol Mall , Su ite 1200   I   Sacrame nto , CA 958 14   I   916.445 .0255   I   916. 323.0913 fax   I   www.auditor.ca .gov
+
+[PDF page 2]
+
+The Honorable Rudy Salas, Chairman
+Joint Legislative Audit Committee
+January 13, 2020
+Page2
+
+
+Regarding its fire department, the city has incurred significant costs in overtime and it has not
+assessed whether it fully recovers the cost of the fire protection services it provides to the city of
+Kensington. Additionally, although the city has recently elected to tempora1·i ly defer facility
+maintenance and equipment replacement in an effort to reduce spending in fiscal year 2019- 20, it
+has not identified more permanent cuts. In its fiscal year 2017-18 financial report, the city
+acknowledged the potential for a recession, and it reaffirmed its commitment to establish and
+maintain a general fund balance that will sustain the city's operations during such an event.
+However, it does not yet have an effective plan to reduce expenses and increase its general fund
+balance, or to address its worsening cash flow problems.
+
+An audit of the city of El Cerrito will help identify the scope of its financia l challenges and possible
+solutions. The proposed audit wi ll address the fo llowing questions:
+
+    •   What is El Cerrito's ability to meet its short- and long-term financial obligations, and what
+        are its plans to address its budget deficit, rising pension costs, and general fund deficit?
+        How can El Cenito resolve its worsening cash flow problems?
+
+   •    Are El Cerrito" s existing programs and services sustainable? What are the city" s options
+        for potential revenues from new or increased fees, and what potential cost savings ex ist
+        from reducing expenditures for programs that rely on the general fLU1d to operate?
+
+   •    What steps does the city need to take to reduce the overtime fo r its fire department? ls
+        El Cerrito's contract for providing fire services to the city of Kensington adequate to
+        recover all costs associated with providing services to that city?
+
+   •    What is the impact of deferred maintenance and delayed replacement of equ ipment and
+        capital assets on El Cerrito's long-term costs and ability to provide services?
+
+If you have any questions regarding this audit proposaL please contact me or Paul Navarro,
+Chief Deputy State Auditor, Operations, at (916) 445-0255.
+
+
+
+
+ELAINE M. HOWLE, CPA
+California State Auditor

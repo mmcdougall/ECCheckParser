@@ -1,0 +1,359 @@
+Local High Risk Program: The State Auditor Is Removing Its High-Risk Designation From Four Cities and Retaining the Designation for Three Others
+Publisher: California State Auditor
+Document date: 2024-12-19
+Retrieved on: 2026-11-17
+Source URL: https://www.auditor.ca.gov/wp-content/uploads/2024/12/2024-801-Report-WP.pdf
+Local PDF: 2024-12-19-state-auditor-follow-up-report-2024-801.pdf
+Extraction: pdftotext -layout, UTF-8; source text is not corrected.
+PDF page labels below are physical page numbers, not printed pagination.
+Scope: Public transmittal letter and complete El Cerrito assessment, printed pages 5-9; intervening pages and other cities omitted. Includes Figure 1 text, but not its graphical layout.
+Source notes: Complete 85-page multi-city follow-up. Public letter on physical PDF page 3 removes El Cerrito high-risk designation. El Cerrito assessment on physical pages 11-15 (printed pages 5-9) rates four risk areas fully addressed and ongoing-cost reductions partially addressed.
+The source PDF controls; text extraction may lose graphics, redlines, or characters.
+
+[PDF page 3]
+
+                                                                                     Grant Parks State Auditor
+
+                                                                                     Mike Tilden Chief Deputy
+
+
+
+
+        December 19, 2024
+        Audit 2024-801
+
+        The Governor of California
+        President pro Tempore of the Senate
+        Speaker of the Assembly
+        State Capitol
+        Sacramento, California 95814
+
+        Dear Governor and Legislative Leaders:
+
+        This audit report updates the status of the cities of Blythe, El Cerrito, Lindsay, Lynwood,
+        Montebello, San Gabriel, and West Covina as high‑risk entities as part of our office’s
+        high‑risk local government agency audit program. Our prior audits of these cities identified
+        areas of high-risk related to the cities’ financial conditions, financial stability, and oversight of
+        city contracts, among other issues. For this statutory audit, we reviewed the extent to which
+        each city has addressed recommendations from prior audits, assessed trends in the cities’
+        financial conditions, and determined whether we should continue to designate any of these
+        cities as high-risk local government agencies.
+
+        This report concludes that the cities of Blythe, El Cerrito, Lynwood, and San Gabriel have
+        taken satisfactory corrective action and addressed key deficiencies identified in our prior
+        reports. Therefore, we are removing their high-risk designation. In accordance with the
+        laws relating to the local high-risk program, we may subsequently reevaluate the high-risk
+        designations of the cities of Blythe, El Cerrito, Lynwood, and San Gabriel if situations change
+        and these cities appear to be at risk of not being able to meet their financial obligations or
+        provide efficient and effective services to the public, among other concerns.
+
+        Although the cities of Lindsay, Montebello, and West Covina have taken steps to improve
+        their overall financial health, we are not removing the high-risk designation from those cities
+        at this time. We will continue to monitor the cities and the actions they take to address the
+        areas of high risk we have identified. When the cities’ actions result in sufficient progress
+        toward resolving or mitigating such risks, we will remove their high-risk designation.
+
+        Respectfully submitted,
+
+
+
+        GRANT PARKS
+        California State Auditor
+
+
+
+
+621 Capitol Mall, Suite 1200   |   Sacramento, CA 95814   |   916.445.0255   |   916.327.0019 fax   |   w w w. a u d i t o r. c a . g o v
+
+[PDF page 11]
+
+                                                                                                        CALIFORNIA STATE AUDITOR
+                                                                                                                                                     5
+                                                                                                     Report 2024-801 | December 2024
+
+                                                                                                                     LOCAL HIGH RISK
+
+
+
+
+The City of El Cerrito Has Taken Corrective
+Action to Address Its Risk Areas, and
+the State Auditor Is Removing Its
+High‑Risk Designation
+                                                                                       STATE AUDITOR’S CURRENT ASSESSMENT OF
+ RISK AREAS AS REPORTED IN MARCH 2021                                            EL CERRITO’S PROGRESS IN ADDRESSING THE RISK AREA*
+ El Cerrito’s Failure to Manage Its Spending Resulted in Depletion of Its General Fund
+  1     Continual diminishing of financial reserves through overspending                                Fully Addressed
+  2     Ineffective budget development and monitoring practices                                         Fully Addressed
+ Without a More Coordinated Effort, El Cerrito’s Financial Condition Will Continue to Deteriorate
+  3     Lack of formal financial recovery plan                                                          Fully Addressed
+  4     Insufficient reductions in ongoing costs                                                      Partially Addressed
+  5     Missed opportunities to increase revenue                                                        Fully Addressed
+
+
+* In accordance with state law, we used our professional judgment to assess the city’s progress in addressing each of the risk areas in the table.
+  We determined whether the steps the city took and the overall conditions relevant to each risk area meant that the city fully or partially
+  addressed the risk areas, or whether substantial action relevant to the risk area was still pending. We explain the statuses identified in this
+  table in more detail below.
+  Fully addressed: The city has taken sufficient action to address the risk area when we consider its effort in combination with the related
+  conditions at the time of this audit.
+  Partially addressed: The city has taken positive action to address the risk area, but its effort is incomplete when we consider it in
+  combination with the related conditions at the time of this audit.
+
+
+
+
+HIGH‑RISK AREA #1
+Continual Diminishing of Financial Reserves Through Overspending
+
+      Status: We conclude that El Cerrito’s recent fiscal performance and increased general fund
+      reserves demonstrate that it has fully addressed this risk area.
+
+
+In our March 2021 audit, we reported El Cerrito was at high risk of being unable to meet its
+financial obligations. In the fiscal years preceding that audit, the city had consistently spent
+more than its general fund revenue and was relying on short‑term loans to cover its financial
+obligations. However, in recent years, El Cerrito has made a concerted effort to control its
+finances and has stabilized the condition of its general fund. Further, in our March 2023
+assessment, we reported that because of its improved financial position, the city discontinued
+its practice of short‑term loan borrowing in fiscal year 2022–23. El Cerrito’s adopted budgets for
+fiscal years 2023–24 through 2025–26 assume that the city will meet its debt obligations in those
+years without the use of short‑term loans.
+
+[PDF page 12]
+
+    CALIFORNIA STATE AUDITOR
+6
+    December 2024 | Report 2024-801
+    LOCAL HIGH RISK
+
+
+
+
+         Figure 1 shows that from fiscal years 2020–21 through 2022–23, the city’s general fund
+         revenues exceeded its expenditures, which assisted the city in growing its general
+         fund reserves to $23 million by the end of fiscal year 2022–23, which is an amount equal
+         to about half of its general fund expenditures for that year. This amount surpasses the
+         minimum of two months of unrestricted reserves the GFOA advises governments to
+         maintain. According to the city’s fourth quarter budget update for fiscal year 2023–24,
+         El Cerrito expects its revenue to nearly cover its expenditures, with the shortfall being
+         about $186,000. This amount represents less than 1 percent of the city’s expected total
+         expenditures for that fiscal year. According to its projections for future fiscal years, which
+         extend as far as fiscal year 2028–29, the city expects that it may occasionally need to rely
+         on its reserves starting in fiscal year 2026–27. However, the amount it expects to need in
+         its reserves is proportionately small—less than 2 percent of the budgeted expenditures.
+         Finally, the city also benefited in recent years from its receipt of about $6.1 million in
+         ARPA funding. As of March 2024, the city reported having spent all of this funding and
+         having used it for a variety of general government purposes, such as the provision of
+         public safety services and on administrative facilities.
+
+
+
+         Figure 1
+         The City of El Cerrito’s General Fund Expenditures Have Been Consistently Less Than Its Revenue in
+         Recent Years
+
+
+                                                        General Fund Revenue             General Fund Expenditures
+
+
+
+                                              $60
+
+
+                                              50
+                                                                        $50.3                     $50.8
+                                                    $46.4
+                                                                                                           $44.0
+                                              40
+                                                                                    $40.8
+                                                            $37.8
+                                In Millions
+
+
+
+
+                                              30
+
+
+                                              20
+
+
+                                              10
+
+
+                                               0
+                                                       2020–21                 2021–22                2022–23
+                                                                           Fiscal Year
+
+
+         Source: El Cerrito’s ACFRs.
+         Note: We calculated revenue by combining the revenue and transfers into the general fund in each fiscal year. We calculated
+         expenditures by combining the expenditures and transfers out of the general fund in each fiscal year. The city did not have any
+         material amounts of other financing sources or uses flowing in or out of its general fund in these three fiscal years.
+
+[PDF page 13]
+
+                                                                        CALIFORNIA STATE AUDITOR
+                                                                                                         7
+                                                                       Report 2024-801 | December 2024
+
+                                                                                  LOCAL HIGH RISK
+
+
+
+
+The city has several strategies planned that could help it minimize reliance on its general
+fund reserves. For example, according to its biennial budget for fiscal years 2024–25
+and 2025–26, the city intends to develop a citywide cost allocation plan and
+comprehensive fee study. Doing so will better ensure that the city is distributing
+costs across its funds in the most appropriate way, potentially lessening the burden
+on its general fund, and that it maximizes cost recovery from the service fees it
+charges. The city intends to follow those studies with a service delivery study to
+ensure that it delivers services in the best and most efficient ways. The city estimates
+that it will complete the cost allocation plan in December 2024 and the fee study
+in February 2025. The city’s budget states its intent to complete the service delivery
+study sometime in fiscal year 2025–26. El Cerrito’s city manager stated that the city
+will use the data collected from these studies to make informed and sustainable
+decisions during the next two fiscal years that will improve the city’s ability to balance
+its future budgets and mitigate reliance on general fund reserves.
+
+
+
+HIGH‑RISK AREA #2
+Ineffective Budget Development and Monitoring Practices
+
+  Status: In March 2022, we concluded that El Cerrito had fully addressed this risk
+  area by improving its budget process and monitoring departmental spending.
+
+In our March 2022 assessment, we reported that El Cerrito improved its budgeting
+processes to provide meaningful information for making fiscally sound decisions. The
+city improved its quarterly budget updates to the city council by providing revenue
+and expenditure amounts by department and comparing those amounts to both
+its budget and prior‑year expenditures. This additional level of detail can assist city
+council members in identifying when a particular department may be overspending.
+The city has also improved the information presented in its adopted budgets. Its
+fiscal year 2021–22 budget included a five‑year forecast with a comparison to the
+prior four‑year period. Finally, its adopted fiscal years 2024–25 and 2025–26 biennial
+budget includes a forecast through fiscal year 2028–29 and a comparison of the prior
+two fiscal years.
+
+
+
+HIGH‑RISK AREA #3
+Lack of Formal Financial Recovery Plan
+
+  Status: In September 2022, we concluded that El Cerrito had fully addressed this
+  risk area by issuing its Fiscal Recovery and Sustainability Plan.
+
+In our September 2022 assessment, we noted that El Cerrito issued its Fiscal
+Recovery and Sustainability Plan in August 2022 and concluded that the city
+addressed this risk area. The city organized the plan by the actions it planned to take,
+and it identified a lead staff member, a target date of completion, and an annual fiscal
+
+[PDF page 14]
+
+    CALIFORNIA STATE AUDITOR
+8
+    December 2024 | Report 2024-801
+    LOCAL HIGH RISK
+
+
+
+
+               impact for nearly all of the actions. Further, the city divided the plan into actions the
+               city council had approved in August 2020, such as the elimination of the assistant
+               to the city manager position; actions the city identified that it could still take; and
+               actions based on recommendations from our 2021 audit. The plan provides a number
+               of objectives for the city to improve its financial condition and information that will
+               allow the city council and the public to hold the city accountable.
+
+
+
+               HIGH‑RISK AREA #4
+               Insufficient Reductions in Ongoing Costs
+
+                  Status: We conclude that El Cerrito has partially addressed this risk area by
+                  making an effort to reduce personnel costs and completing a citywide salary study.
+                  Nonetheless, the city will need to be attentive to costs in the future because the
+                  recent salary study could generate pressure to increase personnel costs.
+
+               Through a variety of methods, El Cerrito has controlled its spending and has kept the
+               growth of its expenditures below the growth of its revenue. Since fiscal year 2019–20,
+               general fund revenue has grown 27 percent, and expenditures have grown only
+               10 percent. By freezing salaries, eliminating positions, and instituting controls for
+               departmental spending, the city has limited ongoing costs. For example, the city
+               did not implement cost‑of‑living increases for its management and confidential
+               employees in fiscal years 2020–21 and 2021–22. In addition, in fiscal year 2021–22,
+               the city eliminated seven positions in its police department, some of which had
+               become vacant because of retirements and resignations. By fiscal year 2022–23,
+               the city had decreased the police department’s personnel costs by 3.4 percent from
+               their fiscal year 2020–21 levels. However, the city reported that the actions it took
+               to reduce the budget and staffing had a detrimental impact on the department,
+               which the city asserts experienced high vacancies in 2022. According to its fiscal
+               year 2022–23 budget, in fiscal year 2021–22 the city employed individuals in
+               28 of 37 authorized sworn positions. To address the police union’s concerns, the
+               city agreed to adjustments in salary ranges and pay differentials according to
+               educational experience. As a result, although costs declined in fiscal years 2020–21
+               through 2022–23, the city budgeted to increase the police department’s personnel
+               costs by 18 percent in fiscal year 2023–24.
+
+               To sustain its financial health, the city will need to carefully approach any future
+               compensation increases. In response to our 2021 audit, the city commissioned a
+               salary study. In February 2024, the city received the results of that study, which
+               identified that the city compensated some of its positions—including some public
+               safety positions—at less than the market median when compared to similar
+               positions at 18 other entities. The study found that, overall, the city’s base salaries
+               were approximately 8 percent less than the market median. Further, the city’s total
+               compensation, which includes salary and benefits, was about 2 percent less than the
+               market median. Although the study did not explicitly recommend that the city raise
+               compensation for its employees, it did provide suggested approaches the city could
+
+[PDF page 15]
+
+                                                                       CALIFORNIA STATE AUDITOR
+                                                                                                       9
+                                                                     Report 2024-801 | December 2024
+
+                                                                                LOCAL HIGH RISK
+
+
+
+
+take to adjust its compensation. In March 2024, the city reported to our office that it
+plans to implement the study’s recommendations over time, and as resources allow,
+through bargaining and other phased adjustments, and it expects that doing so will
+assist the city in recruiting, motivating, and retaining competent staff, including its
+public safety staff.
+
+The city’s fiscal years 2024–25 and 2025–26 biennial budget notes that the city was
+engaged in negotiations with several bargaining groups at the time it developed
+the budget. Therefore, the city may need to amend its budget if the negotiated
+compensation amounts exceed its budgeted costs. According to the adopted budget,
+the city plans to increase personnel costs by 6.4 percent in fiscal year 2024–25 and
+by 5 percent in fiscal year 2025–26. Overall, El Cerrito’s personnel costs represented
+73 percent of the city’s budgeted general fund expenditures for fiscal year 2024–25.
+However, despite the upcoming challenge the city faces in determining how much to
+compensate its employees, the city has appeared to have maintained fiscal discipline
+in the past few years, which indicates that it is committed to overall fiscal health
+when deciding such matters. Finally, the city may also find that the cost allocation
+plan, fee study, and service delivery study that we mention earlier present it the
+opportunity to save additional amounts in its ongoing expenditures, which the city
+could then use to balance any increases in personnel expenditures.
+
+
+
+HIGH‑RISK AREA #5
+Missed Opportunities to Increase Revenue
+
+  Status: In September 2023, we concluded that the city had fully addressed this risk
+  area by completing a cost recovery analysis for its recreational services.
+
+In our September 2023 assessment, we concluded that the city addressed this risk
+area. In particular, we noted that El Cerrito continued to subsidize its senior services
+with budgeted revenue for fiscal year 2023–24 covering 80 percent of the cost of
+those services—about $88,000 according to the city’s budget documents. In its
+2023 update to our office, the city reported that full cost recovery would not provide
+services at an acceptable cost that contributes to the quality of life of all people in
+El Cerrito. Because the city has made a policy decision to subsidize these costs and
+the amount of the subsidy is relatively small, we considered the risk area addressed.
