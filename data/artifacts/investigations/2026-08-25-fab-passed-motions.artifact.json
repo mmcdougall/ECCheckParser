@@ -1,0 +1,736 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "El Cerrito FAB Workplan-Rooted Motion Summary",
+    "generatedAt": "2026-08-26T22:05:13-07:00",
+    "sources": [
+      {
+        "id": "filed_workplan",
+        "label": "FY 2025/2026–2026/2027 Financial Advisory Board Workplan",
+        "href": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/7932",
+        "query": {
+          "engine": "Official ArchiveCenter PDF",
+          "url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/7932",
+          "description": "Official standalone workplan, adopted by the Financial Advisory Board on January 28, 2025. The plan records its adoption vote on internal page 17."
+        }
+      },
+      {
+        "id": "council_filing",
+        "label": "March 4, 2025 City Council minutes: FAB workplan received and filed",
+        "href": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2357,plainText=false)",
+        "query": {
+          "engine": "Official CivicClerk agenda packet",
+          "url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=2357,plainText=false)",
+          "description": "The April 15, 2025 Council packet carries the March 4 minutes. Its physical page 8 records the FAB FY25/26–26/27 workplan as Received and Filed."
+        }
+      },
+      {
+        "id": "workplan_timeline_ledger",
+        "label": "Filed-workplan timeline",
+        "query": {
+          "engine": "SQLite-compatible SQL",
+          "description": "Reproducible timeline of the adopted workplan, Council filing, and later scheduled-but-unverified update items.",
+          "sql": "WITH timeline(event_date, event, evidence, source_ref) AS (VALUES ('2025-01-28', 'FAB adopted the FY 2025/2026–2026/2027 Workplan', 'Motion by Farhad, second by Vice Chair Carvel; four ayes and no noes', 'Filed workplan p. 17; P01 p. 19'), ('2025-03-04', 'City Council received and filed the FAB workplan', 'Council minutes record the workplan as Received and Filed', 'Council minutes p. 8'), ('2026-07-28', 'FY25-26 accomplishments and FY26-27 workplan item was scheduled', 'Meeting cancelled on July 27; no action can be inferred', 'C01'), ('2026-08-25', 'Accomplishments and workplan item was re-agendized', 'Agenda only in the local archive; no packet or minutes available', 'C02')) SELECT event_date, event, evidence, source_ref FROM timeline ORDER BY event_date;",
+          "executed_at": "2026-08-26T22:05:13-07:00",
+          "filters": [
+            "Only formally adopted, filed, cancelled, or agenda-only plan events are shown",
+            "The August 25 agenda is not treated as proof of a newer plan or action"
+          ]
+        }
+      },
+      {
+        "id": "workplan_objectives_ledger",
+        "label": "Adopted workplan objectives",
+        "query": {
+          "engine": "SQLite-compatible SQL",
+          "description": "Compact objective frame transcribed from the adopted workplan. The motion signal is an analytical summary, not an official completion finding.",
+          "sql": "WITH objectives(objective_id, objective, workplan_pages, recorded_motion_signal) AS (VALUES ('W1', 'Budget-development revision cycles and earlier public engagement', '1-2', 'One related accomplishments action; January 28 budget-cycle item had no action'), ('W2', 'Review mid-year budget adjustments and unbudgeted expenditures before Council', '2, 6-7', 'No mapped non-routine motion in available minutes'), ('W3', 'Service Delivery Study review and staffing recommendations', '3, 8', 'Two related actions'), ('W4', 'Five-year long-term financial plan, expenditures, revenues, and reserves', '3-4, 7', 'Nine affirmative primary mappings, four failures, and one deferral'), ('W5', 'Understand and evaluate UAL', '5-6', 'No mapped non-routine motion in available minutes'), ('W6', 'Review quarterly budget updates to Council', '6, 11-13', 'No mapped non-routine motion in available minutes'), ('W7', 'Evaluate Section 115', '6, 14-15', 'One direct affirmative action'), ('W8', 'Review purchasing policy and ordinance; internal controls', '6', 'One direct affirmative action'), ('W9', 'Review and update Comprehensive Financial Policy', '8, 16', 'Two direct affirmative actions'), ('W10', 'Evaluate investment policy including capital-project investment policy', '8-10', 'One related affirmative action')) SELECT objective_id, objective, workplan_pages, recorded_motion_signal FROM objectives ORDER BY objective_id;",
+          "executed_at": "2026-08-26T22:05:13-07:00",
+          "filters": [
+            "Recurring objectives are consolidated into one row",
+            "A blank signal means no captured motion, not no Board work"
+          ]
+        }
+      },
+      {
+        "id": "objective_affirmative_counts",
+        "label": "Affirmative non-routine actions by primary workplan objective",
+        "query": {
+          "engine": "SQLite-compatible SQL",
+          "description": "Counts of the 17 affirmative non-routine actions, classified once by their primary workplan relationship. Direct and related actions are both included; the count is not a completion score.",
+          "sql": "WITH objective_counts(objective_id, objective_short, affirmative_action_count) AS (VALUES ('W1', 'Budget-development cycle', 1), ('W2', 'Mid-year adjustments', 0), ('W3', 'Service delivery and staffing', 2), ('W4', 'Long-term plan and reserves', 9), ('W5', 'UAL', 0), ('W6', 'Quarterly budget updates', 0), ('W7', 'Section 115', 1), ('W8', 'Purchasing policy', 1), ('W9', 'Comprehensive Financial Policy', 2), ('W10', 'Investment and capital policy', 1)) SELECT objective_id, objective_short, affirmative_action_count FROM objective_counts ORDER BY objective_id;",
+          "executed_at": "2026-08-26T22:05:13-07:00",
+          "filters": [
+            "Routine minute approvals and officer appointments are excluded",
+            "Each affirmative action is counted once under its primary mapped objective",
+            "Zeros indicate no captured affirmative non-routine motion in available minutes"
+          ],
+          "metric_definitions": [
+            "affirmative_action_count = number of included affirmative recorded actions; it is not a measure of implementation, importance, or staff work"
+          ]
+        }
+      },
+      {
+        "id": "workplan_motion_ledger",
+        "label": "Workplan-rooted non-routine motion ledger",
+        "query": {
+          "engine": "SQLite-compatible SQL",
+          "description": "Reproducible ledger of 23 non-routine workplan-related recorded outcomes from the January 28, 2025 adoption through the latest available June 4, 2026 minutes. Routine minute approvals and officer actions are excluded.",
+          "sql": "WITH motions(entry_id, meeting_date, action, outcome, alignment, primary_objective, vote, source_ref) AS (VALUES ('M01', '2025-03-25', 'Establish ad-hoc committee to modernize purchasing policy', 'Affirmative — recorded vote', 'Direct', 'W8', '4-0', 'P02 p. 20'), ('M02', '2025-04-29', 'Recommend setting aside 2 percent of General Fund operating budget for one-time expenditures', 'Affirmative — Motion Approved', 'Related / partial', 'W4', '3-1', 'P03 p. 2'), ('M03', '2025-05-27', 'Recommend Council agendize FAB guidance on future one-time expenditures', 'Affirmative — Motion Approved', 'Related / partial', 'W4', '4-1', 'P04 p. 2'), ('M04', '2025-06-24', 'Recommend retaining the Moderately Conservative Section 115 portfolio', 'Affirmative — Motion Approved', 'Direct', 'W7', '3-0', 'P05 p. 2'), ('M05', '2025-08-26', 'Approve FY25 accomplishments with amended budget-cycle language saying no recommendation was made', 'Affirmative — recorded vote', 'Related / partial', 'W1', '5-0', 'P06 p. 2'), ('M06', '2025-09-23', 'Establish Comprehensive Financial Policy review subcommittee', 'Affirmative — Motion passed', 'Direct', 'W9', '5-0', 'P07 p. 2'), ('M07', '2025-10-28', 'Recommend Council meet the 17 percent unassigned reserve goal in the next budget cycle', 'Affirmative — Motion Passed', 'Direct', 'W4', '5-0', 'P08 p. 2'), ('M08', '2025-10-28', 'Ask for FAB opportunity to evaluate and advise on Service Delivery Study recommendations before Council action', 'Affirmative — Motion Passed', 'Related / partial', 'W3', '5-0', 'P08 p. 3'), ('M09', '2025-12-18', 'Approve Comprehensive Financial Policy with edits and section 3.2 revisions', 'Affirmative — Motion passes', 'Direct', 'W9', '3-1', 'P09 p. 2'), ('M10', '2026-01-27', 'Defer General Fund long-term forecast deficit concerns to February', 'Affirmative — Motion passes', 'Procedural deferral', 'W4', '5-0', 'P10 p. 14'), ('M11', '2026-01-27', 'Submit Council recommendation after FAB review of FY24-25 ACFR; focus on controlling and reducing expenses', 'Affirmative — Motion passes', 'Related / partial', 'W4', '5-0', 'P10 p. 15'), ('M12', '2026-05-07', 'Recommend budget that never falls below 30 percent total reserves', 'Failed — no second', 'Direct', 'W4', 'No vote', 'P11 p. 5'), ('M13', '2026-05-07', 'Recommend ISF funding while total reserves stay at least 28 percent', 'Failed — no second', 'Related / partial', 'W4', 'No vote', 'P11 p. 5'), ('M14', '2026-05-07', 'Recommend ISF funding while total reserves stay at least 26 percent', 'Affirmative — recorded vote', 'Direct', 'W4', '3-2', 'P11 p. 5'), ('M15', '2026-05-07', 'Recommend Scenario C and D ISF funding of 890,000 dollars', 'Affirmative — recorded vote', 'Related / partial', 'W4', '5-0', 'P11 p. 5'), ('M16', '2026-05-07', 'Prioritize grant writing and lobbying to maintain financial capacity', 'Failed — no second', 'Related / partial', 'W4', 'No vote', 'P11 p. 5'), ('M17', '2026-05-26', 'Support ISF planning and show planned contributions, uses, and unfunded needs in future budgets', 'Affirmative — recorded vote', 'Related / partial', 'W4', '4-1', 'P12 p. 4'), ('M18', '2026-05-26', 'Request ISF policy by December 2026 with schedules, targets, drawdowns, replacements, and FAB review', 'Affirmative — recorded vote', 'Related / partial', 'W4', '5-0', 'P12 p. 4'), ('M19', '2026-05-26', 'Recommend fiscal-sustainability KPI framework regularly presented to Council', 'Affirmative — recorded vote', 'Related / partial', 'W4', '3-2', 'P12 pp. 4-5'), ('M20', '2026-05-26', 'Support maintaining expanded CIP in future budget books', 'Affirmative — recorded vote', 'Related / partial', 'W10', '4-1', 'P12 p. 5'), ('M21', '2026-05-26', 'Recommend Council adopt proposed two-year General Fund budget', 'Failed — no second', 'Related / partial', 'W4', 'No vote', 'P12 p. 5'), ('M22', '2026-06-04', 'Recommend Council direct staff to examine compensation expenses', 'No disposition — no second', 'Related / partial', 'W3', 'No vote', 'P13 p. 4'), ('M23', '2026-06-04', 'Recommend department service-level agreements by end 2026 with FY27-28 implementation and FAB review', 'Affirmative — recorded vote', 'Related / partial', 'W3', '4-0', 'P13 p. 4')) SELECT entry_id, meeting_date, action, outcome, alignment, primary_objective, vote, source_ref FROM motions ORDER BY meeting_date, entry_id;",
+          "executed_at": "2026-08-26T22:05:13-07:00",
+          "filters": [
+            "Search boundary begins at the adopted and later filed workplan",
+            "Only non-routine motion outcomes with a direct, related, or procedural relationship are included",
+            "Routine minutes, officer elections, and appointments are excluded",
+            "The duplicated January 27 deferral is omitted"
+          ],
+          "metric_definitions": [
+            "Direct = a named workplan objective is the immediate subject of the motion",
+            "Related / partial = subject matter overlaps an objective but does not perform its stated deliverable",
+            "Affirmative = explicit passage language or a recorded affirmative vote; it does not prove Council implementation"
+          ]
+        }
+      },
+      {
+        "id": "motion_source_packets",
+        "label": "Official FAB minute-bearing packets",
+        "query": {
+          "engine": "CivicClerk agenda packets",
+          "description": "The report maps each P-reference to the official source packet in the source map. Minutes are commonly attached to a later FAB agenda packet."
+        }
+      }
+    ],
+    "charts": [
+      {
+        "id": "affirmative_actions_by_objective",
+        "title": "Affirmative non-routine actions by primary workplan objective",
+        "subtitle": "Long-term planning and reserves appear most often; a zero means no captured affirmative motion, not no Board work.",
+        "question": "Which adopted workplan objectives have the most recorded affirmative non-routine motion actions?",
+        "rationale": "A categorical bar chart makes the workplan mapping legible while avoiding an implied time trend or policy-priority score.",
+        "type": "bar",
+        "dataset": "objective_affirmative_counts",
+        "sourceId": "objective_affirmative_counts",
+        "encodings": {
+          "x": {
+            "field": "objective_short",
+            "type": "nominal",
+            "label": "Primary workplan objective"
+          },
+          "y": {
+            "field": "affirmative_action_count",
+            "type": "quantitative",
+            "label": "Affirmative actions"
+          }
+        },
+        "xAxisTitle": "Primary workplan objective",
+        "yAxisTitle": "Affirmative non-routine actions",
+        "valueFormat": "number"
+      }
+    ],
+    "tables": [
+      {
+        "id": "workplan_timeline_table",
+        "title": "Filed-workplan timeline",
+        "subtitle": "Adoption and filing dates establish the research boundary; later agenda items do not establish a newer action without minutes.",
+        "dataset": "workplan_timeline",
+        "sourceId": "workplan_timeline_ledger",
+        "density": "compact",
+        "defaultSort": {
+          "field": "event_date",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "event_date",
+            "label": "Date",
+            "type": "date"
+          },
+          {
+            "field": "event",
+            "label": "Event",
+            "type": "text"
+          },
+          {
+            "field": "evidence",
+            "label": "Evidence",
+            "type": "text"
+          },
+          {
+            "field": "source_ref",
+            "label": "Source",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "workplan_objectives_table",
+        "title": "Adopted workplan objective frame",
+        "subtitle": "The last column indicates recorded motion evidence, not completion status.",
+        "dataset": "workplan_objectives",
+        "sourceId": "workplan_objectives_ledger",
+        "density": "compact",
+        "defaultSort": {
+          "field": "objective_id",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "objective_id",
+            "label": "ID",
+            "type": "text"
+          },
+          {
+            "field": "objective",
+            "label": "Objective",
+            "type": "text"
+          },
+          {
+            "field": "workplan_pages",
+            "label": "Plan pages",
+            "type": "text"
+          },
+          {
+            "field": "recorded_motion_signal",
+            "label": "Motion signal",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "workplan_motion_ledger_table_a",
+        "title": "Non-routine motion ledger — 2025 through January 2026",
+        "subtitle": "Each action is mapped once to its primary workplan relationship; result language is preserved in compact form.",
+        "dataset": "workplan_motion_ledger_a",
+        "sourceId": "workplan_motion_ledger",
+        "density": "compact",
+        "defaultSort": {
+          "field": "meeting_date",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "meeting_date",
+            "label": "Held meeting",
+            "type": "date"
+          },
+          {
+            "field": "action",
+            "label": "Recorded action",
+            "type": "text"
+          },
+          {
+            "field": "outcome",
+            "label": "Outcome",
+            "type": "text"
+          },
+          {
+            "field": "alignment",
+            "label": "Relationship",
+            "type": "text"
+          },
+          {
+            "field": "primary_objective",
+            "label": "Primary objective",
+            "type": "text"
+          },
+          {
+            "field": "vote",
+            "label": "Vote",
+            "type": "text"
+          },
+          {
+            "field": "source_ref",
+            "label": "Source",
+            "type": "text"
+          }
+        ]
+      },
+      {
+        "id": "workplan_motion_ledger_table_b",
+        "title": "Non-routine motion ledger — May through June 2026",
+        "subtitle": "Failed and no-disposition outcomes remain visible so that affirmative actions are not overstated.",
+        "dataset": "workplan_motion_ledger_b",
+        "sourceId": "workplan_motion_ledger",
+        "density": "compact",
+        "defaultSort": {
+          "field": "meeting_date",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "meeting_date",
+            "label": "Held meeting",
+            "type": "date"
+          },
+          {
+            "field": "action",
+            "label": "Recorded action",
+            "type": "text"
+          },
+          {
+            "field": "outcome",
+            "label": "Outcome",
+            "type": "text"
+          },
+          {
+            "field": "alignment",
+            "label": "Relationship",
+            "type": "text"
+          },
+          {
+            "field": "primary_objective",
+            "label": "Primary objective",
+            "type": "text"
+          },
+          {
+            "field": "vote",
+            "label": "Vote",
+            "type": "text"
+          },
+          {
+            "field": "source_ref",
+            "label": "Source",
+            "type": "text"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# El Cerrito FAB Workplan-Rooted Motion Summary"
+      },
+      {
+        "id": "technical_summary",
+        "type": "markdown",
+        "body": "## Technical summary\n\nThe last **formally adopted and City Council-filed** Financial Advisory Board (FAB) plan evidenced in the local official archive is the **FY 2025/2026–2026/2027 Workplan**. FAB adopted it on **January 28, 2025**; City Council recorded it **Received and Filed** on **March 4, 2025**. The substantive motion search therefore begins at that adoption, not at a one-year cutoff or a presumed July filing date.\n\nFrom January 28, 2025 through the latest available FAB minutes, June 4, 2026, this report captures **23 non-routine workplan-related recorded outcomes**: **17 substantive affirmative actions**, **4 failed for lack of a second**, **1 with no stated disposition**, and **1 procedural deferral**. Of the 17 substantive affirmative outcomes, **6 are direct matches** to a named objective and **11 are related or partial matches**. This is a source-backed action ledger—not proof that City Council adopted, funded, or implemented any recommendation."
+      },
+      {
+        "id": "filing_timing_intro",
+        "type": "markdown",
+        "body": "## Filing and timing\n\nThe workplan itself uses milestones such as Q2, Q1 2026, Q3, and quarterly; it does **not** set a July accomplishments deadline. The City Council agenda bill instead states the citywide procedure: advisory bodies are to adopt and post their workplan by July 1 of applicable years, and update/post annual accomplishments by July 1. That is a deadline, not proof that this FAB plan was filed in July.\n\nA July 28, 2026 agenda item for FY25-26 accomplishments and a FY26-27 workplan was cancelled, then re-agendized for August 25. The local archive has only the August agenda, so it cannot establish a newer adopted or filed workplan."
+      },
+      {
+        "id": "workplan_timeline_block",
+        "type": "table",
+        "tableId": "workplan_timeline_table"
+      },
+      {
+        "id": "objective_frame_intro",
+        "type": "markdown",
+        "body": "## Workplan objective frame\n\nThe table anchors the review in the adopted plan rather than in generic financial topics. A motion can map to more than one goal; for counting and readability, the ledger assigns one **primary** relationship and explains related cases conservatively. No recorded motion against an objective does not mean the Board did no work on it."
+      },
+      {
+        "id": "workplan_objectives_block",
+        "type": "table",
+        "tableId": "workplan_objectives_table"
+      },
+      {
+        "id": "chart_intro",
+        "type": "markdown",
+        "body": "## Where affirmative actions clustered\n\nThe chart includes every affirmative non-routine action once, using its primary workplan objective. It is not a progress or importance ranking. In particular, the apparent concentration in long-term planning and reserves includes related ISF, KPI, and spending actions—not evidence that the full five-year-plan deliverable was completed."
+      },
+      {
+        "id": "objective_chart_block",
+        "type": "chart",
+        "chartId": "affirmative_actions_by_objective"
+      },
+      {
+        "id": "acfr_budget_findings",
+        "type": "markdown",
+        "body": "## ACFR and budget findings\n\n- **ACFR:** On January 27, 2026, FAB unanimously passed a Council recommendation following its FY24-25 ACFR review, asking particular attention to controlling and reducing expenses. ACFR is not a named workplan objective, so this is classified as **related** to the long-term financial-plan/expenditure objective.\n- **Early budget actions:** On April 29, 2025 FAB approved a 2 percent General Fund set-aside for one-time expenditures (3-1). On May 27 it approved asking Council to agendize FAB guidance on future one-time expenditures (4-1). Both are related budget/long-range actions, not the plan's specific goal to extend budget-development revision cycles.\n- **Reserve and ISF actions:** On October 28 FAB unanimously recommended meeting the 17 percent unassigned-reserve goal. On May 7, 2026 the 30 percent and 28 percent proposals failed for lack of a second; the 26 percent reserve-plus-ISF proposal received a 3-2 affirmative vote, and the 890,000-dollar Scenario C/D ISF recommendation was 5-0.\n- **May 26 budget actions:** FAB affirmed ISF planning (4-1), a December 2026 ISF policy (5-0), a fiscal-sustainability KPI framework (3-2), and maintaining the expanded CIP (4-1). The proposed two-year budget recommendation failed for lack of a second.\n- **Service delivery:** FAB asked to evaluate and advise on Service Delivery Study recommendations before Council action (5-0), then approved a service-level-agreement recommendation on June 4 (4-0). These actions are related to, but do not themselves make the plan's stated staffing-level recommendation from study results.\n\nEach statement is a FAB outcome. None establishes subsequent Council action or implementation."
+      },
+      {
+        "id": "motion_ledger_intro",
+        "type": "markdown",
+        "body": "## Workplan-rooted non-routine motion ledger\n\n`Direct` means the motion immediately addresses a named plan objective. `Related / partial` means the subject overlaps the plan but does not carry out its stated deliverable. The January 27 long-term-forecast entry is kept as a procedural deferral because it explains why no substantive recommendation was made then.\n\nThe baseline January 28 minutes also record **no action** on purchasing-ordinance recommendations and budget-cycle revision recommendations. Those are important objective-level facts, but they are not counted as motions. Routine minute approvals and board officer elections or appointments are excluded from this ledger."
+      },
+      {
+        "id": "motion_ledger_table_a_block",
+        "type": "table",
+        "tableId": "workplan_motion_ledger_table_a"
+      },
+      {
+        "id": "motion_ledger_table_b_block",
+        "type": "table",
+        "tableId": "workplan_motion_ledger_table_b"
+      },
+      {
+        "id": "methodology",
+        "type": "markdown",
+        "body": "## Methodology and scope\n\nI reviewed the canonical local FAB agenda-packet archive from the January 28, 2025 workplan adoption through the June 4, 2026 minutes, and checked the July 28 cancellation and August 25 agenda-only records for later plan evidence. Minutes are often attached to a later agenda packet; each row therefore cites the packet and physical PDF page where the completed-meeting record appears.\n\nA vote-only affirmative result is described as a recorded affirmative vote rather than as an explicit passage where the minutes do not say `Motion passed`. Agenda proposals and discussions without a motion are not converted into action. This report distinguishes a motion's passage from later Council implementation."
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "body": "## Limits and source-quality flags\n\n- Minutes for the held November 13, 2025 FAB meeting are missing from the local archive.\n- The current plan's cover contains the source-authored sentence `This document is superceded by the FY25-27 document`, despite itself being titled FY 2025/2026–2026/2027. The verified adoption and filing support its use as the latest confirmed frame; the sentence alone does not prove a newer plan.\n- The July 22, 2025 accomplishments discussion has no recorded motion. The August 26 accomplishments vote removed a claimed budget-cycle recommendation and added `No recommendation made`; it is not evidence that a budget-cycle revision recommendation passed.\n- The May 7 completed-meeting record has an incorrect April 28 footer, although its roll call and internal record identify the May 7 meeting.\n- The August 25, 2026 FAB agenda is not yet a minutes record, so any action from that meeting remains unverified here."
+      },
+      {
+        "id": "source_map",
+        "type": "markdown",
+        "body": "## Official source map\n\n- [Filed FAB workplan, ArchiveCenter item 7932](https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/7932): adopted-plan internal pp. 1-17; adoption vote on p. 17.\n- [March 4 Council agenda packet, file 2304](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=2304,plainText=false%29): agenda bill pp. 25-26 describes the receive-and-file action and July 1 procedure; plan attachment pp. 27-43.\n- [Council minutes packet, file 2357](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=2357,plainText=false%29): March 4 minutes, physical p. 8, record the FAB workplan as Received and Filed.\n- [P01 — February 25, 2025 FAB packet, file 2768](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=2768,plainText=false%29): January 28 minutes, physical p. 19.\n- [P02 — April 29, 2025 FAB packet, file 2764](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=2764,plainText=false%29): March 25 minutes, physical pp. 19-21.\n- [P03 — May 27, 2025 FAB packet, file 2766](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=2766,plainText=false%29): April 29 minutes, physical pp. 1-2.\n- [P04 — June 24, 2025 FAB packet, file 2763](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=2763,plainText=false%29): May 27 minutes, physical pp. 1-2.\n- [P05 — July 22, 2025 FAB packet, file 2762](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=2762,plainText=false%29): June 24 minutes, physical pp. 1-2.\n- [P06 — September 23, 2025 FAB packet, file 2760](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=2760,plainText=false%29): August 26 minutes, physical pp. 1-3.\n- [P07 — October 28, 2025 FAB packet, file 2759](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=2759,plainText=false%29): September 23 minutes, physical pp. 1-2.\n- [P08 — November 13, 2025 FAB packet, file 2757](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=2757,plainText=false%29): October 28 minutes, physical pp. 1-3.\n- [P09 — January 27, 2026 FAB packet, file 3177](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=3177,plainText=false%29): December 18 minutes, physical pp. 1-3.\n- [P10 — February 12, 2026 FAB packet, file 3175](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=3175,plainText=false%29): January 27 minutes, physical pp. 14-15.\n- [P11 — May 26, 2026 FAB packet, file 3350](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=3350,plainText=false%29): May 7 minutes, physical pp. 4-5.\n- [P12 — June 4, 2026 FAB packet, file 3400](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=3400,plainText=false%29): May 26 minutes, physical pp. 4-5.\n- [P13 — July 28, 2026 cancellation packet, file 3499](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=3499,plainText=false%29): June 4 minutes, physical pp. 3-4.\n- [C01 — July 28, 2026 cancellation agenda, file 3500](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=3500,plainText=false%29): cancelled accomplishment/workplan item.\n- [C02 — August 25, 2026 agenda, file 3694](https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream%28fileId=3694,plainText=false%29): re-agendized accomplishment/workplan item; agenda only."
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-26T22:05:13-07:00",
+    "status": "ready",
+    "datasets": {
+      "workplan_timeline": [
+        {
+          "event_date": "2025-01-28",
+          "event": "FAB adopted the FY 2025/2026–2026/2027 Workplan",
+          "evidence": "Motion by Farhad, second by Vice Chair Carvel; four ayes and no noes",
+          "source_ref": "Filed workplan p. 17; P01 p. 19"
+        },
+        {
+          "event_date": "2025-03-04",
+          "event": "City Council received and filed the FAB workplan",
+          "evidence": "Council minutes record the workplan as Received and Filed",
+          "source_ref": "Council minutes p. 8"
+        },
+        {
+          "event_date": "2026-07-28",
+          "event": "FY25-26 accomplishments and FY26-27 workplan item was scheduled",
+          "evidence": "Meeting cancelled on July 27; no action can be inferred",
+          "source_ref": "C01"
+        },
+        {
+          "event_date": "2026-08-25",
+          "event": "Accomplishments and workplan item was re-agendized",
+          "evidence": "Agenda only in the local archive; no packet or minutes available",
+          "source_ref": "C02"
+        }
+      ],
+      "workplan_objectives": [
+        {
+          "objective_id": "W1",
+          "objective": "Budget-development revision cycles and earlier public engagement",
+          "workplan_pages": "1-2",
+          "recorded_motion_signal": "One related accomplishments action; January 28 budget-cycle item had no action"
+        },
+        {
+          "objective_id": "W2",
+          "objective": "Review mid-year budget adjustments and unbudgeted expenditures before Council",
+          "workplan_pages": "2, 6-7",
+          "recorded_motion_signal": "No mapped non-routine motion in available minutes"
+        },
+        {
+          "objective_id": "W3",
+          "objective": "Service Delivery Study review and staffing recommendations",
+          "workplan_pages": "3, 8",
+          "recorded_motion_signal": "Two related actions"
+        },
+        {
+          "objective_id": "W4",
+          "objective": "Five-year long-term financial plan, expenditures, revenues, and reserves",
+          "workplan_pages": "3-4, 7",
+          "recorded_motion_signal": "Nine affirmative primary mappings, four failures, and one deferral"
+        },
+        {
+          "objective_id": "W5",
+          "objective": "Understand and evaluate UAL",
+          "workplan_pages": "5-6",
+          "recorded_motion_signal": "No mapped non-routine motion in available minutes"
+        },
+        {
+          "objective_id": "W6",
+          "objective": "Review quarterly budget updates to Council",
+          "workplan_pages": "6, 11-13",
+          "recorded_motion_signal": "No mapped non-routine motion in available minutes"
+        },
+        {
+          "objective_id": "W7",
+          "objective": "Evaluate Section 115",
+          "workplan_pages": "6, 14-15",
+          "recorded_motion_signal": "One direct affirmative action"
+        },
+        {
+          "objective_id": "W8",
+          "objective": "Review purchasing policy and ordinance; internal controls",
+          "workplan_pages": "6",
+          "recorded_motion_signal": "One direct affirmative action"
+        },
+        {
+          "objective_id": "W9",
+          "objective": "Review and update Comprehensive Financial Policy",
+          "workplan_pages": "8, 16",
+          "recorded_motion_signal": "Two direct affirmative actions"
+        },
+        {
+          "objective_id": "W10",
+          "objective": "Evaluate investment policy including capital-project investment policy",
+          "workplan_pages": "8-10",
+          "recorded_motion_signal": "One related affirmative action"
+        }
+      ],
+      "objective_affirmative_counts": [
+        {
+          "objective_id": "W1",
+          "objective_short": "Budget-development cycle",
+          "affirmative_action_count": 1
+        },
+        {
+          "objective_id": "W2",
+          "objective_short": "Mid-year adjustments",
+          "affirmative_action_count": 0
+        },
+        {
+          "objective_id": "W3",
+          "objective_short": "Service delivery and staffing",
+          "affirmative_action_count": 2
+        },
+        {
+          "objective_id": "W4",
+          "objective_short": "Long-term plan and reserves",
+          "affirmative_action_count": 9
+        },
+        {
+          "objective_id": "W5",
+          "objective_short": "UAL",
+          "affirmative_action_count": 0
+        },
+        {
+          "objective_id": "W6",
+          "objective_short": "Quarterly budget updates",
+          "affirmative_action_count": 0
+        },
+        {
+          "objective_id": "W7",
+          "objective_short": "Section 115",
+          "affirmative_action_count": 1
+        },
+        {
+          "objective_id": "W8",
+          "objective_short": "Purchasing policy",
+          "affirmative_action_count": 1
+        },
+        {
+          "objective_id": "W9",
+          "objective_short": "Comprehensive Financial Policy",
+          "affirmative_action_count": 2
+        },
+        {
+          "objective_id": "W10",
+          "objective_short": "Investment and capital policy",
+          "affirmative_action_count": 1
+        }
+      ],
+      "workplan_motion_ledger_a": [
+        {
+          "meeting_date": "2025-03-25",
+          "action": "Establish ad-hoc committee to modernize purchasing policy",
+          "outcome": "Affirmative — recorded vote",
+          "alignment": "Direct",
+          "primary_objective": "W8",
+          "vote": "4-0",
+          "source_ref": "P02 p. 20"
+        },
+        {
+          "meeting_date": "2025-04-29",
+          "action": "Recommend setting aside 2 percent of General Fund operating budget for one-time expenditures",
+          "outcome": "Affirmative — Motion Approved",
+          "alignment": "Related / partial",
+          "primary_objective": "W4",
+          "vote": "3-1",
+          "source_ref": "P03 p. 2"
+        },
+        {
+          "meeting_date": "2025-05-27",
+          "action": "Recommend Council agendize FAB guidance on future one-time expenditures",
+          "outcome": "Affirmative — Motion Approved",
+          "alignment": "Related / partial",
+          "primary_objective": "W4",
+          "vote": "4-1",
+          "source_ref": "P04 p. 2"
+        },
+        {
+          "meeting_date": "2025-06-24",
+          "action": "Recommend retaining the Moderately Conservative Section 115 portfolio",
+          "outcome": "Affirmative — Motion Approved",
+          "alignment": "Direct",
+          "primary_objective": "W7",
+          "vote": "3-0",
+          "source_ref": "P05 p. 2"
+        },
+        {
+          "meeting_date": "2025-08-26",
+          "action": "Approve FY25 accomplishments with amended budget-cycle language saying no recommendation was made",
+          "outcome": "Affirmative — recorded vote",
+          "alignment": "Related / partial",
+          "primary_objective": "W1",
+          "vote": "5-0",
+          "source_ref": "P06 p. 2"
+        },
+        {
+          "meeting_date": "2025-09-23",
+          "action": "Establish Comprehensive Financial Policy review subcommittee",
+          "outcome": "Affirmative — Motion passed",
+          "alignment": "Direct",
+          "primary_objective": "W9",
+          "vote": "5-0",
+          "source_ref": "P07 p. 2"
+        },
+        {
+          "meeting_date": "2025-10-28",
+          "action": "Recommend Council meet the 17 percent unassigned reserve goal in the next budget cycle",
+          "outcome": "Affirmative — Motion Passed",
+          "alignment": "Direct",
+          "primary_objective": "W4",
+          "vote": "5-0",
+          "source_ref": "P08 p. 2"
+        },
+        {
+          "meeting_date": "2025-10-28",
+          "action": "Ask for FAB opportunity to evaluate and advise on Service Delivery Study recommendations before Council action",
+          "outcome": "Affirmative — Motion Passed",
+          "alignment": "Related / partial",
+          "primary_objective": "W3",
+          "vote": "5-0",
+          "source_ref": "P08 p. 3"
+        },
+        {
+          "meeting_date": "2025-12-18",
+          "action": "Approve Comprehensive Financial Policy with edits and section 3.2 revisions",
+          "outcome": "Affirmative — Motion passes",
+          "alignment": "Direct",
+          "primary_objective": "W9",
+          "vote": "3-1",
+          "source_ref": "P09 p. 2"
+        },
+        {
+          "meeting_date": "2026-01-27",
+          "action": "Defer General Fund long-term forecast deficit concerns to February",
+          "outcome": "Affirmative — Motion passes",
+          "alignment": "Procedural deferral",
+          "primary_objective": "W4",
+          "vote": "5-0",
+          "source_ref": "P10 p. 14"
+        },
+        {
+          "meeting_date": "2026-01-27",
+          "action": "Submit Council recommendation after FAB review of FY24-25 ACFR; focus on controlling and reducing expenses",
+          "outcome": "Affirmative — Motion passes",
+          "alignment": "Related / partial",
+          "primary_objective": "W4",
+          "vote": "5-0",
+          "source_ref": "P10 p. 15"
+        },
+        {
+          "meeting_date": "2026-05-07",
+          "action": "Recommend budget that never falls below 30 percent total reserves",
+          "outcome": "Failed — no second",
+          "alignment": "Direct",
+          "primary_objective": "W4",
+          "vote": "No vote",
+          "source_ref": "P11 p. 5"
+        }
+      ],
+      "workplan_motion_ledger_b": [
+        {
+          "meeting_date": "2026-05-07",
+          "action": "Recommend ISF funding while total reserves stay at least 28 percent",
+          "outcome": "Failed — no second",
+          "alignment": "Related / partial",
+          "primary_objective": "W4",
+          "vote": "No vote",
+          "source_ref": "P11 p. 5"
+        },
+        {
+          "meeting_date": "2026-05-07",
+          "action": "Recommend ISF funding while total reserves stay at least 26 percent",
+          "outcome": "Affirmative — recorded vote",
+          "alignment": "Direct",
+          "primary_objective": "W4",
+          "vote": "3-2",
+          "source_ref": "P11 p. 5"
+        },
+        {
+          "meeting_date": "2026-05-07",
+          "action": "Recommend Scenario C and D ISF funding of 890,000 dollars",
+          "outcome": "Affirmative — recorded vote",
+          "alignment": "Related / partial",
+          "primary_objective": "W4",
+          "vote": "5-0",
+          "source_ref": "P11 p. 5"
+        },
+        {
+          "meeting_date": "2026-05-07",
+          "action": "Prioritize grant writing and lobbying to maintain financial capacity",
+          "outcome": "Failed — no second",
+          "alignment": "Related / partial",
+          "primary_objective": "W4",
+          "vote": "No vote",
+          "source_ref": "P11 p. 5"
+        },
+        {
+          "meeting_date": "2026-05-26",
+          "action": "Support ISF planning and show planned contributions, uses, and unfunded needs in future budgets",
+          "outcome": "Affirmative — recorded vote",
+          "alignment": "Related / partial",
+          "primary_objective": "W4",
+          "vote": "4-1",
+          "source_ref": "P12 p. 4"
+        },
+        {
+          "meeting_date": "2026-05-26",
+          "action": "Request ISF policy by December 2026 with schedules, targets, drawdowns, replacements, and FAB review",
+          "outcome": "Affirmative — recorded vote",
+          "alignment": "Related / partial",
+          "primary_objective": "W4",
+          "vote": "5-0",
+          "source_ref": "P12 p. 4"
+        },
+        {
+          "meeting_date": "2026-05-26",
+          "action": "Recommend fiscal-sustainability KPI framework regularly presented to Council",
+          "outcome": "Affirmative — recorded vote",
+          "alignment": "Related / partial",
+          "primary_objective": "W4",
+          "vote": "3-2",
+          "source_ref": "P12 pp. 4-5"
+        },
+        {
+          "meeting_date": "2026-05-26",
+          "action": "Support maintaining expanded CIP in future budget books",
+          "outcome": "Affirmative — recorded vote",
+          "alignment": "Related / partial",
+          "primary_objective": "W10",
+          "vote": "4-1",
+          "source_ref": "P12 p. 5"
+        },
+        {
+          "meeting_date": "2026-05-26",
+          "action": "Recommend Council adopt proposed two-year General Fund budget",
+          "outcome": "Failed — no second",
+          "alignment": "Related / partial",
+          "primary_objective": "W4",
+          "vote": "No vote",
+          "source_ref": "P12 p. 5"
+        },
+        {
+          "meeting_date": "2026-06-04",
+          "action": "Recommend Council direct staff to examine compensation expenses",
+          "outcome": "No disposition — no second",
+          "alignment": "Related / partial",
+          "primary_objective": "W3",
+          "vote": "No vote",
+          "source_ref": "P13 p. 4"
+        },
+        {
+          "meeting_date": "2026-06-04",
+          "action": "Recommend department service-level agreements by end 2026 with FY27-28 implementation and FAB review",
+          "outcome": "Affirmative — recorded vote",
+          "alignment": "Related / partial",
+          "primary_objective": "W3",
+          "vote": "4-0",
+          "source_ref": "P13 p. 4"
+        }
+      ]
+    }
+  }
+}

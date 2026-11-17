@@ -1,0 +1,68 @@
+EL CERRITO FINANCIAL ADVISORY BOARD
+NOVEMBER 13, 2025 MINUTES — SOURCE REFRESH
+
+Purpose
+
+This addendum records a source recovery made after the reports dated August 25
+and August 26, 2026. Those reports are retained as dated snapshots; this file
+is the current correction to their former statement that the November 13, 2025
+minutes were unavailable locally.
+
+Recovered official source
+
+The December 18, 2025 FAB Attachment Reports, City of El Cerrito ArchiveCenter
+item 8128, contains the November 13, 2025 FAB minutes on physical PDF page 2.
+The canonical local source is:
+
+data/originals/financial-advisory-board/2025/agenda-packets/2025-12-18 Agenda Packet.pdf
+
+ArchiveCenter source: https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/8128
+SHA-256: f66140e70421f78ca8070b070f7c5d26f6c4849d1c696e84d1ae6ea980207ea3
+
+Recorded November 13 outcomes
+
+1. Comprehensive Financial Policy review
+
+Motion/Second: Motion to table the Review of the Comprehensive Financial Policy
+to the December meeting by Member White, second by Vice-Chair McDougall.
+
+Vote/result: Ayes: Chair Carvel, Vice-Chair McDougall, Members Szlatenvyi and
+White. Noes: None. Absent: Youth Member Wattson-Lamprey Singer. Motion Passed.
+
+Scope treatment: This is a passed procedural deferral under the workplan's
+Comprehensive Financial Policy objective. It does not change the August 26
+text report's count of successful non-routine actions, which excluded the
+January 27, 2026 procedural deferral on the same basis.
+
+2. FAB calendar for 2026
+
+Motion/Second: Motion to adopt the calendar with one edit moving the June
+meeting from June 23 to June 4 by Member White, second by Member Szlatnvyi.
+
+Vote/result: Ayes: Chair Carvel, Vice-Chair McDougall, Members Szlatenvyi and
+White. Noes: None. Absent: Youth Member Wattson-Lamprey Singer. Motion Passed.
+
+Scope treatment: This is a routine scheduling action outside the workplan-rooted
+motion report.
+
+3. Church-property demolition recommendation
+
+Motion/Second: By Vice-Chair McDougall to recommend to Council that the City
+moves forward with the demolition of the Church property, second by Member
+Szlatnvyi.
+
+Vote/result: Ayes: Vice-Chair McDougall, Members Szlatenvyi. Noes: Member
+White. Abstained: Chair Carvel. Absent: Youth Member Wattson-Lamprey Singer.
+Motion Failed.
+
+Scope treatment: This failed General Fund fund-balance motion does not belong
+in the successful-motion text report. Its relationship to the workplan's
+long-term financial-plan/reserves objective must be decided before it is added
+to a regenerated full workplan ledger.
+
+Artifact status
+
+The detailed August 25 JSON and HTML reports remain dated snapshots and must
+not be treated as current full-outcome ledgers: their source map and aggregate
+outcome counts predate this recovery. Regenerate them together from an approved
+curated ledger before replacing their historical conclusions.
