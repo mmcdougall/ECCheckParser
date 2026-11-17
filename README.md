@@ -17,11 +17,14 @@ of the City of El Cerrito or its Financial Advisory Board. See the
 [civic-purpose statement](docs/CIVIC_PURPOSE.md), [credits](CREDITS.md), and
 [copyright and independence notice](NOTICE.md).
 
-Canonical agenda packets live under meeting-type roots such as
+Canonical City source documents live under meeting-type roots such as
 `data/originals/city-council/YYYY/agenda-packets/` and
-`data/originals/financial-advisory-board/YYYY/agenda-packets/`. Derived artifacts
-(CSV, chunk JSON, payee HTML and register PDFs) remain in `data/artifacts/`.
-PDFs are stored through Git LFS.
+`data/originals/financial-advisory-board/YYYY/agenda-packets/`. Standalone FAB
+work plans live alongside them in the year's `work-plans/` directory. Derived
+artifacts (CSV, chunk JSON, payee HTML and register PDFs) remain in
+`data/artifacts/`. Source-variant comparison sets for FAB work plans live in
+`data/artifacts/fab_work_plans/` with their provenance notes. PDFs are stored
+through Git LFS.
 
 Standalone finance legislation, historical background, and State Auditor records
 live in [`data/references/city-finance/`](data/references/city-finance/README.md).
