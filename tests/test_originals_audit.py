@@ -27,6 +27,28 @@ class TestOriginalsAudit(unittest.TestCase):
         self.assertEqual(audit.pdf_counts, {"city-council": 1, "financial-advisory-board": 1})
         self.assertEqual(audit.record_counts, {"city-council": 1, "financial-advisory-board": 1})
 
+    def test_accepts_standalone_work_plan_and_revision(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            originals_dir = Path(tmpdir) / "originals"
+            _write_meeting(originals_dir, "city-council", "agenda_packet")
+            manifest_path, _ = _write_meeting(
+                originals_dir, "financial-advisory-board", "work_plan",
+            )
+            year_dir = manifest_path.parent
+            revision = year_dir / "work-plan-revisions/2026-01-27 Work Plan - 2026-01-26.pdf"
+            _write_pdf(revision, b"previous work plan")
+            data = json.loads(manifest_path.read_text())
+            data["meetings"][0]["documents"]["work_plan"]["revisions"].append(
+                _record(revision, year_dir),
+            )
+            manifest_path.write_text(json.dumps(data))
+
+            audit = audit_originals(originals_dir)
+
+        self.assertEqual(audit.problems, [])
+        self.assertEqual(audit.pdf_counts["financial-advisory-board"], 2)
+        self.assertEqual(audit.record_counts["financial-advisory-board"], 2)
+
     def test_reports_source_integrity_problems(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             originals_dir = Path(tmpdir) / "originals"
@@ -82,11 +104,11 @@ class TestOriginalsAudit(unittest.TestCase):
 
 def _write_meeting(originals_dir: Path, meeting_type: str, kind: str) -> tuple[Path, Path]:
     year_dir = originals_dir / meeting_type / "2026"
-    directory, _revision_directory = {
-        "agenda": ("agendas", "agenda-revisions"),
-        "agenda_packet": ("agenda-packets", "agenda-packet-revisions"),
+    directory, label = {
+        "agenda": ("agendas", "Agenda"),
+        "agenda_packet": ("agenda-packets", "Agenda Packet"),
+        "work_plan": ("work-plans", "Work Plan"),
     }[kind]
-    label = "Agenda" if kind == "agenda" else "Agenda Packet"
     pdf_path = year_dir / directory / f"2026-01-27 {label}.pdf"
     _write_pdf(pdf_path, f"{meeting_type} {kind}".encode())
     manifest_path = year_dir / "manifest.json"

@@ -24,6 +24,7 @@ MEETING_TYPES = (
 _DOCUMENT_DIRECTORIES = {
     "agenda": ("agendas", "agenda-revisions"),
     "agenda_packet": ("agenda-packets", "agenda-packet-revisions"),
+    "work_plan": ("work-plans", "work-plan-revisions"),
 }
 _IGNORED_ENTRY_NAMES = {".DS_Store"}
 _SHA256_PATTERN = re.compile(r"[0-9a-f]{64}")
