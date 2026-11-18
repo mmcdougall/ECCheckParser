@@ -27,6 +27,34 @@ class TestOriginalsAudit(unittest.TestCase):
         self.assertEqual(audit.pdf_counts, {"city-council": 1, "financial-advisory-board": 1})
         self.assertEqual(audit.record_counts, {"city-council": 1, "financial-advisory-board": 1})
 
+    def test_accepts_standalone_work_plan_source(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            originals_dir = Path(tmpdir) / "originals"
+            _write_meeting(originals_dir, "city-council", "agenda_packet")
+            _write_meeting(originals_dir, "financial-advisory-board", "work_plan")
+
+            audit = audit_originals(originals_dir)
+
+        self.assertEqual(audit.problems, [])
+        self.assertEqual(audit.pdf_counts["financial-advisory-board"], 1)
+        self.assertEqual(audit.record_counts["financial-advisory-board"], 1)
+
+    def test_audits_an_additional_body_without_requiring_other_categories(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            originals_dir = Path(tmpdir) / 'originals'
+            _, source = _write_meeting(originals_dir, 'urban-forest-committee', 'work_plan')
+            audit = audit_originals(originals_dir)
+            self.assertEqual(audit.problems, [])
+            self.assertEqual(audit.record_counts, {'urban-forest-committee': 1})
+            source.write_bytes(b'%PDF-1.7\nchanged')
+            audit = audit_originals(originals_dir)
+            self.assertTrue(any(problem.startswith('SHA-256 mismatch') for problem in audit.problems))
+
+    def test_empty_archive_is_not_a_successful_audit(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            audit = audit_originals(Path(tmpdir))
+            self.assertTrue(any('No meeting type directories found' in problem for problem in audit.problems))
+
     def test_accepts_standalone_work_plan_and_revision(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             originals_dir = Path(tmpdir) / "originals"
