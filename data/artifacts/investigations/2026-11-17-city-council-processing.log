@@ -1,0 +1,27 @@
+Register extraction
+Rows: 357  (checks=312, efts=45)
+Total (non-void): $4,001,819.14
+CSV: 2026-10.csv
+HTML: 2026-10-payees.html
+
+Per-month rollups (non-void totals):
+  10/2026: checks=$1,966,020.54  efts=$2,035,798.60  grand=$4,001,819.14
+
+Per-month totals (non-void, deduped):
+  10/2026: $4,001,819.14
+PDF: 2026-10-register.pdf (pages 14-22)
+
+Quarterly report extraction
+/Users/mikey/Data/Sources/ECCheckParser/.venv/lib/python3.11/site-packages/pypdfium2/_helpers/textpage.py:80: UserWarning: get_text_range() call with default params will be implicitly redirected to get_text_bounded()
+  warnings.warn("get_text_range() call with default params will be implicitly redirected to get_text_bounded()")
+PDF: /tmp/eccheckparser-2026-11-17-processing/2026-11-17-general-fund-update.pdf (general-fund-update; pages 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61)
+
+✔ reconciled: 357 Accounts Payable transactions; checks $1,966,020.54; EFTs $2,035,798.60; total $4,001,819.14.
+Payroll summary, separately reported: 906 payments, $2,000,216.20.
+Overall disbursements including payroll: $6,002,035.34.
+All 20 extracted pages match source dimensions and text and pass visual review.
+No existing CSV or artifact is replaced.
+Source discrepancies are recorded in 2026-11-17-city-council-processing.json.
+Unit tests: 170 passed in 49.423s.
+Archive audit: 35/35 months and 12/12 quarters covered; no problems.
+Originals audit: 151 PDFs and matching manifest records; no problems.

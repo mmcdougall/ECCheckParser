@@ -1,0 +1,237 @@
+{
+  "date": "2026-11-17",
+  "scope": "Validation of repaired code and the held monthly register migration",
+  "validated_code_commit": "d17a6d1249513f5e341217f6386a358b2e217368",
+  "archive_comparison_base": "ecbe46b4436751fd827a6f3e32b6d1d320b26767",
+  "validation": {
+    "unit_tests": {
+      "count": 206,
+      "result": "passed"
+    },
+    "monthly_cli": {
+      "combined_rows": 787,
+      "monthly_rows": [
+        336,
+        451
+      ],
+      "deduplicated_june_total": "4569023.17",
+      "deduplicated_july_total": "14296239.84",
+      "totals_printed_once": true,
+      "explicit_and_default_outputs_can_be_mixed": true
+    },
+    "archive_lifecycle": "Cross-archiver revision, equivalent checksum, missing-copy recovery, corruption and orphan preservation regressions pass.",
+    "fab_corpus": {
+      "records_before": 77,
+      "records_after": 75,
+      "removed_records": "Two unfilled vote templates",
+      "real_motion_texts_removed": 0,
+      "real_motion_texts_added": 0,
+      "unresolved_held_dates_after": 0,
+      "reviewed_fy25_26_motions": 13,
+      "reviewed_fixture_unchanged": true
+    },
+    "sample_build": {
+      "sources": [
+        "data/originals/city-council/2025/agenda-packets/2025-08-19 Agenda Packet.pdf",
+        "data/originals/city-council/2026/agenda-packets/2026-11-17 Agenda Packet.pdf"
+      ],
+      "register_months": [
+        "2025-06",
+        "2025-07",
+        "2026-10"
+      ],
+      "csv_and_chunks_match_bytes": true,
+      "html_matches_after_bokeh_id_normalization": true,
+      "pdf_text_and_dimensions_match": true,
+      "combined_month_archive_files_emitted": false
+    },
+    "all_monthly_csvs_reproduce_from_chunks_without_text_heuristics": true,
+    "all_monthly_raw_amounts_match_printed_report_totals": true,
+    "complete_four_file_monthly_artifact_sets": 35,
+    "canonical_source_packets_scanned": 69,
+    "all_35_register_sources_are_latest_canonical_packets": true,
+    "originals_audit": {
+      "pdfs": 151,
+      "manifest_records": 151,
+      "problems": []
+    },
+    "archive_audit": {
+      "covered_months": 35,
+      "month_range": [
+        "2023-12",
+        "2026-10"
+      ],
+      "covered_quarters": 12,
+      "missing_months": [],
+      "missing_quarters": [],
+      "problems": []
+    }
+  },
+  "csv_changes": {
+    "added_payment_rows": 4253,
+    "removed_payment_rows": 0,
+    "changed_existing_fields": {
+      "payee": 590,
+      "description": 1111,
+      "ap_type": 218,
+      "amount": 2
+    },
+    "amount_corrections": [
+      {
+        "month": "2025-02",
+        "number": "92300",
+        "before": "0.00",
+        "after": "54.20"
+      },
+      {
+        "month": "2025-02",
+        "number": "92358",
+        "before": "0.00",
+        "after": "932.03"
+      }
+    ],
+    "source_limitations": "Printed count/status discrepancies and missing source glyphs remain documented in the dated November 3/4/17 investigations; source rows are not normalized to remove them."
+  },
+  "validated_csvs": [
+    {
+      "path": "data/artifacts/csv/2023-12.csv",
+      "sha256": "7cb31d4136e372a80ab355060083941e5840368595f7b48b867be49015d9c64c"
+    },
+    {
+      "path": "data/artifacts/csv/2024-01.csv",
+      "sha256": "7d3b92bedd2c5c412329e9043a758e9dbdd865449e26b2ac3d6f5b03a4d34ee5"
+    },
+    {
+      "path": "data/artifacts/csv/2024-02.csv",
+      "sha256": "86db33142d77fdbc564d46efc0460bbd21ce06748bb9dbfa6b1700984da3a7fd"
+    },
+    {
+      "path": "data/artifacts/csv/2024-03.csv",
+      "sha256": "8a1fb14cc46acb9ae38aae1c33972b89921b63c6c767276d7e27b0852eb84701"
+    },
+    {
+      "path": "data/artifacts/csv/2024-04.csv",
+      "sha256": "a97c79ef9fb5824f4f10c83f1e9fdcc31aa0a7f6f034d5e209ab3778d19dac2c"
+    },
+    {
+      "path": "data/artifacts/csv/2024-05.csv",
+      "sha256": "3056e3baa132bd0a30da295147faa4e2a08cc0f49c9294648ba05d2806e6b122"
+    },
+    {
+      "path": "data/artifacts/csv/2024-06.csv",
+      "sha256": "c816bddce08f9893cc883503814dbd2823d87f5fcf3961266cf707be6297e9f0"
+    },
+    {
+      "path": "data/artifacts/csv/2024-07.csv",
+      "sha256": "4bf4518241b81184d06f6962b0c353ae630070e372940d5b5944135cddf09597"
+    },
+    {
+      "path": "data/artifacts/csv/2024-08.csv",
+      "sha256": "98561c820f000e936334570c0d67841472acf8863d122c70968cfffff9f9b54d"
+    },
+    {
+      "path": "data/artifacts/csv/2024-09.csv",
+      "sha256": "f3d321f6960e93b72f8c14549c894c8e8b1d7d27d1beceab16ca1f4fb5c6232c"
+    },
+    {
+      "path": "data/artifacts/csv/2024-10.csv",
+      "sha256": "522ce6e1fe113c65c4a9ea417a9272ad6c6fa87cc12ed809020df0ec08354c1e"
+    },
+    {
+      "path": "data/artifacts/csv/2024-11.csv",
+      "sha256": "ab2313ac9f3df49cf2b4bb51d44f1650c4becd90b003f4b5fa581589b0553a67"
+    },
+    {
+      "path": "data/artifacts/csv/2024-12.csv",
+      "sha256": "60a41624e6e225b30635020ef221cd8c870f2813e6ff59fa333028a579b29839"
+    },
+    {
+      "path": "data/artifacts/csv/2025-01.csv",
+      "sha256": "9c20270dd7a4ade5395a9568ebbe0c02f521c863b1349d1dfb4979b99727e631"
+    },
+    {
+      "path": "data/artifacts/csv/2025-02.csv",
+      "sha256": "987dd1912408c54d4d083713f2b360bc1a7b7a39baf965cd9d5e77dd95a8cf6c"
+    },
+    {
+      "path": "data/artifacts/csv/2025-03.csv",
+      "sha256": "f0efcd4689fe68d2023f4fd72cf4875d7b85e9b0c7e00689e0ead7498cafc078"
+    },
+    {
+      "path": "data/artifacts/csv/2025-04.csv",
+      "sha256": "c319c5dd87c81d468f7decdb5118e6ec4e94c49b7fddc18b871ce52d3f8ef38b"
+    },
+    {
+      "path": "data/artifacts/csv/2025-05.csv",
+      "sha256": "b8b27c7648db1170f9736e542831d4a3b90274ceba3b47be0a83732f2273bde3"
+    },
+    {
+      "path": "data/artifacts/csv/2025-06.csv",
+      "sha256": "4b3d9ec2c00c5daa3d6a81e1aafcf1bc5c80bae0b5fa443c55908b95498561a0"
+    },
+    {
+      "path": "data/artifacts/csv/2025-07.csv",
+      "sha256": "1b07da83d49268aa6c63404d22be86cae5a58bb23a4c52cf812c5c5a5b6dce43"
+    },
+    {
+      "path": "data/artifacts/csv/2025-08.csv",
+      "sha256": "721b5fbbadcec196d03541fc28c2e727c16af4871c2a8cb66d6d9b0c14d73765"
+    },
+    {
+      "path": "data/artifacts/csv/2025-09.csv",
+      "sha256": "b12b04666c2aab24964fca742f9cc7f52d7c61c62db7d0cb8a795cd8cb136bfc"
+    },
+    {
+      "path": "data/artifacts/csv/2025-10.csv",
+      "sha256": "5c5155095b7ff4bc58760c5c8bed79481feaa04ea73d1588005a039facd78e57"
+    },
+    {
+      "path": "data/artifacts/csv/2025-11.csv",
+      "sha256": "42250998a34e3b5d99f5c68b181a86aa40b2e4441777e6cc42589253a404dce9"
+    },
+    {
+      "path": "data/artifacts/csv/2025-12.csv",
+      "sha256": "59d1b13e862b17dcbf88ca1b468b65e7593cc7bd9b88802e4987bfacfbf5007d"
+    },
+    {
+      "path": "data/artifacts/csv/2026-01.csv",
+      "sha256": "9888bc32add05dc79d9bb37be97456eff66e75fbb0090dda1ac572ff64378c4b"
+    },
+    {
+      "path": "data/artifacts/csv/2026-02.csv",
+      "sha256": "78e1a38ca6d5d080bd529d9519dc039ebdb64a82f3f5fdcc591cb59953af80f0"
+    },
+    {
+      "path": "data/artifacts/csv/2026-03.csv",
+      "sha256": "cf46ef60ef50b98565187fd7cffbe0ed8c91711d7c8dfb7d095a8319b0b175ac"
+    },
+    {
+      "path": "data/artifacts/csv/2026-04.csv",
+      "sha256": "e12687102e8858a68151a2bb201df1af19fb74dff5b27cb74c90d5be728fe64d"
+    },
+    {
+      "path": "data/artifacts/csv/2026-05.csv",
+      "sha256": "9381ad4fd69b9b9fcd46b863d1b2210b95937c439b8db7b1530b74a6b989afcd"
+    },
+    {
+      "path": "data/artifacts/csv/2026-06.csv",
+      "sha256": "08eed43d0a9949bad53cd0b039f97727a6cda3dabeb66d4e8bf956bd1060822c"
+    },
+    {
+      "path": "data/artifacts/csv/2026-07.csv",
+      "sha256": "912e0716b1805a98d070125b869dab6a5203852c5e03689068a7af1225c901e4"
+    },
+    {
+      "path": "data/artifacts/csv/2026-08.csv",
+      "sha256": "3bc50d8d174679b4e3e580e6026e0d7cbff092e4cb9d7426df771c6e7680680b"
+    },
+    {
+      "path": "data/artifacts/csv/2026-09.csv",
+      "sha256": "adf5b32033fa7001de7b79e69676420153033ff8e7ec4fb34a69c03bc39d5c74"
+    },
+    {
+      "path": "data/artifacts/csv/2026-10.csv",
+      "sha256": "3ab6a508610de0d376b4c3d24cbb36f75c6b552c093340af4bddaddb442939e3"
+    }
+  ]
+}

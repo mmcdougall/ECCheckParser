@@ -20158,7 +20158,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2670 01/12/2024 Open Accounts Payable P E R S PE1% - PERS SEIU* $205,291.98"
     ],
@@ -20226,7 +20226,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2671 01/18/2024 Open Accounts Payable KATZ, JUDY SENIOR FITNESS DEC 2023 $97.20"
     ],
@@ -20286,7 +20286,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2672 01/17/2024 Open Accounts Payable PG&E PG&E 12/2/23 - 1/2/24 $21,394.83"
     ],
@@ -20342,7 +20342,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2673 01/17/2024 Open Accounts Payable CALIFORNIA DEPT OF TAX & FEE ADMIN (CDTFA) 4Q23 SALES AND USE TAX 100-583474 $202.00"
     ],
@@ -20434,7 +20434,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2675 01/24/2024 Open Accounts Payable PG&E PG&E 12/1/23 - 1/1/24 $22,261.93"
     ],
@@ -20490,7 +20490,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2676 01/26/2024 Open Accounts Payable EDD - PAYROLL TAX DEPOSIT CA - CA Tax $40,592.56"
     ],
@@ -20562,7 +20562,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2677 01/26/2024 Open Accounts Payable IRS FED - Fed Tax* $156,445.76"
     ],
@@ -20618,7 +20618,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2678 01/26/2024 Open Accounts Payable MIssionSquare (name chg 03-2021 formerly ICMA) ICM1 - ICMA-457 #300530 FLAT DOLLAR* $55,179.37"
     ],
@@ -20702,7 +20702,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2679 01/26/2024 Open Accounts Payable P E R S PE CM PEPRA - PERS CM PEPRA* $193,369.58"
     ],
@@ -20782,7 +20782,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2680 01/26/2024 Open Accounts Payable U.S. BANK - CORPORATE PAYMENT SYS CALCARD JAN2024 PAYMENT $49,741.11"
     ],
@@ -20854,7 +20854,7 @@
   {
     "section_month": 1,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2705 01/30/2024 Open Accounts Payable OLD REPUBLIC TITLE COMPANY PURCHASE PROPERTY 10936 SAN PABLO AVE $1,521,306.22"
     ],

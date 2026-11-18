@@ -17304,6 +17304,78 @@
     "section_year": 2024,
     "ap_type": "check",
     "lines": [
+      "89829 05/30/2024Voided/Reissued Invoice Error 06/05/2024 Accounts Payable BLANCA MARTINEZ-CAMPOS -SENIOR SERVICES PETTY CASH VOID $239.78"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "89829",
+          "x0": 19.799999999999997
+        },
+        {
+          "text": "05/30/2024Voided/Reissued",
+          "x0": 88.9509993149763
+        },
+        {
+          "text": "Invoice",
+          "x0": 156.68760611489733
+        },
+        {
+          "text": "Error",
+          "x0": 173.2425743048737
+        },
+        {
+          "text": "06/05/2024",
+          "x0": 188.1102071598658
+        },
+        {
+          "text": "Accounts",
+          "x0": 229.81615718482635
+        },
+        {
+          "text": "Payable",
+          "x0": 251.38836297391208
+        },
+        {
+          "text": "BLANCA",
+          "x0": 290.91404391388835
+        },
+        {
+          "text": "MARTINEZ-CAMPOS",
+          "x0": 311.8940552688804
+        },
+        {
+          "text": "-SENIOR",
+          "x0": 360.983709992513
+        },
+        {
+          "text": "SERVICES",
+          "x0": 382.7114017166224
+        },
+        {
+          "text": "PETTY",
+          "x0": 408.6397169666223
+        },
+        {
+          "text": "CASH",
+          "x0": 425.79381146662223
+        },
+        {
+          "text": "VOID",
+          "x0": 449.51998875000004
+        },
+        {
+          "text": "$239.78",
+          "x0": 725.400009
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 5,
+    "section_year": 2024,
+    "ap_type": "check",
+    "lines": [
       "89830 05/30/2024 Open Accounts Payable BOUNDTREE MEDICAL LLC MEDICAL SUPPLIES $1,204.72"
     ],
     "line_words": [

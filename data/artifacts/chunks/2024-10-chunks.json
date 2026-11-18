@@ -1064,6 +1064,66 @@
     "section_year": 2024,
     "ap_type": "check",
     "lines": [
+      "91066 10/03/2024 Voided/Reissued Incorrect Address 10/24/2024 Accounts Payable GHIRARDELLI ASSOCIATES VOID $62,392.84"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "91066",
+          "x0": 18.960000000000036
+        },
+        {
+          "text": "10/03/2024",
+          "x0": 53.516160000000035
+        },
+        {
+          "text": "Voided/Reissued",
+          "x0": 90.47184000000004
+        },
+        {
+          "text": "Incorrect",
+          "x0": 141.34464000000008
+        },
+        {
+          "text": "Address",
+          "x0": 161.35104000000007
+        },
+        {
+          "text": "10/24/2024",
+          "x0": 187.42272000000006
+        },
+        {
+          "text": "Accounts",
+          "x0": 255.09839999999994
+        },
+        {
+          "text": "Payable",
+          "x0": 276.19872000000004
+        },
+        {
+          "text": "GHIRARDELLI",
+          "x0": 310.3176
+        },
+        {
+          "text": "ASSOCIATES",
+          "x0": 343.65840000000003
+        },
+        {
+          "text": "VOID",
+          "x0": 451.2
+        },
+        {
+          "text": "$62,392.84",
+          "x0": 719.28
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 10,
+    "section_year": 2024,
+    "ap_type": "check",
+    "lines": [
       "91067 10/03/2024 Open Accounts Payable GOLDFARB & LIPMAN LLP SUCCESSSOR AGENCY DISSOLUTION MEETING PREP LEGAL SERVICES $335.60"
     ],
     "line_words": [
@@ -12724,7 +12784,7 @@
     "section_year": 2024,
     "ap_type": "check",
     "lines": [
-      "91238 10/17/2024 Open Accounts Payable CONTRA COSTA ALUMNAE CHAPTER OF DELTA SIGMA THEFACILITY DEPOSIT REFUND $216.80"
+      "91238 10/17/2024 Open Accounts Payable CONTRA COSTA ALUMNAE CHAPTER OF DELTA SIGMA THE FACILITY DEPOSIT REFUND $216.80"
     ],
     "line_words": [
       [
@@ -12777,8 +12837,12 @@
           "x0": 423.40464000000003
         },
         {
-          "text": "THEFACILITY",
+          "text": "THE",
           "x0": 440.20944000000003
+        },
+        {
+          "text": "FACILITY",
+          "x0": 451.2
         },
         {
           "text": "DEPOSIT",
@@ -16024,6 +16088,66 @@
     "section_year": 2024,
     "ap_type": "check",
     "lines": [
+      "91283 10/24/2024 Voided/Reissued Incorrect Address 11/04/2024 Accounts Payable FERGUSON, JOHN VOID $477.42"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "91283",
+          "x0": 18.960000000000036
+        },
+        {
+          "text": "10/24/2024",
+          "x0": 53.516160000000035
+        },
+        {
+          "text": "Voided/Reissued",
+          "x0": 90.47184000000004
+        },
+        {
+          "text": "Incorrect",
+          "x0": 141.34464000000008
+        },
+        {
+          "text": "Address",
+          "x0": 161.35104000000007
+        },
+        {
+          "text": "11/04/2024",
+          "x0": 187.42272000000006
+        },
+        {
+          "text": "Accounts",
+          "x0": 255.09839999999994
+        },
+        {
+          "text": "Payable",
+          "x0": 276.19872000000004
+        },
+        {
+          "text": "FERGUSON,",
+          "x0": 310.3176
+        },
+        {
+          "text": "JOHN",
+          "x0": 340.18800000000005
+        },
+        {
+          "text": "VOID",
+          "x0": 451.2
+        },
+        {
+          "text": "$477.42",
+          "x0": 726.0
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 10,
+    "section_year": 2024,
+    "ap_type": "check",
+    "lines": [
       "91284 10/24/2024 Open Accounts Payable FOLGERGRAPHICS, INC. PUBLIC INFORMATIN - BALLOT MEASURE $2,194.76"
     ],
     "line_words": [
@@ -18951,6 +19075,82 @@
         {
           "text": "$47,492.90",
           "x0": 719.28
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 10,
+    "section_year": 2024,
+    "ap_type": "check",
+    "lines": [
+      "91329 10/31/2024 Reconciled Duplicate Payment 11/07/2024 Accounts Payable ADAMS SAFETY TRAINING Teen Babysitting CPR Class $1,200.00"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "91329",
+          "x0": 18.959999999999923
+        },
+        {
+          "text": "10/31/2024",
+          "x0": 53.51615999999992
+        },
+        {
+          "text": "Reconciled",
+          "x0": 90.47183999999993
+        },
+        {
+          "text": "Duplicate",
+          "x0": 141.34559999999993
+        },
+        {
+          "text": "Payment",
+          "x0": 162.68639999999996
+        },
+        {
+          "text": "11/07/2024",
+          "x0": 187.42031999999995
+        },
+        {
+          "text": "Accounts",
+          "x0": 255.09599999999983
+        },
+        {
+          "text": "Payable",
+          "x0": 276.1727999999998
+        },
+        {
+          "text": "ADAMS",
+          "x0": 310.3171199999999
+        },
+        {
+          "text": "SAFETY",
+          "x0": 328.7203199999999
+        },
+        {
+          "text": "TRAINING",
+          "x0": 348.7267199999999
+        },
+        {
+          "text": "Teen",
+          "x0": 451.2
+        },
+        {
+          "text": "Babysitting",
+          "x0": 466.21247999999997
+        },
+        {
+          "text": "CPR",
+          "x0": 498.07872
+        },
+        {
+          "text": "Class",
+          "x0": 510.3024
+        },
+        {
+          "text": "$1,200.00",
+          "x0": 721.92
         }
       ]
     ]

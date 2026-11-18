@@ -9444,7 +9444,7 @@
     "section_year": 2025,
     "ap_type": "check",
     "lines": [
-      "92300 02/13/2025 Open Accounts Payable QUINTO, GABRIEL MILEAGE, TOLL TO CCC AGENCY FOUNDATION & M $54 .20"
+      "92300 02/13/2025 Open Accounts Payable QUINTO, GABRIEL MILEAGE, TOLL TO CCC AGENCY FOUNDATION & M $54.20"
     ],
     "line_words": [
       [
@@ -9509,12 +9509,8 @@
           "x0": 931.3725644599999
         },
         {
-          "text": "$54",
+          "text": "$54.20",
           "x0": 1021.8857
-        },
-        {
-          "text": ".20",
-          "x0": 1035.2524289
         }
       ]
     ]
@@ -13452,7 +13448,7 @@
     "section_year": 2025,
     "ap_type": "check",
     "lines": [
-      "92358 02/20/2025 Open Accounts Payable SSD ALARM CASTRO, HARDING, MADERA & FAIRMONT CLUBH $ 932.0 3"
+      "92358 02/20/2025 Open Accounts Payable SSD ALARM CASTRO, HARDING, MADERA & FAIRMONT CLUBH $932.03"
     ],
     "line_words": [
       [
@@ -13509,16 +13505,8 @@
           "x0": 905.9968134
         },
         {
-          "text": "$",
+          "text": "$932.03",
           "x0": 1017.4286
-        },
-        {
-          "text": "932.0",
-          "x0": 1021.8841762999999
-        },
-        {
-          "text": "3",
-          "x0": 1041.93507536
         }
       ]
     ]

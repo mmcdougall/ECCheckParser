@@ -1,0 +1,8 @@
+/Users/mikey/Data/Sources/ECCheckParser/.venv/lib/python3.11/site-packages/pypdfium2/_helpers/textpage.py:80: UserWarning: get_text_range() call with default params will be implicitly redirected to get_text_bounded()
+  warnings.warn("get_text_range() call with default params will be implicitly redirected to get_text_bounded()")
+CSV artifacts: 34 in /Users/mikey/Data/Sources/ECCheckParser/data/artifacts/csv
+Covered months: 2023-12 through 2026-09 (34 of 34 expected)
+Missing check register months: none
+Fund update artifacts: 11 in /Users/mikey/Data/Sources/ECCheckParser/data/artifacts/fund_updates
+Covered fund update quarters: FY 2023-24 Q2 through FY 2025-26 Q4 (11 of 11 expected)
+Missing quarterly fund updates: none

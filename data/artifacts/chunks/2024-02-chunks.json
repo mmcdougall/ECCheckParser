@@ -2920,6 +2920,134 @@
     "section_year": 2024,
     "ap_type": "check",
     "lines": [
+      "88812 02/01/2024 Voided Invoice Error 02/26/2024 Accounts Payable MANGAHIS, EMMANUEL, JOHN VOIDED $260.00"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "88812",
+          "x0": 19.440215999999964
+        },
+        {
+          "text": "02/01/2024",
+          "x0": 59.03627999999996
+        },
+        {
+          "text": "Voided",
+          "x0": 101.27145599999999
+        },
+        {
+          "text": "Invoice",
+          "x0": 137.98718399999998
+        },
+        {
+          "text": "Error",
+          "x0": 157.009104
+        },
+        {
+          "text": "02/26/2024",
+          "x0": 181.904856
+        },
+        {
+          "text": "Accounts",
+          "x0": 233.97998399999992
+        },
+        {
+          "text": "Payable",
+          "x0": 258.2183039999999
+        },
+        {
+          "text": "MANGAHIS,",
+          "x0": 316.2953279999998
+        },
+        {
+          "text": "EMMANUEL,",
+          "x0": 348.834072
+        },
+        {
+          "text": "JOHN",
+          "x0": 383.185032
+        },
+        {
+          "text": "VOIDED",
+          "x0": 505.68
+        },
+        {
+          "text": "$260.00",
+          "x0": 739.92
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 2,
+    "section_year": 2024,
+    "ap_type": "check",
+    "lines": [
+      "88813 02/01/2024 Voided Invoice Error 02/26/2024 Accounts Payable MANGAHIS, EMMANUEL, JOHN VOIDED $340.62"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "88813",
+          "x0": 19.440215999999964
+        },
+        {
+          "text": "02/01/2024",
+          "x0": 59.03627999999996
+        },
+        {
+          "text": "Voided",
+          "x0": 101.27145599999999
+        },
+        {
+          "text": "Invoice",
+          "x0": 137.98718399999998
+        },
+        {
+          "text": "Error",
+          "x0": 157.009104
+        },
+        {
+          "text": "02/26/2024",
+          "x0": 181.904856
+        },
+        {
+          "text": "Accounts",
+          "x0": 233.97998399999992
+        },
+        {
+          "text": "Payable",
+          "x0": 258.2183039999999
+        },
+        {
+          "text": "MANGAHIS,",
+          "x0": 316.2953279999998
+        },
+        {
+          "text": "EMMANUEL,",
+          "x0": 348.834072
+        },
+        {
+          "text": "JOHN",
+          "x0": 383.185032
+        },
+        {
+          "text": "VOIDED",
+          "x0": 505.68
+        },
+        {
+          "text": "$340.62",
+          "x0": 739.92
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 2,
+    "section_year": 2024,
+    "ap_type": "check",
+    "lines": [
       "88814 02/01/2024 Open Accounts Payable CORE COMPUTING SOLUTIONS MARCH 2024 CORE MAINTENANCE + SUPPORT $175.15"
     ],
     "line_words": [
@@ -23062,7 +23190,7 @@
   {
     "section_month": 2,
     "section_year": 2024,
-    "ap_type": "check",
+    "ap_type": "eft",
     "lines": [
       "2739 02/29/2024 Open Accounts Payable CARDCONNECT MERCHANT FEE EXPENSE - FEB24 $4,463.59"
     ],

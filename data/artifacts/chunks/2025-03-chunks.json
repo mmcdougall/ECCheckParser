@@ -4804,6 +4804,70 @@
     "section_year": 2025,
     "ap_type": "check",
     "lines": [
+      "92497 03/06/2025 Voided/Reissued Check was Lost 03/20/2025 Accounts Payable EMMERT-ARONSON, JACOB VOIDED $7,200.00"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "92497",
+          "x0": 7.679340000000025
+        },
+        {
+          "text": "03/06/2025",
+          "x0": 45.23742000000002
+        },
+        {
+          "text": "Voided/Reissued",
+          "x0": 76.19814000000002
+        },
+        {
+          "text": "Check",
+          "x0": 120.35862000000003
+        },
+        {
+          "text": "was",
+          "x0": 135.96246000000002
+        },
+        {
+          "text": "Lost",
+          "x0": 146.04598800000005
+        },
+        {
+          "text": "03/20/2025",
+          "x0": 164.04030000000003
+        },
+        {
+          "text": "Accounts",
+          "x0": 210.72078000000005
+        },
+        {
+          "text": "Payable",
+          "x0": 232.68812400000004
+        },
+        {
+          "text": "EMMERT-ARONSON,",
+          "x0": 279.71838
+        },
+        {
+          "text": "JACOB",
+          "x0": 331.561332
+        },
+        {
+          "text": "VOIDED",
+          "x0": 431.2803
+        },
+        {
+          "text": "$7,200.00",
+          "x0": 683.1603
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 3,
+    "section_year": 2025,
+    "ap_type": "check",
+    "lines": [
       "92498 03/06/2025 Open Accounts Payable DRISCOLL, DOMINIC Training or Conferences $1,110.00"
     ],
     "line_words": [
@@ -4851,6 +4915,66 @@
         {
           "text": "$1,110.00",
           "x0": 683.1603
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 3,
+    "section_year": 2025,
+    "ap_type": "check",
+    "lines": [
+      "92499 03/06/2025 Voided Misspelled Vendor 03/07/2025 Accounts Payable SINCOSCAN CONSTRCUTION CO $2,190.39"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "92499",
+          "x0": 7.679340000000025
+        },
+        {
+          "text": "03/06/2025",
+          "x0": 45.23742000000002
+        },
+        {
+          "text": "Voided",
+          "x0": 76.19814000000002
+        },
+        {
+          "text": "Misspelled",
+          "x0": 120.35999999999999
+        },
+        {
+          "text": "Vendor",
+          "x0": 145.44911999999997
+        },
+        {
+          "text": "03/07/2025",
+          "x0": 164.04
+        },
+        {
+          "text": "Accounts",
+          "x0": 210.72048
+        },
+        {
+          "text": "Payable",
+          "x0": 232.687824
+        },
+        {
+          "text": "SINCOSCAN",
+          "x0": 279.71808
+        },
+        {
+          "text": "CONSTRCUTION",
+          "x0": 311.03361599999994
+        },
+        {
+          "text": "CO",
+          "x0": 353.026392
+        },
+        {
+          "text": "$2,190.39",
+          "x0": 683.16
         }
       ]
     ]
@@ -4987,6 +5111,58 @@
         {
           "text": "$43.62",
           "x0": 690.1201
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 3,
+    "section_year": 2025,
+    "ap_type": "check",
+    "lines": [
+      "92502 03/07/2025 Voided 03/07/2025 Accounts Payable Clarine, Matthew VOIDED $324.01"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "92502",
+          "x0": 7.678899999999999
+        },
+        {
+          "text": "03/07/2025",
+          "x0": 45.236979999999996
+        },
+        {
+          "text": "Voided",
+          "x0": 76.1977
+        },
+        {
+          "text": "03/07/2025",
+          "x0": 164.03985999999998
+        },
+        {
+          "text": "Accounts",
+          "x0": 210.72033999999996
+        },
+        {
+          "text": "Payable",
+          "x0": 232.68768399999996
+        },
+        {
+          "text": "Clarine,",
+          "x0": 279.71794
+        },
+        {
+          "text": "Matthew",
+          "x0": 298.56350799999996
+        },
+        {
+          "text": "VOIDED",
+          "x0": 431.28010000000006
+        },
+        {
+          "text": "$324.01",
+          "x0": 687.36
         }
       ]
     ]

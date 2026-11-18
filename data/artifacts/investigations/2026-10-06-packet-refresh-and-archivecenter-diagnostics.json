@@ -1,0 +1,727 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-06T22:25:10.300940+00:00",
+  "user_date": "2026-10-06",
+  "scope": "Published 2026 City Council and Financial Advisory Board agenda packets; Archive Center request and parser diagnosis",
+  "refresh": {
+    "canonical_packet_counts": {
+      "city-council": 22,
+      "financial-advisory-board": 8
+    },
+    "changes": [
+      {
+        "meeting_type": "city-council",
+        "meeting_date": "2026-07-21",
+        "action": "revised",
+        "path": "data/originals/city-council/2026/agenda-packets/2026-07-21 Agenda Packet.pdf",
+        "current": {
+          "path": "agenda-packets/2026-07-21 Agenda Packet.pdf",
+          "file_id": 3493,
+          "official_name": "Packet (rev. 7.22.2026)",
+          "published_at": "2026-07-22T12:06:27.137Z",
+          "downloaded_at": "2026-10-06T22:22:18.663396Z",
+          "last_checked_at": "2026-10-06T22:22:18.663396Z",
+          "size": 50386296,
+          "sha256": "a4c5a52ac8b4d6c8a8ff43e2a5ecc28194b5843f8ec44bb32405595be37598e7",
+          "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3493,plainText=false)"
+        },
+        "pdf_pages": 218,
+        "preserved_revisions": [
+          {
+            "path": "agenda-packet-revisions/2026-07-21 Agenda Packet - 2026-07-16.pdf",
+            "file_id": 3487,
+            "official_name": "Packet",
+            "published_at": "2026-07-16T17:59:44.387Z",
+            "downloaded_at": "2026-07-19T20:52:18.713112Z",
+            "last_checked_at": "2026-07-22T05:46:44.137944Z",
+            "size": 48272034,
+            "sha256": "437f07422df60614a2398cdb4104216ba4a7b75ebca3711e10d565d38253c221",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3487,plainText=false)",
+            "superseded_at": "2026-10-06T22:22:18.663396Z"
+          }
+        ]
+      },
+      {
+        "meeting_type": "city-council",
+        "meeting_date": "2026-08-18",
+        "action": "downloaded",
+        "path": "data/originals/city-council/2026/agenda-packets/2026-08-18 Agenda Packet.pdf",
+        "current": {
+          "path": "agenda-packets/2026-08-18 Agenda Packet.pdf",
+          "file_id": 3686,
+          "official_name": "Packet (rev. 8.19.2026)",
+          "published_at": "2026-08-19T11:45:41.053Z",
+          "downloaded_at": "2026-10-06T22:22:23.121615Z",
+          "last_checked_at": "2026-10-06T22:22:23.121615Z",
+          "size": 16176100,
+          "sha256": "2935cc2807b24e1f654feb605b6e9c7d38e9888442e76e0afe3ec14c0c864f25",
+          "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3686,plainText=false)"
+        },
+        "pdf_pages": 215,
+        "preserved_revisions": []
+      },
+      {
+        "meeting_type": "city-council",
+        "meeting_date": "2026-09-15",
+        "action": "revised",
+        "path": "data/originals/city-council/2026/agenda-packets/2026-09-15 Agenda Packet.pdf",
+        "current": {
+          "path": "agenda-packets/2026-09-15 Agenda Packet.pdf",
+          "file_id": 3757,
+          "official_name": "Packet (rev. 9.17.2026)",
+          "published_at": "2026-09-17T12:13:20.343Z",
+          "downloaded_at": "2026-10-06T22:22:24.953789Z",
+          "last_checked_at": "2026-10-06T22:22:24.953789Z",
+          "size": 55502419,
+          "sha256": "72473e63f49b742c02fb3fa461701dec5b78e2f2ff02ed374868dfa28245e0f9",
+          "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3757,plainText=false)"
+        },
+        "pdf_pages": 361,
+        "preserved_revisions": [
+          {
+            "path": "agenda-packet-revisions/2026-09-15 Agenda Packet - 2026-09-10.pdf",
+            "file_id": 3738,
+            "official_name": "Agenda Packet",
+            "published_at": "2026-09-10T15:59:53.563Z",
+            "downloaded_at": "2026-09-15T22:16:18.035363Z",
+            "last_checked_at": "2026-09-15T22:16:18.035363Z",
+            "size": 48365260,
+            "sha256": "1d14c934fac0d42cc88138491d953c7fe187c5bbdc91bfb64547bde5f708c871",
+            "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3738,plainText=false)",
+            "superseded_at": "2026-10-06T22:22:24.953789Z"
+          }
+        ]
+      },
+      {
+        "meeting_type": "city-council",
+        "meeting_date": "2026-10-06",
+        "action": "downloaded",
+        "path": "data/originals/city-council/2026/agenda-packets/2026-10-06 Agenda Packet.pdf",
+        "current": {
+          "path": "agenda-packets/2026-10-06 Agenda Packet.pdf",
+          "file_id": 3775,
+          "official_name": "Packet",
+          "published_at": "2026-10-01T17:23:19.453Z",
+          "downloaded_at": "2026-10-06T22:22:29.734465Z",
+          "last_checked_at": "2026-10-06T22:22:29.734465Z",
+          "size": 5539400,
+          "sha256": "dd2379511e1de3bdc01a1c2bdf1cc4d7d8d1479f18c6079375dcaccf9d269427",
+          "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3775,plainText=false)"
+        },
+        "pdf_pages": 89,
+        "preserved_revisions": []
+      },
+      {
+        "meeting_type": "financial-advisory-board",
+        "meeting_date": "2026-08-25",
+        "action": "downloaded",
+        "path": "data/originals/financial-advisory-board/2026/agenda-packets/2026-08-25 Agenda Packet.pdf",
+        "current": {
+          "path": "agenda-packets/2026-08-25 Agenda Packet.pdf",
+          "file_id": 3711,
+          "official_name": "Agenda Packet (rev. 08/27/2026)",
+          "published_at": "2026-08-27T12:17:26.143Z",
+          "downloaded_at": "2026-10-06T22:22:53.973589Z",
+          "last_checked_at": "2026-10-06T22:22:53.973589Z",
+          "size": 353035,
+          "sha256": "093a4ffa03ae539e196fa7465730b71dfb05d283cd158c1004a0f4b503337142",
+          "source_url": "https://elcerritoca.api.civicclerk.com/v1/Meetings/GetMeetingFileStream(fileId=3711,plainText=false)"
+        },
+        "pdf_pages": 6,
+        "preserved_revisions": []
+      }
+    ],
+    "revision_mechanism": "Existing check_register/civicclerk_archive.py, agenda-packet-revisions directories, and per-year manifest records; no new mechanism introduced",
+    "post_refresh_live_checks": "All five downloaded or revised packets return unchanged in CivicClerk cache --dry-run; other published packet metadata was unchanged during the full-year refresh",
+    "originals_audit_problems": [],
+    "pdf_validation": "All five changed canonical PDFs opened successfully with pypdfium2; both prior packet hashes match preserved revision PDFs and manifest entries"
+  },
+  "archivecenter": {
+    "conclusion": "The failing requests receive City-branded HTTP 404 responses before HTML parsing. The old FAB agenda and report categories are absent from the live archive menu. This is a website-side availability or configuration change, and our hard-coded category endpoints are now unavailable; no parser defect explains these 404s.",
+    "uncertainty": "Cannot determine whether the City intentionally retired the categories, accidentally unpublished them, or has a category-specific configuration problem. No City confirmation was requested. No replacement FAB agenda/report category was present in the current menu.",
+    "failure_stage": "check_register.archivecenter._fetch_text -> urllib.request.urlopen -> HTTPError; parse_archive_index is not reached",
+    "http_probes": [
+      {
+        "url": "https://www.elcerrito.gov/",
+        "user_agent": "ECCheckParser/1.0",
+        "checked_at": "2026-10-06T22:22:23.546664+00:00",
+        "status": 200,
+        "final_url": "https://www.elcerrito.gov/",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:23 GMT"
+        },
+        "size": 155694,
+        "sha256": "2c5b1b37045f78fa0cab8434852a2f81793c82d59eb663793de74ce83ea39840",
+        "title": "El Cerrito, CA - Official Website | Official Website",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/",
+        "user_agent": "Mozilla/5.0",
+        "checked_at": "2026-10-06T22:22:23.547069+00:00",
+        "status": 200,
+        "final_url": "https://www.elcerrito.gov/",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:23 GMT"
+        },
+        "size": 155694,
+        "sha256": "2c5b1b37045f78fa0cab8434852a2f81793c82d59eb663793de74ce83ea39840",
+        "title": "El Cerrito, CA - Official Website | Official Website",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx",
+        "user_agent": "ECCheckParser/1.0",
+        "checked_at": "2026-10-06T22:22:23.547167+00:00",
+        "status": 200,
+        "final_url": "https://www.elcerrito.gov/Archive.aspx",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:23 GMT"
+        },
+        "size": 178459,
+        "sha256": "859175f98e386eb68d1410358775eaff769213087dcc09ac0d3ea0290aee4ea3",
+        "title": "Archive Center • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx",
+        "user_agent": "Mozilla/5.0",
+        "checked_at": "2026-10-06T22:22:23.547264+00:00",
+        "status": 200,
+        "final_url": "https://www.elcerrito.gov/Archive.aspx",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:23 GMT"
+        },
+        "size": 179452,
+        "sha256": "207781a78c1cab6aa20bb3e90e88e2bd2a8ff6b2ba28582884721f0188bc56f6",
+        "title": "Archive Center • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx?AMID=62",
+        "user_agent": "ECCheckParser/1.0",
+        "checked_at": "2026-10-06T22:22:24.399401+00:00",
+        "status": 404,
+        "final_url": "https://www.elcerrito.gov/Archive.aspx?AMID=62",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:24 GMT"
+        },
+        "size": 95088,
+        "sha256": "ca91523db05aff9a66cf3dba59ab612d7972b45fc223abfb8053396b989a97c2",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx?AMID=62",
+        "user_agent": "Mozilla/5.0",
+        "checked_at": "2026-10-06T22:22:24.399811+00:00",
+        "status": 404,
+        "final_url": "https://www.elcerrito.gov/Archive.aspx?AMID=62",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:24 GMT"
+        },
+        "size": 95088,
+        "sha256": "ca91523db05aff9a66cf3dba59ab612d7972b45fc223abfb8053396b989a97c2",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx?AMID=93",
+        "user_agent": "ECCheckParser/1.0",
+        "checked_at": "2026-10-06T22:22:24.784041+00:00",
+        "status": 404,
+        "final_url": "https://www.elcerrito.gov/Archive.aspx?AMID=93",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:24 GMT"
+        },
+        "size": 95088,
+        "sha256": "76a309cf41eeacd253db28cedd0bb0173c20e0f187ba90566ba83f9a12acfab6",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx?AMID=93",
+        "user_agent": "Mozilla/5.0",
+        "checked_at": "2026-10-06T22:22:24.825906+00:00",
+        "status": 404,
+        "final_url": "https://www.elcerrito.gov/Archive.aspx?AMID=93",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:24 GMT"
+        },
+        "size": 95088,
+        "sha256": "76a309cf41eeacd253db28cedd0bb0173c20e0f187ba90566ba83f9a12acfab6",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx?ADID=8128",
+        "user_agent": "ECCheckParser/1.0",
+        "checked_at": "2026-10-06T22:22:25.138307+00:00",
+        "status": 404,
+        "final_url": "https://www.elcerrito.gov/Archive.aspx?ADID=8128",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:25 GMT"
+        },
+        "size": 95090,
+        "sha256": "3c5f1c13793489493285468dd8339250ed113510fc926238a99e1fb4fbb690eb",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx?ADID=8128",
+        "user_agent": "Mozilla/5.0",
+        "checked_at": "2026-10-06T22:22:25.160203+00:00",
+        "status": 404,
+        "final_url": "https://www.elcerrito.gov/Archive.aspx?ADID=8128",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:25 GMT"
+        },
+        "size": 95090,
+        "sha256": "3c5f1c13793489493285468dd8339250ed113510fc926238a99e1fb4fbb690eb",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/8128",
+        "user_agent": "ECCheckParser/1.0",
+        "checked_at": "2026-10-06T22:22:25.404432+00:00",
+        "status": 404,
+        "final_url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/8128",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:25 GMT"
+        },
+        "size": 95100,
+        "sha256": "cf4050e95c7790f69efb6eeeed7e3d5e212f94b4f1ac2dfbb223b25568b14c5c",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/8128",
+        "user_agent": "Mozilla/5.0",
+        "checked_at": "2026-10-06T22:22:25.404615+00:00",
+        "status": 404,
+        "final_url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/8128",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:25 GMT"
+        },
+        "size": 95100,
+        "sha256": "cf4050e95c7790f69efb6eeeed7e3d5e212f94b4f1ac2dfbb223b25568b14c5c",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://elcerrito.gov/Archive.aspx?AMID=62",
+        "user_agent": "ECCheckParser/1.0",
+        "checked_at": "2026-10-06T22:22:25.755923+00:00",
+        "status": 404,
+        "final_url": "https://elcerrito.gov/Archive.aspx?AMID=62",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:25 GMT"
+        },
+        "size": 95084,
+        "sha256": "974ab67d1c8badb51883ef5474d33ed44bac800ab1710a6f2f5d10efabaf9e6f",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://elcerrito.gov/Archive.aspx?AMID=62",
+        "user_agent": "Mozilla/5.0",
+        "checked_at": "2026-10-06T22:22:25.757050+00:00",
+        "status": 404,
+        "final_url": "https://elcerrito.gov/Archive.aspx?AMID=62",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:25 GMT"
+        },
+        "size": 95084,
+        "sha256": "974ab67d1c8badb51883ef5474d33ed44bac800ab1710a6f2f5d10efabaf9e6f",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.el-cerrito.org/Archive.aspx?AMID=62",
+        "user_agent": "ECCheckParser/1.0",
+        "checked_at": "2026-10-06T22:22:25.843390+00:00",
+        "status": 404,
+        "final_url": "http://www.elcerrito.gov/Archive.aspx?AMID=62",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:25 GMT"
+        },
+        "size": 95087,
+        "sha256": "62243977c0b6176b845e5a5a6b3b82aa7358b508920510ac24c440eff7735481",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.el-cerrito.org/Archive.aspx?AMID=62",
+        "user_agent": "Mozilla/5.0",
+        "checked_at": "2026-10-06T22:22:25.843492+00:00",
+        "status": 404,
+        "final_url": "http://www.elcerrito.gov/Archive.aspx?AMID=62",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:25 GMT"
+        },
+        "size": 95087,
+        "sha256": "62243977c0b6176b845e5a5a6b3b82aa7358b508920510ac24c440eff7735481",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.el-cerrito.org/Archive.aspx?AMID=93",
+        "user_agent": "ECCheckParser/1.0",
+        "checked_at": "2026-10-06T22:22:26.467864+00:00",
+        "status": 404,
+        "final_url": "http://www.elcerrito.gov/Archive.aspx?AMID=93",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:26 GMT"
+        },
+        "size": 95087,
+        "sha256": "5be0abd3f89f4098632f7605fcfd6bfd0ee9763cefaa2143420d18999939b49f",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.el-cerrito.org/Archive.aspx?AMID=93",
+        "user_agent": "Mozilla/5.0",
+        "checked_at": "2026-10-06T22:22:26.467974+00:00",
+        "status": 404,
+        "final_url": "http://www.elcerrito.gov/Archive.aspx?AMID=93",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:26 GMT"
+        },
+        "size": 95087,
+        "sha256": "5be0abd3f89f4098632f7605fcfd6bfd0ee9763cefaa2143420d18999939b49f",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx?AMID=62&Type=&ADID=",
+        "user_agent": "ECCheckParser/1.0",
+        "checked_at": "2026-10-06T22:22:26.705228+00:00",
+        "status": 404,
+        "final_url": "https://www.elcerrito.gov/Archive.aspx?AMID=62&Type=&ADID=",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:26 GMT"
+        },
+        "size": 95108,
+        "sha256": "f219c2533d302a596be02a70ad78bbc2b335ef21d6d3b6391c6dcc953199cfa8",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx?AMID=62&Type=&ADID=",
+        "user_agent": "Mozilla/5.0",
+        "checked_at": "2026-10-06T22:22:26.735453+00:00",
+        "status": 404,
+        "final_url": "https://www.elcerrito.gov/Archive.aspx?AMID=62&Type=&ADID=",
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "Date": "Tue, 06 Oct 2026 22:22:26 GMT"
+        },
+        "size": 95108,
+        "sha256": "f219c2533d302a596be02a70ad78bbc2b335ef21d6d3b6391c6dcc953199cfa8",
+        "title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "pdf_header": false
+      }
+    ],
+    "live_root_categories": [
+      {
+        "archive_method_id": 75,
+        "label": "50+ Bulletin:"
+      },
+      {
+        "archive_method_id": 76,
+        "label": "ACFR (formerly known as CAFR):"
+      },
+      {
+        "archive_method_id": 73,
+        "label": "Annual Budget:"
+      },
+      {
+        "archive_method_id": 141,
+        "label": "Arts & Culture Commission Workplan and Accomplishments:"
+      },
+      {
+        "archive_method_id": 130,
+        "label": "Campaign Statement - Balanced Ballot for El Cerrito (1443021):"
+      },
+      {
+        "archive_method_id": 166,
+        "label": "Campaign Statement - Jawili for City Council 2026 (1495060):"
+      },
+      {
+        "archive_method_id": 135,
+        "label": "Campaign Statements - Carolyn Wysinger for El Cerrito City Council 2022 (1445166):"
+      },
+      {
+        "archive_method_id": 161,
+        "label": "Campaign Statements - Carolyn Wysinger for El Cerrito City Council 2026 (1488304):"
+      },
+      {
+        "archive_method_id": 156,
+        "label": "Campaign Statements - Committee to Elect Courtney Helion for City Council 2024 (1474021):"
+      },
+      {
+        "archive_method_id": 158,
+        "label": "Campaign Statements - Committee to Elect Courtney Helion for City Council 2026 (1478490):"
+      },
+      {
+        "archive_method_id": 127,
+        "label": "Campaign Statements - Committee to Elect Matt Burnham for El Cerrito City Council 2020 (1432631):"
+      },
+      {
+        "archive_method_id": 124,
+        "label": "Campaign Statements - El Cerrito Police Employee Association (1332612):"
+      },
+      {
+        "archive_method_id": 120,
+        "label": "Campaign Statements - Friends of Fadelli for City Council 2020 (1382665):"
+      },
+      {
+        "archive_method_id": 126,
+        "label": "Campaign Statements - Gabriel Quinto for El Cerrito City Council (1370365):"
+      },
+      {
+        "archive_method_id": 136,
+        "label": "Campaign Statements - Gabriel Quinto for El Cerrito City Council 2022 (1450224):"
+      },
+      {
+        "archive_method_id": 167,
+        "label": "Campaign Statements - Gabriel Quinto for El Cerrito City Council 2026 (1496514):"
+      },
+      {
+        "archive_method_id": 122,
+        "label": "Campaign Statements - Isis for City Council 2020 (1430962):"
+      },
+      {
+        "archive_method_id": 123,
+        "label": "Campaign Statements - Janet Abelson for Council 2018 (970897):"
+      },
+      {
+        "archive_method_id": 128,
+        "label": "Campaign Statements - Jennifer Greel for El Cerrito City Council (1428551):"
+      },
+      {
+        "archive_method_id": 155,
+        "label": "Campaign Statements - Keep El Cerrito Safe Yes on Measure G 2024 (1473214):"
+      },
+      {
+        "archive_method_id": 163,
+        "label": "Campaign Statements - Kimberly White for El Cerrito City Council 2026 (1493337):"
+      },
+      {
+        "archive_method_id": 154,
+        "label": "Campaign Statements - Lauren Dodge for El Cerrito City Council 2024 (1472859):"
+      },
+      {
+        "archive_method_id": 121,
+        "label": "Campaign Statements - Lisa Motoyama for City Council 2020 (1432347):"
+      },
+      {
+        "archive_method_id": 138,
+        "label": "Campaign Statements - Lisa Motoyama for City Council 2024 (1458510):"
+      },
+      {
+        "archive_method_id": 164,
+        "label": "Campaign Statements - McDougall for El Cerrito City Council 2026 (1493858):"
+      },
+      {
+        "archive_method_id": 160,
+        "label": "Campaign Statements - Neighbors for a Better El Cerrito - No on Measure C (1485677):"
+      },
+      {
+        "archive_method_id": 153,
+        "label": "Campaign Statements - Rebecca Saltzman for El Cerrito City Council 2024 (1469966):"
+      },
+      {
+        "archive_method_id": 125,
+        "label": "Campaign Statements - Tessa Rudnick for El Cerrito City Council 2020 (1429164):"
+      },
+      {
+        "archive_method_id": 137,
+        "label": "Campaign Statements - Vanessa Warheit for El Cerrito City Council 2022 (1450009):"
+      },
+      {
+        "archive_method_id": 165,
+        "label": "Campaign Statements - Wally Nowinskl for El Cerrito City Council 2026 (1494378):"
+      },
+      {
+        "archive_method_id": 157,
+        "label": "Campaign Statements - William Ktsanes for El Cerrito City Council 2024 (1474945):"
+      },
+      {
+        "archive_method_id": 140,
+        "label": "Campaign Statements - Yes on El Cerrito Library Measure C (1460860):"
+      },
+      {
+        "archive_method_id": 142,
+        "label": "Committee on Aging Workplan and Accomplishments:"
+      },
+      {
+        "archive_method_id": 143,
+        "label": "Community Safety Committee Workplan and Accomplishments:"
+      },
+      {
+        "archive_method_id": 144,
+        "label": "Economic Development Committee Workplan and Accomplishments:"
+      },
+      {
+        "archive_method_id": 145,
+        "label": "Environmental Quality Committee Workplan and Accomplishments :"
+      },
+      {
+        "archive_method_id": 146,
+        "label": "Financial Advisory Board Workplan and Accomplishments:"
+      },
+      {
+        "archive_method_id": 74,
+        "label": "Fire Response Call Logs:"
+      },
+      {
+        "archive_method_id": 147,
+        "label": "Human Relations Commission Workplan and Accomplishments:"
+      },
+      {
+        "archive_method_id": 134,
+        "label": "Major Donor/Independent Expenditure Filings:"
+      },
+      {
+        "archive_method_id": 77,
+        "label": "Measure J Storm Drain Reports:"
+      },
+      {
+        "archive_method_id": 84,
+        "label": "News & Views:"
+      },
+      {
+        "archive_method_id": 148,
+        "label": "Park & Recreation Commission Workplan and Accomplishments:"
+      },
+      {
+        "archive_method_id": 100,
+        "label": "Police Department Annual Report:"
+      },
+      {
+        "archive_method_id": 80,
+        "label": "Recreation Brochure:"
+      },
+      {
+        "archive_method_id": 70,
+        "label": "San Pablo Avenue Specific Plan Agendas:"
+      },
+      {
+        "archive_method_id": 72,
+        "label": "San Pablo Avenue Specific Plan Reports:"
+      },
+      {
+        "archive_method_id": 71,
+        "label": "San Pablo Avenue Specific Plan Summaries:"
+      },
+      {
+        "archive_method_id": 102,
+        "label": "Senior Center Talks:"
+      },
+      {
+        "archive_method_id": 110,
+        "label": "Senior Snippets:"
+      },
+      {
+        "archive_method_id": 105,
+        "label": "Subdivision Committee Agendas:"
+      },
+      {
+        "archive_method_id": 111,
+        "label": "Subdivision Committee E-Packets:"
+      },
+      {
+        "archive_method_id": 149,
+        "label": "Urban Forest Committee Workplan and Accomplishments:"
+      },
+      {
+        "archive_method_id": 129,
+        "label": "Zoning Administrator Hearing Notices:"
+      }
+    ],
+    "parser_and_download_controls": {
+      "index_url": "https://www.elcerrito.gov/Archive.aspx?AMID=146",
+      "status": 200,
+      "parsed_count": 2,
+      "parsed_records": [
+        {
+          "archive_id": 7932,
+          "title": "FY 2025/2026 - 2026/2027 Workplan",
+          "format": "pdf"
+        },
+        {
+          "archive_id": 7678,
+          "title": "FY24 FAB Accomplishments",
+          "format": "pdf"
+        }
+      ],
+      "workplan_pdf_control": {
+        "url": "https://www.elcerrito.gov/ArchiveCenter/ViewFile/Item/7932",
+        "status": 200,
+        "pdf_header": true
+      }
+    },
+    "browser_checks": [
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx?AMID=62",
+        "observed_title": "Custom404 • El Cerrito, CA • CivicEngage",
+        "observed_message": "PAGE NOT FOUND"
+      },
+      {
+        "url": "https://www.elcerrito.gov/Archive.aspx",
+        "observed": "Archive Center loads; FAB Workplan and Accomplishments exists; FAB Agendas and Reports do not appear in the category dropdowns"
+      },
+      {
+        "url": "https://www.elcerrito.gov/482/City-Meetings-and-Agendas/MeetingsandAgendas",
+        "observed": "Current meeting page embeds CivicClerk event listings and links to the CivicClerk subscription portal"
+      }
+    ],
+    "cached_search_warning": "Search/web extraction returned older archived versions of some dead URLs; these do not establish live availability. Live browser and direct HTTP probes show the current 404 behavior.",
+    "reproduce_get_requests": [
+      "curl -sS -D - -o /dev/null 'https://www.elcerrito.gov/Archive.aspx'",
+      "curl -sS -D - -o /dev/null 'https://www.elcerrito.gov/Archive.aspx?AMID=62'",
+      "curl -sS -D - -o /dev/null 'https://www.elcerrito.gov/Archive.aspx?AMID=93'",
+      "curl -sS -D - -o /dev/null 'https://www.elcerrito.gov/Archive.aspx?AMID=146'",
+      ".venv/bin/python archivecenter_documents.py list --year 2026"
+    ]
+  },
+  "validation": {
+    "archivecenter_unit_tests": {
+      "tests": 10,
+      "result": "passed"
+    },
+    "full_unit_suite": {
+      "tests": 131,
+      "result": "passed"
+    }
+  },
+  "boundaries": {
+    "code_changes": false,
+    "derived_register_artifacts_regenerated": false,
+    "staged": false,
+    "committed": false,
+    "pushed": false,
+    "external_messages_sent": false
+  }
+}

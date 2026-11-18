@@ -12,10 +12,12 @@ from check_register.stats import month_totals
 
 class TestMonthTotalsJune2025(unittest.TestCase):
     def test_month_totals_dedup(self):
-        chunk_path = ARTIFACT_CHUNKS_DIR / "2025-06-07-chunks.json"
-        self.assertTrue(chunk_path.exists(), f"Missing chunk file: {chunk_path}")
-        with chunk_path.open() as f:
-            chunks = [RowChunk(**c) for c in json.load(f)]
+        chunks = []
+        for month in ('2025-06', '2025-07'):
+            chunk_path = ARTIFACT_CHUNKS_DIR / f'{month}-chunks.json'
+            self.assertTrue(chunk_path.exists(), f"Missing chunk file: {chunk_path}")
+            with chunk_path.open() as f:
+                chunks.extend(RowChunk(**c) for c in json.load(f))
         parser = CheckRegisterParser(chunk_path)
         entries = parser.parse_chunks(chunks)
 
@@ -32,8 +34,12 @@ class TestMonthTotalsJune2025(unittest.TestCase):
         self.assertTrue(all(seen_sections[k] == {6, 7} for k in dup_keys))
 
         eft_630 = [e for e in entries if e.ap_type == "eft" and e.date == "06/30/2025"]
-        self.assertEqual(len(eft_630), 17)
-        self.assertEqual({e.section_month for e in eft_630}, {6})
+        june_efts = [e for e in eft_630 if e.section_month == 6]
+        july_voids = [e for e in eft_630 if e.section_month == 7]
+        self.assertEqual(len(eft_630), 20)
+        self.assertEqual(len(june_efts), 17)
+        self.assertEqual({e.number for e in july_voids}, {'3342', '3343', '3344'})
+        self.assertTrue(all(e.voided for e in july_voids))
 
         totals = month_totals(entries)
         self.assertEqual(totals[(6, 2025)], Decimal("4569023.17"))
