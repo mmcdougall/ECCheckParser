@@ -47,6 +47,13 @@ class ParsedSection:
     entries: list
 
 
+@dataclass
+class PlannedOutput:
+    section: ParsedSection
+    paths: OutputPaths
+    report_rollups: bool = True
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     ap = argparse.ArgumentParser(
         description="Parse El Cerrito Agenda Packet check/EFT registers into CSV/JSON or extract pages to PDF.",
@@ -150,6 +157,62 @@ def derive_output_path_sets(
     return [derive_output_paths(args, entries) for entries in entry_groups]
 
 
+def plan_outputs(
+    args: argparse.Namespace, sections: list[ParsedSection],
+) -> list[PlannedOutput]:
+    entry_groups = [section.entries for section in sections]
+    options = ('csv', 'json', 'html', 'chunks_json', 'pdf_out', 'payees')
+    explicit = [name for name in options if getattr(args, name) not in (None, True)]
+    adjacent = all(
+        right.page_range[0] == left.page_range[1] + 1
+        for left, right in zip(sections, sections[1:])
+    )
+    if len(sections) <= 1 or not explicit or not adjacent:
+        paths = derive_output_path_sets(args, entry_groups)
+        plans = [PlannedOutput(section, output) for section, output in zip(sections, paths)]
+    else:
+        plans = _combined_output_plans(args, sections, options, explicit)
+    _validate_output_paths(plans)
+    return plans
+
+
+def _combined_output_plans(
+    args: argparse.Namespace, sections: list[ParsedSection],
+    options: tuple[str, ...], explicit: list[str],
+) -> list[PlannedOutput]:
+    monthly_args = argparse.Namespace(**vars(args))
+    combined_args = argparse.Namespace(**vars(args))
+    for name in options:
+        setattr(monthly_args if name in explicit else combined_args, name, None)
+    paths = derive_output_path_sets(monthly_args, [section.entries for section in sections])
+    plans = [
+        PlannedOutput(section, output)
+        for section, output in zip(sections, paths)
+        if any(vars(output).values()) or args.print_rollups
+    ]
+    combined = ParsedSection(
+        (sections[0].page_range[0], sections[-1].page_range[1]),
+        [chunk for section in sections for chunk in section.chunks],
+        [entry for section in sections for entry in section.entries],
+    )
+    output = derive_output_paths(combined_args, combined.entries)
+    plans.append(PlannedOutput(combined, output, False))
+    return plans
+
+
+def _validate_output_paths(plans: list[PlannedOutput]) -> None:
+    seen: set[Path] = set()
+    for plan in plans:
+        for path in vars(plan.paths).values():
+            if path is None:
+                continue
+            resolved = path.resolve()
+            if resolved in seen:
+                print(f"Output path is used for more than one output: {path}")
+                raise SystemExit(1)
+            seen.add(resolved)
+
+
 def parse_sections(
     pdf_path: Path, *, keep_voided: bool,
 ) -> list[ParsedSection]:
@@ -196,13 +259,17 @@ def print_stats(entries: list, paths: OutputPaths, *, rollups: bool, totals: boo
                     f"efts=${sums['efts']:,.2f}  grand=${sums['grand']:,.2f}",
                 )
     if totals:
-        tot = month_totals(entries)
-        if not tot:
-            print("No month totals to display.")
-        else:
-            print("\nPer-month totals (non-void, deduped):")
-            for (m, y), total in sorted(tot.items(), key=lambda kv: (kv[0][1], kv[0][0])):
-                print(f"  {m:02d}/{y}: ${total:,.2f}")
+        print_month_totals(entries)
+
+
+def print_month_totals(entries: list) -> None:
+    tot = month_totals(entries)
+    if not tot:
+        print("No month totals to display.")
+    else:
+        print("\nPer-month totals (non-void, deduped):")
+        for (m, y), total in sorted(tot.items(), key=lambda kv: (kv[0][1], kv[0][0])):
+            print(f"  {m:02d}/{y}: ${total:,.2f}")
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -250,12 +317,11 @@ def main(argv: list[str] | None = None) -> None:
         except ValueError:
             sections = []
 
-    path_sets = derive_output_path_sets(
-        args, [section.entries for section in sections],
-    )
+    plans = plan_outputs(args, sections)
 
-    for idx, (section, paths) in enumerate(zip(sections, path_sets)):
-        if len(sections) > 1:
+    for idx, plan in enumerate(plans):
+        section, paths = plan.section, plan.paths
+        if len(plans) > 1:
             if idx:
                 print()
             print(f"Section: {register_name_prefix(section.entries)}")
@@ -264,7 +330,8 @@ def main(argv: list[str] | None = None) -> None:
             write_outputs(section.entries, paths, args.drop)
             if paths.csv or paths.json or paths.html or args.print_rollups or args.totals:
                 print_stats(
-                    section.entries, paths, rollups=args.print_rollups, totals=args.totals,
+                    section.entries, paths,
+                    rollups=args.print_rollups and plan.report_rollups, totals=False,
                 )
         if paths.payees_txt:
             payees, info = merge_payees(section.entries, paths.payees_txt)
@@ -283,6 +350,9 @@ def main(argv: list[str] | None = None) -> None:
                 args.pdf, paths.pdf, *section.page_range,
             )
             print(f"PDF: {paths.pdf} (pages {start}-{end})")
+
+    if args.totals and sections:
+        print_month_totals([entry for section in sections for entry in section.entries])
 
 
 if __name__ == "__main__":

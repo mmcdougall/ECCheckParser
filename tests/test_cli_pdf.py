@@ -5,7 +5,7 @@ import tempfile
 from decimal import Decimal
 from pathlib import Path
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import pypdfium2 as pdfium
 
@@ -13,6 +13,7 @@ from check_register.models import CheckEntry
 from check_register.page_extractor import (
     default_pdf_name,
     find_check_register_page_ranges,
+    find_check_register_page_range,
     register_name_prefix,
 )
 from check_register_parser import main
@@ -102,6 +103,30 @@ class TestCliPdf(unittest.TestCase):
         finally:
             if pdf_path.exists():
                 pdf_path.unlink()
+
+    def test_adjacent_months_have_separate_artifact_ranges(self):
+        pages = [Mock(), Mock(), Mock()]
+        pages[0].extract_text.return_value = 'From Payment Date: 6/1/2025 - To Payment Date: 6/30/2025'
+        pages[1].extract_text.return_value = 'From Payment Date: 6/29/2025 - To Payment Date: 7/31/2025'
+        pages[2].extract_text.return_value = 'From Payment Date: 6/29/2025 - To Payment Date: 7/31/2025'
+        with tempfile.NamedTemporaryFile(suffix='.pdf') as source:
+            with patch('check_register.page_extractor.pdfplumber.open') as opened:
+                opened.return_value.__enter__.return_value.pages = pages
+                self.assertEqual(find_check_register_page_ranges(Path(source.name)), [(1, 1), (2, 3)])
+                self.assertEqual(find_check_register_page_range(Path(source.name)), (1, 3))
+
+    def test_repeated_month_after_a_gap_starts_a_new_range(self):
+        header = 'From Payment Date: 6/1/2025 - To Payment Date: 6/30/2025'
+        row = '93336 06/12/2025 Open Accounts Payable VENDOR $1.00'
+        pages = [Mock() for _ in range(5)]
+        for page, text in zip(pages, [row, header, 'Unrelated attachment', row, header]):
+            page.extract_text.return_value = text
+        with tempfile.NamedTemporaryFile(suffix='.pdf') as source:
+            with patch('check_register.page_extractor.pdfplumber.open') as opened:
+                opened.return_value.__enter__.return_value.pages = pages
+                self.assertEqual(find_check_register_page_ranges(Path(source.name)), [(2, 2), (5, 5)])
+                with self.assertRaisesRegex(ValueError, 'disjoint'):
+                    find_check_register_page_range(Path(source.name))
 
     def test_multi_section_packet_writes_separate_outputs(self):
         pdf_path = Path(

@@ -59,10 +59,17 @@ prefix so files sort chronologically:
 - `--json`: `YYYY-MM.json`
 - `--html`: `YYYY-MM-payees.html`
 - `--chunks-json`: `YYYY-MM-chunks.json`
-- `--pdf`: `YYYY-MM-register.pdf` (contiguous multi-month registers emit `YYYY-MM-MM-register.pdf`)
+- `--pdf`: `YYYY-MM-register.pdf`
 
-Packets with disjoint register sections emit one output set per section instead
-of combining separated agenda attachments into a single file range.
+Unnamed output flags emit one output set per reporting month, including
+adjacent monthly registers. Explicit filenames combine adjacent registers into
+one export; separated attachments still require unnamed output flags. These
+choices can be mixed, such as `--csv out.csv --pdf` for a combined CSV and
+monthly PDFs.
+
+Payment dates and overlapping rows remain as printed in each source report.
+`--totals` prints one packet-wide set of monthly totals, using payment dates
+and deduplicating payments across all reporting sections.
 
 ## Discovering and caching CivicClerk agendas
 
