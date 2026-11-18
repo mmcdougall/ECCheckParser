@@ -2880,6 +2880,70 @@
     "section_year": 2025,
     "ap_type": "check",
     "lines": [
+      "92778 04/10/2025 Voided Goods/Services c04/23/2025 Accounts Payable ALAMEDA COUNTY SHERIFF'S OFFICE VOID $162.00"
+    ],
+    "line_words": [
+      [
+        {
+          "text": "92778",
+          "x0": 7.798400000000015
+        },
+        {
+          "text": "04/10/2025",
+          "x0": 52.078400000000016
+        },
+        {
+          "text": "Voided",
+          "x0": 85.07780000000002
+        },
+        {
+          "text": "Goods/Services",
+          "x0": 117.47999999999999
+        },
+        {
+          "text": "c04/23/2025",
+          "x0": 157.43568
+        },
+        {
+          "text": "Accounts",
+          "x0": 214.19940000000003
+        },
+        {
+          "text": "Payable",
+          "x0": 238.19754000000003
+        },
+        {
+          "text": "ALAMEDA",
+          "x0": 287.6394
+        },
+        {
+          "text": "COUNTY",
+          "x0": 314.87861999999996
+        },
+        {
+          "text": "SHERIFF'S",
+          "x0": 339.11706000000004
+        },
+        {
+          "text": "OFFICE",
+          "x0": 368.15880000000004
+        },
+        {
+          "text": "VOID",
+          "x0": 444.24
+        },
+        {
+          "text": "$162.00",
+          "x0": 733.4401
+        }
+      ]
+    ]
+  },
+  {
+    "section_month": 4,
+    "section_year": 2025,
+    "ap_type": "check",
+    "lines": [
       "92779 04/10/2025 Open Accounts Payable AMAZON CAPITAL SERVICES, INC. STATION SUPPLIES $719.24"
     ],
     "line_words": [

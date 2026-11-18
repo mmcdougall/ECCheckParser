@@ -17,10 +17,12 @@ class TestJulAug2025TopPayees(unittest.TestCase):
     """Ensure parser extracts a reasonable number of top payees by amount."""
 
     def test_minimum_matches(self):
-        chunk_path = ARTIFACT_CHUNKS_DIR / '2025-06-07-chunks.json'
-        self.assertTrue(chunk_path.exists(), f"Missing chunk file: {chunk_path}")
-        with chunk_path.open() as f:
-            chunks = [RowChunk(**c) for c in json.load(f)]
+        chunks = []
+        for month in ('2025-06', '2025-07'):
+            chunk_path = ARTIFACT_CHUNKS_DIR / f'{month}-chunks.json'
+            self.assertTrue(chunk_path.exists(), f"Missing chunk file: {chunk_path}")
+            with chunk_path.open() as f:
+                chunks.extend(RowChunk(**c) for c in json.load(f))
         parser = CheckRegisterParser(chunk_path)
         entries = parser.parse_chunks(chunks)
         entries_sorted = sorted(entries, key=lambda e: e.amount, reverse=True)
