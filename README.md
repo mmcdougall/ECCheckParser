@@ -147,6 +147,38 @@ document moves into revisions. Missing known copies are restored only when
 their downloaded checksum matches the recorded version. If a canonical PDF
 exists without a manifest record, caching stops and preserves that file.
 
+## Searching FAB minutes for motion outcomes
+
+`fab_motion_search.py` scans only canonical `agenda_packet.current` records in
+the Financial Advisory Board manifests. It records the physical packet page,
+the agenda-packet source metadata, and the held meeting date found in the
+embedded minutes. The packet filename is not treated as the minutes meeting
+date because minutes commonly appear in a later packet; if no minutes date can
+be resolved, the tool leaves it unavailable rather than substituting the packet
+date. Identical minutes copied into later canonical packets are reported once,
+using the earliest canonical packet as the source.
+
+```bash
+python fab_motion_search.py --from 2025-01-28 --through 2026-06-04 --successful-only --exclude-routine
+python fab_motion_search.py --from 2025-07-01 --through 2026-06-30 --successful-only --exclude-routine --exclude-procedural
+python fab_motion_search.py --packet "data/originals/financial-advisory-board/2025/agenda-packets/2025-11-13 Agenda Packet.pdf"
+python fab_motion_search.py --successful-only --format json --out motions.json
+python fab_motion_search.py --from 2025-07-01 --through 2026-06-30 --successful-only --exclude-routine --exclude-procedural --format markdown --out motions.md
+```
+
+The tool distinguishes an explicit passage statement from an affirmative
+recorded vote, and preserves failures and unresolved outcomes unless filtered
+with `--successful-only`. `--from` and `--through` apply to the held meeting
+date after extraction. `--exclude-procedural` removes deferrals, tabling
+actions, and meeting-calendar actions from a substantive accomplishments list.
+It does not infer later City Council action,
+implementation, or workplan completion; verify material findings against the
+source minutes.
+
+Motion context is bounded by document and agenda-item headings. Unfilled
+vote templates are excluded. Results remain candidate evidence to verify
+against the source minutes, including records with unresolved outcomes.
+
 The parser requires `pdfplumber` for table extraction.  After running, the script
 prints the number of checks parsed and the total disbursed amount as a basic
 sanity check.
