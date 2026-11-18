@@ -68,8 +68,8 @@ Regenerate artifacts in a separate pull request from the code changes; never com
 
 - `data/originals/<meeting-type>/YYYY/agenda-packets/` holds canonical agenda
   packet PDFs downloaded from [www.elcerrito.gov](https://www.elcerrito.gov).
-  Use `city-council` and `financial-advisory-board` as the supported meeting
-  types.
+  Use lowercase hyphenated category names, including `city-council` and
+  `financial-advisory-board`. Archive Center indexes can target other bodies.
 - Prior packet and agenda versions live under `agenda-packet-revisions/` and
   `agenda-revisions/`; each meeting type/year has a `manifest.json` retaining
   source metadata.

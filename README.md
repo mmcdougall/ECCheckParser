@@ -59,10 +59,17 @@ prefix so files sort chronologically:
 - `--json`: `YYYY-MM.json`
 - `--html`: `YYYY-MM-payees.html`
 - `--chunks-json`: `YYYY-MM-chunks.json`
-- `--pdf`: `YYYY-MM-register.pdf` (contiguous multi-month registers emit `YYYY-MM-MM-register.pdf`)
+- `--pdf`: `YYYY-MM-register.pdf`
 
-Packets with disjoint register sections emit one output set per section instead
-of combining separated agenda attachments into a single file range.
+Unnamed output flags emit one output set per reporting month, including
+adjacent monthly registers. Explicit filenames combine adjacent registers into
+one export; separated attachments still require unnamed output flags. These
+choices can be mixed, such as `--csv out.csv --pdf` for a combined CSV and
+monthly PDFs.
+
+Payment dates and overlapping rows remain as printed in each source report.
+`--totals` prints one packet-wide set of monthly totals, using payment dates
+and deduplicating payments across all reporting sections.
 
 ## Discovering and caching CivicClerk agendas
 
@@ -97,6 +104,81 @@ page detection used by `check_register_parser.py`. `--extract-registers` also
 writes found register pages to `data/artifacts/pdfs/` using the existing
 `YYYY-MM-register.pdf` naming.
 
+## Discovering and caching City Archive Center records
+
+`archivecenter_documents.py` reads selected indexes from the City's
+[Archive Center](https://www.elcerrito.gov/Archive.aspx). It supports agendas,
+agenda packets, minutes, work plans, and reports for any named board, committee,
+council, or other source category. Each `--index KIND=AMID` maps a document kind
+to the index ID in an official `Archive.aspx?AMID=...` URL. Repeat the option
+to read several kinds. For example, the FAB work-plan index can be listed with:
+
+```bash
+python archivecenter_documents.py list --index work-plan=146
+```
+
+To cache custom indexes, supply `--meeting-type` with a lowercase folder name
+such as `subdivision-committee`, the selected `--index` options, and a date
+selection (`--date`, `--year`, or `--start` and `--end`). `--dry-run` prints the
+planned paths and actions. Documents go under
+`data/originals/<meeting-type>/YYYY/` using the same manifests and revision
+layout as the existing archive. `--document` can restrict the selected kinds.
+
+Caching accepts only unambiguous dated PDFs. Multiple same-date records of one
+kind are reported as ambiguous. Listings containing only a fiscal year or a
+year range remain visible in `list`; they need a verified full source date
+before they can be filed in the dated archive. The tool does not derive a
+meeting date from a fiscal-year label.
+
+The legacy invocation without `--index` retains FAB agenda/report IDs 62 and 93
+and the `financial-advisory-board` destination. Those indexes depend on the
+City continuing to publish them. This legacy feed requires one same-date
+agenda before an attachment report is accepted as an agenda packet. Custom
+indexes can opt into that check with `--require-matching-agenda`.
+
+The tool keeps a CivicClerk canonical file in place. `--include-variants` saves
+a differing Archive Center copy as a source-marked revision, while an identical
+copy is recorded as equivalent provenance without duplicating bytes. Archive
+Center records use `archive_id` and `source_system: "archivecenter"`; CivicClerk
+`file_id` values remain reserved for CivicClerk files.
+
+Equivalent-source provenance stays tied to its checksum when a CivicClerk
+document moves into revisions. Missing known copies are restored only when
+their downloaded checksum matches the recorded version. If a canonical PDF
+exists without a manifest record, caching stops and preserves that file.
+
+## Searching FAB minutes for motion outcomes
+
+`fab_motion_search.py` scans only canonical `agenda_packet.current` records in
+the Financial Advisory Board manifests. It records the physical packet page,
+the agenda-packet source metadata, and the held meeting date found in the
+embedded minutes. The packet filename is not treated as the minutes meeting
+date because minutes commonly appear in a later packet; if no minutes date can
+be resolved, the tool leaves it unavailable rather than substituting the packet
+date. Identical minutes copied into later canonical packets are reported once,
+using the earliest canonical packet as the source.
+
+```bash
+python fab_motion_search.py --from 2025-01-28 --through 2026-06-04 --successful-only --exclude-routine
+python fab_motion_search.py --from 2025-07-01 --through 2026-06-30 --successful-only --exclude-routine --exclude-procedural
+python fab_motion_search.py --packet "data/originals/financial-advisory-board/2025/agenda-packets/2025-11-13 Agenda Packet.pdf"
+python fab_motion_search.py --successful-only --format json --out motions.json
+python fab_motion_search.py --from 2025-07-01 --through 2026-06-30 --successful-only --exclude-routine --exclude-procedural --format markdown --out motions.md
+```
+
+The tool distinguishes an explicit passage statement from an affirmative
+recorded vote, and preserves failures and unresolved outcomes unless filtered
+with `--successful-only`. `--from` and `--through` apply to the held meeting
+date after extraction. `--exclude-procedural` removes deferrals, tabling
+actions, and meeting-calendar actions from a substantive accomplishments list.
+It does not infer later City Council action,
+implementation, or workplan completion; verify material findings against the
+source minutes.
+
+Motion context is bounded by document and agenda-item headings. Unfilled
+vote templates are excluded. Results remain candidate evidence to verify
+against the source minutes, including records with unresolved outcomes.
+
 The parser requires `pdfplumber` for table extraction.  After running, the script
 prints the number of checks parsed and the total disbursed amount as a basic
 sanity check.
@@ -121,8 +203,14 @@ with every manifest path, PDF header, and SHA-256 checksum intact:
 python check_register_parser.py --audit-originals
 ```
 
-This read-only check scans all cached source PDFs, so it is best used before a
-release or after a source refresh rather than during routine parser work.
+This read-only check discovers the category folders present in the archive,
+including additional committees and commissions. It verifies current and
+revision copies of agendas, packets, minutes, work plans, and reports, and
+reports unreferenced PDFs, missing files, invalid locations, and changed bytes.
+It scans all cached source PDFs, so it is best used before a release or after
+a source refresh rather than during routine parser work. It checks the
+integrity of the local collection; it does not establish that every published
+City document has been collected.
 
 ## Quarterly financial report extraction
 
